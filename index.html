@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Wedding Invitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Montserrat', sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
+    .fade-in.show { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-white to-pink-50 text-gray-800">
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 fade-in">
+    <h1 class="text-5xl md:text-6xl text-pink-800 mb-4">Diana Al jot Nacny & Dany Michael</h1>
+    <p class="text-lg md:text-xl text-gray-600">Together with their families</p>
+    <p class="text-2xl md:text-3xl text-pink-700 mt-2">Invite you to celebrate their wedding</p>
+    <p class="text-lg mt-4">Saturday, September 20th, 2025 · The Rosewood Garden</p>
+  </section>
+
+  <!-- Details Section -->
+  <section class="py-16 px-6 fade-in">
+    <h2 class="text-3xl text-center text-pink-800 mb-8">Wedding Details</h2>
+    <div class="max-w-3xl mx-auto text-center text-gray-700">
+      <p class="mb-4">We are overjoyed to share our special day with you. Please join us for a celebration of love, laughter, and happily ever after.</p>
+      <p class="mb-4">Ceremony begins at 4:00 PM, followed by dinner and dancing.</p>
+      <p>Dress Code: Elegant Attire</p>
+    </div>
+  </section>
+
+  <!-- RSVP Section -->
+  <section class="bg-white py-16 px-6 fade-in">
+    <h2 class="text-3xl text-center text-pink-800 mb-8">RSVP</h2>
+    <form class="max-w-md mx-auto bg-pink-50 p-6 rounded-lg shadow-lg">
+      <label class="block mb-4">
+        <span class="text-gray-700">Your Name</span>
+        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+      </label>
+      <label class="block mb-4">
+        <span class="text-gray-700">Will you attend?</span>
+        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
+          <option value="">Select an option</option>
+          <option>Yes, I’ll be there!</option>
+          <option>Sorry, can’t make it</option>
+        </select>
+      </label>
+      <button type="submit" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg shadow-md transition">
+        Submit
+      </button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 text-gray-600 fade-in">
+    <p>© 2025 Emma & Liam’s Wedding</p>
+  </footer>
+
+  <script>
+    // Simple fade-in animation on scroll
+    const elements = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('show');
+      });
+    });
+    elements.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
