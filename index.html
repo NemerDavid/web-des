@@ -2,73 +2,384 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Wedding Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sleiman & Emily — Wedding Invitation</title>
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Montserrat', sans-serif; }
-    h1, h2, h3 { font-family: 'Playfair Display', serif; }
-    .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease; }
-    .fade-in.show { opacity: 1; transform: translateY(0); }
+    :root{
+      --ink:#6f5e5d;        /* warm taupe text */
+      --rose:#a88f8e;       /* muted rose headline */
+      --rose-strong:#8c7776;
+      --paper:#f7f4f1;
+    }
+    html { scroll-behavior:smooth; }
+    body { font-family:'Montserrat',sans-serif; color:var(--ink); }
+
+    /* Headings */
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+
+    /* Paper background (grain + soft gradient) */
+    body::before{
+      content:""; position:fixed; inset:0; z-index:-2;
+      background:
+        radial-gradient(1200px 600px at 50% 0, rgba(0,0,0,.03), transparent 60%),
+        radial-gradient(1200px 600px at 50% 100%, rgba(0,0,0,.03), transparent 60%),
+        linear-gradient(to bottom,#ffffff,#faf8f7 55%,#f3efec);
+    }
+    body::after{
+      content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.35;
+      background-image: radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px);
+      background-size: 3px 3px;
+    }
+
+    /* Fade-in */
+    .fade { opacity:0; transform:translateY(12px); transition:opacity .9s ease, transform .9s ease; }
+    .fade.show { opacity:1; transform:translateY(0); }
+
+    /* Torn edges */
+    .torn-top{
+      mask: radial-gradient(120% 40px at 50% 0, transparent 40px, #000 41px) top/100% 60px no-repeat,
+            linear-gradient(#000,#000) bottom/100% calc(100% - 60px) no-repeat;
+      -webkit-mask: radial-gradient(120% 40px at 50% 0, transparent 40px, #000 41px) top/100% 60px no-repeat,
+                     linear-gradient(#000,#000) bottom/100% calc(100% - 60px) no-repeat;
+    }
+    .torn-bottom{
+      mask: radial-gradient(120% 40px at 50% 100%, transparent 40px, #000 41px) bottom/100% 60px no-repeat,
+            linear-gradient(#000,#000) top/100% calc(100% - 60px) no-repeat;
+      -webkit-mask: radial-gradient(120% 40px at 50% 100%, transparent 40px, #000 41px) bottom/100% 60px no-repeat,
+                     linear-gradient(#000,#000) top/100% calc(100% - 60px) no-repeat;
+    }
+
+    /* Buttons */
+    .btn{
+      display:inline-block; padding:.85rem 1.5rem; border:1px solid var(--rose-strong);
+      color:var(--rose-strong); border-radius:.25rem; letter-spacing:.06em;
+      transition: all .2s ease; text-transform:uppercase; font-weight:500;
+    }
+    .btn:hover{ background:var(--rose-strong); color:#fff; }
+
+    /* Countdown */
+    .flip{
+      font-variant-numeric: tabular-nums; font-feature-settings:"tnum";
+      border:1px solid rgba(0,0,0,.08); border-radius:.375rem; padding:.75rem 1rem; min-width:4.5rem;
+      background:#fff; box-shadow: 0 6px 20px rgba(0,0,0,.04);
+    }
+
+    /* Calendar */
+    .cal-grid{ display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:.75rem; }
+    .cal-day{ text-align:center; padding:.35rem 0; }
+
+    /* Photo edits */
+    .edited{
+      filter: brightness(1.03) contrast(0.96) saturate(1.07) sepia(0.08);
+      transition: transform .35s ease, filter .35s ease;
+    }
+    .photo-card { position: relative; }
+    .photo-card::after{
+      content:""; position:absolute; inset:0; pointer-events:none; border-radius:0.75rem;
+      background-image: radial-gradient(rgba(0,0,0,.08) 1px, transparent 1px);
+      background-size:3px 3px; opacity:.18; mix-blend-mode:multiply;
+    }
+    .photo-card::before{
+      content:""; position:absolute; inset:0; pointer-events:none; border-radius:0.75rem;
+      box-shadow: inset 0 0 120px rgba(0,0,0,.18);
+    }
+    .photo-card:hover .edited{
+      filter: brightness(1.06) contrast(1.02) saturate(1.10) sepia(0.06);
+      transform: translateY(-2px) scale(1.01);
+    }
+
+    /* Hero overlay */
+    .hero-overlay{ background: rgba(0,0,0,.38); }
+    .tap{ border:1px solid #fff; color:#fff; padding:.85rem 1.2rem; letter-spacing:.08em; text-transform:uppercase; }
+    .tap:hover{ background:#fff; color:#111; }
+
+    /* Floral corner SVG tint */
+    .floral { color: rgba(168,143,142,.35); }
   </style>
 </head>
-<body class="bg-gradient-to-b from-white to-pink-50 text-gray-800">
+<body>
 
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center p-6 fade-in">
-    <h1 class="text-5xl md:text-6xl text-pink-800 mb-4">Diana Al jot Nacny & Dany Michael</h1>
-    <p class="text-lg md:text-xl text-gray-600">Together with their families</p>
-    <p class="text-2xl md:text-3xl text-pink-700 mt-2">Invite you to celebrate their wedding</p>
-    <p class="text-lg mt-4">Saturday, September 20th, 2025 · The Rosewood Garden</p>
-  </section>
+  <!-- Intro / Tap to Start -->
+  <section id="intro" class="relative min-h-[92vh] flex items-end justify-center">
+    <!-- Hero image (replace if you want) -->
+    <div class="absolute inset-0 bg-center bg-cover"
+         style="background-image:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1600&auto=format&fit=crop');"></div>
+    <div class="absolute inset-0 hero-overlay"></div>
 
-  <!-- Details Section -->
-  <section class="py-16 px-6 fade-in">
-    <h2 class="text-3xl text-center text-pink-800 mb-8">Wedding Details</h2>
-    <div class="max-w-3xl mx-auto text-center text-gray-700">
-      <p class="mb-4">We are overjoyed to share our special day with you. Please join us for a celebration of love, laughter, and happily ever after.</p>
-      <p class="mb-4">Ceremony begins at 4:00 PM, followed by dinner and dancing.</p>
-      <p>Dress Code: Elegant Attire</p>
+    <!-- Soft floral overlay (top corners) -->
+    <div class="absolute top-6 left-6 opacity-70 floral">
+      <!-- simple floral SVG -->
+      <svg width="120" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+        <path d="M20 12c6 0 10 5 10 10s-5 10-10 10S10 28 10 22 14 12 20 12zm24 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8zM8 42c6-6 14-4 18-1s6 12-1 18-18 4-18-1 2-10 1-16z"/>
+      </svg>
+    </div>
+    <div class="absolute top-6 right-6 rotate-180 opacity-70 floral">
+      <svg width="120" viewBox="0 0 64 64" fill="currentColor" aria-hidden="true">
+        <path d="M20 12c6 0 10 5 10 10s-5 10-10 10S10 28 10 22 14 12 20 12zm24 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8zM8 42c6-6 14-4 18-1s6 12-1 18-18 4-18-1 2-10 1-16z"/>
+      </svg>
+    </div>
+
+    <div class="relative text-center mb-24 fade">
+      <div class="text-white/90 tracking-widest mb-3">TOGETHER WITH THEIR FAMILIES</div>
+      <h1 class="text-white text-5xl md:text-6xl font-semibold">Sleiman & Emily</h1>
+      <p class="text-white/80 mt-3">August 27, 2025 — Ehden, Lebanon</p>
+      <a href="#headline" class="mt-8 inline-block tap">Tap to start</a>
     </div>
   </section>
 
-  <!-- RSVP Section -->
-  <section class="bg-white py-16 px-6 fade-in">
-    <h2 class="text-3xl text-center text-pink-800 mb-8">RSVP</h2>
-    <form class="max-w-md mx-auto bg-pink-50 p-6 rounded-lg shadow-lg">
-      <label class="block mb-4">
-        <span class="text-gray-700">Your Name</span>
-        <input type="text" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-      </label>
-      <label class="block mb-4">
-        <span class="text-gray-700">Will you attend?</span>
-        <select class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" required>
-          <option value="">Select an option</option>
-          <option>Yes, I’ll be there!</option>
-          <option>Sorry, can’t make it</option>
-        </select>
-      </label>
-      <button type="submit" class="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-lg shadow-md transition">
-        Submit
-      </button>
-    </form>
+  <!-- Names / Countdown -->
+  <section id="headline" class="py-16 px-6 fade">
+    <div class="relative max-w-3xl mx-auto text-center bg-white/80 backdrop-blur-sm rounded-xl p-10 shadow">
+      <!-- floral accents -->
+      <div class="absolute -top-8 left-6 floral">
+        <svg width="120" viewBox="0 0 64 64" fill="currentColor"><path d="M20 12c6 0 10 5 10 10s-5 10-10 10S10 28 10 22 14 12 20 12zm24 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8zM8 42c6-6 14-4 18-1s6 12-1 18-18 4-18-1 2-10 1-16z"/></svg>
+      </div>
+      <div class="absolute -bottom-8 right-6 rotate-180 floral">
+        <svg width="120" viewBox="0 0 64 64" fill="currentColor"><path d="M20 12c6 0 10 5 10 10s-5 10-10 10S10 28 10 22 14 12 20 12zm24 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8zM8 42c6-6 14-4 18-1s6 12-1 18-18 4-18-1 2-10 1-16z"/></svg>
+      </div>
+
+      <h2 class="text-4xl md:text-5xl text-[var(--rose)]">Sleiman <span class="text-gray-400">&</span> Emily</h2>
+      <p class="mt-4 text-lg">Request the honor of your presence at their wedding celebration</p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <div class="flip"><div id="dd" class="text-3xl font-semibold">--</div><div class="text-xs mt-1 tracking-widest">DAYS</div></div>
+        <div class="flip"><div id="hh" class="text-3xl font-semibold">--</div><div class="text-xs mt-1 tracking-widest">HOURS</div></div>
+        <div class="flip"><div id="mm" class="text-3xl font-semibold">--</div><div class="text-xs mt-1 tracking-widest">MINUTES</div></div>
+        <div class="flip"><div id="ss" class="text-3xl font-semibold">--</div><div class="text-xs mt-1 tracking-widest">SECONDS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Large feature photo with torn edges -->
+  <section class="torn-top torn-bottom fade">
+    <img src="https://images.pexels.com/photos/169190/pexels-photo-169190.jpeg?auto=compress&cs=tinysrgb&w=1600"
+         class="w-full max-h-[80vh] object-cover" alt="Seaside candles">
+  </section>
+
+  <!-- The Celebration / Timeline -->
+  <section id="timeline" class="py-20 px-6 fade">
+    <h2 class="text-center text-3xl md:text-4xl text-[var(--rose)] mb-12">The Celebration</h2>
+    <div class="max-w-4xl mx-auto grid md:grid-cols-[1fr_auto_1fr] gap-y-12 gap-x-10">
+      <!-- 6 PM -->
+      <div class="text-right md:pr-6">
+        <div class="font-semibold">6:00 PM</div>
+        <div class="text-sm">St. Mourra Church — Ehden</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" class="text-[var(--rose-strong)]"><path d="M7 14a4 4 0 1 1 5.657 3.657M17 10a4 4 0 1 0-5.657-3.657" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="h-12 w-px bg-gray-300"></div>
+      </div>
+      <div class="md:pl-6">We do</div>
+
+      <!-- 7:30 -->
+      <div class="text-right md:pr-6">
+        <div class="font-semibold">7:30 PM</div>
+        <div class="text-sm">Twinz Hotel — Ehden</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" class="text-[var(--rose-strong)]"><path d="M4 15l3-3 3 3M14 15l3-3 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="h-12 w-px bg-gray-300"></div>
+      </div>
+      <div class="md:pl-6">We drink</div>
+
+      <!-- 8:00 -->
+      <div class="text-right md:pr-6">
+        <div class="font-semibold">8:00 PM</div>
+        <div class="text-sm">Twinz Hotel — Ehden</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" class="text-[var(--rose-strong)]"><path d="M4 18h16M6 14h12M8 10h8M12 6v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <div class="h-12 w-px bg-gray-300"></div>
+      </div>
+      <div class="md:pl-6">We dine</div>
+
+      <!-- 9:00 -->
+      <div class="text-right md:pr-6">
+        <div class="font-semibold">9:00 PM</div>
+        <div class="text-sm">Twinz Hotel — Ehden</div>
+      </div>
+      <div class="flex flex-col items-center">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" class="text-[var(--rose-strong)]"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      <div class="md:pl-6">We dance</div>
+    </div>
+  </section>
+
+  <!-- Gift Registry -->
+  <section id="gifts" class="py-20 px-6 fade">
+    <div class="relative max-w-3xl mx-auto text-center bg-white/80 backdrop-blur-sm rounded-xl p-10 shadow">
+      <div class="absolute -top-8 left-6 floral">
+        <svg width="120" viewBox="0 0 64 64" fill="currentColor"><path d="M20 12c6 0 10 5 10 10s-5 10-10 10S10 28 10 22 14 12 20 12zm24 2c4 0 8 4 8 8s-4 8-8 8-8-4-8-8 4-8 8-8zM8 42c6-6 14-4 18-1s6 12-1 18-18 4-18-1 2-10 1-16z"/></svg>
+      </div>
+      <h2 class="text-3xl md:text-4xl text-[var(--rose)]">Gift Registry</h2>
+      <p class="mt-6 leading-relaxed">
+        Your love, laughter, and presence are all we could wish for on our special day.
+        For those who wish, a wedding list is available at all Whish Money branches.
+      </p>
+      <p class="mt-4 tracking-wide">WHISH MONEY — ACC# 2024975</p>
+    </div>
+  </section>
+
+  <!-- Calendar -->
+  <section id="calendar" class="py-20 px-6 fade">
+    <h2 class="text-center text-3xl md:text-4xl text-[var(--rose)] mb-6">Wedding Day</h2>
+    <p class="text-center uppercase tracking-widest text-sm mb-8">August 2025</p>
+
+    <div class="max-w-2xl mx-auto bg-white/80 rounded-xl p-8 shadow">
+      <div class="cal-grid text-sm md:text-base">
+        <div class="text-gray-400">Mon</div><div class="text-gray-400">Tue</div><div class="text-gray-400">Wed</div>
+        <div class="text-gray-400">Thu</div><div class="text-gray-400">Fri</div><div class="text-gray-400">Sat</div><div class="text-gray-400">Sun</div>
+
+        <!-- empty cells for Aug 2025 (1st is Fri) -->
+        <div></div><div></div><div></div><div></div>
+
+        <!-- days -->
+        <template id="days"></template>
+      </div>
+
+      <!-- tiny countdown under calendar -->
+      <div class="mt-8 flex justify-center gap-4">
+        <div class="flip"><div id="dd2" class="text-2xl font-semibold">--</div><div class="text-[10px] tracking-widest">DAYS</div></div>
+        <div class="flip"><div id="hh2" class="text-2xl font-semibold">--</div><div class="text-[10px] tracking-widest">HOURS</div></div>
+        <div class="flip"><div id="mm2" class="text-2xl font-semibold">--</div><div class="text-[10px] tracking-widest">MINUTES</div></div>
+        <div class="flip"><div id="ss2" class="text-2xl font-semibold">--</div><div class="text-[10px] tracking-widest">SECONDS</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Story (masonry + lightbox) -->
+  <section id="photos" class="py-20 px-6 fade">
+    <h2 class="text-center text-3xl md:text-4xl text-[var(--rose)] mb-10">Our Photo Story</h2>
+    <div class="max-w-6xl mx-auto columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">
+      <!-- Swap any of these URLs anytime -->
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1600&auto=format&fit=crop" alt="By the sea">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1495954484750-af469f2f9be5?q=80&w=1600&auto=format&fit=crop" alt="Rings and candles">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1519741497670-5a5e0e2f1a3f?q=80&w=1600&auto=format&fit=crop" alt="Proposal moment">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Together">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=1600&auto=format&fit=crop" alt="Bouquet">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="Close-up">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1600&auto=format&fit=crop" alt="At dusk">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1499363145340-43a6d4a4363e?q=80&w=1600&auto=format&fit=crop" alt="Portrait">
+      </figure>
+      <figure class="mb-4 break-inside-avoid photo-card">
+        <img class="w-full rounded-xl shadow-lg edited" loading="lazy"
+             src="https://images.unsplash.com/photo-1520823570415-1c9a1e6a1a42?q=80&w=1600&auto=format&fit=crop" alt="Celebration">
+      </figure>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 hidden items-center justify-center bg-black/80 z-50 p-4">
+      <button id="lbClose" class="absolute top-4 right-4 text-white/90 text-3xl leading-none">&times;</button>
+      <img id="lbImg" class="max-h-[90vh] max-w-[95vw] rounded-xl shadow-2xl" alt="">
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="py-20 px-6 fade">
+    <h2 class="text-center text-3xl md:text-4xl text-[var(--rose)] mb-8">RSVP</h2>
+    <div class="max-w-3xl mx-auto bg-white/90 rounded-xl shadow p-6">
+      <!-- Replace this Google Form with yours if needed -->
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLScW6HT11sxxDZ7TYj5RPVxiBLKIw57rW9Qmt_xAj-Y909zu1g/viewform?embedded=true"
+        width="100%" height="1100" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+    <p class="text-center mt-6 text-xs tracking-widest">Please reply before 18th of August 2025</p>
   </section>
 
   <!-- Footer -->
-  <footer class="text-center py-6 text-gray-600 fade-in">
-    <p>© 2025 Emma & Liam’s Wedding</p>
+  <footer class="text-center py-10 text-sm text-gray-500">
+    © 2025 Sleiman & Emily
   </footer>
 
   <script>
-    // Simple fade-in animation on scroll
-    const elements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('show');
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+    // Build August 2025 calendar and heart on 27
+    const daysFrag = document.createDocumentFragment();
+    for(let d=1; d<=31; d++){
+      const cell = document.createElement('div');
+      cell.className = 'cal-day';
+      if(d===27){
+        cell.innerHTML = `
+          <div class="relative inline-block">
+            <svg width="40" height="40" viewBox="0 0 24 24" class="absolute -top-3 left-1/2 -translate-x-1/2 text-[var(--rose-strong)]">
+              <path d="M12 21s-7.5-4.6-7.5-10A4.5 4.5 0 0 1 12 7a4.5 4.5 0 0 1 7.5 4c0 5.4-7.5 10-7.5 10Z" fill="currentColor" opacity="0.18"/>
+            </svg>
+            <span class="relative z-10 font-semibold">${d}</span>
+          </div>`;
+      } else cell.textContent = d;
+      daysFrag.appendChild(cell);
+    }
+    document.getElementById('days').replaceWith(daysFrag);
+
+    // Countdown to Aug 27, 2025 18:00 local time
+    const target = new Date('2025-08-27T18:00:00');
+    function tick(){
+      const now = new Date();
+      const diff = Math.max(0, target - now);
+      const s = Math.floor(diff/1000)%60;
+      const m = Math.floor(diff/60000)%60;
+      const h = Math.floor(diff/3600000)%24;
+      const d = Math.floor(diff/86400000);
+      const pad = n => String(n).padStart(2,'0');
+      const vals = [d,pad(h),pad(m),pad(s)];
+      ['dd','hh','mm','ss'].forEach((id,i)=>document.getElementById(id).textContent=vals[i]);
+      ['dd2','hh2','mm2','ss2'].forEach((id,i)=>document.getElementById(id).textContent=vals[i]);
+    }
+    tick(); setInterval(tick,1000);
+
+    // Lightbox
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbClose = document.getElementById('lbClose');
+    document.querySelectorAll('#photos img.edited').forEach(img=>{
+      img.addEventListener('click', ()=>{
+        lbImg.src = img.src;
+        lb.classList.remove('hidden'); lb.classList.add('flex');
+        document.body.style.overflow='hidden';
       });
     });
-    elements.forEach(el => observer.observe(el));
+    function closeLB(){
+      lb.classList.add('hidden'); lb.classList.remove('flex');
+      lbImg.src=''; document.body.style.overflow='';
+    }
+    lb.addEventListener('click',e=>{ if(e.target===lb) closeLB(); });
+    lbClose.addEventListener('click', closeLB);
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLB(); });
   </script>
 </body>
 </html>
