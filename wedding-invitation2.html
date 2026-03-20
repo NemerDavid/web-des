@@ -741,10 +741,9 @@ function goStep(from, to) {
   });
 }
 
-/* ── Web3Forms config — change these 2 lines per client ── */
+/* ── Config — change CLIENT_EMAIL per client ── */
 const COUPLE_NAME  = 'Sleiman & Emily';
-const CLIENT_EMAIL = 'david.nemer33@gmail.com';
-const W3F_KEY      = 'aa0a9674-3a49-4b5d-8792-8d6098a522dd';
+const CLIENT_EMAIL = 'nemer.david9@gmail.com';
 
 function submitRSVP() {
   const name = document.getElementById('f-name').value.trim();
@@ -755,24 +754,21 @@ function submitRSVP() {
   const sendBtn = document.querySelector('#s3 .btn-solid');
   if (sendBtn) { sendBtn.textContent = 'Sending...'; sendBtn.disabled = true; }
 
-  fetch('https://api.web3forms.com/submit', {
+  fetch('https://formsubmit.co/ajax/' + CLIENT_EMAIL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify({
-      access_key: W3F_KEY,
-      subject:    'New RSVP - ' + COUPLE_NAME,
-      from_name:  name,
-      email:      CLIENT_EMAIL,
-      message:
-        'Guest Name: ' + name + '\n' +
-        'Attending: ' + (yes ? 'Yes' : 'No') + '\n' +
-        'Number of Guests: ' + (yes ? gCount : 0) + '\n' +
-        'Message: ' + (msg || '(none)')
+      _subject:  'New RSVP - ' + COUPLE_NAME,
+      _template: 'table',
+      name:      name,
+      attending: yes ? 'Yes' : 'No',
+      guests:    yes ? gCount : 0,
+      message:   msg || '(none)'
     })
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
-    if (data.success) {
+    if (data.success === 'true' || data.success === true) {
       ['s1','s2','s3'].forEach(function(id) { document.getElementById(id).style.display = 'none'; });
       document.querySelector('.step-dots').style.display = 'none';
       var ok = document.getElementById('s-ok');
@@ -781,11 +777,11 @@ function submitRSVP() {
         ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br>We've noted <strong>" + gCount + " guest" + (gCount > 1 ? 's' : '') + "</strong> - see you on August 27th!"
         : "We'll miss you so much, <strong>" + name + "</strong>.<br>Thank you for letting us know. We hope to celebrate together soon.";
     } else {
-      throw new Error(data.message);
+      throw new Error('Submission failed');
     }
   })
   .catch(function(err) {
-    console.error('Web3Forms error:', err);
+    console.error('Formsubmit error:', err);
     if (sendBtn) { sendBtn.textContent = 'Send'; sendBtn.disabled = false; }
     alert('Something went wrong. Please try again.');
   });
