@@ -740,23 +740,52 @@ function goStep(from, to) {
   });
 }
 
+/* ── EmailJS config ── */
+const EMAILJS_SERVICE  = 'wedding-service';
+const EMAILJS_TEMPLATE = 'template_p3h382j';
+const EMAILJS_KEY      = 'U4G0vhs4z_7N0o-ck';
+const COUPLE_NAME      = 'Sleiman & Emily';      /* ← change per client */
+const CLIENT_EMAIL     = 'david.nemer33@gmail.com'; /* ← change per client */
+
+emailjs.init(EMAILJS_KEY);
+
 function submitRSVP() {
   const name = document.getElementById('f-name').value.trim();
   const att  = document.querySelector('input[name="attend"]:checked');
   const msg  = document.getElementById('f-msg')?.value.trim() || '';
   const yes  = att && att.value==='yes';
 
-  // Log data — replace with your fetch() / Airtable / EmailJS call
-  console.log({ name, attending: yes?'yes':'no', guests: yes?gCount:0, message: msg });
+  /* Show a sending state */
+  const sendBtn = document.querySelector('#s3 .btn-solid');
+  if(sendBtn) { sendBtn.textContent = 'Sending…'; sendBtn.disabled = true; }
 
-  ['s1','s2','s3'].forEach(id => document.getElementById(id).style.display='none');
-  document.querySelector('.step-dots').style.display='none';
-  const ok = document.getElementById('s-ok');
-  ok.style.display='block';
-  document.getElementById('ok-msg').innerHTML = yes
-    ? `We're so excited to celebrate with you, <strong>${name}</strong>!<br>We've noted <strong>${gCount} guest${gCount>1?'s':''}</strong> — see you on August 27th! 🥂`
-    : `We'll miss you so much, <strong>${name}</strong>.<br>Thank you for letting us know. We hope to celebrate together soon. 💛`;
+  const templateParams = {
+    to_email:    CLIENT_EMAIL,
+    couple_name: COUPLE_NAME,
+    guest_name:  name,
+    attending:   yes ? 'Yes ✅' : 'No ❌',
+    guest_count: yes ? gCount : 0,
+    message:     msg || '(no message left)',
+    name:        name
+  };
+
+  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, templateParams)
+    .then(() => {
+      ['s1','s2','s3'].forEach(id => document.getElementById(id).style.display='none');
+      document.querySelector('.step-dots').style.display='none';
+      const ok = document.getElementById('s-ok');
+      ok.style.display='block';
+      document.getElementById('ok-msg').innerHTML = yes
+        ? `We're so excited to celebrate with you, <strong>${name}</strong>!<br>We've noted <strong>${gCount} guest${gCount>1?'s':''}</strong> — see you on August 27th! 🥂`
+        : `We'll miss you so much, <strong>${name}</strong>.<br>Thank you for letting us know. We hope to celebrate together soon. 💛`;
+    })
+    .catch(err => {
+      console.error('EmailJS error:', err);
+      if(sendBtn) { sendBtn.textContent = 'Send ✉'; sendBtn.disabled = false; }
+      alert('Something went wrong. Please try again.');
+    });
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </body>
 </html>
