@@ -69,13 +69,17 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
 /* ── Buttons ── */
 .btn-ghost {
-  display: inline-block; padding: .8rem 2.2rem;
-  border: 1px solid rgba(255,255,255,.8); color: #fff;
-  font-family: 'Jost', sans-serif; font-weight: 300; font-size: .7rem;
-  letter-spacing: .2em; text-transform: uppercase;
-  transition: background .25s; cursor: pointer; text-decoration: none;
+  display: inline-block; padding: .9rem 2.5rem;
+  border: 1px solid rgba(255,255,255,.9);
+  color: #fff;
+  background: rgba(0,0,0,.35);
+  font-family: 'Jost', sans-serif; font-weight: 400; font-size: .72rem;
+  letter-spacing: .22em; text-transform: uppercase;
+  transition: background .25s, border-color .25s; cursor: pointer; text-decoration: none;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
-.btn-ghost:hover { background: rgba(255,255,255,.15); }
+.btn-ghost:hover { background: rgba(255,255,255,.15); border-color: #fff; }
 
 .btn-rose {
   display: block; width: 100%; padding: .85rem 1rem;
