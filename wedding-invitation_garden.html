@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+  <html lang="en">
+    <head>
+    <meta charset="UTF-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+        <title>Wedding Invitation — Garden & Floral</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400&family=Alex+Brush&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+          
+          <style>
+          :root {
+            --sage:       #7a9e7e;
+              --sage-lt:    #a8c5aa;
+              --sage-dk:    #4a7050;
+              --sage-pale:  #edf4ee;
+              --forest:     #2d4a30;
+              --white:      #fdfffe;
+              --cream:      #f6faf6;
+              --blush:      #f0d5d0;
+              --terracotta: #c47b5a;
+              --ink:        #2a3d2b;
+              --muted:      #7a8f7b;
+          }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        body {
+          font-family: 'Raleway', sans-serif;
+          color: var(--ink);
+          background: var(--white);
+        }
+        
+        /* ── Page sections ── */
+          .page {
+            width: 100%;
+            padding: 14vw 9vw;
+            text-align: center;
+            position: relative;
+            background: var(--white);
+            overflow: hidden;
+          }
+        .page.green { background: var(--sage-pale); }
+        .page.cream { background: var(--cream); }
+        
+        /* ── SVG botanical decorations ── */
+          .botanical-tl {
+            position: absolute; top: 0; left: 0;
+            width: 40vw; opacity: .18; pointer-events: none;
+            transform-origin: top left;
+          }
+        .botanical-br {
+          position: absolute; bottom: 0; right: 0;
+          width: 40vw; opacity: .18; pointer-events: none;
+          transform: rotate(180deg);
+          transform-origin: bottom right;
+        }
+        .botanical-tr {
+          position: absolute; top: 0; right: 0;
+          width: 35vw; opacity: .15; pointer-events: none;
+          transform: scaleX(-1);
+        }
+        .botanical-bl {
+          position: absolute; bottom: 0; left: 0;
+          width: 35vw; opacity: .15; pointer-events: none;
+          transform: scaleY(-1);
+        }
+        
+        /* ── Botanical SVG stem divider ── */
+          .stem-divider {
+            display: flex; align-items: center; gap: 3vw;
+            margin: 6vw auto; max-width: 80%;
+            color: var(--sage);
+          }
+        .stem-divider::before, .stem-divider::after {
+          content: ""; flex: 1;
+          height: 1px; background: var(--sage-lt); opacity: .7;
+        }
+        
+        /* ── Between sections ── */
+          .wave {
+            width: 100%; overflow: hidden; line-height: 0;
+            background: var(--white);
+          }
+        .wave svg { display: block; width: 100%; }
+        .wave.to-green { background: var(--sage-pale); }
+        .wave.to-cream { background: var(--cream); }
+        .wave.from-green { background: var(--white); }
+        
+        /* ── Hero ── */
+          .hero {
+            width: 100%; min-height: 100vh; min-height: 100dvh;
+            position: relative; overflow: hidden;
+            display: flex; align-items: flex-end; justify-content: center;
+          }
+        .hero-photo {
+          position: absolute; inset: 0;
+          width: 100%; height: 100%; object-fit: cover;
+          filter: brightness(.65) saturate(.9);
+        }
+        .hero-overlay {
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(45,74,48,.85) 0%, rgba(45,74,48,.2) 55%, rgba(45,74,48,.05) 100%);
+        }
+        .hero-content {
+          position: relative; z-index: 2;
+          text-align: center; width: 100%;
+          padding: 0 9vw 11vw; color: #fff;
+        }
+        
+        /* ── Typography ── */
+          .t-eyebrow {
+            font-family: 'Raleway', sans-serif; font-weight: 300;
+            font-size: 2.8vw; letter-spacing: .4em;
+            text-transform: uppercase; color: rgba(255,255,255,.7);
+            margin-bottom: 4vw;
+          }
+        .t-hero-name {
+          font-family: 'Cormorant', serif; font-weight: 300;
+          font-size: 18vw; line-height: .95; color: #fff;
+        }
+        .t-hero-script {
+          font-family: 'Alex Brush', cursive;
+          font-size: 13vw; color: var(--sage-lt);
+        }
+        .t-hero-date {
+          font-family: 'Raleway', sans-serif; font-weight: 200;
+          font-size: 3vw; letter-spacing: .3em;
+          text-transform: uppercase; color: rgba(255,255,255,.65);
+          margin: 3vw 0;
+        }
+        .t-monogram {
+          font-family: 'Cormorant', serif; font-weight: 300;
+          font-size: 20vw; color: var(--sage); line-height: 1;
+          letter-spacing: -.02em;
+        }
+        .t-verse {
+          font-family: 'Cormorant', serif; font-style: italic; font-weight: 300;
+          font-size: 4.2vw; color: var(--muted); line-height: 2;
+          max-width: 85%; margin: 0 auto;
+        }
+        .t-label {
+          font-family: 'Raleway', sans-serif; font-weight: 300;
+          font-size: 2.5vw; letter-spacing: .28em;
+          text-transform: uppercase; color: var(--sage);
+        }
+        .t-parent { font-family: 'Cormorant', serif; font-size: 4.5vw; color: var(--forest); }
+        .t-honor { font-size: 3.5vw; font-weight: 300; color: var(--muted); line-height: 2; }
+        .t-name { font-family: 'Alex Brush', cursive; font-size: 16vw; color: var(--forest); line-height: 1.1; }
+        .t-name-serif { font-family: 'Cormorant', serif; font-weight: 300; font-size: 9vw; color: var(--ink); }
+        .t-section {
+          font-family: 'Raleway', sans-serif; font-weight: 200;
+          font-size: 5.5vw; letter-spacing: .3em;
+          text-transform: uppercase; color: var(--forest);
+        }
+        .t-sub { font-size: 3vw; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: var(--sage); margin-top: 2vw; }
+        .t-and { font-family: 'Alex Brush', cursive; font-size: 8vw; color: var(--sage); }
+        
+        /* ── Open button ── */
+          .btn-open {
+            display: inline-block; margin-top: 7vw;
+            padding: 3.5vw 9vw;
+            border: 1px solid rgba(168,197,170,.7);
+            color: rgba(255,255,255,.9);
+            font-family: 'Raleway', sans-serif; font-weight: 300;
+            font-size: 2.8vw; letter-spacing: .28em; text-transform: uppercase;
+            cursor: pointer; background: rgba(122,158,126,.2);
+            transition: background .3s;
+          }
+        .btn-open:hover { background: rgba(122,158,126,.4); }
+        
+        /* ── Calendar ── */
+          .cal-box { background: #fff; border: 1px solid var(--sage-lt); padding: 5vw 4vw; width: 100%; margin: 4vw 0; border-radius: 1vw; }
+              .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .5vw; }
+            .cal-cell { text-align: center; padding: 2vw .5vw; font-size: 3.2vw; color: var(--muted); font-weight: 300; }
+            .cal-cell.hdr { font-family: 'Raleway', sans-serif; font-size: 2vw; letter-spacing: .1em; text-transform: uppercase; color: var(--sage); }
+            .cal-cell.empty { opacity: 0; }
+            .cal-cell.highlight { color: var(--forest); font-weight: 600; position: relative; }
+            .cal-heart { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+            
+            /* ── Countdown ── */
+              .countdown { display: flex; justify-content: center; gap: 4vw; margin-top: 5vw; }
+            .flip { text-align: center; background: #fff; border: 1px solid var(--sage-lt); padding: 3.5vw 2vw 2.5vw; min-width: 16vw; border-radius: 1vw; }
+                .flip .num { font-family: 'Cormorant', serif; font-weight: 300; font-size: 8vw; color: var(--forest); line-height: 1; }
+              .flip .lbl { font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 2vw; letter-spacing: .15em; color: var(--sage); margin-top: 1.5vw; }
+              
+              /* ── Timeline ── */
+                .tl-wrap { width: 100%; }
+              .tl-row { display: grid; grid-template-columns: 1fr 28vw 1fr; align-items: center; gap: 2vw; }
+              .tl-left { text-align: right; padding-right: 3vw; }
+              .tl-right { text-align: left; padding-left: 3vw; }
+              .tl-time { font-family: 'Raleway', sans-serif; font-size: 3.8vw; font-weight: 400; color: var(--forest); }
+              .tl-venue { font-size: 3vw; color: var(--sage); margin-top: 1vw; line-height: 1.4; font-weight: 300; }
+              .tl-icon { width: 28vw; height: 28vw; display: flex; align-items: center; justify-content: center; margin: 0 auto; position: relative; }
+              .tl-icon::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 1px; height: 8vw; background: var(--sage-lt); transform: translateX(-50%); }
+              .tl-icon::after { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: 8vw; background: var(--sage-lt); transform: translateX(-50%); }
+              .tl-row:first-child .tl-icon::before { display: none; }
+              .tl-row:last-child .tl-icon::after { display: none; }
+              .tl-icon img { width: 20vw; height: 20vw; object-fit: contain; filter: hue-rotate(90deg) saturate(.8) brightness(.85); }
+              .tl-label { font-family: 'Cormorant', serif; font-style: italic; font-weight: 300; font-size: 7.5vw; color: var(--ink); }
+              
+              /* ── Photos ── */
+                .photo-grid { columns: 2; gap: 2vw; width: 100%; }
+              .photo-item { break-inside: avoid; margin-bottom: 2vw; overflow: hidden; cursor: pointer; border-radius: 1vw; }
+              .photo-item img { width: 100%; display: block; filter: brightness(1.02) saturate(1.1) contrast(.97); transition: transform .5s; }
+              .photo-item:hover img { transform: scale(1.03); }
+              
+              /* ── RSVP ── */
+                .rsvp-box { background: #fff; border: 1px solid var(--sage-lt); padding: 7vw 6vw; width: 100%; border-radius: 2vw; }
+                    .rsvp-step { animation: stepIn .4s ease; }
+                  @keyframes stepIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+                  .form-field { width: 100%; padding: 3.5vw 0; border: none; border-bottom: 1px solid var(--sage-lt); font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 4vw; color: var(--ink); background: transparent; outline: none; transition: border-color .2s; }
+                  .form-field:focus { border-bottom-color: var(--sage); }
+                  .form-field::placeholder { color: var(--sage-lt); }
+                  textarea.form-field { border: 1px solid var(--sage-lt); padding: 3vw; resize: none; border-radius: 1vw; }
+                  textarea.form-field:focus { border-color: var(--sage); }
+                  .attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin: 4vw 0; }
+                  .attend-opt { position: relative; cursor: pointer; }
+                  .attend-opt input { position: absolute; opacity: 0; }
+                  .attend-box { border: 1px solid var(--sage-lt); border-radius: 2vw; padding: 4vw 3vw; text-align: center; background: var(--sage-pale); transition: border-color .2s, background .2s; }
+                  .attend-opt input:checked + .attend-box { border-color: var(--sage-dk); background: rgba(122,158,126,.12); }
+                  .attend-icon { font-size: 6vw; margin-bottom: 1.5vw; }
+                  .attend-label { font-size: 3.2vw; color: var(--ink); font-weight: 300; }
+                  .step-dots { display: flex; align-items: center; justify-content: center; gap: 3vw; margin-bottom: 6vw; }
+                  .step-dot { width: 2.5vw; height: 2.5vw; border-radius: 50%; background: var(--sage-lt); transition: background .3s, transform .3s; }
+                  .step-dot.on { background: var(--sage-dk); transform: scale(1.3); }
+                  .count-row { display: flex; align-items: center; justify-content: center; gap: 5vw; margin: 3vw 0; }
+                  .count-btn { width: 10vw; height: 10vw; border-radius: 50%; border: 1px solid var(--sage-lt); background: #fff; font-size: 5vw; color: var(--sage-dk); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+                      .count-btn:hover { border-color: var(--sage-dk); background: var(--sage-pale); }
+                    .count-num { font-family: 'Cormorant', serif; font-size: 9vw; color: var(--forest); min-width: 8vw; text-align: center; }
+                    .btn-rose { display: block; width: 100%; padding: 3.5vw; border: 1px solid var(--sage-lt); color: var(--muted); font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 2.8vw; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; background: transparent; text-align: center; border-radius: 1.5vw; transition: all .25s; }
+                    .btn-rose:hover { border-color: var(--sage); color: var(--sage-dk); }
+                    .btn-solid { background: var(--sage-dk); border-color: var(--sage-dk); color: #fff; }
+                        .btn-solid:hover { background: var(--forest); border-color: var(--forest); }
+                      .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 3vw; }
+                      .error-msg { font-size: 3vw; color: var(--terracotta); margin-top: 1.5vw; display: none; }
+                      .form-label { display: block; font-family: 'Raleway', sans-serif; font-weight: 300; font-size: 2.8vw; letter-spacing: .18em; text-transform: uppercase; color: var(--sage); margin-bottom: 2vw; }
+                      
+                      /* ── Reveal ── */
+                        .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+                      .reveal.visible { opacity: 1; transform: none; }
+                      .d1 { transition-delay: .15s; } .d2 { transition-delay: .3s; } .d3 { transition-delay: .45s; }
+                      
+                      /* ── Invitation reveal ── */
+                        #inv { display: none; opacity: 0; transition: opacity .8s ease; }
+                        #inv.open { display: block; }
+                        #inv.visible { opacity: 1; }
+                        
+                        /* ── Lightbox ── */
+                        #lightbox { position: fixed; inset: 0; background: rgba(45,74,48,.95); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 4vw; }
+                        #lightbox.open { display: flex; }
+                        #lightbox img { max-height: 92vh; max-width: 95vw; border-radius: 2vw; }
+                        #lb-close { position: absolute; top: 4vw; right: 5vw; color: rgba(255,255,255,.6); font-size: 8vw; cursor: pointer; background: none; border: none; line-height: 1; }
+                        </style>
+                        </head>
+                        <body>
+                        
+                        <!-- ══════ HERO ══════ -->
+                        <div class="hero">
+                        <img class="hero-photo" src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=800&auto=format&fit=crop" alt="">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content reveal">
+                        <p class="t-eyebrow">Together with their families</p>
+                        <h1 class="t-hero-name">Sleiman</h1>
+                        <p class="t-hero-script">&amp; Emily</p>
+                        <p class="t-hero-date">August 27, 2025 · Ehden</p>
+                        <button onclick="openInv()" class="btn-open">Open Invitation</button>
+                        </div>
+                        </div>
+                        
+                        <div id="inv">
+                        
+                        <!-- wave down to green -->
+                        <div class="wave to-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 0 Q90 30 187 15 Q280 0 375 20 L375 0 Z" fill="#fdfffe"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 2 ══════ -->
+                        <div class="page green reveal" id="p2">
+                        <!-- Botanical corner decorations using SVG -->
+                        <svg class="botanical-tl" viewBox="0 0 200 200" fill="none">
+                        <path d="M10 190 Q10 100 100 10" stroke="#4a7050" stroke-width="2"/>
+                        <path d="M10 190 Q10 140 60 110" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="60" cy="108" rx="15" ry="9" fill="#7a9e7e" transform="rotate(-35 60 108)"/>
+                        <path d="M10 190 Q30 160 70 155" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="72" cy="154" rx="14" ry="8" fill="#7a9e7e" transform="rotate(-10 72 154)"/>
+                        <path d="M10 190 Q10 120 45 95" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="43" cy="93" rx="12" ry="7" fill="#a8c5aa" transform="rotate(-55 43 93)"/>
+                        <circle cx="100" cy="12" r="5" fill="#c47b5a"/>
+                        <circle cx="65" cy="110" r="3" fill="#f0d5d0"/>
+                        <circle cx="75" cy="156" r="4" fill="#c47b5a"/>
+                        <path d="M100 12 Q110 30 105 50" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="107" cy="52" rx="10" ry="6" fill="#7a9e7e" transform="rotate(20 107 52)"/>
+                        </svg>
+                        <svg class="botanical-br" viewBox="0 0 200 200" fill="none">
+                        <path d="M10 190 Q10 100 100 10" stroke="#4a7050" stroke-width="2"/>
+                        <path d="M10 190 Q10 140 60 110" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="60" cy="108" rx="15" ry="9" fill="#7a9e7e" transform="rotate(-35 60 108)"/>
+                        <path d="M10 190 Q30 160 70 155" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="72" cy="154" rx="14" ry="8" fill="#7a9e7e" transform="rotate(-10 72 154)"/>
+                        <circle cx="65" cy="110" r="3" fill="#f0d5d0"/>
+                        <circle cx="75" cy="156" r="4" fill="#c47b5a"/>
+                        </svg>
+                        
+                        <div class="t-monogram" style="margin-bottom:3vw;">S&amp;E</div>
+                        
+                        <div class="stem-divider">
+                        <svg width="6vw" height="6vw" viewBox="0 0 24 24" fill="var(--sage)"><path d="M12 2C8 2 4 6 4 10c0 5 8 12 8 12s8-7 8-12c0-4-4-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                        </div>
+                        
+                        <p class="t-label" style="margin-bottom:2vw;">Matthew 19:6</p>
+                        <p class="t-verse">"What therefore God has joined together,<br>let no man put asunder."</p>
+                        
+                        <div class="stem-divider" style="margin:7vw auto;"></div>
+                        
+                        <div style="display:flex; justify-content:center; gap:8vw; margin:3vw 0;">
+                        <div>
+                        <p class="t-label" style="font-size:2.2vw; margin-bottom:2vw;">Groom's Parents</p>
+      <p class="t-parent">Fouad &amp; Nayla Sayssa</p>
+    </div>
+    <div>
+      <p class="t-label" style="font-size:2.2vw; margin-bottom:2vw;">Bride's Parents</p>
+                        <p class="t-parent">Tony &amp; Vanessa Almawi</p>
+                        </div>
+                        </div>
+                        
+                        <p class="t-honor" style="margin:5vw 0;">
+                        Request the honor of your presence<br>at the wedding of their son and daughter
+                      </p>
+                        
+                        <h2 class="t-name">Sleiman</h2>
+                        <p class="t-and">and</p>
+                        <h2 class="t-name">Emily</h2>
+                        </div>
+                        
+                        <!-- wave up to white -->
+                        <div class="wave from-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 30 Q90 0 187 15 Q280 30 375 10 L375 30 Z" fill="#edf4ee"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 3 — WEDDING DAY ══════ -->
+                        <div class="page reveal" id="p3">
+                        <h2 class="t-section">Wedding Day</h2>
+                        <p class="t-sub">August 27, 2025</p>
+                        <div class="cal-box">
+                        <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2025</p>
+                        <div class="cal-grid" id="cal-grid"></div>
+                        </div>
+                        <div class="countdown">
+                        <div class="flip"><div class="num" id="cd-d">--</div><div class="lbl">Days</div></div>
+                        <div class="flip"><div class="num" id="cd-h">--</div><div class="lbl">Hours</div></div>
+                        <div class="flip"><div class="num" id="cd-m">--</div><div class="lbl">Min</div></div>
+                        <div class="flip"><div class="num" id="cd-s">--</div><div class="lbl">Sec</div></div>
+                        </div>
+                        </div>
+                        
+                        <!-- wave to green -->
+                        <div class="wave to-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 0 Q90 30 187 15 Q280 0 375 20 L375 0 Z" fill="#fdfffe"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 4 — THE CELEBRATION ══════ -->
+                        <div class="page green reveal" id="p4">
+                        <svg class="botanical-tl" viewBox="0 0 200 200" fill="none">
+                        <path d="M10 190 Q10 100 100 10" stroke="#4a7050" stroke-width="2"/>
+                        <path d="M10 190 Q10 140 60 110" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="60" cy="108" rx="15" ry="9" fill="#7a9e7e" transform="rotate(-35 60 108)"/>
+                        <path d="M10 190 Q30 160 70 155" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="72" cy="154" rx="14" ry="8" fill="#7a9e7e" transform="rotate(-10 72 154)"/>
+                        <circle cx="65" cy="110" r="3" fill="#f0d5d0"/>
+                        <circle cx="75" cy="156" r="4" fill="#c47b5a"/>
+                        </svg>
+                        <svg class="botanical-tr" viewBox="0 0 200 200" fill="none">
+                        <path d="M10 190 Q10 100 100 10" stroke="#4a7050" stroke-width="2"/>
+                        <path d="M10 190 Q10 140 60 110" stroke="#4a7050" stroke-width="1.5"/>
+                        <ellipse cx="60" cy="108" rx="15" ry="9" fill="#7a9e7e" transform="rotate(-35 60 108)"/>
+                        <circle cx="65" cy="110" r="3" fill="#f0d5d0"/>
+                        </svg>
+                        
+                        <h2 class="t-section" style="margin-bottom:2vw;">The Celebration</h2>
+                        <div class="stem-divider">
+                        <svg width="6vw" height="6vw" viewBox="0 0 24 24" fill="none" stroke="var(--sage)" stroke-width="1.5">
+                        <path d="M12 22s-8-6-8-13a8 8 0 0 1 16 0c0 7-8 13-8 13z"/>
+                        <circle cx="12" cy="9" r="3"/>
+                        </svg>
+                        </div>
+                        <div class="tl-wrap" style="margin-top:5vw;">
+                        <div class="tl-row reveal d1">
+                        <div class="tl-left"><div class="tl-time">6:00 PM</div><div class="tl-venue">St. Mourra Church<br>Ehden</div></div>
+                        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Rings-removebg-preview.png" alt=""></div>
+                        <div class="tl-right"><div class="tl-label">We do</div></div>
+                        </div>
+                        <div class="tl-row reveal d2">
+                        <div class="tl-left"><div class="tl-time">7:30 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+                        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Drink-removebg-preview.png" alt=""></div>
+                        <div class="tl-right"><div class="tl-label">We drink</div></div>
+                        </div>
+                        <div class="tl-row reveal d3">
+                        <div class="tl-left"><div class="tl-time">8:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+                        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dine-removebg-preview.png" alt=""></div>
+                        <div class="tl-right"><div class="tl-label">We dine</div></div>
+                        </div>
+                        <div class="tl-row reveal">
+                        <div class="tl-left"><div class="tl-time">9:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+                        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dance-removebg-preview.png" alt=""></div>
+                        <div class="tl-right"><div class="tl-label">We dance</div></div>
+                        </div>
+                        </div>
+                        </div>
+                        
+                        <!-- wave up -->
+                        <div class="wave from-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 30 Q90 0 187 15 Q280 30 375 10 L375 30 Z" fill="#edf4ee"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 5 — GIFT REGISTRY ══════ -->
+                        <div class="page reveal">
+                        <h2 class="t-section">Gift Registry</h2>
+                        <div class="stem-divider">
+                        <svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="var(--sage-lt)"><path d="M20 12v-2h-2V7a2 2 0 00-2-2h-1a3 3 0 00-3 3 3 3 0 00-3-3H8a2 2 0 00-2 2v3H4v2h2v8h12v-8h2zm-9-2a1 1 0 011-1 1 1 0 011 1v2h-2v-2zm-3-3h1a1 1 0 011 1v4H7V8h1zm5 11H7v-5h5v5zm5 0h-3v-5h3v5zm-1-7h-2V8h1a1 1 0 011 1v2z"/></svg>
+                        </div>
+                        <p style="font-size:3.5vw; line-height:2.2; color:var(--muted); font-weight:300; max-width:80%; margin:0 auto 5vw;">
+                        Your love, laughter, and presence are all we could wish for on our special day.
+                      For those who wish, a wedding list is available at all Whish Money branches.
+                      </p>
+                        <div style="border:1px solid var(--sage-lt); display:inline-block; padding:4vw 9vw; border-radius:1.5vw; background:var(--sage-pale);">
+                        <p class="t-label" style="font-size:2.8vw; margin-bottom:2vw;">Whish Money</p>
+                        <p style="font-family:'Cormorant',serif; font-size:6vw; color:var(--forest);">ACC# 2024975</p>
+                      </div>
+                        </div>
+                        
+                        <!-- wave to green -->
+                        <div class="wave to-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 0 Q90 30 187 15 Q280 0 375 20 L375 0 Z" fill="#fdfffe"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 6 — PHOTOS ══════ -->
+                        <div class="page green reveal" style="padding-top:10vw;">
+                        <h2 class="t-section" style="margin-bottom:1.5vw;">Our Story</h2>
+                        <p class="t-sub" style="margin-bottom:6vw;">A glimpse of us</p>
+                        <div class="photo-grid">
+                        <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                        <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                        <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                        <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></div>
+                        <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop" alt=""></div>
+                        <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></div>
+                        </div>
+                        </div>
+                        
+                        <!-- wave up -->
+                        <div class="wave from-green">
+                        <svg viewBox="0 0 375 30" preserveAspectRatio="none" height="8vw">
+                        <path d="M0 30 Q90 0 187 15 Q280 30 375 10 L375 30 Z" fill="#edf4ee"/>
+                        </svg>
+                        </div>
+                        
+                        <!-- ══════ PAGE 7 — RSVP ══════ -->
+                        <div class="page reveal" style="padding-top:10vw;">
+                        <h2 class="t-section">RSVP</h2>
+                        <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 18th of August 2025</p>
+                        <div class="stem-divider">
+                        <svg width="4vw" height="4vw" viewBox="0 0 24 24" fill="var(--sage-lt)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="rsvp-box">
+                        <div class="step-dots">
+                        <div class="step-dot on" id="dot-1"></div>
+                        <div class="step-dot" id="dot-2"></div>
+                        <div class="step-dot" id="dot-3"></div>
+                        </div>
+                        <div id="s1" class="rsvp-step">
+                        <p style="font-family:'Alex Brush',cursive; text-align:center; font-size:9vw; color:var(--sage-dk); margin-bottom:4vw;">Dear Guest,</p>
+                        <label class="form-label">Your Full Name</label>
+                        <input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah & Mark Johnson">
+                        <p class="error-msg" id="e-name">Please enter your name.</p>
+                        <button class="btn-rose btn-solid" style="margin-top:5vw;" onclick="goStep(1,2)">Continue →</button>
+                        </div>
+                        <div id="s2" class="rsvp-step" style="display:none;">
+                        <label class="form-label">Will you be attending?</label>
+                        <div class="attend-grid">
+                        <label class="attend-opt"><input type="radio" name="attend" value="yes"><div class="attend-box"><div class="attend-icon">🌿</div><div class="attend-label">Joyfully accepts</div></div></label>
+                        <label class="attend-opt"><input type="radio" name="attend" value="no"><div class="attend-box"><div class="attend-icon">🙏</div><div class="attend-label">Regretfully declines</div></div></label>
+                        </div>
+                        <div id="count-wrap" style="display:none; margin-bottom:3vw;">
+                        <label class="form-label">Number of guests</label>
+                        <div class="count-row">
+                        <button class="count-btn" onclick="chCount(-1)">−</button>
+                        <span class="count-num" id="cnt-disp">1</span>
+                        <button class="count-btn" onclick="chCount(1)">+</button>
+                        </div>
+                        </div>
+                        <p class="error-msg" id="e-attend">Please select an option.</p>
+                        <div class="btn-grid">
+                        <button class="btn-rose" onclick="goStep(2,1)">← Back</button>
+                        <button class="btn-rose btn-solid" onclick="goStep(2,3)">Continue →</button>
+                        </div>
+                        </div>
+                        <div id="s3" class="rsvp-step" style="display:none;">
+                        <label class="form-label">Leave a wish <span style="color:var(--sage-lt); font-size:2.5vw;">(optional)</span></label>
+                        <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Sleiman & Emily…"></textarea>
+                        <div class="btn-grid">
+                        <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
+                        <button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✉</button>
+                        </div>
+                        </div>
+                        <div id="s-ok" style="display:none; text-align:center; padding:5vw 0;">
+                        <div style="font-size:10vw; margin-bottom:3vw;">🌿</div>
+                        <h3 style="font-family:'Alex Brush',cursive; font-size:11vw; color:var(--forest); margin-bottom:2vw;">Thank you!</h3>
+                        <p id="ok-msg" style="font-size:3.5vw; line-height:1.8; color:var(--muted);"></p>
+                        </div>
+                        </div>
+                        </div>
+                        
+                        <!-- FOOTER -->
+                        <div style="padding:8vw 9vw; text-align:center; background:var(--sage-pale); border-top:1px solid var(--sage-lt);">
+                        <p style="font-family:'Alex Brush',cursive; font-size:11vw; color:var(--forest); margin-bottom:2vw;">Sleiman &amp; Emily</p>
+                        <p class="t-label" style="font-size:2.8vw; color:var(--sage);">August 27, 2025 · Ehden, Lebanon</p>
+                        </div>
+                        
+                        </div><!-- end #inv -->
+                      <div id="lightbox"><button id="lb-close">&times;</button><img id="lb-img" src="" alt=""></div>
+                        
+                        <script>
+                        function openInv() {
+                          const c = document.getElementById('inv');
+                          c.classList.add('open');
+                          setTimeout(() => c.classList.add('visible'), 20);
+                          setTimeout(() => document.getElementById('p2').scrollIntoView({ behavior: 'smooth' }), 100);
+                          setTimeout(() => document.querySelectorAll('#inv .reveal').forEach(el => ro.observe(el)), 300);
+                        }
+                      const ro = new IntersectionObserver(entries => {
+                        entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
+                      }, { threshold: .08 });
+                      document.querySelectorAll('.hero .reveal').forEach(el => ro.observe(el));
+                      (function() {
+                        const grid = document.getElementById('cal-grid');
+                        ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => { const el = document.createElement('div'); el.className = 'cal-cell hdr'; el.textContent = d; grid.appendChild(el); });
+                        for(let i=0; i<4; i++) { const el = document.createElement('div'); el.className = 'cal-cell empty'; el.textContent = '.'; grid.appendChild(el); }
+                        for(let d=1; d<=31; d++) {
+                          const el = document.createElement('div'); el.className = 'cal-cell';
+                          if(d === 27) {
+                            el.className += ' highlight';
+                            el.innerHTML = '<span style="position:relative;z-index:1;">' + d + '</span><svg class="cal-heart" viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;"><path d="M22 34s-12-7.5-12-16a8 8 0 0 1 12-6.93A8 8 0 0 1 34 18c0 8.5-12 16-12 16z" fill="none" stroke="var(--sage)" stroke-width="1.2" opacity=".8"/></svg>';
+                          } else { el.textContent = d; }
+                          grid.appendChild(el);
+                        }
+                      })();
+                      const TARGET = new Date('2025-08-27T18:00:00');
+                      function tick() {
+                        const diff = Math.max(0, TARGET - new Date());
+                        const pad = n => String(n).padStart(2,'0');
+                        document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+                        document.getElementById('cd-h').textContent = pad(Math.floor(diff/3600000)%24);
+                        document.getElementById('cd-m').textContent = pad(Math.floor(diff/60000)%60);
+                        document.getElementById('cd-s').textContent = pad(Math.floor(diff/1000)%60);
+                      }
+                      tick(); setInterval(tick, 1000);
+                      const lb = document.getElementById('lightbox');
+                      const lbImg = document.getElementById('lb-img');
+                      document.querySelectorAll('.photo-item img').forEach(img => {
+                        img.style.cursor = 'pointer';
+                        img.addEventListener('click', () => { lbImg.src = img.src; lb.classList.add('open'); document.body.style.overflow='hidden'; });
+                      });
+                      function closeLB() { lb.classList.remove('open'); lbImg.src=''; document.body.style.overflow=''; }
+                      document.getElementById('lb-close').addEventListener('click', closeLB);
+                      lb.addEventListener('click', e => { if(e.target===lb) closeLB(); });
+                      document.addEventListener('keydown', e => { if(e.key==='Escape') closeLB(); });
+                      let gCount = 1;
+                      document.querySelectorAll('input[name="attend"]').forEach(r => { r.addEventListener('change', () => { document.getElementById('count-wrap').style.display = r.value==='yes' ? 'block' : 'none'; }); });
+                      function chCount(d) { gCount = Math.max(1, Math.min(10, gCount+d)); document.getElementById('cnt-disp').textContent = gCount; }
+                      function goStep(from, to) {
+                        if(from===1) { const v = document.getElementById('f-name').value.trim(); if(!v) { document.getElementById('e-name').style.display='block'; return; } document.getElementById('e-name').style.display='none'; }
+                        if(from===2 && to===3) { const att = document.querySelector('input[name="attend"]:checked'); if(!att) { document.getElementById('e-attend').style.display='block'; return; } document.getElementById('e-attend').style.display='none'; if(att.value==='no') { submitRSVP(); return; } }
+                        document.getElementById('s'+from).style.display='none';
+                        document.getElementById('s'+to).style.display='block';
+                        [1,2,3].forEach(i => document.getElementById('dot-'+i).classList.toggle('on', i<=to));
+                      }
+                      const COUPLE_NAME = 'Sleiman & Emily', CLIENT_EMAIL = 'nemer.david9@gmail.com';
+                      function submitRSVP() {
+                        const name = document.getElementById('f-name').value.trim();
+                        const att = document.querySelector('input[name="attend"]:checked');
+                        const msg = document.getElementById('f-msg') ? document.getElementById('f-msg').value.trim() : '';
+                        const yes = att && att.value === 'yes';
+                        const sendBtn = document.querySelector('#s3 .btn-solid');
+                        if(sendBtn) { sendBtn.textContent = 'Sending...'; sendBtn.disabled = true; }
+                        fetch('https://formsubmit.co/ajax/' + CLIENT_EMAIL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ _subject: 'New RSVP - ' + COUPLE_NAME, _template: 'table', name, attending: yes?'Yes':'No', guests: yes?gCount:0, message: msg||'(none)' }) })
+                        .then(r => r.json()).then(data => {
+                          if(data.success === 'true' || data.success === true) {
+                            ['s1','s2','s3'].forEach(id => document.getElementById(id).style.display='none');
+                            document.querySelector('.step-dots').style.display='none';
+                            document.getElementById('s-ok').style.display='block';
+                            document.getElementById('ok-msg').innerHTML = yes ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br>See you on August 27th!" : "We'll miss you, <strong>" + name + "</strong>.<br>Thank you for letting us know.";
+                          } else { throw new Error(); }
+                        }).catch(() => { if(sendBtn) { sendBtn.textContent = 'Send'; sendBtn.disabled = false; } alert('Something went wrong. Please try again.'); });
+                      }
+                      </script>
+                        </body>
+                        </html>
