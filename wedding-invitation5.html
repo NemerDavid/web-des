@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
 <title>Sleiman & Emily — Wedding Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -13,452 +13,462 @@
   --rose-mid: #8c6e60;
   --rose-dark: #6e5248;
   --gold: #c9a96e;
-  --bg-url: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png');
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; overflow-x: hidden; }
 html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Jost', sans-serif;
-  color: var(--ink);
-  background: #faf7f4;
-  overflow-x: hidden;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#card-wrap {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
+body { font-family: 'Jost', sans-serif; color: var(--ink); background: #e8e2dc; }
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
-/* ── Paper page ── */
-.page {
-  width: 100vw;
-  background-image: var(--bg-url);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+/* ── The core technique: bg is an <img>, content stacks on top ── */
+.page-wrap {
   position: relative;
-  padding: 4rem 7vw;
-  box-sizing: border-box;
+  width: 100%;
+  display: block;
+}
+.page-wrap > .bg-img {
+  width: 100%;
+  display: block;
+  /* image fills width naturally, height follows aspect ratio */
+}
+.page-wrap > .content {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8vw 8vw;
+  text-align: center;
 }
 
-/* ── Torn transition ── */
-.trans {
-  width: 100vw;
-  display: block;
-  line-height: 0;
-  font-size: 0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-.trans img {
+/* ── Transition image ── */
+.trans-img {
   width: 100%;
   display: block;
   margin: 0;
   padding: 0;
+  line-height: 0;
+  font-size: 0;
 }
 
-/* ── Scroll reveal ── */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+/* ── Hero ── */
+.hero-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+.hero-wrap .hero-photo {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  object-fit: cover;
+  display: block;
+}
+.hero-wrap .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.1) 60%, transparent 100%);
+}
+.hero-wrap .hero-content {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  text-align: center;
+  padding: 0 8vw 10vw;
+  color: #fff;
+}
+
+/* ── Reveal animation ── */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
 .reveal.visible { opacity: 1; transform: none; }
-.reveal-delay-1 { transition-delay: .15s; }
-.reveal-delay-2 { transition-delay: .3s; }
-.reveal-delay-3 { transition-delay: .45s; }
+.delay-1 { transition-delay: .15s; }
+.delay-2 { transition-delay: .3s; }
+.delay-3 { transition-delay: .45s; }
+
+/* ── Open Invitation button ── */
+.btn-open {
+  display: inline-block;
+  margin-top: 6vw;
+  padding: 3vw 8vw;
+  border: 1px solid rgba(255,255,255,.85);
+  background: rgba(0,0,0,.3);
+  color: #fff;
+  font-family: 'Jost', sans-serif;
+  font-size: 3vw;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background .25s;
+}
+.btn-open:hover { background: rgba(255,255,255,.15); }
 
 /* ── Divider ── */
 .divider {
-  display: flex; align-items: center; gap: 1rem;
-  color: var(--gold); margin: 1.5rem auto; max-width: 240px;
+  display: flex; align-items: center; gap: 4vw;
+  color: var(--gold); margin: 4vw auto; width: 60%;
 }
 .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--gold); opacity: .5; }
 
-/* ── Buttons ── */
-.btn-ghost {
-  display: inline-block; padding: .9rem 2.5rem;
-  border: 1px solid rgba(255,255,255,.9);
-  color: #fff;
-  background: rgba(0,0,0,.35);
-  font-family: 'Jost', sans-serif; font-weight: 400; font-size: .72rem;
-  letter-spacing: .22em; text-transform: uppercase;
-  transition: background .25s, border-color .25s; cursor: pointer; text-decoration: none;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
-.btn-ghost:hover { background: rgba(255,255,255,.15); border-color: #fff; }
+/* ── Typography scale (vw-based so it fits any phone) ── */
+.t-mono   { font-family: 'Cormorant Garamond', serif; font-size: 14vw; font-weight: 300; color: var(--gold); line-height: 1; }
+.t-verse  { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 4vw; color: #888; line-height: 1.8; }
+.t-label  { font-size: 2.8vw; letter-spacing: .18em; text-transform: uppercase; color: #aaa; }
+.t-parent { font-family: 'Cormorant Garamond', serif; font-size: 4.5vw; }
+.t-honor  { font-size: 3.5vw; letter-spacing: .05em; line-height: 1.9; color: #888; }
+.t-name   { font-family: 'Cormorant Garamond', serif; font-size: 11vw; font-weight: 300; color: var(--rose-dark); line-height: 1.1; }
+.t-and    { font-family: 'Great Vibes', cursive; font-size: 5vw; color: #bbb; }
+.t-section{ font-family: 'Cormorant Garamond', serif; font-size: 9vw; font-weight: 400; color: var(--rose-dark); letter-spacing: .04em; }
+.t-sub    { font-size: 3vw; letter-spacing: .2em; text-transform: uppercase; color: #aaa; margin-top: 1vw; }
 
+/* ── Calendar ── */
+.cal-box { background: rgba(255,255,255,.6); border: 1px solid rgba(0,0,0,.06); border-radius: 2vw; padding: 4vw 3vw; width: 100%; margin: 4vw 0; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1vw; }
+.cal-cell { text-align: center; padding: 1.5vw .5vw; font-size: 3.2vw; color: var(--ink); }
+.cal-cell.hdr { font-size: 2.2vw; letter-spacing: .06em; text-transform: uppercase; color: #aaa; }
+.cal-cell.empty { opacity: 0; }
+.cal-cell.highlight { font-weight: 600; color: var(--rose-dark); position: relative; }
+.cal-heart { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+
+/* ── Countdown ── */
+.countdown { display: flex; justify-content: center; gap: 3vw; margin-top: 4vw; }
+.flip { text-align: center; background: rgba(255,255,255,.65); border: 1px solid rgba(0,0,0,.07); border-radius: 1.5vw; padding: 3vw 2.5vw 2.5vw; min-width: 16vw; }
+.flip .num { font-family: 'Cormorant Garamond', serif; font-size: 9vw; font-weight: 300; color: var(--rose-dark); line-height: 1; }
+.flip .lbl { font-size: 2.2vw; letter-spacing: .15em; color: #999; margin-top: 1vw; text-transform: uppercase; }
+
+/* ── Timeline ── */
+.tl-wrap { width: 100%; }
+.tl-row { display: grid; grid-template-columns: 1fr 28vw 1fr; align-items: center; gap: 2vw; }
+.tl-left { text-align: right; padding-right: 3vw; }
+.tl-right { text-align: left; padding-left: 3vw; }
+.tl-time { font-size: 4vw; font-weight: 600; color: var(--rose-dark); }
+.tl-venue { font-size: 3vw; color: #999; margin-top: 1vw; line-height: 1.4; }
+.tl-icon {
+  width: 28vw; height: 28vw;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto; position: relative;
+}
+.tl-icon::before {
+  content: ""; position: absolute; left: 50%; bottom: 100%;
+  width: 1px; height: 8vw; background: var(--gold); opacity: .5; transform: translateX(-50%);
+}
+.tl-icon::after {
+  content: ""; position: absolute; left: 50%; top: 100%;
+  width: 1px; height: 8vw; background: var(--gold); opacity: .5; transform: translateX(-50%);
+}
+.tl-row:first-child .tl-icon::before { display: none; }
+.tl-row:last-child .tl-icon::after { display: none; }
+.tl-icon img { width: 22vw; height: 22vw; object-fit: contain; }
+.tl-label { font-family: 'Cormorant Garamond', serif; font-size: 7.5vw; font-style: italic; color: var(--ink); }
+
+/* ── Photos ── */
+.photo-grid { columns: 2; gap: 2vw; width: 100%; }
+.photo-item { break-inside: avoid; margin-bottom: 2vw; overflow: hidden; border-radius: 1vw; cursor: pointer; }
+.photo-item img { width: 100%; display: block; filter: brightness(1.02) contrast(.97) saturate(1.08) sepia(.07); transition: transform .5s; }
+.photo-item:hover img { transform: scale(1.03); }
+
+/* ── RSVP ── */
+.rsvp-box { background: rgba(255,255,255,.7); border: 1px solid rgba(0,0,0,.07); border-radius: 2vw; padding: 6vw 5vw; width: 100%; }
+.rsvp-step { animation: stepIn .4s cubic-bezier(.16,1,.3,1); }
+@keyframes stepIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+.form-field {
+  width: 100%; padding: 3.5vw 4vw;
+  border: 1px solid #e0d8d0; border-radius: 1.5vw;
+  font-family: 'Jost', sans-serif; font-size: 3.8vw; color: var(--ink);
+  background: rgba(255,255,255,.8); outline: none; transition: border-color .2s;
+}
+.form-field:focus { border-color: var(--rose-mid); }
+.form-field::placeholder { color: #bbb; }
+.attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin: 3vw 0; }
+.attend-opt { position: relative; cursor: pointer; }
+.attend-opt input { position: absolute; opacity: 0; }
+.attend-box {
+  border: 1px solid #e0d8d0; border-radius: 2vw; padding: 4vw 3vw;
+  text-align: center; background: rgba(255,255,255,.8); transition: border-color .2s, background .2s;
+}
+.attend-opt input:checked + .attend-box { border-color: var(--rose-mid); background: #fdf9f7; box-shadow: inset 0 0 0 1px var(--rose-mid); }
+.attend-icon { font-size: 6vw; margin-bottom: 1.5vw; }
+.attend-label { font-size: 3.2vw; color: var(--ink); }
+.step-dots { display: flex; align-items: center; justify-content: center; gap: 2.5vw; margin-bottom: 5vw; }
+.step-dot { width: 2.5vw; height: 2.5vw; border-radius: 50%; background: #ddd; transition: background .3s, transform .3s; }
+.step-dot.on { background: var(--rose-mid); transform: scale(1.3); }
+.count-row { display: flex; align-items: center; justify-content: center; gap: 5vw; margin: 3vw 0; }
+.count-btn {
+  width: 10vw; height: 10vw; border-radius: 50%;
+  border: 1px solid #e0d8d0; background: rgba(255,255,255,.8);
+  font-size: 5vw; color: var(--rose-mid); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif; transition: border-color .2s;
+}
+.count-btn:hover { border-color: var(--rose-mid); }
+.count-num { font-family: 'Cormorant Garamond', serif; font-size: 9vw; font-weight: 300; color: var(--rose-dark); min-width: 8vw; text-align: center; }
 .btn-rose {
-  display: block; width: 100%; padding: .85rem 1rem;
+  display: block; width: 100%; padding: 3.5vw;
   border: 1px solid var(--rose-mid); color: var(--rose-mid);
-  font-family: 'Jost', sans-serif; font-size: .9rem;
+  font-family: 'Jost', sans-serif; font-size: 3vw;
   letter-spacing: .15em; text-transform: uppercase;
-  transition: background .25s, color .25s; cursor: pointer;
-  background: transparent; text-align: center;
+  cursor: pointer; background: transparent; text-align: center;
+  border-radius: 1.5vw; transition: background .25s, color .25s;
 }
 .btn-rose:hover { background: var(--rose-mid); color: #fff; }
 .btn-solid { background: var(--rose-dark); border-color: var(--rose-dark); color: #fff; }
 .btn-solid:hover { background: var(--rose-mid); }
-
-/* ── Countdown ── */
-.flip-card {
-  text-align: center; min-width: 62px; padding: .85rem .6rem .7rem;
-  background: rgba(255,255,255,.7); border: 1px solid rgba(0,0,0,.07); border-radius: 4px;
-}
-.flip-card .num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--rose-dark); line-height: 1; }
-.flip-card .lbl { font-size: .7rem; letter-spacing: .18em; color: #999; margin-top: .35rem; text-transform: uppercase; }
-
-/* ── Calendar ── */
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: .2rem; }
-.cal-cell { text-align: center; padding: .5rem .1rem; font-size: 1rem; color: var(--ink); }
-.cal-cell.header { font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: #aaa; }
-.cal-cell.empty { opacity: 0; }
-.cal-cell.highlight { position: relative; font-weight: 600; color: var(--rose-dark); }
-.cal-heart { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-
-/* ── Timeline ── */
-.tl-wrap { position: relative; max-width: 100%; }
-.tl-row { display: grid; grid-template-columns: 1fr 140px 1fr; align-items: center; gap: .75rem; }
-.tl-left { text-align: right; padding-right: 1rem; }
-.tl-right { text-align: left; padding-left: 1rem; }
-.tl-time { font-size: 1.2rem; font-weight: 600; color: var(--rose-dark); }
-.tl-venue { font-size: .95rem; color: #999; margin-top: 3px; line-height: 1.4; }
-.tl-icon-wrap {
-  width: 140px; height: 140px;
-  display: flex; align-items: center; justify-content: center;
-  margin: 0 auto; position: relative;
-}
-.tl-icon-wrap::before {
-  content: ""; position: absolute; left: 50%; bottom: 100%;
-  width: 1px; height: 36px; background: var(--gold); opacity: .5; transform: translateX(-50%);
-}
-.tl-icon-wrap::after {
-  content: ""; position: absolute; left: 50%; top: 100%;
-  width: 1px; height: 36px; background: var(--gold); opacity: .5; transform: translateX(-50%);
-}
-.tl-row:first-child .tl-icon-wrap::before { display: none; }
-.tl-row:last-child .tl-icon-wrap::after { display: none; }
-.tl-icon-img { width: 110px; height: 110px; object-fit: contain; display: block; }
-.tl-label { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; color: var(--ink); }
-
-/* ── Photos ── */
-.photo-grid { columns: 2; gap: .5rem; }
-.photo-item { break-inside: avoid; margin-bottom: .5rem; overflow: hidden; border-radius: 3px; cursor: pointer; position: relative; }
-.photo-item img { width: 100%; display: block; filter: brightness(1.02) contrast(.97) saturate(1.08) sepia(.07); transition: transform .5s cubic-bezier(.16,1,.3,1); }
-.photo-item:hover img { transform: scale(1.03); }
-.photo-item::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 50px rgba(0,0,0,.08); }
-
-/* ── RSVP ── */
-.rsvp-step { animation: stepIn .4s cubic-bezier(.16,1,.3,1); }
-@keyframes stepIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
-.form-field {
-  width: 100%; padding: .85rem 1rem; border: 1px solid #e0d8d0; border-radius: 3px;
-  font-family: 'Jost', sans-serif; font-size: 1rem; color: var(--ink);
-  background: rgba(255,255,255,.75); transition: border-color .2s; outline: none;
-}
-.form-field:focus { border-color: var(--rose-mid); }
-.form-field::placeholder { color: #bbb; }
-.attend-opt { position: relative; cursor: pointer; }
-.attend-opt input { position: absolute; opacity: 0; }
-.attend-box {
-  border: 1px solid #e0d8d0; border-radius: 4px; padding: 1.1rem .75rem;
-  text-align: center; transition: border-color .2s, background .2s; background: rgba(255,255,255,.75);
-}
-.attend-opt input:checked + .attend-box { border-color: var(--rose-mid); background: #fdf9f7; box-shadow: inset 0 0 0 1px var(--rose-mid); }
-.attend-icon { font-size: 1.4rem; margin-bottom: .3rem; }
-.attend-label { font-size: .95rem; color: var(--ink); }
-.step-dots { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 1.75rem; }
-.step-dot { width: 6px; height: 6px; border-radius: 50%; background: #ddd; transition: background .3s, transform .3s; }
-.step-dot.on { background: var(--rose-mid); transform: scale(1.3); }
-.count-btn {
-  width: 36px; height: 36px; border-radius: 50%; border: 1px solid #e0d8d0;
-  background: rgba(255,255,255,.75); font-size: 1.1rem; color: var(--rose-mid);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: border-color .2s; font-family: 'Cormorant Garamond', serif;
-}
-.count-btn:hover { border-color: var(--rose-mid); }
-.error-msg { font-size: .9rem; color: #c0705a; margin-top: 4px; display: none; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; margin-top: 3vw; }
+.error-msg { font-size: 3vw; color: #c0705a; margin-top: 1.5vw; display: none; }
+.form-label { display: block; font-size: 2.8vw; letter-spacing: .14em; text-transform: uppercase; color: #aaa; margin-bottom: 1.5vw; }
 
 /* ── Lightbox ── */
-#lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.88); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 1rem; }
+#lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.88); z-index: 1000; display: none; align-items: center; justify-content: center; padding: 4vw; }
 #lightbox.open { display: flex; }
-#lightbox img { max-height: 92vh; max-width: 95vw; border-radius: 4px; }
-#lb-close { position: absolute; top: 1rem; right: 1.25rem; color: rgba(255,255,255,.7); font-size: 2rem; cursor: pointer; background: none; border: none; line-height: 1; }
-
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 7vw, 3.2rem); font-weight: 400; color: var(--rose-dark); text-align: center; letter-spacing: .04em; }
-.section-sub { font-size: .85rem; letter-spacing: .2em; text-transform: uppercase; color: #aaa; text-align: center; margin-top: .4rem; }
+#lightbox img { max-height: 92vh; max-width: 95vw; border-radius: 2vw; }
+#lb-close { position: absolute; top: 4vw; right: 5vw; color: rgba(255,255,255,.7); font-size: 8vw; cursor: pointer; background: none; border: none; line-height: 1; }
 
 /* ── Invitation reveal ── */
-#invitation-content {
-  display: none;
-  opacity: 0;
-  transition: opacity .8s ease;
-}
-#invitation-content.open {
-  display: block;
-}
-#invitation-content.visible {
-  opacity: 1;
-}
+#invitation-content { display: none; opacity: 0; transition: opacity .8s ease; }
+#invitation-content.open { display: block; }
+#invitation-content.visible { opacity: 1; }
 
-/* ── Hero open button pulse ── */
-@keyframes pulse-border {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.4); }
-  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
-}
-.btn-ghost {
-  animation: pulse-border 2.5s ease infinite;
-}
+/* ── Gift registry box ── */
+.registry-box { display: inline-block; border: 1px solid var(--gold); padding: 3.5vw 8vw; border-radius: 1.5vw; margin-top: 2vw; }
 </style>
 </head>
 <body>
-<div id="card-wrap">
 
-<!-- ══════════ PAGE 1 — HERO ══════════ -->
-<div class="page" style="min-height:100dvh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:0; position:relative; overflow:hidden; background-image:none;">
-  <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=800&auto=format&fit=crop') center/cover no-repeat; z-index:0;"></div>
-  <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.72) 0%, rgba(0,0,0,.1) 60%, transparent 100%); z-index:1;"></div>
-  <div class="reveal" style="position:relative; z-index:2; text-align:center; padding:0 2rem 5rem; color:#fff; width:100%;">
-    <p style="font-size:.8rem; letter-spacing:.3em; text-transform:uppercase; opacity:.8; margin-bottom:1rem;">Together with their families</p>
-    <h1 style="font-size:clamp(2.6rem,9vw,4.5rem); font-weight:300; line-height:1.1; margin-bottom:.5rem;">
-      Sleiman<br><span style="font-family:'Great Vibes',cursive; font-size:clamp(2rem,7vw,3.8rem);">&amp; Emily</span>
+<!-- ══════════ HERO ══════════ -->
+<div class="hero-wrap">
+  <img class="hero-photo" src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=800&auto=format&fit=crop" alt="Hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content reveal">
+    <p class="t-label" style="font-size:3vw; opacity:.8; margin-bottom:3vw;">Together with their families</p>
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:16vw; font-weight:300; line-height:1.05; color:#fff;">
+      Sleiman<br><span style="font-family:'Great Vibes',cursive; font-size:13vw;">&amp; Emily</span>
     </h1>
-    <p style="font-size:.95rem; letter-spacing:.2em; text-transform:uppercase; opacity:.75; margin:1rem 0 2rem;">August 27, 2025 · Ehden, Lebanon</p>
-    <button onclick="openInvitation()" class="btn-ghost" style="cursor:pointer;">Open Invitation</button>
+    <p style="font-size:3vw; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:3vw 0;">August 27, 2025 · Ehden, Lebanon</p>
+    <button onclick="openInvitation()" class="btn-open">Open Invitation</button>
   </div>
 </div>
 
-<!-- TRANSITION -->
+<!-- ══════════ ALL OTHER PAGES (hidden until tap) ══════════ -->
 <div id="invitation-content">
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
+
+<!-- TRANSITION -->
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
 
 <!-- ══════════ PAGE 2 — INVITATION HEADER ══════════ -->
-<div class="page reveal" id="page2" style="text-align:center;">
-  <div style="font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:300; color:var(--gold); margin-bottom:1.25rem; letter-spacing:-.02em;">
-    S<span style="font-size:1.8rem; vertical-align:middle; margin:0 .1em; opacity:.5;">&amp;</span>E
-  </div>
-  <p style="font-size:.82rem; letter-spacing:.22em; text-transform:uppercase; color:#aaa; margin-bottom:1rem;">Matthew 19:6</p>
-  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:#888; max-width:340px; margin:0 auto 1.75rem; line-height:1.8;">
-    "What therefore God has joined together, let no man put asunder."
-  </p>
-  <div class="divider">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-  </div>
-  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin:1.75rem 0;">
-    <div>
-      <p style="font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:#aaa; margin-bottom:.25rem;">Groom's Parents</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Fouad &amp; Nayla Sayssa</p>
+<div class="page-wrap reveal" id="page2">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content">
+    <div class="t-mono" style="margin-bottom:4vw;">S<span style="font-size:6vw; vertical-align:middle; margin:0 .5vw; opacity:.5;">&amp;</span>E</div>
+    <p class="t-label" style="font-size:2.8vw; margin-bottom:2vw;">Matthew 19:6</p>
+    <p class="t-verse" style="font-size:3.8vw; max-width:80%; margin:0 auto 4vw;">"What therefore God has joined together, let no man put asunder."</p>
+    <div class="divider">
+      <svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
     </div>
-    <div>
-      <p style="font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; color:#aaa; margin-bottom:.25rem;">Bride's Parents</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;">Tony &amp; Vanessa Almawi</p>
+    <div style="display:flex; justify-content:center; gap:8vw; margin:3vw 0;">
+      <div>
+        <p class="t-label" style="font-size:2.5vw; margin-bottom:1vw;">Groom's Parents</p>
+        <p class="t-parent">Fouad &amp; Nayla Sayssa</p>
+      </div>
+      <div>
+        <p class="t-label" style="font-size:2.5vw; margin-bottom:1vw;">Bride's Parents</p>
+        <p class="t-parent">Tony &amp; Vanessa Almawi</p>
+      </div>
     </div>
-  </div>
-  <p style="font-size:1rem; letter-spacing:.05em; line-height:1.9; color:#888; margin-bottom:1.75rem;">
-    Request the honor of your presence<br>at the wedding of their son and daughter
-  </p>
-  <h2 style="font-size:clamp(2rem,7vw,3.2rem); font-weight:300; color:var(--rose-dark); margin-bottom:.2rem;">Sleiman Sayssa</h2>
-  <p style="font-family:'Great Vibes',cursive; font-size:1.1rem; color:#bbb; margin-bottom:.3rem;">and</p>
-  <h2 style="font-size:clamp(2rem,7vw,3.2rem); font-weight:300; color:var(--rose-dark);">Emily Almawi</h2>
-</div>
-
-<!-- TRANSITION -->
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
-
-<!-- ══════════ PAGE 3 — WEDDING DAY + COUNTDOWN ══════════ -->
-<div class="page reveal" id="page3" style="text-align:center;">
-  <h2 class="section-title">Wedding Day</h2>
-  <p class="section-sub" style="margin-bottom:2rem;">August 27, 2025</p>
-
-  <div style="background:rgba(255,255,255,.55); border:1px solid rgba(0,0,0,.05); border-radius:6px; padding:1.5rem 1rem; margin-bottom:2rem;">
-    <p style="font-size:.82rem; letter-spacing:.2em; text-transform:uppercase; color:#aaa; margin-bottom:1rem;">August 2025</p>
-    <div class="cal-grid" id="cal-grid"></div>
-  </div>
-
-  <div style="display:flex; justify-content:center; gap:.75rem;">
-    <div class="flip-card"><div class="num" id="cd-d">--</div><div class="lbl">Days</div></div>
-    <div class="flip-card"><div class="num" id="cd-h">--</div><div class="lbl">Hours</div></div>
-    <div class="flip-card"><div class="num" id="cd-m">--</div><div class="lbl">Minutes</div></div>
-    <div class="flip-card"><div class="num" id="cd-s">--</div><div class="lbl">Seconds</div></div>
+    <p class="t-honor" style="font-size:3.5vw; margin:3vw 0;">Request the honor of your presence<br>at the wedding of their son and daughter</p>
+    <h2 class="t-name">Sleiman Sayssa</h2>
+    <p class="t-and" style="margin:.5vw 0;">and</p>
+    <h2 class="t-name">Emily Almawi</h2>
   </div>
 </div>
 
 <!-- TRANSITION -->
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
+
+<!-- ══════════ PAGE 3 — WEDDING DAY ══════════ -->
+<div class="page-wrap reveal" id="page3">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content">
+    <h2 class="t-section">Wedding Day</h2>
+    <p class="t-sub">August 27, 2025</p>
+    <div class="cal-box">
+      <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2025</p>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+    <div class="countdown">
+      <div class="flip"><div class="num" id="cd-d">--</div><div class="lbl">Days</div></div>
+      <div class="flip"><div class="num" id="cd-h">--</div><div class="lbl">Hours</div></div>
+      <div class="flip"><div class="num" id="cd-m">--</div><div class="lbl">Min</div></div>
+      <div class="flip"><div class="num" id="cd-s">--</div><div class="lbl">Sec</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRANSITION -->
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
 
 <!-- ══════════ PAGE 4 — THE CELEBRATION ══════════ -->
-<div class="page reveal" id="page4">
-  <h2 class="section-title" style="margin-bottom:.5rem;">The Celebration</h2>
-  <div class="divider">
-    <svg width="36" height="36" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
-      <path d="M50 80 C20 55, 10 35, 25 20 C35 10, 50 20, 50 30 C50 20, 65 10, 75 20 C90 35, 80 55, 50 80"/>
-    </svg>
-  </div>
-
-  <div class="tl-wrap" style="margin-top:2rem;">
-    <div class="tl-row reveal reveal-delay-1">
-      <div class="tl-left">
-        <div class="tl-time">6:00 PM</div>
-        <div class="tl-venue">St. Mourra Church<br>Ehden</div>
-      </div>
-      <div class="tl-icon-wrap">
-        <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Rings-removebg-preview.png" alt="Rings" class="tl-icon-img">
-      </div>
-      <div class="tl-right"><div class="tl-label">We do</div></div>
+<div class="page-wrap reveal" id="page4">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content">
+    <h2 class="t-section" style="margin-bottom:2vw;">The Celebration</h2>
+    <div class="divider">
+      <svg width="10vw" height="10vw" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M50 80 C20 55, 10 35, 25 20 C35 10, 50 20, 50 30 C50 20, 65 10, 75 20 C90 35, 80 55, 50 80"/>
+      </svg>
     </div>
-
-    <div class="tl-row reveal reveal-delay-2">
-      <div class="tl-left">
-        <div class="tl-time">7:30 PM</div>
-        <div class="tl-venue">Twinz Hotel<br>Ehden</div>
+    <div class="tl-wrap" style="margin-top:4vw;">
+      <div class="tl-row reveal delay-1">
+        <div class="tl-left"><div class="tl-time">6:00 PM</div><div class="tl-venue">St. Mourra Church<br>Ehden</div></div>
+        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Rings-removebg-preview.png" alt=""></div>
+        <div class="tl-right"><div class="tl-label">We do</div></div>
       </div>
-      <div class="tl-icon-wrap">
-        <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Drink-removebg-preview.png" alt="Drink" class="tl-icon-img">
+      <div class="tl-row reveal delay-2">
+        <div class="tl-left"><div class="tl-time">7:30 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Drink-removebg-preview.png" alt=""></div>
+        <div class="tl-right"><div class="tl-label">We drink</div></div>
       </div>
-      <div class="tl-right"><div class="tl-label">We drink</div></div>
-    </div>
-
-    <div class="tl-row reveal reveal-delay-3">
-      <div class="tl-left">
-        <div class="tl-time">8:00 PM</div>
-        <div class="tl-venue">Twinz Hotel<br>Ehden</div>
+      <div class="tl-row reveal delay-3">
+        <div class="tl-left"><div class="tl-time">8:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dine-removebg-preview.png" alt=""></div>
+        <div class="tl-right"><div class="tl-label">We dine</div></div>
       </div>
-      <div class="tl-icon-wrap">
-        <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dine-removebg-preview.png" alt="Dine" class="tl-icon-img">
+      <div class="tl-row reveal">
+        <div class="tl-left"><div class="tl-time">9:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
+        <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dance-removebg-preview.png" alt=""></div>
+        <div class="tl-right"><div class="tl-label">We dance</div></div>
       </div>
-      <div class="tl-right"><div class="tl-label">We dine</div></div>
-    </div>
-
-    <div class="tl-row reveal">
-      <div class="tl-left">
-        <div class="tl-time">9:00 PM</div>
-        <div class="tl-venue">Twinz Hotel<br>Ehden</div>
-      </div>
-      <div class="tl-icon-wrap">
-        <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dance-removebg-preview.png" alt="Dance" class="tl-icon-img">
-      </div>
-      <div class="tl-right"><div class="tl-label">We dance</div></div>
     </div>
   </div>
 </div>
 
 <!-- TRANSITION -->
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
 
 <!-- ══════════ PAGE 5 — GIFT REGISTRY ══════════ -->
-<div class="page reveal" style="text-align:center;">
-  <h2 class="section-title">Gift Registry</h2>
-  <div class="divider">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12v-2h-2V7a2 2 0 00-2-2h-1a3 3 0 00-3 3 3 3 0 00-3-3H8a2 2 0 00-2 2v3H4v2h2v8h12v-8h2zm-9-2a1 1 0 011-1 1 1 0 011 1v2h-2v-2zm-3-3h1a1 1 0 011 1v4H7V8h1zm5 11H7v-5h5v5zm5 0h-3v-5h3v5zm-1-7h-2V8h1a1 1 0 011 1v2z"/></svg>
-  </div>
-  <p style="font-size:.95rem; line-height:2; color:#888; max-width:340px; margin:0 auto 1.5rem; letter-spacing:.04em; text-transform:uppercase;">
-    Your love, laughter, and presence are all we could wish for on our special day.<br>
-    For those who wish, a wedding list is available at all Whish Money branches.
-  </p>
-  <div style="display:inline-block; border:1px solid var(--gold); padding:.85rem 2.5rem; border-radius:3px;">
-    <p style="font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; color:#aaa; margin-bottom:.25rem;">Whish Money</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--rose-dark);">ACC# 2024975</p>
+<div class="page-wrap reveal">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content">
+    <h2 class="t-section">Gift Registry</h2>
+    <div class="divider">
+      <svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="currentColor"><path d="M20 12v-2h-2V7a2 2 0 00-2-2h-1a3 3 0 00-3 3 3 3 0 00-3-3H8a2 2 0 00-2 2v3H4v2h2v8h12v-8h2zm-9-2a1 1 0 011-1 1 1 0 011 1v2h-2v-2zm-3-3h1a1 1 0 011 1v4H7V8h1zm5 11H7v-5h5v5zm5 0h-3v-5h3v5zm-1-7h-2V8h1a1 1 0 011 1v2z"/></svg>
+    </div>
+    <p style="font-size:3.5vw; line-height:2; color:#888; text-transform:uppercase; letter-spacing:.04em; max-width:85%;">
+      Your love, laughter, and presence are all we could wish for on our special day.<br>
+      For those who wish, a wedding list is available at all Whish Money branches.
+    </p>
+    <div class="registry-box" style="margin-top:4vw;">
+      <p class="t-label" style="font-size:3vw; margin-bottom:1.5vw;">Whish Money</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--rose-dark);">ACC# 2024975</p>
+    </div>
   </div>
 </div>
 
 <!-- TRANSITION -->
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
 
 <!-- ══════════ PAGE 6 — PHOTO STORY ══════════ -->
-<div class="page reveal">
-  <h2 class="section-title" style="margin-bottom:.4rem;">Our Photo Story</h2>
-  <p class="section-sub" style="margin-bottom:1.75rem;">A glimpse of us</p>
-  <div class="photo-grid">
-    <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt=""></div>
-    <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop" alt=""></div>
-    <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=800&auto=format&fit=crop" alt=""></div>
-    <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
-    <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt=""></div>
-    <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
+<div class="page-wrap reveal">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content" style="justify-content:flex-start; padding-top:8vw;">
+    <h2 class="t-section" style="margin-bottom:1.5vw;">Our Photo Story</h2>
+    <p class="t-sub" style="margin-bottom:5vw;">A glimpse of us</p>
+    <div class="photo-grid">
+      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt=""></div>
+      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=600&auto=format&fit=crop" alt=""></div>
+      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=600&auto=format&fit=crop" alt=""></div>
+      <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></div>
+      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=600&auto=format&fit=crop" alt=""></div>
+      <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/2959192/pexels-photo-2959192.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></div>
+    </div>
   </div>
 </div>
 
 <!-- TRANSITION -->
-<div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
+<img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt="">
 
 <!-- ══════════ PAGE 7 — RSVP ══════════ -->
-<div class="page reveal" id="page-rsvp">
-  <h2 class="section-title">RSVP</h2>
-  <p class="section-sub" style="margin-bottom:.5rem; font-size:.85rem;">Kindly reply before 18th of August 2025</p>
-  <div class="divider">
-    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-  </div>
-
-  <div style="background:rgba(255,255,255,.65); border:1px solid rgba(0,0,0,.06); border-radius:6px; padding:2rem 1.5rem; max-width:380px; margin:0 auto;">
-    <div class="step-dots">
-      <div class="step-dot on" id="dot-1"></div>
-      <div class="step-dot" id="dot-2"></div>
-      <div class="step-dot" id="dot-3"></div>
+<div class="page-wrap reveal" id="page-rsvp">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content" style="justify-content:flex-start; padding-top:8vw;">
+    <h2 class="t-section">RSVP</h2>
+    <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 18th of August 2025</p>
+    <div class="divider">
+      <svg width="4vw" height="4vw" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
     </div>
-
-    <div id="s1" class="rsvp-step">
-      <p style="font-family:'Cormorant Garamond',serif; font-style:italic; text-align:center; font-size:1.4rem; color:var(--rose); margin-bottom:1.25rem;">Dear Guest,</p>
-      <label style="display:block; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:#aaa; margin-bottom:.4rem;">Your Full Name</label>
-      <input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah & Mark Johnson">
-      <p class="error-msg" id="e-name">Please enter your name.</p>
-      <button class="btn-rose" style="margin-top:1.25rem; border-radius:3px;" onclick="goStep(1,2)">Continue →</button>
-    </div>
-
-    <div id="s2" class="rsvp-step" style="display:none;">
-      <label style="display:block; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:#aaa; margin-bottom:.6rem;">Will you be attending?</label>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-bottom:1rem;">
-        <label class="attend-opt">
-          <input type="radio" name="attend" value="yes">
-          <div class="attend-box"><div class="attend-icon">💐</div><div class="attend-label">Joyfully accepts</div></div>
-        </label>
-        <label class="attend-opt">
-          <input type="radio" name="attend" value="no">
-          <div class="attend-box"><div class="attend-icon">🙏</div><div class="attend-label">Regretfully declines</div></div>
-        </label>
+    <div class="rsvp-box" style="margin-top:2vw;">
+      <div class="step-dots">
+        <div class="step-dot on" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+        <div class="step-dot" id="dot-3"></div>
       </div>
-      <div id="count-wrap" style="display:none; margin-bottom:1rem;">
-        <label style="display:block; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:#aaa; margin-bottom:.6rem;">Number of guests</label>
-        <div style="display:flex; align-items:center; justify-content:center; gap:1rem;">
-          <button class="count-btn" onclick="chCount(-1)">−</button>
-          <span id="cnt-disp" style="font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--rose-dark); min-width:2rem; text-align:center;">1</span>
-          <button class="count-btn" onclick="chCount(1)">+</button>
+
+      <div id="s1" class="rsvp-step">
+        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; text-align:center; font-size:5.5vw; color:var(--rose); margin-bottom:4vw;">Dear Guest,</p>
+        <label class="form-label">Your Full Name</label>
+        <input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah & Mark Johnson">
+        <p class="error-msg" id="e-name">Please enter your name.</p>
+        <button class="btn-rose" style="margin-top:4vw;" onclick="goStep(1,2)">Continue →</button>
+      </div>
+
+      <div id="s2" class="rsvp-step" style="display:none;">
+        <label class="form-label">Will you be attending?</label>
+        <div class="attend-grid">
+          <label class="attend-opt">
+            <input type="radio" name="attend" value="yes">
+            <div class="attend-box"><div class="attend-icon">💐</div><div class="attend-label">Joyfully accepts</div></div>
+          </label>
+          <label class="attend-opt">
+            <input type="radio" name="attend" value="no">
+            <div class="attend-box"><div class="attend-icon">🙏</div><div class="attend-label">Regretfully declines</div></div>
+          </label>
+        </div>
+        <div id="count-wrap" style="display:none; margin-bottom:3vw;">
+          <label class="form-label">Number of guests</label>
+          <div class="count-row">
+            <button class="count-btn" onclick="chCount(-1)">−</button>
+            <span class="count-num" id="cnt-disp">1</span>
+            <button class="count-btn" onclick="chCount(1)">+</button>
+          </div>
+        </div>
+        <p class="error-msg" id="e-attend">Please select an option.</p>
+        <div class="btn-grid">
+          <button class="btn-rose" onclick="goStep(2,1)">← Back</button>
+          <button class="btn-rose btn-solid" onclick="goStep(2,3)">Continue →</button>
         </div>
       </div>
-      <p class="error-msg" id="e-attend">Please select an option.</p>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.75rem;">
-        <button class="btn-rose" style="border-radius:3px;" onclick="goStep(2,1)">← Back</button>
-        <button class="btn-rose btn-solid" style="border-radius:3px;" onclick="goStep(2,3)">Continue →</button>
-      </div>
-    </div>
 
-    <div id="s3" class="rsvp-step" style="display:none;">
-      <label style="display:block; font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:#aaa; margin-bottom:.4rem;">Leave a wish <span style="text-transform:none; color:#ccc;">(optional)</span></label>
-      <textarea id="f-msg" class="form-field" rows="4" style="resize:none;" placeholder="Share a wish for Sleiman & Emily…"></textarea>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:.6rem; margin-top:.75rem;">
-        <button class="btn-rose" style="border-radius:3px;" onclick="goStep(3,2)">← Back</button>
-        <button class="btn-rose btn-solid" style="border-radius:3px;" onclick="submitRSVP()">Send ✉</button>
+      <div id="s3" class="rsvp-step" style="display:none;">
+        <label class="form-label">Leave a wish <span style="text-transform:none; color:#ccc; font-size:2.5vw;">(optional)</span></label>
+        <textarea id="f-msg" class="form-field" rows="4" style="resize:none;" placeholder="Share a wish for Sleiman & Emily…"></textarea>
+        <div class="btn-grid">
+          <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
+          <button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✉</button>
+        </div>
       </div>
-    </div>
 
-    <div id="s-ok" style="display:none; text-align:center; padding:1.25rem 0;">
-      <div style="font-size:2.2rem; margin-bottom:.75rem;">💌</div>
-      <h3 style="font-family:'Cormorant Garamond',serif; font-size:2.2rem; color:var(--rose-dark); margin-bottom:.6rem;">Thank you!</h3>
-      <p id="ok-msg" style="font-size:1rem; line-height:1.8; color:#888;"></p>
+      <div id="s-ok" style="display:none; text-align:center; padding:4vw 0;">
+        <div style="font-size:10vw; margin-bottom:3vw;">💌</div>
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:8vw; color:var(--rose-dark); margin-bottom:2vw;">Thank you!</h3>
+        <p id="ok-msg" style="font-size:3.5vw; line-height:1.8; color:#888;"></p>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- FOOTER -->
-<div class="page" style="text-align:center; padding:2.5rem 2rem; border-top:1px solid rgba(0,0,0,.06);">
-  <p style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:var(--rose); margin-bottom:.4rem;">Sleiman &amp; Emily</p>
-  <p style="font-size:.82rem; letter-spacing:.18em; text-transform:uppercase; color:#bbb;">August 27, 2025 · Ehden, Lebanon</p>
+<div class="page-wrap">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
+  <div class="content" style="padding:6vw 8vw;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:7vw; font-weight:300; color:var(--rose); margin-bottom:2vw;">Sleiman &amp; Emily</p>
+    <p class="t-label" style="font-size:3vw; color:#bbb;">August 27, 2025 · Ehden, Lebanon</p>
+  </div>
 </div>
+
+</div><!-- end invitation-content -->
 
 <!-- Lightbox -->
 <div id="lightbox">
@@ -467,40 +477,30 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 </div>
 
 <script>
-
+/* Open invitation */
 function openInvitation() {
-  const content = document.getElementById('invitation-content');
-  
-  // Show the content
-  content.classList.add('open');
-  
-  // Trigger fade in after a tiny delay (allows display:block to register)
-  setTimeout(() => {
-    content.classList.add('visible');
-  }, 20);
-
-  // Scroll down smoothly to page 2 after fade starts
+  const c = document.getElementById('invitation-content');
+  c.classList.add('open');
+  setTimeout(() => c.classList.add('visible'), 20);
   setTimeout(() => {
     document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
   }, 100);
-
-  // Re-trigger scroll reveal observer on newly visible elements
   setTimeout(() => {
-    document.querySelectorAll('#invitation-content .reveal').forEach(el => {
-      ro.observe(el);
-    });
-  }, 200);
+    document.querySelectorAll('#invitation-content .reveal').forEach(el => ro.observe(el));
+  }, 300);
 }
 
+/* Scroll reveal */
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.hero-wrap .reveal').forEach(el => ro.observe(el));
 
+/* Calendar */
 (function() {
   const grid = document.getElementById('cal-grid');
   ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
-    const el = document.createElement('div'); el.className = 'cal-cell header'; el.textContent = d; grid.appendChild(el);
+    const el = document.createElement('div'); el.className = 'cal-cell hdr'; el.textContent = d; grid.appendChild(el);
   });
   for(let i=0; i<4; i++) { const el = document.createElement('div'); el.className = 'cal-cell empty'; el.textContent = '.'; grid.appendChild(el); }
   for(let d=1; d<=31; d++) {
@@ -515,6 +515,7 @@ document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
   }
 })();
 
+/* Countdown */
 const TARGET = new Date('2025-08-27T18:00:00');
 function tick() {
   const diff = Math.max(0, TARGET - new Date());
@@ -526,6 +527,7 @@ function tick() {
 }
 tick(); setInterval(tick, 1000);
 
+/* Lightbox */
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lb-img');
 document.querySelectorAll('.photo-item img').forEach(img => {
@@ -537,6 +539,7 @@ document.getElementById('lb-close').addEventListener('click', closeLB);
 lb.addEventListener('click', e => { if(e.target===lb) closeLB(); });
 document.addEventListener('keydown', e => { if(e.key==='Escape') closeLB(); });
 
+/* RSVP */
 let gCount = 1;
 document.querySelectorAll('input[name="attend"]').forEach(r => {
   r.addEventListener('change', () => {
@@ -597,7 +600,5 @@ function submitRSVP() {
   });
 }
 </script>
-</div><!-- end invitation-content -->
-</div><!-- end card-wrap -->
 </body>
 </html>
