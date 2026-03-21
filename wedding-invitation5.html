@@ -22,51 +22,48 @@ html { scroll-behavior: smooth; }
 body {
   font-family: 'Jost', sans-serif;
   color: var(--ink);
-  background: #ede8e2;
+  background: #faf7f4;
   overflow-x: hidden;
   width: 100%;
   margin: 0;
+  padding: 0;
 }
 
-/* Card wrapper — full width on mobile, centered on desktop */
 #card-wrap {
-  max-width: 600px;
   width: 100%;
-  margin: 0 auto;
-  background: #faf7f4;
-  min-height: 100vh;
-}
-
-@media (max-width: 600px) {
-  #card-wrap {
-    max-width: 100%;
-    box-shadow: none;
-  }
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
 /* ── Paper page ── */
 .page {
-  width: 100%;
-  min-width: 100%;
+  width: 100vw;
   background-image: var(--bg-url);
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
   position: relative;
-  padding: 4rem 2.5rem;
+  padding: 4rem 7vw;
+  box-sizing: border-box;
 }
 
 /* ── Torn transition ── */
 .trans {
-  width: 100%;
+  width: 100vw;
   display: block;
   line-height: 0;
   font-size: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 .trans img {
   width: 100%;
   display: block;
+  margin: 0;
+  padding: 0;
 }
 
 /* ── Scroll reveal ── */
