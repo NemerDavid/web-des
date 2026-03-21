@@ -175,6 +175,28 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
 .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 400; color: var(--rose-dark); text-align: center; letter-spacing: .04em; }
 .section-sub { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: #aaa; text-align: center; margin-top: .4rem; }
+
+/* ── Invitation reveal ── */
+#invitation-content {
+  display: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+#invitation-content.open {
+  display: block;
+}
+#invitation-content.visible {
+  opacity: 1;
+}
+
+/* ── Hero open button pulse ── */
+@keyframes pulse-border {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+}
+.btn-ghost {
+  animation: pulse-border 2.5s ease infinite;
+}
 </style>
 </head>
 <body>
@@ -189,11 +211,12 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
       Sleiman<br><span style="font-family:'Great Vibes',cursive; font-size:clamp(2rem,7vw,3.8rem);">&amp; Emily</span>
     </h1>
     <p style="font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; opacity:.75; margin:1rem 0 2rem;">August 27, 2025 · Ehden, Lebanon</p>
-    <a href="#page2" class="btn-ghost">Open Invitation</a>
+    <button onclick="openInvitation()" class="btn-ghost" style="cursor:pointer;">Open Invitation</button>
   </div>
 </div>
 
 <!-- TRANSITION -->
+<div id="invitation-content">
 <div class="trans"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/trans-buttom-2-2048x123.png" alt=""></div>
 
 <!-- ══════════ PAGE 2 — INVITATION HEADER ══════════ -->
@@ -425,6 +448,31 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 </div>
 
 <script>
+
+function openInvitation() {
+  const content = document.getElementById('invitation-content');
+  
+  // Show the content
+  content.classList.add('open');
+  
+  // Trigger fade in after a tiny delay (allows display:block to register)
+  setTimeout(() => {
+    content.classList.add('visible');
+  }, 20);
+
+  // Scroll down smoothly to page 2 after fade starts
+  setTimeout(() => {
+    document.getElementById('page2').scrollIntoView({ behavior: 'smooth' });
+  }, 100);
+
+  // Re-trigger scroll reveal observer on newly visible elements
+  setTimeout(() => {
+    document.querySelectorAll('#invitation-content .reveal').forEach(el => {
+      ro.observe(el);
+    });
+  }, 200);
+}
+
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
@@ -530,5 +578,6 @@ function submitRSVP() {
   });
 }
 </script>
+</div><!-- end invitation-content -->
 </body>
 </html>
