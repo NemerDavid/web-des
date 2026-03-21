@@ -28,6 +28,17 @@ body {
   margin: 0;
 }
 
+/* Card wrapper — portrait card feel */
+#card-wrap {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  background: #faf7f4;
+  min-height: 100vh;
+  box-shadow: 0 0 60px rgba(0,0,0,.15);
+  position: relative;
+}
+
 h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
 /* ── Paper page ── */
@@ -205,6 +216,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 </style>
 </head>
 <body>
+<div id="card-wrap">
 
 <!-- ══════════ PAGE 1 — HERO ══════════ -->
 <div class="page" style="min-height:100svh; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; padding:0; position:relative; overflow:hidden; background-image:none;">
@@ -584,5 +596,6 @@ function submitRSVP() {
 }
 </script>
 </div><!-- end invitation-content -->
+</div><!-- end card-wrap -->
 </body>
 </html>
