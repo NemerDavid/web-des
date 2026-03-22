@@ -24,19 +24,34 @@
 html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
 body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--petal); }
 
-/* ── Page wrapper — bg image technique ── */
+/* ── Page wrapper — FIXED ── */
 .page-wrap {
-  width: 100%; position: relative;
-  display: flex; flex-direction: column; align-items: center;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 .bg-img {
-  width: 100%; display: block;
-  pointer-events: none; user-select: none;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 .page-content {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 12vw 9vw;
   text-align: center;
 }
@@ -202,7 +217,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ HERO ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2015_53_39.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/1.png" alt="">
   <div class="page-content reveal">
     <p class="t-eyebrow">Together with their families</p>
     <h1 class="t-name">Sleiman</h1>
@@ -216,7 +231,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 2 — NAMES & VERSE ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_02_45.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/2.png" alt="">
   <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:10vw 10vw;">
 
     <p class="t-label">Matthew 19:6</p>
@@ -246,7 +261,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 3 — WEDDING DAY ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_04_05.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/3.png" alt="">
   <div class="page-content reveal" id="p3" style="padding:12vw 8vw;">
 
     <p class="t-section">Wedding Day</p>
@@ -270,7 +285,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 4 — THE CELEBRATION ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_04_12.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/3.png" alt="">
   <div class="page-content reveal" id="p4" style="padding:12vw 8vw;">
 
     <p class="t-section">The Celebration</p>
@@ -304,7 +319,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 5 — GIFT REGISTRY ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_05_57.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/4.png" alt="">
   <div class="page-content reveal" style="padding:12vw 8vw;">
 
     <p class="t-section">Gift Registry</p>
@@ -323,7 +338,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 6 — PHOTOS ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_11_18.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/4.png" alt="">
   <div class="page-content reveal" style="padding:10vw 8vw; justify-content:flex-start; padding-top:14vw;">
 
     <p class="t-section" style="margin-bottom:1.5vw;">Our Story</p>
@@ -340,7 +355,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ PAGE 7 — RSVP ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2015_53_39.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/1.png" alt="">
   <div class="page-content reveal" style="padding:12vw 8vw;">
 
     <p class="t-section">RSVP</p>
@@ -400,7 +415,7 @@ textarea.form-field:focus { border-color: var(--rose); }
 
 <!-- ══════ FOOTER ══════ -->
 <div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral/ChatGPT%20Image%2021%20mars%202026%2C%2016_02_45.png" alt="">
+  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/2.png" alt="">
   <div class="page-content" style="padding:8vw;">
     <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--rose-dk); margin-bottom:2vw;">Sleiman &amp; Emily</p>
     <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 27, 2025 · Ehden, Lebanon</p>
@@ -423,7 +438,7 @@ function openInv() {
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
-document.querySelectorAll('.hero .reveal, .page-wrap .reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.observe(el));
 
 // Calendar
 (function() {
@@ -488,9 +503,6 @@ function submitRSVP() {
     } else { throw new Error(); }
   }).catch(() => { if(sendBtn) { sendBtn.textContent='Send ✦'; sendBtn.disabled=false; } alert('Something went wrong. Please try again.'); });
 }
-
-// Reveal on load for hero
-document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.observe(el));
 </script>
 </body>
 </html>
