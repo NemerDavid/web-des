@@ -24,34 +24,19 @@
 html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
 body { font-family: 'Jost', sans-serif; color: var(--ink); background: var(--petal); }
 
-/* ── Page wrapper — FIXED: min-height drives the size, bg-img covers it ── */
+/* ── Page wrapper — bg image technique ── */
 .page-wrap {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh; /* ← KEY FIX: container always at least full viewport tall */
+  width: 100%; position: relative;
+  display: flex; flex-direction: column; align-items: center;
 }
 .bg-img {
-  position: absolute; /* ← KEY FIX: taken out of flow, no longer drives height */
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* ← KEY FIX: covers the container instead of shrinking it */
-  display: block;
-  pointer-events: none;
-  user-select: none;
+  width: 100%; display: block;
+  pointer-events: none; user-select: none;
 }
 .page-content {
-  position: relative; /* stays above bg-img via stacking context */
-  z-index: 1;
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
   padding: 12vw 9vw;
   text-align: center;
 }
@@ -438,7 +423,7 @@ function openInv() {
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
-document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.observe(el));
+document.querySelectorAll('.hero .reveal, .page-wrap .reveal').forEach(el => ro.observe(el));
 
 // Calendar
 (function() {
@@ -503,6 +488,9 @@ function submitRSVP() {
     } else { throw new Error(); }
   }).catch(() => { if(sendBtn) { sendBtn.textContent='Send ✦'; sendBtn.disabled=false; } alert('Something went wrong. Please try again.'); });
 }
+
+// Reveal on load for hero
+document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.observe(el));
 </script>
 </body>
 </html>
