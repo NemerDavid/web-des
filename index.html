@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Cardia Studios — Digital Wedding Invitations</title>
+<title>Digital Wedding Invitations — By Nemer</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
@@ -64,29 +64,18 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
 .card-preview { position: absolute; inset: 0; width: 100%; height: 100%; border: none; pointer-events: none; transform-origin: top left; }
 
-.card-overlay { position: absolute; inset: 0; background: rgba(20,12,6,.88); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding: 1.75rem 1.5rem; opacity: 0; transition: opacity .4s ease; }
+/* ONLY CHANGE: overlay is now solid dark on hover, no more see-through gradient */
+.card-overlay {
+  position: absolute; inset: 0;
+  background: rgba(20,12,6,.93);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 1.75rem 1.5rem;
+  opacity: 0; transition: opacity .35s ease;
+}
 .template-card:hover .card-overlay { opacity: 1; }
 
 .card-badge { position: absolute; top: 1rem; left: 1rem; padding: .3rem .85rem; background: rgba(20,12,6,.75); backdrop-filter: blur(8px); border: 1px solid rgba(200,180,160,.2); font-size: .5rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(240,220,200,.8); }
-
-/* ── Number + name stacked vertically top-right — always visible ── */
-.card-label {
-  position: absolute; top: .85rem; right: .85rem;
-  display: flex; flex-direction: column; align-items: flex-end; gap: .2rem;
-  z-index: 5; pointer-events: none;
-}
-.card-number {
-  font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300;
-  color: rgba(200,180,160,.45); line-height: 1;
-}
-.card-tag {
-  font-size: .62rem; font-weight: 300; letter-spacing: .08em;
-  color: rgba(240,220,200,.8);
-  background: rgba(20,12,6,.6); backdrop-filter: blur(6px);
-  padding: .2rem .5rem; line-height: 1.4; text-align: right;
-  font-family: 'Cormorant Garamond', serif;
-}
-
+.card-number { position: absolute; top: 1rem; right: 1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; color: rgba(200,180,160,.35); }
 .card-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: 1.6rem; color: #f5f0e8; margin-bottom: .4rem; }
 .card-desc { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(200,180,160,.7); margin-bottom: 1rem; }
 .card-btn { display: inline-block; padding: .7rem 1.5rem; border: 1px solid rgba(200,180,160,.5); color: #f5f0e8; font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; align-self: flex-start; transition: background .25s, border-color .25s; }
@@ -100,6 +89,8 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 .card-midnight  { --accent: #8aaa98; }
 .card-terracotta{ --accent: #c4674a; }
 .card-elvish    { --accent: #2d6e3a; }
+
+.template-card .card-badge { border-color: rgba(var(--accent-rgb, 200,169,110),.3); }
 
 .card-strip { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--accent, var(--gold)); transform: scaleX(0); transform-origin: left; transition: transform .4s cubic-bezier(.16,1,.3,1); }
 .template-card:hover .card-strip { transform: scaleX(1); }
@@ -156,7 +147,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(42,32,24,.0); transition: background .4s, backdrop-filter .4s; }
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 2rem; display: flex; align-items: center; justify-content: space-between; background: rgba(42,32,24,0); transition: background .4s, backdrop-filter .4s; }
 .nav.scrolled { background: rgba(42,32,24,.92); backdrop-filter: blur(12px); }
 .nav-logo { font-family: 'Great Vibes', cursive; font-size: 1.5rem; color: var(--gold-lt); text-decoration: none; }
 .nav-links { display: flex; gap: 2rem; }
@@ -166,15 +157,10 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .templates-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
-  /* Always show minimal overlay on mobile */
   .card-overlay { opacity: 1; background: linear-gradient(to top, rgba(20,12,6,.88) 0%, rgba(20,12,6,.2) 50%, transparent 80%); }
-  /* Hide bottom overlay text on mobile — name is already in top-right tag */
-  .card-name { display: none; }
+  .card-name { font-size: 1.1rem; }
   .card-desc { display: none; }
-  .card-btn { display: none; }
-  /* Make top-right label bigger on mobile */
-  .card-number { font-size: 1rem; }
-  .card-tag { font-size: .75rem; padding: .25rem .6rem; }
+  .card-btn { padding: .5rem 1rem; font-size: .55rem; }
 }
 </style>
 </head>
@@ -198,10 +184,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
     <p class="hero-sub">8 exclusive designs · Crafted with care · Delivered in 24h</p>
     <a href="#templates" class="hero-cta">Explore Templates</a>
   </div>
-  <div class="scroll-hint">
-    <div class="scroll-arrow"></div>
-    <span>Scroll</span>
-  </div>
+  <div class="scroll-hint"><div class="scroll-arrow"></div><span>Scroll</span></div>
 </section>
 
 <section id="templates">
@@ -210,15 +193,11 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
     <p>Eight exclusive designs, one for every love story</p>
     <div class="gold-line"></div>
   </div>
-
   <div class="templates-grid">
 
     <div class="template-card card-classic reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">01</div>
-        <div class="card-tag">Classic</div>
-      </div>
+      <div class="card-number">01</div>
       <iframe class="card-preview" src="wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
       <div class="card-overlay">
         <div class="card-name">Classic</div>
@@ -230,10 +209,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-dark reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">02</div>
-        <div class="card-tag">Dark & Moody</div>
-      </div>
+      <div class="card-number">02</div>
       <iframe class="card-preview" src="wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
       <div class="card-overlay">
         <div class="card-name">Dark & Moody</div>
@@ -245,10 +221,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-soft reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">03</div>
-        <div class="card-tag">Soft & Minimal</div>
-      </div>
+      <div class="card-number">03</div>
       <iframe class="card-preview" src="wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
       <div class="card-overlay">
         <div class="card-name">Soft & Minimal</div>
@@ -260,10 +233,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-vintage reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">04</div>
-        <div class="card-tag">Vintage</div>
-      </div>
+      <div class="card-number">04</div>
       <iframe class="card-preview" src="wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
       <div class="card-overlay">
         <div class="card-name">Vintage & Romantic</div>
@@ -275,10 +245,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-garden reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">05</div>
-        <div class="card-tag">Garden & Floral</div>
-      </div>
+      <div class="card-number">05</div>
       <iframe class="card-preview" src="wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
       <div class="card-overlay">
         <div class="card-name">Garden & Floral</div>
@@ -290,10 +257,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-midnight reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">06</div>
-        <div class="card-tag">Midnight Blue</div>
-      </div>
+      <div class="card-number">06</div>
       <iframe class="card-preview" src="wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
       <div class="card-overlay">
         <div class="card-name">Midnight Blue</div>
@@ -305,10 +269,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-terracotta reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">07</div>
-        <div class="card-tag">Terracotta</div>
-      </div>
+      <div class="card-number">07</div>
       <iframe class="card-preview" src="wedding-invitation_terracotta.html" loading="lazy" scrolling="no" title="Terracotta"></iframe>
       <div class="card-overlay">
         <div class="card-name">Terracotta & Clay</div>
@@ -320,10 +281,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
     <div class="template-card card-elvish reveal">
       <div class="card-badge">Wedding</div>
-      <div class="card-label">
-        <div class="card-number">08</div>
-        <div class="card-tag">Elvish Fantasy</div>
-      </div>
+      <div class="card-number">08</div>
       <iframe class="card-preview" src="wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
       <div class="card-overlay">
         <div class="card-name">Elvish Fantasy</div>
@@ -340,26 +298,10 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
   <h2 class="reveal">How It Works</h2>
   <p class="reveal">Simple, fast, beautiful</p>
   <div class="steps">
-    <div class="step reveal">
-      <div class="step-num">01</div>
-      <h3>Choose a design</h3>
-      <p>Browse our 8 exclusive templates and pick the one that speaks to your love story.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">02</div>
-      <h3>Send your details</h3>
-      <p>Share your names, date, venue, and any personal touches you'd like included.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">03</div>
-      <h3>We customize it</h3>
-      <p>Your invitation is personalized with your details, photos, and RSVP email — ready in 24h.</p>
-    </div>
-    <div class="step reveal">
-      <div class="step-num">04</div>
-      <h3>Share with guests</h3>
-      <p>Send a single link to all your guests. They RSVP directly — replies go straight to your inbox.</p>
-    </div>
+    <div class="step reveal"><div class="step-num">01</div><h3>Choose a design</h3><p>Browse our 8 exclusive templates and pick the one that speaks to your love story.</p></div>
+    <div class="step reveal"><div class="step-num">02</div><h3>Send your details</h3><p>Share your names, date, venue, and any personal touches you'd like included.</p></div>
+    <div class="step reveal"><div class="step-num">03</div><h3>We customize it</h3><p>Your invitation is personalized with your details, photos, and RSVP email — ready in 24h.</p></div>
+    <div class="step reveal"><div class="step-num">04</div><h3>Share with guests</h3><p>Send a single link to all your guests. They RSVP directly — replies go straight to your inbox.</p></div>
   </div>
 </section>
 
@@ -432,7 +374,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         <span class="contact-icon">✉️</span>
         <div>
           <div class="contact-label">Email</div>
-          <div class="contact-value"><a href="/cdn-cgi/l/email-protection#cba8aab9afa2aae5b8bfbeafa2a4b88baca6aaa2a7e5a8a4a6"><span class="__cf_email__" data-cfemail="3c5f5d4e58555d124f48495855534f7c5b515d5550125f5351">[email&#160;protected]</span></a></div>
+          <div class="contact-value"><a href="mailto:cardia.studios@gmail.com">cardia.studios@gmail.com</a></div>
         </div>
       </div>
       <div class="contact-item reveal">
@@ -443,35 +385,36 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         </div>
       </div>
     </div>
-    <a href="/cdn-cgi/l/email-protection#f7949685939e96d9848382939e9884b7909a969e9bd994989a" class="contact-cta reveal">Send an Enquiry</a>
-    <div class="footer-note reveal">
-      © 2025 Cardia Studios · Digital Wedding Invitations · All rights reserved
-    </div>
+    <a href="mailto:cardia.studios@gmail.com" class="contact-cta reveal">Send an Enquiry</a>
+    <div class="footer-note reveal">© 2025 Cardia Studios · Digital Wedding Invitations · All rights reserved</div>
   </div>
 </section>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
-
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
 function scaleIframes() {
   document.querySelectorAll('.template-card').forEach(card => {
     const iframe = card.querySelector('.card-preview');
     if(!iframe) return;
-    const cw = card.offsetWidth;
-    const ch = card.offsetHeight;
+    const cw = card.offsetWidth, ch = card.offsetHeight;
     const scale = Math.min(cw / 390, ch / 844);
-    iframe.style.width  = '390px';
-    iframe.style.height = '844px';
-    iframe.style.transform = `scale(${scale})`;
-    iframe.style.transformOrigin = 'top left';
+    iframe.style.width = '390px'; iframe.style.height = '844px';
+    iframe.style.transform = `scale(${scale})`; iframe.style.transformOrigin = 'top left';
   });
 }
 window.addEventListener('resize', scaleIframes);
+scaleIframes();
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
