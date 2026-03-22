@@ -64,14 +64,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
 .card-preview { position: absolute; inset: 0; width: 100%; height: 100%; border: none; pointer-events: none; transform-origin: top left; }
 
-/* ONLY CHANGE: overlay is now solid dark on hover, no more see-through gradient */
-.card-overlay {
-  position: absolute; inset: 0;
-  background: rgba(20,12,6,.93);
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 1.75rem 1.5rem;
-  opacity: 0; transition: opacity .35s ease;
-}
+.card-overlay { position: absolute; inset: 0; background: rgba(20,12,6,.93); display: flex; flex-direction: column; justify-content: center; padding: 1.75rem 1.5rem; opacity: 0; transition: opacity .35s ease; }
 .template-card:hover .card-overlay { opacity: 1; }
 
 .card-badge { position: absolute; top: 1rem; left: 1rem; padding: .3rem .85rem; background: rgba(20,12,6,.75); backdrop-filter: blur(8px); border: 1px solid rgba(200,180,160,.2); font-size: .5rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(240,220,200,.8); }
@@ -154,13 +147,18 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 .nav-link { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(200,180,160,.7); text-decoration: none; transition: color .25s; }
 .nav-link:hover { color: var(--gold-lt); }
 
+/* ── MOBILE FIX: hide overlay, show only name at bottom, tap card to open ── */
 @media (max-width: 640px) {
   .nav-links { display: none; }
   .templates-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
-  .card-overlay { opacity: 1; background: linear-gradient(to top, rgba(20,12,6,.88) 0%, rgba(20,12,6,.2) 50%, transparent 80%); }
-  .card-name { font-size: 1.1rem; }
+  .card-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(20,12,6,.80) 0%, rgba(20,12,6,.1) 35%, transparent 55%);
+    justify-content: flex-end;
+  }
+  .card-name { font-size: 1rem; margin-bottom: .3rem; }
   .card-desc { display: none; }
-  .card-btn { padding: .5rem 1rem; font-size: .55rem; }
+  .card-btn { display: none; }
 }
 </style>
 </head>
@@ -195,7 +193,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
   </div>
   <div class="templates-grid">
 
-    <div class="template-card card-classic reveal">
+    <div class="template-card card-classic reveal" onclick="window.open('wedding-invitation_classic.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">01</div>
       <iframe class="card-preview" src="wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
@@ -207,7 +205,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#c9a96e;"></div>
     </div>
 
-    <div class="template-card card-dark reveal">
+    <div class="template-card card-dark reveal" onclick="window.open('wedding-invitation_dark.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">02</div>
       <iframe class="card-preview" src="wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
@@ -219,7 +217,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#c9a84c;"></div>
     </div>
 
-    <div class="template-card card-soft reveal">
+    <div class="template-card card-soft reveal" onclick="window.open('wedding-invitation_soft.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">03</div>
       <iframe class="card-preview" src="wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
@@ -231,7 +229,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#c9958a;"></div>
     </div>
 
-    <div class="template-card card-vintage reveal">
+    <div class="template-card card-vintage reveal" onclick="window.open('wedding-invitation_vintage.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">04</div>
       <iframe class="card-preview" src="wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
@@ -243,7 +241,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#c4a456;"></div>
     </div>
 
-    <div class="template-card card-garden reveal">
+    <div class="template-card card-garden reveal" onclick="window.open('wedding-invitation_garden.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">05</div>
       <iframe class="card-preview" src="wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
@@ -255,7 +253,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#7a9e7e;"></div>
     </div>
 
-    <div class="template-card card-midnight reveal">
+    <div class="template-card card-midnight reveal" onclick="window.open('wedding-invitation_night.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">06</div>
       <iframe class="card-preview" src="wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
@@ -267,7 +265,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#8aaa98;"></div>
     </div>
 
-    <div class="template-card card-terracotta reveal">
+    <div class="template-card card-terracotta reveal" onclick="window.open('wedding-invitation_terracotta.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">07</div>
       <iframe class="card-preview" src="wedding-invitation_terracotta.html" loading="lazy" scrolling="no" title="Terracotta"></iframe>
@@ -279,7 +277,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
       <div class="card-strip" style="--accent:#c4674a;"></div>
     </div>
 
-    <div class="template-card card-elvish reveal">
+    <div class="template-card card-elvish reveal" onclick="window.open('wedding-invitation_lotr.html','_blank')">
       <div class="card-badge">Wedding</div>
       <div class="card-number">08</div>
       <iframe class="card-preview" src="wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
