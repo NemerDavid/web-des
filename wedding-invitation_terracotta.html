@@ -117,7 +117,7 @@ textarea.form-field:focus{border-color:var(--gold);}
 
 <img class="trans-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/8.png" alt="">
 
-<!-- PAGE 2 — NAMES — padding-bottom:35vw keeps Emily above the flowers -->
+<!-- PAGE 2 — NAMES -->
 <div class="page-wrap">
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/2.png" alt="">
   <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:10vw 10vw 35vw;">
@@ -274,9 +274,27 @@ textarea.form-field:focus{border-color:var(--gold);}
 function openInv(){const c=document.getElementById('inv');c.classList.add('open');setTimeout(()=>c.classList.add('visible'),20);setTimeout(()=>document.getElementById('p2').scrollIntoView({behavior:'smooth'}),100);setTimeout(()=>document.querySelectorAll('#inv .reveal').forEach(el=>ro.observe(el)),300);}
 const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el=>ro.observe(el));
-(function(){const grid=document.getElementById('cal-grid');['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>{const el=document.createElement('div');el.className='cal-cell hdr';el.textContent=d;grid.appendChild(el);});for(let i=0;i<4;i++){const el=document.createElement('div');el.className='cal-cell empty';el.textContent='.';grid.appendChild(el);}for(let d=1;d<=31;d++){const el=document.createElement('div');el.className='cal-cell';if(d===27){el.className+=' highlight';el.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span>';}else{el.textContent=d;}grid.appendChild(el);}})();
-const TARGET=new Date('2025-08-27T18:00:00');function tick(){const diff=Math.max(0,TARGET-new Date());const pad=n=>String(n).padStart(2,'0');document.getElementById('cd-d').textContent=Math.floor(diff/86400000);document.getElementById('cd-h').textContent=pad(Math.floor(diff/3600000)%24);document.getElementById('cd-m').textContent=pad(Math.floor(diff/60000)%60);document.getElementById('cd-s').textContent=pad(Math.floor(diff/1000)%60);}tick();setInterval(tick,1000);
-let gCount=1;document.querySelectorAll('input[name="attend"]').forEach(r=>{r.addEventListener('change',()=>{document.getElementById('count-wrap').style.display=r.value==='yes'?'block':'none';});});
+(function(){
+  const grid=document.getElementById('cal-grid');
+  ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>{const el=document.createElement('div');el.className='cal-cell hdr';el.textContent=d;grid.appendChild(el);});
+  for(let i=0;i<4;i++){const el=document.createElement('div');el.className='cal-cell empty';el.textContent='.';grid.appendChild(el);}
+  for(let d=1;d<=31;d++){
+    const el=document.createElement('div');el.className='cal-cell';
+    if(d===27){
+      el.className+=' highlight';
+      el.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span>'
+        +'<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;">'
+        +'<path d="M22 34s-12-7.5-12-16a8 8 0 0 1 12-6.93A8 8 0 0 1 34 18c0 8.5-12 16-12 16z" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity=".9"/>'
+        +'</svg>';
+    }else{el.textContent=d;}
+    grid.appendChild(el);
+  }
+})();
+const TARGET=new Date('2025-08-27T18:00:00');
+function tick(){const diff=Math.max(0,TARGET-new Date());const pad=n=>String(n).padStart(2,'0');document.getElementById('cd-d').textContent=Math.floor(diff/86400000);document.getElementById('cd-h').textContent=pad(Math.floor(diff/3600000)%24);document.getElementById('cd-m').textContent=pad(Math.floor(diff/60000)%60);document.getElementById('cd-s').textContent=pad(Math.floor(diff/1000)%60);}
+tick();setInterval(tick,1000);
+let gCount=1;
+document.querySelectorAll('input[name="attend"]').forEach(r=>{r.addEventListener('change',()=>{document.getElementById('count-wrap').style.display=r.value==='yes'?'block':'none';});});
 function chCount(d){gCount=Math.max(1,Math.min(10,gCount+d));document.getElementById('cnt-disp').textContent=gCount;}
 function goStep(from,to){if(from===1){const v=document.getElementById('f-name').value.trim();if(!v){document.getElementById('e-name').style.display='block';return;}document.getElementById('e-name').style.display='none';}if(from===2&&to===3){const att=document.querySelector('input[name="attend"]:checked');if(!att){document.getElementById('e-attend').style.display='block';return;}document.getElementById('e-attend').style.display='none';if(att.value==='no'){submitRSVP();return;}}document.getElementById('s'+from).style.display='none';document.getElementById('s'+to).style.display='block';[1,2,3].forEach(i=>document.getElementById('dot-'+i).classList.toggle('on',i<=to));}
 const COUPLE_NAME='Sleiman & Emily',CLIENT_EMAIL='nemer.david9@gmail.com';
