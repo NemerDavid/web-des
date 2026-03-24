@@ -24,7 +24,7 @@
 html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
 body { font-family: 'IM Fell English', serif; color: var(--ink); background: var(--sage); }
 
-/* ── Page wrapper ── */
+/* ── Page wrapper — CSS background so it always covers full height ── */
 .page-wrap {
   width: 100%;
   position: relative;
@@ -32,17 +32,14 @@ body { font-family: 'IM Fell English', serif; color: var(--ink); background: var
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
 }
-.bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  pointer-events: none;
-  user-select: none;
-}
+/* bg1 and bg2 classes set the background image via CSS */
+.page-wrap.bg1 { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/1.png'); }
+.page-wrap.bg2 { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png'); }
+
 .page-content {
   position: relative;
   z-index: 1;
@@ -56,13 +53,14 @@ body { font-family: 'IM Fell English', serif; color: var(--ink); background: var
   text-align: center;
 }
 
-/* ── Transition / torn page ── */
-.trans-img {
+/* ── Torn page overlay at top of each inner page ── */
+.torn-header {
+  position: absolute;
+  top: 0; left: 0;
   width: 100%;
+  z-index: 3;
   display: block;
-  margin: 0; padding: 0;
-  line-height: 0; font-size: 0;
-  position: relative; z-index: 2;
+  pointer-events: none;
 }
 
 /* ── Typography ── */
@@ -230,8 +228,7 @@ textarea.form-field:focus { border-color: var(--forest); }
 <body>
 
 <!-- ══════ HERO — BG 1 ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/1.png" alt="">
+<div class="page-wrap bg1">
   <div class="page-content reveal">
     <p class="t-eyebrow">Together with their families</p>
     <h1 class="t-name">Sleiman</h1>
@@ -244,12 +241,9 @@ textarea.form-field:focus { border-color: var(--forest); }
 <div id="inv">
 
 <!-- ══════ PAGE 2 — NAMES & VERSE — BG 2 ══════ -->
-<!-- torn page sits on TOP of page 2 via negative margin pulling it down -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <!-- torn page overlaid at very top of this page -->
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
-  <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:10vw 10vw;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
+  <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:35vw 10vw 10vw;">
     <p class="t-label">Matthew 19:6</p>
     <p class="t-verse">"What therefore God has joined together,<br>let no man put asunder."</p>
     <div class="divider"><span class="divider-icon">✦</span></div>
@@ -271,9 +265,8 @@ textarea.form-field:focus { border-color: var(--forest); }
 </div>
 
 <!-- ══════ PAGE 3 — WEDDING DAY ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" id="p3" style="padding:35vw 8vw 12vw;">
     <p class="t-section">Wedding Day</p>
     <p class="t-sub">August 27, 2025</p>
@@ -292,9 +285,8 @@ textarea.form-field:focus { border-color: var(--forest); }
 </div>
 
 <!-- ══════ PAGE 4 — THE CELEBRATION ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" id="p4" style="padding:35vw 8vw 12vw;">
     <p class="t-section">The Celebration</p>
     <div class="divider"><span class="divider-icon">✦</span></div>
@@ -324,10 +316,9 @@ textarea.form-field:focus { border-color: var(--forest); }
 </div>
 
 <!-- ══════ PAGE 5 — GIFT REGISTRY ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
-  <div class="page-content reveal" style="padding:12vw 8vw;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
+  <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
     <p class="t-section">Gift Registry</p>
     <div class="divider"><span class="divider-icon">✦</span></div>
     <p style="font-family:'IM Fell English',serif; font-size:3.8vw; line-height:2.2; color:var(--forest); font-style:italic; max-width:80%; margin:0 auto 6vw;">
@@ -342,10 +333,9 @@ textarea.form-field:focus { border-color: var(--forest); }
 </div>
 
 <!-- ══════ PAGE 6 — PHOTOS ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
-  <div class="page-content reveal" style="padding:10vw 8vw; justify-content:flex-start; padding-top:14vw;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
+  <div class="page-content reveal" style="padding:35vw 8vw 10vw; justify-content:flex-start;">
     <p class="t-section" style="margin-bottom:1.5vw;">Our Story</p>
     <p class="t-sub" style="margin-bottom:6vw;">A glimpse of us</p>
     <div class="photo-grid">
@@ -358,10 +348,9 @@ textarea.form-field:focus { border-color: var(--forest); }
 </div>
 
 <!-- ══════ PAGE 7 — RSVP ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
-  <div class="page-content reveal" style="padding:12vw 8vw;">
+<div class="page-wrap bg2">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
+  <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
     <p class="t-section">RSVP</p>
     <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 18th of August 2025</p>
     <div class="divider"><span class="divider-icon">✦</span></div>
@@ -415,11 +404,10 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ FOOTER ══════ -->
-<div class="page-wrap">
-  <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/1.png" alt="">
-  <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="" style="position:absolute; top:0; left:0; width:100%; z-index:3; display:block; pointer-events:none;">
-  <div class="page-content" style="padding:8vw;">
+<!-- ══════ FOOTER — BG 1 ══════ -->
+<div class="page-wrap bg1">
+  <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
+  <div class="page-content" style="padding:35vw 8vw 8vw;">
     <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--forest-dk); margin-bottom:2vw;">Sleiman &amp; Emily</p>
     <p class="t-label" style="font-size:2.8vw; color:var(--forest);">August 27, 2025 · Ehden, Lebanon</p>
     <div class="divider" style="margin:4vw auto;"><span class="divider-icon">✦</span></div>
