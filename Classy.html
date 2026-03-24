@@ -3,34 +3,30 @@
     <head>
     <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-        <title>Wedding Invitation — Midnight Gold</title>
+        <title>Wedding Invitation — Elvish Fantasy</title>
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Cinzel:wght@400;500&family=IM+Fell+English:ital@0;1&family=Great+Vibes&display=swap" rel="stylesheet">
           
           <style>
           :root {
-            --navy:         #0a0d3b;
-              --navy-deep:    #050825;
-              --navy-soft:    #11164d;
-              --gold:         #d9b15f;
-              --gold-bright:  #f0d08b;
-              --gold-soft:    #c79a49;
-              --gold-line:    rgba(224, 186, 110, .42);
-            --ivory:        #f7f0df;
-              --ivory-soft:   #eadfc7;
-              --panel:        rgba(8, 11, 46, .58);
-            --panel-strong: rgba(6, 8, 34, .72);
-            --panel-light:  rgba(18, 22, 72, .38);
-            --shadow:       0 10px 30px rgba(0,0,0,.28);
-            --text-shadow:  0 2px 14px rgba(0,0,0,.25);
+            --forest:       #cfd5c4;
+              --forest-lt:    #e4e7dd;
+              --forest-dk:    #f2f3eb;
+              --sage:         #2f3728;
+              --sage-lt:      #3a4330;
+              --sage-dk:      #22291d;
+              --parchment:    #f4f4ed;
+              --ink:          #eef1e7;
+              --ink-lt:       #d8ddd0;
+              --border:       rgba(236, 239, 229, .28);
+            --panel:        rgba(31, 38, 25, .46);
+            --panel-strong: rgba(24, 30, 20, .62);
+            --line:         rgba(231, 235, 223, .38);
+            --soft-shadow:  0 8px 30px rgba(0,0,0,.18);
           }
         
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
-        body {
-          font-family: 'IM Fell English', serif;
-          color: var(--ivory);
-          background: var(--navy);
-        }
+        body { font-family: 'IM Fell English', serif; color: var(--ink); background: var(--sage); }
         
         .page-wrap {
           width: 100%;
@@ -53,16 +49,12 @@
           content: "";
           position: absolute;
           inset: 0;
-          background:
-            linear-gradient(to bottom, rgba(2,3,14,.18), rgba(4,5,18,.28)),
-          radial-gradient(circle at center, rgba(255,255,255,.03), transparent 55%);
+          background: linear-gradient(to bottom, rgba(10,14,9,.18), rgba(12,16,10,.28));
           z-index: 0;
           pointer-events: none;
         }
-        
-        /* Replace these image URLs with your new navy-gold backgrounds */
-          .page-wrap.bg1::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/GoldTheme/1.png'); }
-        .page-wrap.bg2::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/GoldTheme/2.png'); }
+        .page-wrap.bg1::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/1.png'); }
+        .page-wrap.bg2::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/3.png'); }
         
         .page-content {
           position: relative;
@@ -93,9 +85,9 @@
             font-size: 2.8vw;
             letter-spacing: .35em;
             text-transform: uppercase;
-            color: var(--gold-bright);
+            color: var(--forest-lt);
             margin-bottom: 4vw;
-            text-shadow: var(--text-shadow);
+            text-shadow: 0 1px 10px rgba(0,0,0,.18);
           }
         .t-name {
           font-family: 'Cormorant Garamond', serif;
@@ -103,15 +95,15 @@
           font-style: italic;
           font-size: 17vw;
           line-height: .95;
-          color: var(--ivory);
-          text-shadow: var(--text-shadow);
+          color: var(--forest-dk);
+          text-shadow: 0 2px 16px rgba(0,0,0,.18);
         }
         .t-script {
           font-family: 'Great Vibes', cursive;
           font-size: 13vw;
-          color: var(--gold-bright);
+          color: var(--forest);
           line-height: 1.2;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 2px 14px rgba(0,0,0,.14);
         }
         .t-date {
           font-family: 'Cinzel', serif;
@@ -119,18 +111,18 @@
           font-size: 2.8vw;
           letter-spacing: .25em;
           text-transform: uppercase;
-          color: var(--ivory-soft);
+          color: var(--forest-lt);
           margin: 3vw 0;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 1px 10px rgba(0,0,0,.18);
         }
         .t-section {
           font-family: 'Cormorant Garamond', serif;
           font-weight: 400;
           font-style: italic;
           font-size: 9vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           letter-spacing: .03em;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 2px 14px rgba(0,0,0,.18);
         }
         .t-label {
           font-family: 'Cinzel', serif;
@@ -138,47 +130,47 @@
           font-size: 2.5vw;
           letter-spacing: .25em;
           text-transform: uppercase;
-          color: var(--gold-bright);
+          color: var(--forest-lt);
           margin-bottom: 2vw;
         }
         .t-verse {
           font-family: 'IM Fell English', serif;
           font-style: italic;
           font-size: 4.2vw;
-          color: var(--ivory-soft);
+          color: var(--ink-lt);
           line-height: 2;
           max-width: 82%;
           margin: 0 auto;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 1px 10px rgba(0,0,0,.16);
         }
         .t-parent {
           font-family: 'Cormorant Garamond', serif;
           font-size: 4.5vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
         }
         .t-honor {
           font-family: 'IM Fell English', serif;
           font-style: italic;
           font-size: 3.8vw;
-          color: var(--ivory-soft);
+          color: var(--ink-lt);
           line-height: 2;
           margin: 4vw 0;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 1px 10px rgba(0,0,0,.14);
         }
         .t-bigname {
           font-family: 'Cormorant Garamond', serif;
           font-style: italic;
           font-weight: 300;
           font-size: 16vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           line-height: 1.05;
-          text-shadow: var(--text-shadow);
+          text-shadow: 0 2px 16px rgba(0,0,0,.18);
         }
         .t-and {
           font-family: 'IM Fell English', serif;
           font-style: italic;
           font-size: 7vw;
-          color: var(--gold-bright);
+          color: var(--forest);
         }
         .t-sub {
           font-family: 'Cinzel', serif;
@@ -186,11 +178,11 @@
           font-size: 2.8vw;
           letter-spacing: .2em;
           text-transform: uppercase;
-          color: var(--gold-bright);
+          color: var(--forest-lt);
           margin-top: 2vw;
         }
         
-        /* ── Divider ── */
+        /* ── Decorative divider ── */
           .divider {
             display: flex;
             align-items: center;
@@ -198,57 +190,50 @@
             margin: 5vw auto;
             max-width: 75%;
           }
-        .divider::before,
-        .divider::after {
+        .divider::before, .divider::after {
           content: "";
           flex: 1;
           height: 1px;
-          background: var(--gold-line);
+          background: var(--line);
         }
         .divider-icon {
-          color: var(--gold);
+          color: var(--forest);
           font-size: 3.5vw;
-          text-shadow: 0 0 10px rgba(217,177,95,.18);
+          text-shadow: 0 0 8px rgba(255,255,255,.05);
         }
         
-        /* ── Buttons ── */
+        /* ── Button ── */
           .btn-open {
             display: inline-block;
             margin-top: 6vw;
             padding: 3.5vw 9vw;
-            border: 1px solid var(--gold-line);
-            color: var(--gold-bright);
+            border: 1px solid var(--border);
+            color: var(--forest-dk);
             font-family: 'Cinzel', serif;
             font-weight: 400;
             font-size: 2.8vw;
             letter-spacing: .25em;
             text-transform: uppercase;
             cursor: pointer;
-            background: linear-gradient(to bottom, rgba(13,18,61,.65), rgba(7,10,38,.72));
+            background: var(--panel);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            box-shadow: var(--shadow);
+            box-shadow: var(--soft-shadow);
             transition: background .3s, border-color .3s, transform .2s;
           }
         .btn-open:hover {
-          background: linear-gradient(to bottom, rgba(18,24,80,.78), rgba(9,12,44,.85));
-          border-color: rgba(240,208,139,.5);
+          background: rgba(41, 49, 32, .62);
+          border-color: rgba(244,244,237,.42);
           transform: translateY(-1px);
         }
         
-        #inv { display: none; opacity: 0; transition: opacity .8s ease; }
-        #inv.open { display: block; }
-        #inv.visible { opacity: 1; }
-        
-        .reveal {
-          opacity: 0;
-          transform: translateY(14px);
-          transition: opacity .9s ease, transform .9s ease;
-        }
-        .reveal.visible {
-          opacity: 1;
-          transform: none;
-        }
+        /* ── Reveal ── */
+          #inv { display: none; opacity: 0; transition: opacity .8s ease; }
+          #inv.open { display: block; }
+          #inv.visible { opacity: 1; }
+          
+          .reveal { opacity: 0; transform: translateY(14px); transition: opacity .9s ease, transform .9s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
         .d1 { transition-delay: .15s; }
         .d2 { transition-delay: .3s; }
         .d3 { transition-delay: .45s; }
@@ -268,11 +253,11 @@
           font-family: 'Cormorant Garamond', serif;
           font-size: 4.5vw;
           font-weight: 400;
-          color: var(--ivory);
+          color: var(--forest-dk);
         }
         .tl-venue {
           font-size: 3vw;
-          color: var(--ivory-soft);
+          color: var(--ink-lt);
           margin-top: 1vw;
           font-style: italic;
           line-height: 1.5;
@@ -290,7 +275,7 @@
           position: absolute;
           left: 50%;
           width: 1px;
-          background: var(--gold-line);
+          background: var(--line);
           transform: translateX(-50%);
         }
         .tl-icon::before { bottom: 100%; height: 6vw; }
@@ -301,25 +286,26 @@
           width: 8vw;
           height: 8vw;
           object-fit: contain;
-          filter: sepia(1) saturate(2.2) hue-rotate(350deg) brightness(1.05) contrast(1.08);
+          filter: grayscale(1) brightness(2.25) contrast(.85);
+          opacity: .95;
         }
         .tl-label {
           font-family: 'Cormorant Garamond', serif;
           font-style: italic;
           font-size: 7vw;
-          color: var(--gold-bright);
+          color: var(--forest-dk);
         }
         
         /* ── Calendar ── */
           .cal-box {
-            background: linear-gradient(to bottom, rgba(10,13,56,.55), rgba(6,8,34,.72));
+            background: var(--panel);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--gold-line);
+            border: 1px solid var(--border);
             padding: 5vw 4vw;
             width: 100%;
             margin: 4vw 0;
-            box-shadow: var(--shadow);
+            box-shadow: var(--soft-shadow);
           }
         .cal-grid {
           display: grid;
@@ -330,7 +316,7 @@
           text-align: center;
           padding: 2vw .5vw;
           font-size: 3.2vw;
-          color: var(--ivory-soft);
+          color: var(--ink-lt);
           font-weight: 300;
         }
         .cal-cell.hdr {
@@ -338,11 +324,11 @@
           font-size: 2vw;
           letter-spacing: .1em;
           text-transform: uppercase;
-          color: var(--gold-bright);
+          color: var(--forest);
         }
         .cal-cell.empty { opacity: 0; }
         .cal-cell.highlight {
-          color: var(--ivory);
+          color: var(--forest-dk);
           font-weight: 600;
           position: relative;
         }
@@ -356,19 +342,19 @@
           }
         .flip {
           text-align: center;
-          background: linear-gradient(to bottom, rgba(11,15,61,.54), rgba(6,9,36,.72));
+          background: var(--panel);
           backdrop-filter: blur(10px);
           -webkit-backdrop-filter: blur(10px);
-          border: 1px solid var(--gold-line);
+          border: 1px solid var(--border);
           padding: 3.5vw 2vw 2.5vw;
           min-width: 16vw;
-          box-shadow: var(--shadow);
+          box-shadow: var(--soft-shadow);
         }
         .flip .num {
           font-family: 'Cormorant Garamond', serif;
           font-weight: 300;
           font-size: 8vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           line-height: 1;
         }
         .flip .lbl {
@@ -377,47 +363,47 @@
           font-size: 2vw;
           letter-spacing: .15em;
           text-transform: uppercase;
-          color: var(--gold-bright);
+          color: var(--forest);
           margin-top: 1.5vw;
         }
         
         /* ── RSVP ── */
           .rsvp-box {
-            background: linear-gradient(to bottom, rgba(8,11,48,.66), rgba(5,7,28,.82));
+            background: var(--panel-strong);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--gold-line);
+            border: 1px solid var(--border);
             padding: 7vw 6vw;
             width: 100%;
-            box-shadow: var(--shadow);
+            box-shadow: var(--soft-shadow);
           }
         .rsvp-step { animation: stepIn .4s ease; }
         @keyframes stepIn {
           from { opacity: 0; transform: translateY(8px); }
-          to { opacity: 1; transform: none; }
+          to   { opacity: 1; transform: none; }
         }
         .form-field {
           width: 100%;
           padding: 3.5vw 0;
           border: none;
-          border-bottom: 1px solid var(--gold-line);
+          border-bottom: 1px solid var(--line);
           font-family: 'IM Fell English', serif;
           font-size: 4vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           background: transparent;
           outline: none;
           transition: border-color .2s;
         }
-        .form-field:focus { border-bottom-color: rgba(240,208,139,.62); }
-        .form-field::placeholder { color: rgba(234,223,199,.42); }
+        .form-field:focus { border-bottom-color: var(--forest-lt); }
+        .form-field::placeholder { color: rgba(228, 231, 221, .45); }
         
         textarea.form-field {
-          border: 1px solid var(--gold-line);
+          border: 1px solid var(--line);
           padding: 3vw;
           resize: none;
           background: rgba(255,255,255,.02);
         }
-        textarea.form-field:focus { border-color: rgba(240,208,139,.62); }
+        textarea.form-field:focus { border-color: var(--forest); }
         
         .attend-grid {
           display: grid;
@@ -428,20 +414,20 @@
         .attend-opt { position: relative; cursor: pointer; }
         .attend-opt input { position: absolute; opacity: 0; }
         .attend-box {
-          border: 1px solid var(--gold-line);
+          border: 1px solid var(--line);
           padding: 4vw 3vw;
           text-align: center;
           background: rgba(255,255,255,.03);
           transition: border-color .2s, background .2s, box-shadow .2s;
         }
         .attend-opt input:checked + .attend-box {
-          border-color: rgba(240,208,139,.56);
-          background: rgba(217,177,95,.08);
-          box-shadow: 0 0 0 1px rgba(240,208,139,.08) inset;
+          border-color: rgba(244,244,237,.45);
+          background: rgba(255,255,255,.08);
+          box-shadow: 0 0 0 1px rgba(255,255,255,.04) inset;
         }
         .attend-label {
           font-size: 3.2vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           font-style: italic;
         }
         
@@ -456,11 +442,11 @@
           width: 2.5vw;
           height: 2.5vw;
           border-radius: 50%;
-          background: rgba(217,177,95,.22);
+          background: rgba(233, 237, 226, .22);
           transition: background .3s, transform .3s;
         }
         .step-dot.on {
-          background: var(--gold-bright);
+          background: var(--forest-dk);
           transform: scale(1.3);
         }
         
@@ -475,10 +461,10 @@
           width: 10vw;
           height: 10vw;
           border-radius: 50%;
-          border: 1px solid var(--gold-line);
+          border: 1px solid var(--line);
           background: rgba(255,255,255,.04);
           font-size: 5vw;
-          color: var(--gold-bright);
+          color: var(--forest-dk);
           cursor: pointer;
           display: flex;
           align-items: center;
@@ -486,13 +472,13 @@
           transition: all .2s;
         }
         .count-btn:hover {
-          border-color: rgba(240,208,139,.56);
-          background: rgba(217,177,95,.08);
+          border-color: rgba(244,244,237,.45);
+          background: rgba(255,255,255,.08);
         }
         .count-num {
           font-family: 'Cormorant Garamond', serif;
           font-size: 9vw;
-          color: var(--ivory);
+          color: var(--forest-dk);
           min-width: 8vw;
           text-align: center;
         }
@@ -503,15 +489,15 @@
           font-size: 2.8vw;
           letter-spacing: .18em;
           text-transform: uppercase;
-          color: var(--gold-bright);
+          color: var(--forest-lt);
           margin-bottom: 2vw;
         }
         .btn-rose {
           display: block;
           width: 100%;
           padding: 3.5vw;
-          border: 1px solid var(--gold-line);
-          color: var(--gold-bright);
+          border: 1px solid var(--line);
+          color: var(--forest-lt);
           font-family: 'Cinzel', serif;
           font-weight: 400;
           font-size: 2.8vw;
@@ -523,17 +509,18 @@
           transition: all .25s;
         }
         .btn-rose:hover {
-          border-color: rgba(240,208,139,.56);
-          color: var(--ivory);
-          background: rgba(217,177,95,.08);
+          border-color: rgba(244,244,237,.45);
+          color: var(--forest-dk);
+          background: rgba(255,255,255,.06);
         }
         .btn-solid {
-          background: linear-gradient(to bottom, rgba(217,177,95,.13), rgba(199,154,73,.08));
-          border-color: rgba(240,208,139,.44);
-          color: var(--gold-bright);
+          background: rgba(234, 238, 227, .1);
+          border-color: rgba(244,244,237,.35);
+          color: var(--forest-dk);
         }
         .btn-solid:hover {
-          background: linear-gradient(to bottom, rgba(217,177,95,.18), rgba(199,154,73,.12));
+          background: rgba(234, 238, 227, .16);
+          border-color: rgba(244,244,237,.48);
         }
         .btn-grid {
           display: grid;
@@ -543,20 +530,20 @@
         }
         .error-msg {
           font-size: 3vw;
-          color: #f0c4c4;
+          color: #e6c8c8;
             margin-top: 1.5vw;
           display: none;
         }
         
         /* ── Gift ── */
           .gift-box {
-            background: linear-gradient(to bottom, rgba(11,15,61,.54), rgba(6,9,36,.72));
+            background: var(--panel);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid var(--gold-line);
+            border: 1px solid var(--border);
             display: inline-block;
             padding: 4vw 9vw;
-            box-shadow: var(--shadow);
+            box-shadow: var(--soft-shadow);
           }
         
         /* ── Parents ── */
@@ -567,14 +554,14 @@
             margin: 3vw 0;
           }
         
-        /* ── Carousel ── */
+        /* ── Photo Carousel ── */
           .carousel-wrap {
             width: 100%;
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--gold-line);
+            border: 1px solid var(--border);
             background: var(--panel);
-            box-shadow: var(--shadow);
+            box-shadow: var(--soft-shadow);
           }
         .carousel-track {
           display: flex;
@@ -590,7 +577,7 @@
           height: 75vw;
           object-fit: cover;
           display: block;
-          filter: saturate(.92) contrast(.95) brightness(.88);
+          filter: saturate(.8) contrast(.92) brightness(.9);
         }
         .carousel-dots {
           display: flex;
@@ -602,13 +589,13 @@
           width: 2vw;
           height: 2vw;
           border-radius: 50%;
-          background: rgba(217,177,95,.18);
-          border: 1px solid rgba(240,208,139,.28);
+          background: rgba(236, 239, 229, .18);
+          border: 1px solid rgba(236, 239, 229, .32);
           cursor: pointer;
           transition: background .3s, transform .3s;
         }
         .carousel-dot.active {
-          background: var(--gold-bright);
+          background: var(--forest-dk);
           transform: scale(1.3);
         }
         .carousel-arrow {
@@ -616,9 +603,9 @@
           top: 50%;
           transform: translateY(-50%);
           z-index: 5;
-          background: rgba(8,11,46,.62);
-          border: 1px solid var(--gold-line);
-          color: var(--gold-bright);
+          background: rgba(20, 24, 16, .55);
+          border: 1px solid var(--border);
+          color: var(--forest-dk);
           width: 9vw;
           height: 9vw;
           border-radius: 50%;
@@ -631,13 +618,14 @@
           -webkit-backdrop-filter: blur(8px);
           transition: background .2s;
         }
-        .carousel-arrow:hover { background: rgba(16,20,70,.82); }
+        .carousel-arrow:hover { background: rgba(28, 34, 22, .78); }
         .carousel-arrow.prev { left: 3vw; }
         .carousel-arrow.next { right: 3vw; }
+        
         .carousel-counter {
           font-family: 'Cinzel', serif;
           font-size: 2.5vw;
-          color: var(--gold-bright);
+          color: var(--forest-lt);
           letter-spacing: .1em;
           margin-top: 2vw;
           text-align: center;
@@ -661,7 +649,8 @@
           
           <!-- ══════ PAGE 2 — NAMES & VERSE — BG 2 ══════ -->
           <div class="page-wrap bg2">
-          <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:24vw 10vw 18vw;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans1.png" alt="">
+          <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:35vw 10vw 18vw;">
           <p class="t-label">Matthew 19:6</p>
           <p class="t-verse">"What therefore God has joined together,<br>let no man put asunder."</p>
           <div class="divider"><span class="divider-icon">✦</span></div>
@@ -684,7 +673,8 @@
           
           <!-- ══════ PAGE 3 — WEDDING DAY — BG 1 ══════ -->
           <div class="page-wrap bg1">
-          <div class="page-content reveal" id="p3" style="padding:24vw 8vw 12vw;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans2.png" alt="">
+          <div class="page-content reveal" id="p3" style="padding:35vw 8vw 12vw;">
           <p class="t-section">Wedding Day</p>
           <p class="t-sub">August 14, 2027</p>
           <div class="divider"><span class="divider-icon">✦</span></div>
@@ -703,7 +693,8 @@
           
           <!-- ══════ PAGE 4 — THE CELEBRATION — BG 2 ══════ -->
           <div class="page-wrap bg2">
-          <div class="page-content reveal" id="p4" style="padding:24vw 8vw 12vw;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans1.png" alt="">
+          <div class="page-content reveal" id="p4" style="padding:35vw 8vw 12vw;">
           <p class="t-section">The Celebration</p>
           <div class="divider"><span class="divider-icon">✦</span></div>
           <div class="tl-wrap">
@@ -733,23 +724,25 @@
           
           <!-- ══════ PAGE 5 — GIFT REGISTRY — BG 1 ══════ -->
           <div class="page-wrap bg1">
-          <div class="page-content reveal" style="padding:24vw 8vw 12vw;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans2.png" alt="">
+          <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
           <p class="t-section">Gift Registry</p>
           <div class="divider"><span class="divider-icon">✦</span></div>
-          <p style="font-family:'IM Fell English',serif; font-size:3.8vw; line-height:2.2; color:var(--ivory-soft); font-style:italic; max-width:80%; margin:0 auto 6vw;">
+          <p style="font-family:'IM Fell English',serif; font-size:3.8vw; line-height:2.2; color:var(--ink-lt); font-style:italic; max-width:80%; margin:0 auto 6vw;">
           Your love, laughter, and presence are all we could wish for.<br>
           For those who wish, a wedding list is available at all Whish Money branches.
         </p>
           <div class="gift-box">
           <p class="t-label" style="font-size:2.8vw; margin-bottom:2vw;">Whish Money</p>
-          <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--ivory);">ACC# xxxxxx</p>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--forest-dk);">ACC# xxxxxx</p>
         </div>
           </div>
           </div>
           
           <!-- ══════ PAGE 6 — PHOTOS — BG 2 ══════ -->
           <div class="page-wrap bg2">
-          <div class="page-content reveal" style="padding:24vw 8vw 10vw; justify-content:flex-start;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans1.png" alt="">
+          <div class="page-content reveal" style="padding:35vw 8vw 10vw; justify-content:flex-start;">
           <p class="t-section" style="margin-bottom:1.5vw;">Our Story</p>
           <p class="t-sub" style="margin-bottom:6vw;">A glimpse of us</p>
           
@@ -758,7 +751,7 @@
           <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Photo 1"></div>
           <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop" alt="Photo 2"></div>
           <div class="carousel-slide"><img loading="lazy" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/weddd.jpg" alt="Photo 3"></div>
-          
+
           </div>
           <button class="carousel-arrow prev" onclick="carouselMove(-1)">‹</button>
           <button class="carousel-arrow next" onclick="carouselMove(1)">›</button>
@@ -770,7 +763,8 @@
           
           <!-- ══════ PAGE 7 — RSVP — BG 1 ══════ -->
           <div class="page-wrap bg1">
-          <div class="page-content reveal" style="padding:24vw 8vw 12vw;">
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans2.png" alt="">
+          <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
           <p class="t-section">RSVP</p>
           <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 1st of August 2027</p>
           <div class="divider"><span class="divider-icon">✦</span></div>
@@ -781,7 +775,7 @@
           <div class="step-dot" id="dot-3"></div>
           </div>
           <div id="s1" class="rsvp-step">
-          <p style="font-family:'Great Vibes',cursive; text-align:center; font-size:9vw; color:var(--ivory); margin-bottom:4vw;">Dear Guest,</p>
+          <p style="font-family:'Great Vibes',cursive; text-align:center; font-size:9vw; color:var(--forest-dk); margin-bottom:4vw;">Dear Guest,</p>
           <label class="form-label">Your Full Name</label>
           <input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah &amp; Mark Johnson">
           <p class="error-msg" id="e-name">Please enter your name.</p>
@@ -808,7 +802,7 @@
           </div>
           </div>
           <div id="s3" class="rsvp-step" style="display:none;">
-          <label class="form-label">Leave a wish <span style="color:rgba(234,223,199,.42); font-size:2.5vw;">(optional)</span></label>
+          <label class="form-label">Leave a wish <span style="color:rgba(228,231,221,.42); font-size:2.5vw;">(optional)</span></label>
           <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Thomas &amp; Sarah…"></textarea>
           <div class="btn-grid">
           <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
@@ -816,9 +810,9 @@
           </div>
           </div>
           <div id="s-ok" style="display:none; text-align:center; padding:5vw 0;">
-          <div style="font-size:10vw; margin-bottom:3vw;">✨</div>
-          <h3 style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--ivory); margin-bottom:2vw;">Thank you!</h3>
-          <p id="ok-msg" style="font-size:3.5vw; line-height:1.8; color:var(--ivory-soft);"></p>
+          <div style="font-size:10vw; margin-bottom:3vw;">🌿</div>
+          <h3 style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--forest-dk); margin-bottom:2vw;">Thank you!</h3>
+          <p id="ok-msg" style="font-size:3.5vw; line-height:1.8; color:var(--ink-lt);"></p>
           </div>
           </div>
           </div>
@@ -826,17 +820,19 @@
           
           <!-- ══════ FOOTER — BG 2 ══════ -->
           <div class="page-wrap bg2">
-          <div class="page-content" style="padding:24vw 8vw 8vw;">
-          <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--ivory); margin-bottom:2vw;">Thomas &amp; Sarah</p>
-          <p class="t-label" style="font-size:2.8vw; color:var(--gold-bright);">August 14, 2027 · Ehden, Lebanon</p>
+          <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy/Trans1.png" alt="">
+          <div class="page-content" style="padding:35vw 8vw 8vw;">
+          <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--forest-dk); margin-bottom:2vw;">Thomas &amp; Sarah</p>
+          <p class="t-label" style="font-size:2.8vw; color:var(--forest-lt);">August 14, 2027 · Ehden, Lebanon</p>
           <div class="divider" style="margin:4vw auto;"><span class="divider-icon">✦</span></div>
-          <p style="font-size:2.5vw; color:var(--ivory-soft); font-style:italic; letter-spacing:.1em;">cardia.studios@gmail.com</p>
+          <p style="font-size:2.5vw; color:var(--ink-lt); font-style:italic; letter-spacing:.1em;">cardia.studios@gmail.com</p>
           </div>
           </div>
           
-          </div>
-          
-          <script>
+          </div><!-- end #inv -->
+        
+        <script>
+          /* ── Open invitation ── */
           function openInv() {
             const c = document.getElementById('inv');
             c.classList.add('open');
@@ -856,43 +852,45 @@
         
         document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.observe(el));
         
-        (function() {
-          const grid = document.getElementById('cal-grid');
-          
-          ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
-            const el = document.createElement('div');
-            el.className = 'cal-cell hdr';
-            el.textContent = d;
-            grid.appendChild(el);
-          });
-          
-          for (let i = 0; i < 6; i++) {
-            const el = document.createElement('div');
-            el.className = 'cal-cell empty';
-            el.textContent = '.';
-            grid.appendChild(el);
-          }
-          
-          for (let d = 1; d <= 31; d++) {
-            const el = document.createElement('div');
-            el.className = 'cal-cell';
+        /* ── Calendar ── */
+          (function() {
+            const grid = document.getElementById('cal-grid');
             
-            if (d === 14) {
-              el.className += ' highlight';
-              el.innerHTML =
-                '<span style="position:relative;z-index:1;font-family:Cinzel,serif;color:#f7f0df;">' + d + '</span>'
-              + '<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;filter: drop-shadow(0 0 2px rgba(217,177,95,0.22));">'
-              + '<path d="M22 33C22 33 10 25 10 17C10 12.5 13.5 10 17 10C19.5 10 21 11.5 22 13C23 11.5 24.5 10 27 10C30.5 10 34 12.5 34 17C34 25 22 33 22 33Z" stroke="#e4bf74" stroke-width="1.3" fill="none" opacity="0.95"/>'
-              + '</svg>';
-            } else {
+            ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d => {
+              const el = document.createElement('div');
+              el.className = 'cal-cell hdr';
               el.textContent = d;
+              grid.appendChild(el);
+            });
+            
+            for (let i = 0; i < 6; i++) {
+              const el = document.createElement('div');
+              el.className = 'cal-cell empty';
+              el.textContent = '.';
+              grid.appendChild(el);
             }
             
-            grid.appendChild(el);
-          }
-        })();
+            for (let d = 1; d <= 31; d++) {
+              const el = document.createElement('div');
+              el.className = 'cal-cell';
+              
+              if (d === 14) {
+                el.className += ' highlight';
+                el.innerHTML =
+                  '<span style="position:relative;z-index:1;font-family:Cinzel,serif;color:#f2f3eb;">' + d + '</span>'
+                + '<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;filter: drop-shadow(0 0 1.5px rgba(242,243,235,0.18));">'
+                + '<path d="M22 33C22 33 10 25 10 17C10 12.5 13.5 10 17 10C19.5 10 21 11.5 22 13C23 11.5 24.5 10 27 10C30.5 10 34 12.5 34 17C34 25 22 33 22 33Z" stroke="#dfe4d7" stroke-width="1.2" fill="none" opacity="0.95"/>'
+                + '</svg>';
+              } else {
+                el.textContent = d;
+              }
+              
+              grid.appendChild(el);
+            }
+          })();
         
-        const TARGET = new Date('2027-08-14T18:00:00');
+        /* ── Countdown ── */
+          const TARGET = new Date('2027-08-14T18:00:00');
         
         function tick() {
           const diff = Math.max(0, TARGET - new Date());
@@ -906,45 +904,47 @@
         tick();
         setInterval(tick, 1000);
         
-        (function() {
-          const track = document.getElementById('carousel-track');
-          const dotsWrap = document.getElementById('carousel-dots');
-          const counter = document.getElementById('carousel-counter');
-          const total = track.children.length;
-          let current = 0;
-          
-          for (let i = 0; i < total; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-            dot.addEventListener('click', () => goTo(i));
-            dotsWrap.appendChild(dot);
-          }
-          
-          function goTo(idx) {
-            current = (idx + total) % total;
-            track.style.transform = 'translateX(-' + (current * 100) + '%)';
-            document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-            counter.textContent = (current + 1) + ' / ' + total;
-          }
-          
-          window.carouselMove = function(dir) {
-            goTo(current + dir);
-          };
-          
-          let startX = 0;
-          const carousel = document.getElementById('carousel');
-          
-          carousel.addEventListener('touchstart', e => {
-            startX = e.touches[0].clientX;
-          }, { passive: true });
-          
-          carousel.addEventListener('touchend', e => {
-            const dx = e.changedTouches[0].clientX - startX;
-            if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
-          }, { passive: true });
-        })();
+        /* ── Photo Carousel ── */
+          (function() {
+            const track = document.getElementById('carousel-track');
+            const dotsWrap = document.getElementById('carousel-dots');
+            const counter = document.getElementById('carousel-counter');
+            const total = track.children.length;
+            let current = 0;
+            
+            for (let i = 0; i < total; i++) {
+              const dot = document.createElement('div');
+              dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+              dot.addEventListener('click', () => goTo(i));
+              dotsWrap.appendChild(dot);
+            }
+            
+            function goTo(idx) {
+              current = (idx + total) % total;
+              track.style.transform = 'translateX(-' + (current * 100) + '%)';
+              document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+              counter.textContent = (current + 1) + ' / ' + total;
+            }
+            
+            window.carouselMove = function(dir) {
+              goTo(current + dir);
+            };
+            
+            let startX = 0;
+            const carousel = document.getElementById('carousel');
+            
+            carousel.addEventListener('touchstart', e => {
+              startX = e.touches[0].clientX;
+            }, { passive: true });
+            
+            carousel.addEventListener('touchend', e => {
+              const dx = e.changedTouches[0].clientX - startX;
+              if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+            }, { passive: true });
+          })();
         
-        let gCount = 1;
+        /* ── RSVP ── */
+          let gCount = 1;
         
         document.querySelectorAll('input[name="attend"]').forEach(r => {
           r.addEventListener('change', () => {
@@ -1019,7 +1019,7 @@
               document.querySelector('.step-dots').style.display = 'none';
               document.getElementById('s-ok').style.display = 'block';
               document.getElementById('ok-msg').innerHTML = yes
-              ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br>See you on August 14th! ✨"
+              ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br>See you on August 14th! 🌿"
               : "We'll miss you, <strong>" + name + "</strong>.<br>Thank you for letting us know.";
             } else {
               throw new Error();
