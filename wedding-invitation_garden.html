@@ -9,7 +9,7 @@
 <style>
 :root {
   --rose:     #c9958a;
-  --rose-lt:  #e8c4b8;
+  --rose-lt:  #e8c4b8;a
   --rose-dk:  #8a5a52;
   --blush:    #f5ece8;
   --petal:    #fdf8f6;
@@ -201,10 +201,79 @@ textarea.form-field:focus { border-color: var(--rose); }
 .error-msg { font-size: 3vw; color: var(--rose-dk); margin-top: 1.5vw; display: none; }
 
 /* ── Photo grid ── */
-.photo-grid { columns: 2; gap: 2vw; width: 100%; }
-.photo-item { break-inside: avoid; margin-bottom: 2vw; overflow: hidden; }
-.photo-item img { width: 100%; display: block; transition: transform .5s; }
-.photo-item:hover img { transform: scale(1.03); }
+.carousel-wrap{
+  width:100%;
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.25);
+}
+.carousel-track{
+  display:flex;
+  transition:transform .4s cubic-bezier(.25,.46,.45,.94);
+  will-change:transform;
+}
+.carousel-slide{
+  min-width:100%;
+  position:relative;
+}
+.carousel-slide img{
+  width:100%;
+  height:75vw;
+  object-fit:cover;
+  display:block;
+  filter:brightness(.85) saturate(.9) contrast(1.05);
+}
+.carousel-dots{
+  display:flex;
+  justify-content:center;
+  gap:2.5vw;
+  margin-top:4vw;
+}
+.carousel-dot{
+  width:2vw;
+  height:2vw;
+  border-radius:50%;
+  background:rgba(201,169,110,.3);
+  border:1px solid rgba(201,169,110,.45);
+  cursor:pointer;
+  transition:background .3s, transform .3s;
+}
+.carousel-dot.active{
+  background:var(--gold);
+  transform:scale(1.3);
+}
+.carousel-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  background:rgba(0,0,0,.35);
+  border:1px solid var(--border);
+  color:var(--gold-lt);
+  width:9vw;
+  height:9vw;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:4vw;
+  cursor:pointer;
+  backdrop-filter:blur(4px);
+  transition:background .2s;
+}
+.carousel-arrow:hover{background:rgba(201,169,110,.15);}
+.carousel-arrow.prev{left:3vw;}
+.carousel-arrow.next{right:3vw;}
+.carousel-counter{
+  font-family:'Montserrat',sans-serif;
+  font-size:2.5vw;
+  color:var(--gold);
+  letter-spacing:.1em;
+  margin-top:2vw;
+  text-align:center;
+}
+
 
 /* ── Gift ── */
 .gift-box { background: rgba(255,255,255,.7); backdrop-filter: blur(6px); border: 1px solid var(--border); display: inline-block; padding: 4vw 9vw; }
@@ -220,9 +289,9 @@ textarea.form-field:focus { border-color: var(--rose); }
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/1.png" alt="">
   <div class="page-content reveal">
     <p class="t-eyebrow">Together with their families</p>
-    <h1 class="t-name">Sleiman</h1>
-    <p class="t-script">&amp; Emily</p>
-    <p class="t-date">August 27, 2025 · Ehden, Lebanon</p>
+    <h1 class="t-name">Thomas</h1>
+    <p class="t-script">&amp; Sarah</p>
+    <p class="t-date">August 14, 2027 · Ehden, Lebanon</p>
     <button onclick="openInv()" class="btn-open">Open Invitation ✦</button>
   </div>
 </div>
@@ -242,19 +311,19 @@ textarea.form-field:focus { border-color: var(--rose); }
     <div class="parents-wrap">
       <div>
         <p class="t-label" style="font-size:2.2vw;">Groom's Parents</p>
-        <p class="t-parent">Fouad &amp; Nayla Sayssa</p>
+        <p class="t-parent">Robert &amp; Tina Martin</p>
       </div>
       <div>
         <p class="t-label" style="font-size:2.2vw;">Bride's Parents</p>
-        <p class="t-parent">Tony &amp; Vanessa Almawi</p>
+        <p class="t-parent">Michael &amp; Anne Clrake</p>
       </div>
     </div>
 
     <p class="t-honor">Request the honor of your presence<br>at the wedding of their son and daughter</p>
 
-    <h2 class="t-bigname">Sleiman</h2>
+    <h2 class="t-bigname">Thomas</h2>
     <p class="t-and">and</p>
-    <h2 class="t-bigname">Emily</h2>
+    <h2 class="t-bigname">Sarah</h2>
 
   </div>
 </div>
@@ -265,12 +334,12 @@ textarea.form-field:focus { border-color: var(--rose); }
   <div class="page-content reveal" id="p3" style="padding:12vw 8vw;">
 
     <p class="t-section">Wedding Day</p>
-    <p class="t-sub">August 27, 2025</p>
+    <p class="t-sub">August 14, 2027</p>
 
     <div class="divider"><span class="divider-icon">✦</span></div>
 
     <div class="cal-box">
-      <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2025</p>
+      <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2027</p>
       <div class="cal-grid" id="cal-grid"></div>
     </div>
     <div class="countdown">
@@ -330,7 +399,7 @@ textarea.form-field:focus { border-color: var(--rose); }
     </p>
     <div class="gift-box">
       <p class="t-label" style="font-size:2.8vw; margin-bottom:2vw;">Whish Money</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--rose-dk);">ACC# 2024975</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--rose-dk);">ACC# xxxxxx</p>
     </div>
 
   </div>
@@ -343,12 +412,19 @@ textarea.form-field:focus { border-color: var(--rose); }
 
     <p class="t-section" style="margin-bottom:1.5vw;">Our Story</p>
     <p class="t-sub" style="margin-bottom:6vw;">A glimpse of us</p>
-    <div class="photo-grid">
-      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600&auto=format&fit=crop" alt=""></div>
-      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=600&auto=format&fit=crop" alt=""></div>
-      <div class="photo-item"><img loading="lazy" src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?q=80&w=600&auto=format&fit=crop" alt=""></div>
-      <div class="photo-item"><img loading="lazy" src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></div>
-    </div>
+   <div class="carousel-wrap" id="carousel">
+  <div class="carousel-track" id="carousel-track">
+    <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop" alt="Photo 1"></div>
+    <div class="carousel-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=1200&auto=format&fit=crop" alt="Photo 2"></div>
+    <div class="carousel-slide"><img loading="lazy" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/weddd.jpg" alt="Photo 3"></div>
+    <div class="carousel-slide"><img loading="lazy" src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Photo 4"></div>
+  </div>
+  <button class="carousel-arrow prev" onclick="carouselMove(-1)">‹</button>
+  <button class="carousel-arrow next" onclick="carouselMove(1)">›</button>
+</div>
+<div class="carousel-counter" id="carousel-counter">1 / 4</div>
+<div class="carousel-dots" id="carousel-dots"></div>
+
 
   </div>
 </div>
@@ -359,7 +435,7 @@ textarea.form-field:focus { border-color: var(--rose); }
   <div class="page-content reveal" style="padding:12vw 8vw;">
 
     <p class="t-section">RSVP</p>
-    <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 18th of August 2025</p>
+    <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 1st of August 2027</p>
     <div class="divider"><span class="divider-icon">✦</span></div>
 
     <div class="rsvp-box">
@@ -378,8 +454,8 @@ textarea.form-field:focus { border-color: var(--rose); }
       <div id="s2" class="rsvp-step" style="display:none;">
         <label class="form-label">Will you be attending?</label>
         <div class="attend-grid">
-          <label class="attend-opt"><input type="radio" name="attend" value="yes"><div class="attend-box"><div class="attend-icon">🌸</div><div class="attend-label">Joyfully accepts</div></div></label>
-          <label class="attend-opt"><input type="radio" name="attend" value="no"><div class="attend-box"><div class="attend-icon">🙏</div><div class="attend-label">Regretfully declines</div></div></label>
+          <label class="attend-opt"><input type="radio" name="attend" value="yes"><div class="attend-box"><div class="attend-label">Joyfully accepts</div></div></label>
+          <label class="attend-opt"><input type="radio" name="attend" value="no"><div class="attend-box"><div class="attend-label">Regretfully declines</div></div></label>
         </div>
         <div id="count-wrap" style="display:none; margin-bottom:3vw;">
           <label class="form-label">Number of guests</label>
@@ -397,7 +473,7 @@ textarea.form-field:focus { border-color: var(--rose); }
       </div>
       <div id="s3" class="rsvp-step" style="display:none;">
         <label class="form-label">Leave a wish <span style="color:var(--rose-lt); font-size:2.5vw;">(optional)</span></label>
-        <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Sleiman &amp; Emily…"></textarea>
+        <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Thomas &amp; Sarah…"></textarea>
         <div class="btn-grid">
           <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
           <button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✦</button>
@@ -417,8 +493,8 @@ textarea.form-field:focus { border-color: var(--rose); }
 <div class="page-wrap">
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral2/2.png" alt="">
   <div class="page-content" style="padding:8vw;">
-    <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--rose-dk); margin-bottom:2vw;">Sleiman &amp; Emily</p>
-    <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 27, 2025 · Ehden, Lebanon</p>
+    <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--rose-dk); margin-bottom:2vw;">Thomas &amp; Sarah</p>
+    <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 14, 2027 · Ehden, Lebanon</p>
     <div class="divider" style="margin:4vw auto;"><span class="divider-icon">✦</span></div>
     <p style="font-size:2.5vw; color:var(--ink-lt); font-weight:300; letter-spacing:.1em;">cardia.studios@gmail.com</p>
   </div>
@@ -449,14 +525,22 @@ document.querySelectorAll('.page-wrap:first-child .reveal').forEach(el => ro.obs
   for(let i=0; i<4; i++) { const el = document.createElement('div'); el.className = 'cal-cell empty'; el.textContent = '.'; grid.appendChild(el); }
   for(let d=1; d<=31; d++) {
     const el = document.createElement('div'); el.className = 'cal-cell';
-    if(d===27) { el.className += ' highlight'; el.innerHTML = '<span style="position:relative;z-index:1;">'+d+'</span>'; }
+    if(d===14) {
+  el.className += ' highlight';
+  el.innerHTML =
+    '<span style="position:relative;z-index:1;font-family:Cinzel,serif;">'+d+'</span>'
+    +'<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;filter: drop-shadow(0 0 1.5px rgba(74,107,58,0.4));">'
+    +'<path d="M22 33C22 33 10 25 10 17C10 12.5 13.5 10 17 10C19.5 10 21 11.5 22 13C23 11.5 24.5 10 27 10C30.5 10 34 12.5 34 17C34 25 22 33 22 33Z" stroke="#4a6b3a" stroke-width="1.2" fill="none" opacity="0.85"/>'
+    +'</svg>';
+}
+
     else { el.textContent = d; }
     grid.appendChild(el);
   }
 })();
 
 // Countdown
-const TARGET = new Date('2025-08-27T18:00:00');
+const TARGET = new Date('2027-08-14T18:00:00');
 function tick() {
   const diff = Math.max(0, TARGET - new Date());
   const pad = n => String(n).padStart(2,'0');
@@ -480,7 +564,7 @@ function goStep(from, to) {
   document.getElementById('s'+to).style.display='block';
   [1,2,3].forEach(i => document.getElementById('dot-'+i).classList.toggle('on', i<=to));
 }
-const COUPLE_NAME = 'Sleiman & Emily', CLIENT_EMAIL = 'nemer.david9@gmail.com';
+const COUPLE_NAME = 'Thomas & Sarah', CLIENT_EMAIL = 'nemer.david9@gmail.com';
 function submitRSVP() {
   const name = document.getElementById('f-name').value.trim();
   const att = document.querySelector('input[name="attend"]:checked');
@@ -498,11 +582,62 @@ function submitRSVP() {
       document.querySelector('.step-dots').style.display='none';
       document.getElementById('s-ok').style.display='block';
       document.getElementById('ok-msg').innerHTML = yes
-        ? "We're so excited to celebrate with you, <strong>"+name+"</strong>!<br>See you on August 27th! 🌸"
+        ? "We're so excited to celebrate with you, <strong>"+name+"</strong>!<br>See you on August 14th! 🌸"
         : "We'll miss you, <strong>"+name+"</strong>.<br>Thank you for letting us know.";
     } else { throw new Error(); }
   }).catch(() => { if(sendBtn) { sendBtn.textContent='Send ✦'; sendBtn.disabled=false; } alert('Something went wrong. Please try again.'); });
 }
+
+
+(function(){
+  const track=document.getElementById('carousel-track');
+  const dotsWrap=document.getElementById('carousel-dots');
+  const counter=document.getElementById('carousel-counter');
+  const total=track.children.length;
+  let current=0;
+
+  for(let i=0;i<total;i++){
+    const dot=document.createElement('div');
+    dot.className='carousel-dot'+(i===0?' active':'');
+    dot.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(dot);
+  }
+
+  function goTo(idx){
+    current=(idx+total)%total;
+    track.style.transform='translateX(-'+(current*100)+'%)';
+    document.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+    counter.textContent=(current+1)+' / '+total;
+  }
+
+  window.carouselMove=function(dir){
+    goTo(current+dir);
+  };
+
+  let startX=0;
+  const carousel=document.getElementById('carousel');
+
+  carousel.addEventListener('touchstart',e=>{
+    startX=e.touches[0].clientX;
+  },{passive:true});
+
+  carousel.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-startX;
+    if(Math.abs(dx)>40) goTo(current+(dx<0?1:-1));
+  },{passive:true});
+})();
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
