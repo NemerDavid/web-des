@@ -235,8 +235,8 @@ textarea.form-field:focus { border-color: var(--sage); }
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral4/1.png" alt="">
   <div class="page-content reveal">
     <p class="t-eyebrow">Together with their families</p>
-    <h1 class="t-name">Sleiman</h1>
-    <p class="t-script">&amp; Emily</p>
+    <h1 class="t-name">Thomas</h1>
+    <p class="t-script">&amp; Sarah</p>
     <p class="t-date">August 27, 2025 · Ehden, Lebanon</p>
     <button onclick="openInv()" class="btn-open">Open Invitation ✦</button>
   </div>
@@ -260,19 +260,19 @@ textarea.form-field:focus { border-color: var(--sage); }
     <div class="parents-wrap">
       <div>
         <p class="t-label" style="font-size:2.2vw;">Groom's Parents</p>
-        <p class="t-parent">Fouad &amp; Nayla Sayssa</p>
+        <p class="t-parent">Robert &amp; Tina Martin</p>
       </div>
       <div>
         <p class="t-label" style="font-size:2.2vw;">Bride's Parents</p>
-        <p class="t-parent">Tony &amp; Vanessa Almawi</p>
+        <p class="t-parent">Michael &amp; Anna Clarke</p>
       </div>
     </div>
 
     <p class="t-honor">Request the honor of your presence<br>at the wedding of their son and daughter</p>
 
-    <h2 class="t-bigname">Sleiman</h2>
+    <h2 class="t-bigname">Thomas</h2>
     <p class="t-and">and</p>
-    <h2 class="t-bigname">Emily</h2>
+    <h2 class="t-bigname">Sarah</h2>
 
   </div>
 </div>
@@ -430,7 +430,7 @@ textarea.form-field:focus { border-color: var(--sage); }
       </div>
       <div id="s3" class="rsvp-step" style="display:none;">
         <label class="form-label">Leave a wish <span style="color:var(--sage-lt); font-size:2.5vw;">(optional)</span></label>
-        <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Sleiman &amp; Emily…"></textarea>
+        <textarea id="f-msg" class="form-field" rows="4" placeholder="Share a wish for Thomas &amp; Sarah…"></textarea>
         <div class="btn-grid">
           <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
           <button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✦</button>
@@ -453,7 +453,7 @@ textarea.form-field:focus { border-color: var(--sage); }
 <div class="page-wrap">
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral4/2.png" alt="">
   <div class="page-content" style="padding:8vw;">
-    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11vw; color:var(--sage-dk); margin-bottom:2vw;">Sleiman &amp; Emily</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:11vw; color:var(--sage-dk); margin-bottom:2vw;">Thomas &amp; Sarah</p>
     <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 27, 2025 · Ehden, Lebanon</p>
     <div class="divider" style="margin:4vw auto;"><span class="divider-icon">✦</span></div>
     <p style="font-size:2.5vw; color:var(--ink-lt); font-weight:300; letter-spacing:.1em;">cardia.studios@gmail.com</p>
@@ -516,7 +516,7 @@ function goStep(from, to) {
   document.getElementById('s'+to).style.display='block';
   [1,2,3].forEach(i => document.getElementById('dot-'+i).classList.toggle('on', i<=to));
 }
-const COUPLE_NAME = 'Sleiman & Emily', CLIENT_EMAIL = 'nemer.david9@gmail.com';
+const COUPLE_NAME = 'Thomas & Sarah', CLIENT_EMAIL = 'nemer.david9@gmail.com';
 function submitRSVP() {
   const name = document.getElementById('f-name').value.trim();
   const att = document.querySelector('input[name="attend"]:checked');
