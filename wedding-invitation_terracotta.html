@@ -178,7 +178,7 @@
             <p class="t-eyebrow">Together with their families</p>
             <h1 class="t-name">Thomas</h1>
             <p class="t-script">&amp; Sarah</p>
-            <p class="t-date">August 27, 2025 · Ehden, Lebanon</p>
+            <p class="t-date">August 14, 2027 · Ehden, Lebanon</p>
             <button onclick="openInv()" class="btn-open">Open Invitation ✦</button>
             </div>
             </div>
@@ -212,10 +212,10 @@
             <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/2.png" alt="">
             <div class="page-content reveal" id="p3" style="padding:12vw 8vw;">
             <p class="t-section">Wedding Day</p>
-            <p class="t-sub">August 27, 2025</p>
+            <p class="t-sub">August 14, 2027</p>
             <div class="divider"><span class="divider-icon">✦</span></div>
             <div class="cal-box">
-            <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2025</p>
+            <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2027</p>
             <div class="cal-grid" id="cal-grid"></div>
             </div>
             <div class="countdown">
@@ -293,7 +293,7 @@
             <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/2.png" alt="">
             <div class="page-content reveal" style="padding:12vw 8vw;">
             <p class="t-section">RSVP</p>
-            <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 18th of August 2025</p>
+            <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 1st of August 2027</p>
             <div class="divider"><span class="divider-icon">✦</span></div>
             <div class="rsvp-box">
             <div class="step-dots"><div class="step-dot on" id="dot-1"></div><div class="step-dot" id="dot-2"></div><div class="step-dot" id="dot-3"></div></div>
@@ -338,7 +338,7 @@
             <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/2.png" alt="">
             <div class="page-content" style="padding:8vw;">
             <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--gold-lt); margin-bottom:2vw;">Thomas &amp; Sarah</p>
-            <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 27, 2025 · Ehden, Lebanon</p>
+            <p class="t-label" style="font-size:2.8vw; color:var(--ink-lt);">August 14, 2027 · Ehden, Lebanon</p>
             <div class="divider" style="margin:4vw auto;"><span class="divider-icon">✦</span></div>
             <p style="font-size:2.5vw; color:var(--ink-lt); font-weight:300; letter-spacing:.1em;">cardia.studios@gmail.com</p>
             </div>
@@ -356,17 +356,18 @@
             for(let i=0;i<4;i++){const el=document.createElement('div');el.className='cal-cell empty';el.textContent='.';grid.appendChild(el);}
             for(let d=1;d<=31;d++){
               const el=document.createElement('div');el.className='cal-cell';
-              if(d===27){
-                el.className+=' highlight';
-                el.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span>'
-                +'<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;">'
-                +'<path d="M22 34s-12-7.5-12-16a8 8 0 0 1 12-6.93A8 8 0 0 1 34 18c0 8.5-12 16-12 16z" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity=".9"/>'
-                +'</svg>';
-              }else{el.textContent=d;}
+              if(d===14) {
+  el.className += ' highlight';
+  el.innerHTML =
+    '<span style="position:relative;z-index:1;font-family:Cinzel,serif;">'+d+'</span>'
+    +'<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;filter: drop-shadow(0 0 1.5px rgba(74,107,58,0.4));">'
+    +'<path d="M22 33C22 33 10 25 10 17C10 12.5 13.5 10 17 10C19.5 10 21 11.5 22 13C23 11.5 24.5 10 27 10C30.5 10 34 12.5 34 17C34 25 22 33 22 33Z" stroke="#4a6b3a" stroke-width="1.2" fill="none" opacity="0.85"/>'
+    +'</svg>';
+}else{el.textContent=d;}
               grid.appendChild(el);
             }
           })();
-          const TARGET=new Date('2025-08-27T18:00:00');
+          const TARGET=new Date('2027-08-14T18:00:00');
           function tick(){const diff=Math.max(0,TARGET-new Date());const pad=n=>String(n).padStart(2,'0');document.getElementById('cd-d').textContent=Math.floor(diff/86400000);document.getElementById('cd-h').textContent=pad(Math.floor(diff/3600000)%24);document.getElementById('cd-m').textContent=pad(Math.floor(diff/60000)%60);document.getElementById('cd-s').textContent=pad(Math.floor(diff/1000)%60);}
           tick();setInterval(tick,1000);
           let gCount=1;
@@ -376,6 +377,13 @@
           const COUPLE_NAME='Thomas & Sarah',CLIENT_EMAIL='nemer.david9@gmail.com';
           function submitRSVP(){const name=document.getElementById('f-name').value.trim();const att=document.querySelector('input[name="attend"]:checked');const msg=document.getElementById('f-msg')?document.getElementById('f-msg').value.trim():'';const yes=att&&att.value==='yes';const sendBtn=document.querySelector('#s3 .btn-solid');if(sendBtn){sendBtn.textContent='Sending...';sendBtn.disabled=true;}fetch('https://formsubmit.co/ajax/'+CLIENT_EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:'New RSVP - '+COUPLE_NAME,_template:'table',name,attending:yes?'Yes':'No',guests:yes?gCount:0,message:msg||'(none)'})}).then(r=>r.json()).then(data=>{if(data.success==='true'||data.success===true){['s1','s2','s3'].forEach(id=>document.getElementById(id).style.display='none');document.querySelector('.step-dots').style.display='none';document.getElementById('s-ok').style.display='block';document.getElementById('ok-msg').innerHTML=yes?"We're so excited to celebrate with you, <strong>"+name+"</strong>!<br>See you on August 27th! ✨":"We'll miss you, <strong>"+name+"</strong>.<br>Thank you for letting us know.";}else{throw new Error();}}).catch(()=>{if(sendBtn){sendBtn.textContent='Send ✦';sendBtn.disabled=false;}alert('Something went wrong. Please try again.');});}
           
+          
+          
+          
+
+          
+          
+          /* ── Photo Carousel ── */
           (function(){
             const track=document.getElementById('carousel-track');
             const dotsWrap=document.getElementById('carousel-dots');
