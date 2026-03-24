@@ -24,7 +24,7 @@
 html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
 body { font-family: 'IM Fell English', serif; color: var(--ink); background: var(--sage); }
 
-/* ── Page wrapper — CSS background so it always covers full height ── */
+/* ── Page wrapper ── */
 .page-wrap {
   width: 100%;
   position: relative;
@@ -32,13 +32,19 @@ body { font-family: 'IM Fell English', serif; color: var(--ink); background: var
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
 }
-/* bg1 and bg2 classes set the background image via CSS */
-.page-wrap.bg1 { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/1.png'); }
-.page-wrap.bg2 { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png'); }
+
+/* The background is a pseudo-element that always stretches to full height */
+.page-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: 100% 100%; /* stretch both axes to fill completely */
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.page-wrap.bg1::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/1.png'); }
+.page-wrap.bg2::before { background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/2.png'); }
 
 .page-content {
   position: relative;
@@ -53,7 +59,7 @@ body { font-family: 'IM Fell English', serif; color: var(--ink); background: var
   text-align: center;
 }
 
-/* ── Torn page overlay at top of each inner page ── */
+/* ── Torn page header ── */
 .torn-header {
   position: absolute;
   top: 0; left: 0;
@@ -264,8 +270,8 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ PAGE 3 — WEDDING DAY ══════ -->
-<div class="page-wrap bg2">
+<!-- ══════ PAGE 3 — WEDDING DAY — BG 1 ══════ -->
+<div class="page-wrap bg1">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" id="p3" style="padding:35vw 8vw 12vw;">
     <p class="t-section">Wedding Day</p>
@@ -284,7 +290,7 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ PAGE 4 — THE CELEBRATION ══════ -->
+<!-- ══════ PAGE 4 — THE CELEBRATION — BG 2 ══════ -->
 <div class="page-wrap bg2">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" id="p4" style="padding:35vw 8vw 12vw;">
@@ -315,8 +321,8 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ PAGE 5 — GIFT REGISTRY ══════ -->
-<div class="page-wrap bg2">
+<!-- ══════ PAGE 5 — GIFT REGISTRY — BG 1 ══════ -->
+<div class="page-wrap bg1">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
     <p class="t-section">Gift Registry</p>
@@ -332,7 +338,7 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ PAGE 6 — PHOTOS ══════ -->
+<!-- ══════ PAGE 6 — PHOTOS — BG 2 ══════ -->
 <div class="page-wrap bg2">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" style="padding:35vw 8vw 10vw; justify-content:flex-start;">
@@ -347,8 +353,8 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ PAGE 7 — RSVP ══════ -->
-<div class="page-wrap bg2">
+<!-- ══════ PAGE 7 — RSVP — BG 1 ══════ -->
+<div class="page-wrap bg1">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content reveal" style="padding:35vw 8vw 12vw;">
     <p class="t-section">RSVP</p>
@@ -404,8 +410,8 @@ textarea.form-field:focus { border-color: var(--forest); }
   </div>
 </div>
 
-<!-- ══════ FOOTER — BG 1 ══════ -->
-<div class="page-wrap bg1">
+<!-- ══════ FOOTER — BG 2 ══════ -->
+<div class="page-wrap bg2">
   <img class="torn-header" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Elvish/Trans3.png" alt="">
   <div class="page-content" style="padding:35vw 8vw 8vw;">
     <p style="font-family:'Great Vibes',cursive; font-size:11vw; color:var(--forest-dk); margin-bottom:2vw;">Sleiman &amp; Emily</p>
