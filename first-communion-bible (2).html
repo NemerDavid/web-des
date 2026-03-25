@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>First Holy Communion — Sofia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --burgundy:   #5a1a2a;
+  --burgundy-lt:#7a2a3a;
+  --burgundy-dk:#3a0a1a;
+  --gold:       #c9a84c;
+  --gold-lt:    #e8cc80;
+  --gold-dk:    #a07828;
+  --ivory:      #fdf6e8;
+  --ivory-dk:   #f0e4c8;
+  --ink:        #2a1a0a;
+  --ink-lt:     #5a3a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background: #0a0404; font-family: 'EB Garamond', serif; color: var(--ink); user-select: none; }
+
+/* ── Scene (closed state — full screen centered) ── */
+#scene-closed {
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%);
+  perspective: 1400px;
+  position: relative;
+}
+
+/* ── Bible wrapper for 3D flip ── */
+.bible-3d {
+  width: 82vw; max-width: 370px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* The cover flips on its LEFT edge (spine) */
+.cover-flipper {
+  width: 100%;
+  padding-top: 138%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: left center;
+  transition: transform 1.2s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+  z-index: 10;
+}
+.cover-flipper:hover .cover-face { box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), inset -3px 0 8px rgba(0,0,0,.4), 8px 12px 40px rgba(0,0,0,.7), 0 0 30px rgba(201,168,76,.08); }
+.cover-flipper.open { transform: rotateY(-180deg); pointer-events: none; cursor: default; }
+
+/* Front face */
+.cover-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: linear-gradient(135deg, var(--burgundy-dk) 0%, var(--burgundy) 40%, var(--burgundy-lt) 55%, var(--burgundy) 70%, var(--burgundy-dk) 100%);
+  border-radius: 3px 10px 10px 3px;
+  box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), inset -3px 0 8px rgba(0,0,0,.4), 4px 8px 30px rgba(0,0,0,.6);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 8vw 6vw; overflow: hidden;
+  transition: box-shadow .3s;
+}
+.cover-face::before { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"); border-radius: inherit; pointer-events: none; }
+.cover-face::after { content: ""; position: absolute; inset: 4%; border: 1.5px solid rgba(201,168,76,.45); border-radius: 2px; pointer-events: none; }
+
+/* Inside of cover (shown mid-flip) */
+.cover-back {
+  position: absolute; inset: 0;
+  backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #2a1208 0%, #3a1a10 100%);
+  border-radius: 10px 3px 3px 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.cover-back-inner { width: 85%; height: 85%; border: 1px solid rgba(201,168,76,.2); display: flex; align-items: center; justify-content: center; }
+.cover-back-inner svg { width: 30%; opacity: .2; }
+
+/* Spine */
+.spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; box-shadow: -2px 0 6px rgba(0,0,0,.5); z-index: 20; pointer-events: none; }
+
+/* Cover content */
+.cross { position: relative; z-index: 1; margin-bottom: 4vw; }
+.cross svg { width: 16vw; max-width: 70px; filter: drop-shadow(0 0 8px rgba(201,168,76,.6)); }
+.cover-title { position: relative; z-index: 1; text-align: center; }
+.cover-title h1 { font-family: 'Cinzel Decorative', serif; font-size: 5.2vw; color: var(--gold-lt); line-height: 1.3; letter-spacing: .06em; text-shadow: 0 0 20px rgba(201,168,76,.5), 0 2px 4px rgba(0,0,0,.5); margin-bottom: 2vw; }
+.cover-name { font-family: 'Great Vibes', cursive; font-size: 11vw; color: var(--gold-lt); text-shadow: 0 0 30px rgba(201,168,76,.7); margin: 2.5vw 0; position: relative; z-index: 1; }
+.cover-date { font-family: 'Cinzel', serif; font-size: 2.6vw; color: rgba(232,204,128,.65); letter-spacing: .15em; text-transform: uppercase; position: relative; z-index: 1; margin-top: 2.5vw; }
+.tap-hint { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.5vw; animation: hintPulse 2s ease-in-out infinite; }
+.tap-hint span { font-family: 'Cinzel', serif; font-size: 2.5vw; color: rgba(232,204,128,.75); letter-spacing: .2em; text-transform: uppercase; }
+.tap-hint svg { width: 5vw; opacity: .7; }
+@keyframes hintPulse { 0%,100%{opacity:.6;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-3px)} }
+
+/* ══════════════════════════════
+   OPEN BIBLE — separate full page
+   ══════════════════════════════ */
+#scene-open {
+  display: none;
+  width: 100vw;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%);
+  padding: 6vw 0 10vw;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+}
+#scene-open.visible { display: flex; }
+
+.open-book {
+  width: 82vw; max-width: 370px;
+  position: relative;
+}
+
+.open-spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; z-index: 5; pointer-events: none; }
+
+.book-spread {
+  width: 100%;
+  background: var(--ivory);
+  border-radius: 3px 10px 10px 3px;
+  box-shadow: -8px 0 0 #1a0808, -14px 4px 30px rgba(0,0,0,.9), 0 10px 40px rgba(0,0,0,.6), inset 6px 0 16px rgba(0,0,0,.1);
+  overflow: hidden;
+  position: relative;
+  /* Page-turn perspective */
+  perspective: 800px;
+}
+
+/* Parchment overlay */
+.book-spread::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 4; }
+.book-spread::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,.12), transparent); z-index: 5; pointer-events: none; }
+
+/* Page flip animation overlay */
+.flip-sheet {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, var(--ivory-dk) 0%, var(--ivory) 60%);
+  transform-origin: left center;
+  z-index: 10;
+  border-radius: 0 10px 10px 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.flip-sheet.animate {
+  animation: sheetFlip .55s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes sheetFlip {
+  0%   { opacity:1; transform: rotateY(0deg); box-shadow: none; }
+  40%  { opacity:1; transform: rotateY(-70deg); box-shadow: -6px 0 18px rgba(0,0,0,.2); }
+  100% { opacity:0; transform: rotateY(-180deg); }
+}
+
+/* ── Page content ── */
+.page { display: none; flex-direction: column; align-items: center; text-align: center; padding: 7vw 6vw 5vw; position: relative; z-index: 6; animation: pgIn .35s ease; }
+.page.active { display: flex; }
+@keyframes pgIn { from{opacity:0;transform:translateX(6px)} to{opacity:1;transform:none} }
+
+/* ── Book typography ── */
+.page-num { font-family: 'Cinzel', serif; font-size: 2.5vw; color: var(--gold-dk); letter-spacing: .1em; margin-bottom: 3.5vw; opacity: .7; }
+.ornament { display: flex; align-items: center; gap: 2vw; margin: 3.5vw auto; width: 80%; color: var(--gold); }
+.ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to var(--d,right), transparent, var(--gold-dk)); opacity: .6; }
+.ornament svg { width: 5vw; flex-shrink: 0; }
+.book-eyebrow { font-family: 'Cinzel', serif; font-size: 2.5vw; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 2.5vw; opacity: .85; }
+.book-bigname { font-family: 'Great Vibes', cursive; font-size: 16vw; color: var(--burgundy); line-height: 1.1; text-shadow: 0 2px 8px rgba(90,26,42,.2); }
+.book-verse { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.8vw; color: var(--ink-lt); line-height: 1.9; max-width: 90%; }
+.book-verse-ref { font-family: 'Cinzel', serif; font-size: 2.5vw; color: var(--gold-dk); letter-spacing: .15em; margin-top: 2vw; }
+.book-section { font-family: 'Cinzel Decorative', serif; font-size: 5vw; color: var(--burgundy); letter-spacing: .04em; margin-bottom: 2vw; }
+.book-gold { font-family: 'Cinzel', serif; font-size: 4.8vw; color: var(--burgundy); letter-spacing: .05em; margin: 1.5vw 0; }
+.book-detail { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.8vw; color: var(--ink-lt); line-height: 1.8; }
+.book-sub { font-family: 'Cinzel', serif; font-size: 2.5vw; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); margin-top: 1.5vw; opacity: .8; }
+.info-row { display: flex; flex-direction: column; align-items: center; gap: 1vw; margin: 2.5vw 0; width: 100%; }
+.info-label { font-family: 'Cinzel', serif; font-size: 2.2vw; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); opacity: .8; }
+.dropcap { float: left; font-family: 'Cinzel Decorative', serif; font-size: 13vw; line-height: .85; color: var(--burgundy); margin-right: 1.5vw; margin-top: 1vw; text-shadow: 2px 2px 0 rgba(201,168,76,.3); }
+
+/* RSVP */
+.rsvp-form { width: 100%; display: flex; flex-direction: column; gap: 3.5vw; margin-top: 3vw; }
+.rsvp-field { width: 100%; padding: 3vw 0; border: none; border-bottom: 1px solid rgba(160,120,40,.4); font-family: 'EB Garamond', serif; font-size: 4vw; color: var(--ink); background: transparent; outline: none; transition: border-color .2s; }
+.rsvp-field:focus { border-bottom-color: var(--gold-dk); }
+.rsvp-field::placeholder { color: rgba(90,26,42,.35); }
+.rsvp-label { font-family: 'Cinzel', serif; font-size: 2.3vw; letter-spacing: .15em; text-transform: uppercase; color: var(--gold-dk); display: block; margin-bottom: .8vw; }
+.rsvp-btn { width: 100%; padding: 3.5vw; background: var(--burgundy); border: 1px solid var(--gold-dk); color: var(--gold-lt); font-family: 'Cinzel', serif; font-size: 3vw; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: background .25s; margin-top: 2vw; }
+.rsvp-btn:hover { background: var(--burgundy-lt); }
+.rsvp-ok { display: none; text-align: center; padding: 5vw 0; }
+.rsvp-ok p { font-family: 'Great Vibes', cursive; font-size: 10vw; color: var(--burgundy); margin-bottom: 2vw; }
+.rsvp-ok small { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.5vw; color: var(--ink-lt); line-height: 1.8; }
+
+/* Navigation */
+.page-arrows { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2.5vw 5vw; border-top: 1px solid rgba(160,120,40,.2); background: var(--ivory-dk); }
+.page-arrow-btn { font-family: 'Cinzel', serif; font-size: 2.8vw; letter-spacing: .1em; text-transform: uppercase; color: var(--burgundy); background: none; border: 1px solid rgba(160,120,40,.3); padding: 2vw 4vw; cursor: pointer; transition: background .2s, border-color .2s; }
+.page-arrow-btn:hover { background: rgba(90,26,42,.06); border-color: var(--gold-dk); }
+.page-arrow-btn:disabled { opacity: .3; cursor: default; }
+.page-label { font-family: 'Cinzel', serif; font-size: 2.2vw; color: var(--gold-dk); letter-spacing: .1em; opacity: .7; }
+.page-nav { position: relative; z-index: 10; display: flex; justify-content: center; gap: 2.5vw; padding: 2.5vw 0 3vw; background: var(--ivory-dk); border-top: 1px solid rgba(160,120,40,.1); }
+.page-dot { width: 2.2vw; height: 2.2vw; border-radius: 50%; background: rgba(160,120,40,.25); border: 1px solid var(--gold-dk); cursor: pointer; transition: all .3s; }
+.page-dot.active { background: var(--gold); transform: scale(1.3); }
+</style>
+</head>
+<body>
+
+<!-- ══════ CLOSED BIBLE ══════ -->
+<div id="scene-closed">
+  <div class="bible-3d">
+    <div class="spine"></div>
+    <div class="cover-flipper" id="cover-flipper" onclick="openBible()">
+
+      <!-- Front face -->
+      <div class="cover-face">
+        <div class="cross">
+          <svg viewBox="0 0 80 110" fill="none">
+            <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8cc80"/><stop offset="50%" stop-color="#c9a84c"/><stop offset="100%" stop-color="#e8cc80"/></linearGradient></defs>
+            <rect x="30" y="5" width="20" height="100" rx="3" fill="url(#cg)" opacity=".9"/>
+            <rect x="5" y="28" width="70" height="18" rx="3" fill="url(#cg)" opacity=".9"/>
+            <rect x="36" y="5" width="4" height="100" rx="1" fill="rgba(255,255,255,.15)"/>
+            <rect x="5" y="33" width="70" height="4" rx="1" fill="rgba(255,255,255,.15)"/>
+            <circle cx="5" cy="28" r="3" fill="url(#cg)" opacity=".7"/>
+            <circle cx="75" cy="28" r="3" fill="url(#cg)" opacity=".7"/>
+            <circle cx="5" cy="46" r="3" fill="url(#cg)" opacity=".7"/>
+            <circle cx="75" cy="46" r="3" fill="url(#cg)" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="cover-title"><h1>First Holy<br>Communion</h1></div>
+        <div class="cover-name">Sofia</div>
+        <div class="cover-date">May 18, 2025</div>
+        <div class="tap-hint">
+          <span>Open</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(232,204,128,.7)" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </div>
+      </div>
+
+      <!-- Back face (inside cover, visible during flip) -->
+      <div class="cover-back">
+        <div class="cover-back-inner">
+          <svg viewBox="0 0 80 110" fill="none">
+            <rect x="30" y="5" width="20" height="100" rx="3" fill="rgba(201,168,76,.35)"/>
+            <rect x="5" y="28" width="70" height="18" rx="3" fill="rgba(201,168,76,.35)"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ══════ OPEN BIBLE ══════ -->
+<div id="scene-open">
+  <div class="open-book">
+    <div class="open-spine"></div>
+    <div class="book-spread">
+      <div class="flip-sheet" id="flip-sheet"></div>
+
+      <!-- PAGE 1 — Title -->
+      <div class="page active" id="page-1">
+        <div class="page-num">✦ I ✦</div>
+        <p class="book-eyebrow">First Holy Communion</p>
+        <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <div class="book-bigname">Sofia</div>
+        <div class="ornament" style="--d:left"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-detail" style="margin-top:2vw;">daughter of<br><span style="font-size:5vw;color:var(--ink);font-style:normal;">James &amp; Maria Dubois</span></p>
+        <div class="ornament" style="margin-top:4vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-verse">"Let the little children come to me,<br>and do not hinder them,<br>for the kingdom of heaven<br>belongs to such as these."</p>
+        <p class="book-verse-ref">Matthew 19:14</p>
+      </div>
+
+      <!-- PAGE 2 — Details -->
+      <div class="page" id="page-2">
+        <div class="page-num">✦ II ✦</div>
+        <p class="book-section">The Ceremony</p>
+        <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <div class="info-row"><span class="info-label">Date</span><span class="book-gold">Sunday, May 18th</span><span class="book-sub">2025</span></div>
+        <div class="ornament" style="--d:left;margin:2vw auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:4vw;"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
+        <div class="info-row"><span class="info-label">Time</span><span class="book-gold">10:30 in the Morning</span></div>
+        <div class="ornament" style="--d:left;margin:2vw auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:4vw;"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
+        <div class="info-row"><span class="info-label">Church</span><span class="book-gold" style="font-size:4.2vw;">Saint Joseph Parish</span><span class="book-detail">Ehden, Lebanon</span></div>
+        <div class="ornament" style="margin-top:3vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-detail" style="margin-top:2vw;">Followed by a celebration lunch<br>at the family home</p>
+      </div>
+
+      <!-- PAGE 3 — Prayer -->
+      <div class="page" id="page-3">
+        <div class="page-num">✦ III ✦</div>
+        <p class="book-section">A Prayer</p>
+        <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-verse" style="font-size:3.8vw;">
+          <span class="dropcap">D</span>ear Lord,<br><br>
+          On this blessed day, Sofia opens<br>her heart to receive You<br>for the first time.<br><br>
+          May Your presence fill her with<br>joy, peace, and endless love.<br><br>
+          May she walk always in Your light,<br>guided by faith and surrounded<br>by those who love her.
+        </p>
+        <div class="ornament" style="--d:left;margin:4vw auto 3vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-verse-ref" style="font-size:3vw;">Amen ✦</p>
+      </div>
+
+      <!-- PAGE 4 — RSVP -->
+      <div class="page" id="page-4">
+        <div class="page-num">✦ IV ✦</div>
+        <p class="book-section">Your Reply</p>
+        <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-detail" style="margin-bottom:3vw;">Kindly respond before<br><strong style="font-style:normal;color:var(--burgundy);">May 10th, 2025</strong></p>
+        <div id="rsvp-form-wrap">
+          <div class="rsvp-form">
+            <div><label class="rsvp-label">Your Name</label><input type="text" class="rsvp-field" id="rv-name" placeholder="e.g. John & Mary Smith"></div>
+            <div><label class="rsvp-label">Attending?</label>
+              <select class="rsvp-field" id="rv-att" style="cursor:pointer;">
+                <option value="">— Please select —</option>
+                <option value="yes">✓ Joyfully accepts</option>
+                <option value="no">✗ Regretfully declines</option>
+              </select>
+            </div>
+            <div><label class="rsvp-label">A blessing <span style="opacity:.5;font-size:2vw;">(optional)</span></label><textarea class="rsvp-field" id="rv-msg" rows="3" placeholder="Share a blessing for Sofia…" style="border:1px solid rgba(160,120,40,.4);padding:2vw;resize:none;"></textarea></div>
+            <button class="rsvp-btn" onclick="submitRSVP()">Send ✦</button>
+            <p id="rsvp-error" style="display:none;color:#8b2020;font-size:3vw;font-family:'Cinzel',serif;letter-spacing:.1em;text-align:center;margin-top:2vw;"></p>
+          </div>
+        </div>
+        <div class="rsvp-ok" id="rsvp-ok">
+          <p>Thank you!</p>
+          <small>God bless you for sharing<br>this special day with Sofia 🕊️</small>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="page-arrows">
+        <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)" disabled>← Prev</button>
+        <span class="page-label" id="page-label">Page 1 of 4</span>
+        <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
+      </div>
+      <div class="page-nav" id="page-nav"></div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Open Bible — 3D flip then switch scenes ── */
+function openBible() {
+  const flipper = document.getElementById('cover-flipper');
+  const sceneClosed = document.getElementById('scene-closed');
+  const sceneOpen   = document.getElementById('scene-open');
+
+  // Trigger 3D flip
+  flipper.classList.add('open');
+
+  // After flip completes, swap scenes
+  setTimeout(() => {
+    sceneClosed.style.display = 'none';
+    sceneOpen.classList.add('visible');
+    buildDots();
+    // Scroll to top
+    window.scrollTo(0, 0);
+  }, 1100);
+}
+
+/* ── Page navigation ── */
+const TOTAL = 4;
+let current = 1;
+
+function buildDots() {
+  const nav = document.getElementById('page-nav');
+  nav.innerHTML = '';
+  for(let i = 1; i <= TOTAL; i++) {
+    const d = document.createElement('div');
+    d.className = 'page-dot' + (i === 1 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    nav.appendChild(d);
+  }
+}
+
+function goTo(n) {
+  if(n === current) return;
+
+  // Animate page flip sheet
+  const sheet = document.getElementById('flip-sheet');
+  sheet.classList.remove('animate');
+  void sheet.offsetWidth;
+  sheet.classList.add('animate');
+
+  setTimeout(() => {
+    document.getElementById('page-' + current).classList.remove('active');
+    current = Math.max(1, Math.min(TOTAL, n));
+    document.getElementById('page-' + current).classList.add('active');
+    document.querySelectorAll('.page-dot').forEach((d, i) => d.classList.toggle('active', i + 1 === current));
+    document.getElementById('page-label').textContent = 'Page ' + current + ' of ' + TOTAL;
+    document.getElementById('btn-prev').disabled = current === 1;
+    document.getElementById('btn-next').disabled = current === TOTAL;
+    // Scroll open book to top
+    document.getElementById('scene-open').scrollTo(0, 0);
+  }, 220);
+}
+
+function changePage(dir) { goTo(current + dir); }
+
+// Swipe support
+let sx = 0;
+document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - sx;
+  if(Math.abs(dx) > 50) changePage(dx < 0 ? 1 : -1);
+}, { passive: true });
+
+/* ── RSVP ── */
+function submitRSVP() {
+  const name = document.getElementById('rv-name').value.trim();
+  const att  = document.getElementById('rv-att').value;
+  const msg  = document.getElementById('rv-msg').value.trim();
+  const err  = document.getElementById('rsvp-error');
+  if(!name) { err.textContent='Please enter your name.'; err.style.display='block'; return; }
+  if(!att)  { err.textContent='Please select your attendance.'; err.style.display='block'; return; }
+  err.style.display = 'none';
+  const btn = document.querySelector('.rsvp-btn');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  fetch('https://formsubmit.co/ajax/nemer.david9@gmail.com', {
+    method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+    body: JSON.stringify({ _subject:'RSVP — Sofia First Communion', _template:'table', name, attending: att==='yes'?'Yes':'No', blessing: msg||'(none)' })
+  })
+  .then(r=>r.json()).then(data=>{
+    if(data.success==='true'||data.success===true){
+      document.getElementById('rsvp-form-wrap').style.display='none';
+      document.getElementById('rsvp-ok').style.display='block';
+    } else throw new Error();
+  })
+  .catch(()=>{ btn.textContent='Send ✦'; btn.disabled=false; err.textContent='Something went wrong.'; err.style.display='block'; });
+}
+</script>
+</body>
+</html>
