@@ -17,7 +17,7 @@
         .page-content{position:relative;z-index:1;width:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12vw 9vw;text-align:center;}
         .trans-img{width:100%;display:block;margin:0;padding:0;line-height:0;font-size:0;position:relative;z-index:2;}
         .t-eyebrow{font-family:'Montserrat',sans-serif;font-weight:200;font-size:2.8vw;letter-spacing:.45em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:4vw;}
-        .t-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:17vw;line-height:.9;color:var(--white);}
+        .t-name{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:13vw;line-height:.9;color:var(--white);}
         .t-script{font-family:'Great Vibes',cursive;font-size:13vw;color:var(--gold);line-height:1.2;}
         .t-date{font-family:'Montserrat',sans-serif;font-weight:200;font-size:2.8vw;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-lt);margin:3vw 0;}
         .t-section{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:8vw;color:var(--white);letter-spacing:.05em;}
@@ -28,9 +28,18 @@
         .t-bigname{font-family:'Great Vibes',cursive;font-size:16vw;color:var(--gold-lt);line-height:1.1;}
         .t-and{font-family:'Great Vibes',cursive;font-size:8vw;color:var(--gold);}
         .t-sub{font-family:'Montserrat',sans-serif;font-weight:200;font-size:2.8vw;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-lt);margin-top:2vw;}
-        .divider{display:flex;align-items:center;gap:3vw;margin:5vw auto;max-width:70%;}
-        .divider::before,.divider::after{content:"";flex:1;height:1px;background:linear-gradient(to var(--d,right),transparent,var(--gold) 40%,var(--gold) 60%,transparent);opacity:.6;}
-        .divider-icon{color:var(--gold);font-size:3.5vw;}
+        
+        
+        
+        
+.divider {
+  display: flex; align-items: center; gap: 4vw;
+  color: var(--gold); margin: 4vw auto; width: 60%;
+}
+.divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--gold); opacity: .5; }
+        
+        
+        
         .btn-open{display:inline-block;margin-top:6vw;padding:3.5vw 9vw;border:1px solid var(--gold);color:var(--gold-lt);font-family:'Montserrat',sans-serif;font-weight:300;font-size:2.8vw;letter-spacing:.28em;text-transform:uppercase;cursor:pointer;background:rgba(0,0,0,.25);backdrop-filter:blur(4px);transition:background .3s,border-color .3s;}
         .btn-open:hover{background:rgba(201,169,110,.15);border-color:var(--gold-lt);}
         #inv{display:none;opacity:0;transition:opacity .8s ease;}
@@ -193,7 +202,9 @@
             <div class="page-content reveal" id="p2" style="justify-content:space-evenly; padding:10vw 10vw 35vw;">
             <p class="t-label">Matthew 19:6</p>
             <p class="t-verse">"What therefore God has joined together,<br>let no man put asunder."</p>
-            <div class="divider"><span class="divider-icon">✦</span></div>
+            <div class="divider">
+      <svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    </div>
             <div class="parents-wrap">
             <div><p class="t-label" style="font-size:2.2vw;">Groom's Parents</p><p class="t-parent">Robert &amp; Tina Martin</p></div>
       <div><p class="t-label" style="font-size:2.2vw;">Bride's Parents</p><p class="t-parent">Michael &amp; Anne Clarke</p></div>
@@ -213,7 +224,11 @@
             <div class="page-content reveal" id="p3" style="padding:12vw 8vw;">
             <p class="t-section">Wedding Day</p>
             <p class="t-sub">August 14, 2027</p>
-            <div class="divider"><span class="divider-icon">✦</span></div>
+            <div class="divider">
+      <svg width="10vw" height="10vw" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M50 80 C20 55, 10 35, 25 20 C35 10, 50 20, 50 30 C50 20, 65 10, 75 20 C90 35, 80 55, 50 80"/>
+      </svg>
+    </div>
             <div class="cal-box">
             <p class="t-label" style="font-size:2.5vw; text-align:center; margin-bottom:3vw;">August 2027</p>
             <div class="cal-grid" id="cal-grid"></div>
@@ -234,12 +249,14 @@
             <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Floral5/2.png" alt="">
             <div class="page-content reveal" id="p4" style="padding:12vw 8vw;">
             <p class="t-section">The Celebration</p>
-            <div class="divider"><span class="divider-icon">✦</span></div>
+            <div class="divider">
+      <svg width="5vw" height="5vw" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+    </div>
             <div class="tl-wrap">
-            <div class="tl-row reveal d1"><div class="tl-left"><div class="tl-time">6:00 PM</div><div class="tl-venue">St. Mourra Church<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Rings-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We do</div></div></div>
-            <div class="tl-row reveal d2"><div class="tl-left"><div class="tl-time">7:30 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Drink-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We drink</div></div></div>
-            <div class="tl-row reveal d3"><div class="tl-left"><div class="tl-time">8:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dine-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We dine</div></div></div>
-            <div class="tl-row reveal"><div class="tl-left"><div class="tl-time">9:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon/Dance-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We dance</div></div></div>
+            <div class="tl-row reveal d1"><div class="tl-left"><div class="tl-time">6:00 PM</div><div class="tl-venue">St. Mourra Church<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Rings-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We do</div></div></div>
+            <div class="tl-row reveal d2"><div class="tl-left"><div class="tl-time">7:30 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Drink-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We drink</div></div></div>
+            <div class="tl-row reveal d3"><div class="tl-left"><div class="tl-time">8:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dine-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We dine</div></div></div>
+            <div class="tl-row reveal"><div class="tl-left"><div class="tl-time">9:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div><div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dance-removebg-preview.png" alt=""></div><div class="tl-right"><div class="tl-label">We dance</div></div></div>
             </div>
             </div>
             </div>
@@ -294,7 +311,7 @@
             <div class="page-content reveal" style="padding:12vw 8vw;">
             <p class="t-section">RSVP</p>
             <p class="t-sub" style="margin-bottom:1.5vw;">Kindly reply before 1st of August 2027</p>
-            <div class="divider"><span class="divider-icon">✦</span></div>
+            <div class="divider">    <svg width="4vw" height="4vw" viewBox="0 0 24 24" fill="var(--gold)"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
             <div class="rsvp-box">
             <div class="step-dots"><div class="step-dot on" id="dot-1"></div><div class="step-dot" id="dot-2"></div><div class="step-dot" id="dot-3"></div></div>
             <div id="s1" class="rsvp-step">
