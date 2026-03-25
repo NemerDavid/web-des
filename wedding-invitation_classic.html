@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>Sleiman & Emily — Wedding Invitation</title>
+<title>Thomas & Sarah — Wedding Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
@@ -245,7 +245,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
   <div class="hero-content reveal">
     <p class="t-label" style="font-size:3vw; opacity:.8; margin-bottom:3vw;">Together with their families</p>
     <h1 style="font-family:'Cormorant Garamond',serif; font-size:16vw; font-weight:300; line-height:1.05; color:#fff;">
-      Sleiman<br><span style="font-family:'Great Vibes',cursive; font-size:13vw;">&amp; Emily</span>
+      Thomas<br><span style="font-family:'Great Vibes',cursive; font-size:13vw;">&amp; Sarah</span>
     </h1>
     <p style="font-size:3vw; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,255,255,.75); margin:3vw 0;">August 27, 2025 · Ehden, Lebanon</p>
     <button onclick="openInvitation()" class="btn-open">Open Invitation</button>
@@ -271,17 +271,17 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
     <div style="display:flex; justify-content:center; gap:8vw; margin:3vw 0;">
       <div>
         <p class="t-label" style="font-size:2.5vw; margin-bottom:1vw;">Groom's Parents</p>
-        <p class="t-parent">Fouad &amp; Nayla Sayssa</p>
+        <p class="t-parent">Robert &amp; Tina Martin</p>
       </div>
       <div>
         <p class="t-label" style="font-size:2.5vw; margin-bottom:1vw;">Bride's Parents</p>
-        <p class="t-parent">Tony &amp; Vanessa Almawi</p>
+        <p class="t-parent">Michael &amp; Anne Clarke</p>
       </div>
     </div>
     <p class="t-honor" style="font-size:3.5vw; margin:3vw 0;">Request the honor of your presence<br>at the wedding of their son and daughter</p>
-    <h2 class="t-name">Sleiman Sayssa</h2>
+    <h2 class="t-name">Thomas Martin</h2>
     <p class="t-and" style="margin:.5vw 0;">and</p>
-    <h2 class="t-name">Emily Almawi</h2>
+    <h2 class="t-name">Sarah Clarke</h2>
   </div>
 </div>
 
@@ -362,7 +362,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
     </p>
     <div class="registry-box" style="margin-top:4vw;">
       <p class="t-label" style="font-size:3vw; margin-bottom:1.5vw;">Whish Money</p>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--rose-dark);">ACC# 2024975</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:6vw; color:var(--rose-dark);">ACC# xxxxxx</p>
     </div>
   </div>
 </div>
@@ -443,7 +443,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 
       <div id="s3" class="rsvp-step" style="display:none;">
         <label class="form-label">Leave a wish <span style="text-transform:none; color:#ccc; font-size:2.5vw;">(optional)</span></label>
-        <textarea id="f-msg" class="form-field" rows="4" style="resize:none;" placeholder="Share a wish for Sleiman & Emily…"></textarea>
+        <textarea id="f-msg" class="form-field" rows="4" style="resize:none;" placeholder="Share a wish for Thomas & Sarah…"></textarea>
         <div class="btn-grid">
           <button class="btn-rose" onclick="goStep(3,2)">← Back</button>
           <button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✉</button>
@@ -463,7 +463,7 @@ h1, h2, h3 { font-family: 'Cormorant Garamond', serif; }
 <div class="page-wrap">
   <img class="bg-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/bg1.png" alt="">
   <div class="content" style="padding:6vw 8vw;">
-    <p style="font-family:'Cormorant Garamond',serif; font-size:7vw; font-weight:300; color:var(--rose); margin-bottom:2vw;">Sleiman &amp; Emily</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-size:7vw; font-weight:300; color:var(--rose); margin-bottom:2vw;">Thomas &amp; Sarah</p>
     <p class="t-label" style="font-size:3vw; color:#bbb;">August 27, 2025 · Ehden, Lebanon</p>
   </div>
 </div>
@@ -564,7 +564,7 @@ function goStep(from, to) {
   [1,2,3].forEach(i => { document.getElementById('dot-'+i).classList.toggle('on', i<=to); });
 }
 
-const COUPLE_NAME  = 'Sleiman & Emily';
+const COUPLE_NAME  = 'Thomas & Sarah';
 const CLIENT_EMAIL = 'nemer.david9@gmail.com';
 
 function submitRSVP() {
