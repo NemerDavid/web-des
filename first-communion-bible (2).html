@@ -18,28 +18,28 @@
   --ivory-dk:   #f0e4c8;
   --ink:        #2a1a0a;
   --ink-lt:     #5a3a1a;
+  /* Book max width — everything is relative to this */
+  --bw: min(82vw, 370px);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background: #0a0404; font-family: 'EB Garamond', serif; color: var(--ink); user-select: none; }
+html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 'EB Garamond', serif; color: var(--ink); user-select: none; }
 
-/* ── Scene (closed state — full screen centered) ── */
+/* ══════ CLOSED SCENE ══════ */
 #scene-closed {
   width: 100vw; height: 100vh;
   display: flex; align-items: center; justify-content: center;
   background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%);
   perspective: 1400px;
-  position: relative;
 }
 
-/* ── Bible wrapper for 3D flip ── */
 .bible-3d {
-  width: 82vw; max-width: 370px;
+  width: var(--bw);
   position: relative;
   transform-style: preserve-3d;
 }
 
-/* The cover flips on its LEFT edge (spine) */
+/* Cover flips on its LEFT edge (spine) */
 .cover-flipper {
   width: 100%;
   padding-top: 138%;
@@ -50,10 +50,9 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
   cursor: pointer;
   z-index: 10;
 }
-.cover-flipper:hover .cover-face { box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), inset -3px 0 8px rgba(0,0,0,.4), 8px 12px 40px rgba(0,0,0,.7), 0 0 30px rgba(201,168,76,.08); }
-.cover-flipper.open { transform: rotateY(-180deg); pointer-events: none; cursor: default; }
+.cover-flipper.open { transform: rotateY(-180deg); pointer-events: none; }
 
-/* Front face */
+/* Front of cover */
 .cover-face {
   position: absolute; inset: 0;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
@@ -61,13 +60,12 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
   border-radius: 3px 10px 10px 3px;
   box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), inset -3px 0 8px rgba(0,0,0,.4), 4px 8px 30px rgba(0,0,0,.6);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 8vw 6vw; overflow: hidden;
-  transition: box-shadow .3s;
+  padding: clamp(16px, 6%, 32px); overflow: hidden;
 }
 .cover-face::before { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"); border-radius: inherit; pointer-events: none; }
 .cover-face::after { content: ""; position: absolute; inset: 4%; border: 1.5px solid rgba(201,168,76,.45); border-radius: 2px; pointer-events: none; }
 
-/* Inside of cover (shown mid-flip) */
+/* Back of cover (shown mid-flip) */
 .cover-back {
   position: absolute; inset: 0;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
@@ -80,118 +78,128 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
 .cover-back-inner svg { width: 30%; opacity: .2; }
 
 /* Spine */
-.spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; box-shadow: -2px 0 6px rgba(0,0,0,.5); z-index: 20; pointer-events: none; }
+.spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; z-index: 20; pointer-events: none; }
 
-/* Cover content */
-.cross { position: relative; z-index: 1; margin-bottom: 4vw; }
-.cross svg { width: 16vw; max-width: 70px; filter: drop-shadow(0 0 8px rgba(201,168,76,.6)); }
+/* Cover content — all sizes clamped so desktop looks correct */
+.cross { position: relative; z-index: 1; margin-bottom: clamp(12px, 4%, 24px); }
+.cross svg { width: clamp(40px, 16vw, 68px); filter: drop-shadow(0 0 8px rgba(201,168,76,.6)); }
 .cover-title { position: relative; z-index: 1; text-align: center; }
-.cover-title h1 { font-family: 'Cinzel Decorative', serif; font-size: 5.2vw; color: var(--gold-lt); line-height: 1.3; letter-spacing: .06em; text-shadow: 0 0 20px rgba(201,168,76,.5), 0 2px 4px rgba(0,0,0,.5); margin-bottom: 2vw; }
-.cover-name { font-family: 'Great Vibes', cursive; font-size: 11vw; color: var(--gold-lt); text-shadow: 0 0 30px rgba(201,168,76,.7); margin: 2.5vw 0; position: relative; z-index: 1; }
-.cover-date { font-family: 'Cinzel', serif; font-size: 2.6vw; color: rgba(232,204,128,.65); letter-spacing: .15em; text-transform: uppercase; position: relative; z-index: 1; margin-top: 2.5vw; }
-.tap-hint { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 1.5vw; animation: hintPulse 2s ease-in-out infinite; }
-.tap-hint span { font-family: 'Cinzel', serif; font-size: 2.5vw; color: rgba(232,204,128,.75); letter-spacing: .2em; text-transform: uppercase; }
-.tap-hint svg { width: 5vw; opacity: .7; }
+.cover-title h1 { font-family: 'Cinzel Decorative', serif; font-size: clamp(13px, 5.2vw, 22px); color: var(--gold-lt); line-height: 1.35; letter-spacing: .06em; text-shadow: 0 0 20px rgba(201,168,76,.5), 0 2px 4px rgba(0,0,0,.5); margin-bottom: clamp(8px, 2vw, 14px); }
+.cover-name { font-family: 'Great Vibes', cursive; font-size: clamp(36px, 11vw, 52px); color: var(--gold-lt); text-shadow: 0 0 30px rgba(201,168,76,.7); margin: clamp(8px, 2.5vw, 16px) 0; position: relative; z-index: 1; }
+.cover-date { font-family: 'Cinzel', serif; font-size: clamp(9px, 2.6vw, 13px); color: rgba(232,204,128,.65); letter-spacing: .15em; text-transform: uppercase; position: relative; z-index: 1; margin-top: clamp(8px, 2.5vw, 14px); }
+.tap-hint { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; animation: hintPulse 2s ease-in-out infinite; }
+.tap-hint span { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 12px); color: rgba(232,204,128,.75); letter-spacing: .2em; text-transform: uppercase; }
+.tap-hint svg { width: clamp(16px, 5vw, 22px); opacity: .7; }
 @keyframes hintPulse { 0%,100%{opacity:.6;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-3px)} }
 
-/* ══════════════════════════════
-   OPEN BIBLE — separate full page
-   ══════════════════════════════ */
+/* ══════ OPEN SCENE ══════ */
 #scene-open {
   display: none;
   width: 100vw;
   min-height: 100vh;
   background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%);
-  padding: 6vw 0 10vw;
+  padding: clamp(20px, 6vw, 40px) 0 clamp(40px, 10vw, 60px);
   align-items: flex-start;
   justify-content: center;
   overflow-y: auto;
 }
 #scene-open.visible { display: flex; }
 
-.open-book {
-  width: 82vw; max-width: 370px;
-  position: relative;
-}
-
+.open-book { width: var(--bw); position: relative; }
 .open-spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; z-index: 5; pointer-events: none; }
 
 .book-spread {
   width: 100%;
   background: var(--ivory);
   border-radius: 3px 10px 10px 3px;
-  box-shadow: -8px 0 0 #1a0808, -14px 4px 30px rgba(0,0,0,.9), 0 10px 40px rgba(0,0,0,.6), inset 6px 0 16px rgba(0,0,0,.1);
+  box-shadow: -8px 0 0 #1a0808, -14px 4px 30px rgba(0,0,0,.9), 0 10px 40px rgba(0,0,0,.6), inset 6px 0 14px rgba(0,0,0,.1);
   overflow: hidden;
   position: relative;
-  /* Page-turn perspective */
   perspective: 800px;
 }
-
-/* Parchment overlay */
 .book-spread::after { content: ""; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 4; }
 .book-spread::before { content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 100%; background: linear-gradient(to right, rgba(0,0,0,.12), transparent); z-index: 5; pointer-events: none; }
 
-/* Page flip animation overlay */
-.flip-sheet {
-  position: absolute; inset: 0;
-  background: linear-gradient(100deg, var(--ivory-dk) 0%, var(--ivory) 60%);
-  transform-origin: left center;
-  z-index: 10;
-  border-radius: 0 10px 10px 0;
-  pointer-events: none;
-  opacity: 0;
-}
-.flip-sheet.animate {
-  animation: sheetFlip .55s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes sheetFlip {
-  0%   { opacity:1; transform: rotateY(0deg); box-shadow: none; }
-  40%  { opacity:1; transform: rotateY(-70deg); box-shadow: -6px 0 18px rgba(0,0,0,.2); }
-  100% { opacity:0; transform: rotateY(-180deg); }
-}
+/* Page flip sheet animation */
+.flip-sheet { position: absolute; inset: 0; background: linear-gradient(100deg, var(--ivory-dk) 0%, var(--ivory) 60%); transform-origin: left center; z-index: 10; border-radius: 0 10px 10px 0; pointer-events: none; opacity: 0; }
+.flip-sheet.animate { animation: sheetFlip .55s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes sheetFlip { 0%{opacity:1;transform:rotateY(0deg)} 40%{opacity:1;transform:rotateY(-70deg);box-shadow:-6px 0 18px rgba(0,0,0,.2)} 100%{opacity:0;transform:rotateY(-180deg)} }
 
-/* ── Page content ── */
-.page { display: none; flex-direction: column; align-items: center; text-align: center; padding: 7vw 6vw 5vw; position: relative; z-index: 6; animation: pgIn .35s ease; }
+/* ── Pages — ALL strictly same fixed height ── */
+.page {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Exact fixed height — all pages identical */
+  height: clamp(480px, 138vw, 510px);
+  overflow: hidden;
+  padding: clamp(20px, 7vw, 32px) clamp(16px, 6vw, 28px) clamp(16px, 5vw, 24px);
+  position: relative;
+  z-index: 6;
+  animation: pgIn .35s ease;
+  justify-content: center;
+}
 .page.active { display: flex; }
 @keyframes pgIn { from{opacity:0;transform:translateX(6px)} to{opacity:1;transform:none} }
 
-/* ── Book typography ── */
-.page-num { font-family: 'Cinzel', serif; font-size: 2.5vw; color: var(--gold-dk); letter-spacing: .1em; margin-bottom: 3.5vw; opacity: .7; }
-.ornament { display: flex; align-items: center; gap: 2vw; margin: 3.5vw auto; width: 80%; color: var(--gold); }
+/* ── Close book button ── */
+.close-book-btn {
+  display: block;
+  width: 100%;
+  padding: clamp(8px, 2.5vw, 12px);
+  background: rgba(90,26,42,.08);
+  border: none;
+  border-bottom: 1px solid rgba(160,120,40,.15);
+  font-family: 'Cinzel', serif;
+  font-size: clamp(9px, 2.5vw, 12px);
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold-dk);
+  cursor: pointer;
+  text-align: center;
+  transition: background .2s;
+  position: relative; z-index: 6;
+}
+.close-book-btn:hover { background: rgba(90,26,42,.14); }
+
+/* ── Book typography — all clamped ── */
+.page-num { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 11px); color: var(--gold-dk); letter-spacing: .1em; margin-bottom: clamp(10px, 3.5vw, 16px); opacity: .7; }
+.ornament { display: flex; align-items: center; gap: clamp(6px, 2vw, 10px); margin: clamp(10px, 3.5vw, 16px) auto; width: 80%; color: var(--gold); }
 .ornament::before, .ornament::after { content: ""; flex: 1; height: 1px; background: linear-gradient(to var(--d,right), transparent, var(--gold-dk)); opacity: .6; }
-.ornament svg { width: 5vw; flex-shrink: 0; }
-.book-eyebrow { font-family: 'Cinzel', serif; font-size: 2.5vw; letter-spacing: .3em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: 2.5vw; opacity: .85; }
-.book-bigname { font-family: 'Great Vibes', cursive; font-size: 16vw; color: var(--burgundy); line-height: 1.1; text-shadow: 0 2px 8px rgba(90,26,42,.2); }
-.book-verse { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.8vw; color: var(--ink-lt); line-height: 1.9; max-width: 90%; }
-.book-verse-ref { font-family: 'Cinzel', serif; font-size: 2.5vw; color: var(--gold-dk); letter-spacing: .15em; margin-top: 2vw; }
-.book-section { font-family: 'Cinzel Decorative', serif; font-size: 5vw; color: var(--burgundy); letter-spacing: .04em; margin-bottom: 2vw; }
-.book-gold { font-family: 'Cinzel', serif; font-size: 4.8vw; color: var(--burgundy); letter-spacing: .05em; margin: 1.5vw 0; }
-.book-detail { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.8vw; color: var(--ink-lt); line-height: 1.8; }
-.book-sub { font-family: 'Cinzel', serif; font-size: 2.5vw; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); margin-top: 1.5vw; opacity: .8; }
-.info-row { display: flex; flex-direction: column; align-items: center; gap: 1vw; margin: 2.5vw 0; width: 100%; }
-.info-label { font-family: 'Cinzel', serif; font-size: 2.2vw; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); opacity: .8; }
-.dropcap { float: left; font-family: 'Cinzel Decorative', serif; font-size: 13vw; line-height: .85; color: var(--burgundy); margin-right: 1.5vw; margin-top: 1vw; text-shadow: 2px 2px 0 rgba(201,168,76,.3); }
+.ornament svg { width: clamp(16px, 5vw, 22px); flex-shrink: 0; }
+.book-eyebrow { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: clamp(8px, 2.5vw, 12px); opacity: .85; }
+.book-bigname { font-family: 'Great Vibes', cursive; font-size: clamp(42px, 16vw, 68px); color: var(--burgundy); line-height: 1.1; text-shadow: 0 2px 8px rgba(90,26,42,.2); }
+.book-verse { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(13px, 3.8vw, 17px); color: var(--ink-lt); line-height: 1.9; max-width: 90%; }
+.book-verse-ref { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 11px); color: var(--gold-dk); letter-spacing: .15em; margin-top: clamp(6px, 2vw, 10px); }
+.book-section { font-family: 'Cinzel Decorative', serif; font-size: clamp(14px, 5vw, 20px); color: var(--burgundy); letter-spacing: .04em; margin-bottom: clamp(6px, 2vw, 10px); }
+.book-gold { font-family: 'Cinzel', serif; font-size: clamp(13px, 4.8vw, 19px); color: var(--burgundy); letter-spacing: .05em; margin: clamp(4px, 1.5vw, 8px) 0; }
+.book-detail { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(13px, 3.8vw, 17px); color: var(--ink-lt); line-height: 1.8; }
+.book-sub { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 11px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); margin-top: clamp(4px, 1.5vw, 8px); opacity: .8; }
+.info-row { display: flex; flex-direction: column; align-items: center; gap: clamp(3px, 1vw, 6px); margin: clamp(8px, 2.5vw, 12px) 0; width: 100%; }
+.info-label { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 10px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); opacity: .8; }
+.dropcap { float: left; font-family: 'Cinzel Decorative', serif; font-size: clamp(36px, 13vw, 56px); line-height: .85; color: var(--burgundy); margin-right: clamp(4px, 1.5vw, 8px); margin-top: clamp(2px, 1vw, 6px); text-shadow: 2px 2px 0 rgba(201,168,76,.3); }
 
 /* RSVP */
-.rsvp-form { width: 100%; display: flex; flex-direction: column; gap: 3.5vw; margin-top: 3vw; }
-.rsvp-field { width: 100%; padding: 3vw 0; border: none; border-bottom: 1px solid rgba(160,120,40,.4); font-family: 'EB Garamond', serif; font-size: 4vw; color: var(--ink); background: transparent; outline: none; transition: border-color .2s; }
+.rsvp-form { width: 100%; display: flex; flex-direction: column; gap: clamp(10px, 3.5vw, 16px); margin-top: clamp(8px, 3vw, 14px); }
+.rsvp-field { width: 100%; padding: clamp(8px, 3vw, 12px) 0; border: none; border-bottom: 1px solid rgba(160,120,40,.4); font-family: 'EB Garamond', serif; font-size: clamp(13px, 4vw, 16px); color: var(--ink); background: transparent; outline: none; transition: border-color .2s; }
 .rsvp-field:focus { border-bottom-color: var(--gold-dk); }
 .rsvp-field::placeholder { color: rgba(90,26,42,.35); }
-.rsvp-label { font-family: 'Cinzel', serif; font-size: 2.3vw; letter-spacing: .15em; text-transform: uppercase; color: var(--gold-dk); display: block; margin-bottom: .8vw; }
-.rsvp-btn { width: 100%; padding: 3.5vw; background: var(--burgundy); border: 1px solid var(--gold-dk); color: var(--gold-lt); font-family: 'Cinzel', serif; font-size: 3vw; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: background .25s; margin-top: 2vw; }
+.rsvp-label { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.3vw, 10px); letter-spacing: .15em; text-transform: uppercase; color: var(--gold-dk); display: block; margin-bottom: clamp(2px, .8vw, 5px); }
+.rsvp-btn { width: 100%; padding: clamp(10px, 3.5vw, 14px); background: var(--burgundy); border: 1px solid var(--gold-dk); color: var(--gold-lt); font-family: 'Cinzel', serif; font-size: clamp(9px, 3vw, 13px); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: background .25s; margin-top: clamp(6px, 2vw, 10px); }
 .rsvp-btn:hover { background: var(--burgundy-lt); }
-.rsvp-ok { display: none; text-align: center; padding: 5vw 0; }
-.rsvp-ok p { font-family: 'Great Vibes', cursive; font-size: 10vw; color: var(--burgundy); margin-bottom: 2vw; }
-.rsvp-ok small { font-family: 'EB Garamond', serif; font-style: italic; font-size: 3.5vw; color: var(--ink-lt); line-height: 1.8; }
+.rsvp-ok { display: none; text-align: center; padding: clamp(14px, 4vw, 20px) 0; }
+.rsvp-ok p { font-family: 'Great Vibes', cursive; font-size: clamp(28px, 10vw, 42px); color: var(--burgundy); margin-bottom: clamp(6px, 2vw, 10px); }
+.rsvp-ok small { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(12px, 3.5vw, 15px); color: var(--ink-lt); line-height: 1.8; }
 
 /* Navigation */
-.page-arrows { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 2.5vw 5vw; border-top: 1px solid rgba(160,120,40,.2); background: var(--ivory-dk); }
-.page-arrow-btn { font-family: 'Cinzel', serif; font-size: 2.8vw; letter-spacing: .1em; text-transform: uppercase; color: var(--burgundy); background: none; border: 1px solid rgba(160,120,40,.3); padding: 2vw 4vw; cursor: pointer; transition: background .2s, border-color .2s; }
+.page-arrows { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: clamp(8px, 2.5vw, 12px) clamp(12px, 5vw, 20px); border-top: 1px solid rgba(160,120,40,.2); background: var(--ivory-dk); }
+.page-arrow-btn { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.8vw, 12px); letter-spacing: .1em; text-transform: uppercase; color: var(--burgundy); background: none; border: 1px solid rgba(160,120,40,.3); padding: clamp(6px, 2vw, 10px) clamp(10px, 4vw, 18px); cursor: pointer; transition: background .2s, border-color .2s; }
 .page-arrow-btn:hover { background: rgba(90,26,42,.06); border-color: var(--gold-dk); }
 .page-arrow-btn:disabled { opacity: .3; cursor: default; }
-.page-label { font-family: 'Cinzel', serif; font-size: 2.2vw; color: var(--gold-dk); letter-spacing: .1em; opacity: .7; }
-.page-nav { position: relative; z-index: 10; display: flex; justify-content: center; gap: 2.5vw; padding: 2.5vw 0 3vw; background: var(--ivory-dk); border-top: 1px solid rgba(160,120,40,.1); }
-.page-dot { width: 2.2vw; height: 2.2vw; border-radius: 50%; background: rgba(160,120,40,.25); border: 1px solid var(--gold-dk); cursor: pointer; transition: all .3s; }
+.page-label { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 10px); color: var(--gold-dk); letter-spacing: .1em; opacity: .7; }
+.page-nav { position: relative; z-index: 10; display: flex; justify-content: center; gap: clamp(6px, 2.5vw, 10px); padding: clamp(8px, 2.5vw, 12px) 0 clamp(10px, 3vw, 14px); background: var(--ivory-dk); border-top: 1px solid rgba(160,120,40,.1); }
+.page-dot { width: clamp(7px, 2.2vw, 10px); height: clamp(7px, 2.2vw, 10px); border-radius: 50%; background: rgba(160,120,40,.25); border: 1px solid var(--gold-dk); cursor: pointer; transition: all .3s; }
 .page-dot.active { background: var(--gold); transform: scale(1.3); }
 </style>
 </head>
@@ -203,7 +211,6 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
     <div class="spine"></div>
     <div class="cover-flipper" id="cover-flipper" onclick="openBible()">
 
-      <!-- Front face -->
       <div class="cover-face">
         <div class="cross">
           <svg viewBox="0 0 80 110" fill="none">
@@ -227,7 +234,6 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
         </div>
       </div>
 
-      <!-- Back face (inside cover, visible during flip) -->
       <div class="cover-back">
         <div class="cover-back-inner">
           <svg viewBox="0 0 80 110" fill="none">
@@ -236,7 +242,6 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
           </svg>
         </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -248,6 +253,9 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
     <div class="book-spread">
       <div class="flip-sheet" id="flip-sheet"></div>
 
+      <!-- Close book button -->
+      <button class="close-book-btn" onclick="closeBible()">← Close the Book</button>
+
       <!-- PAGE 1 — Title -->
       <div class="page active" id="page-1">
         <div class="page-num">✦ I ✦</div>
@@ -255,24 +263,24 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
         <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
         <div class="book-bigname">Sofia</div>
         <div class="ornament" style="--d:left"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
-        <p class="book-detail" style="margin-top:2vw;">daughter of<br><span style="font-size:5vw;color:var(--ink);font-style:normal;">James &amp; Maria Dubois</span></p>
-        <div class="ornament" style="margin-top:4vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-detail" style="margin-top:clamp(6px,2vw,10px);">daughter of<br><span style="font-size:clamp(14px,5vw,18px);color:var(--ink);font-style:normal;">James &amp; Maria Dubois</span></p>
+        <div class="ornament" style="margin-top:clamp(10px,4vw,18px);"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
         <p class="book-verse">"Let the little children come to me,<br>and do not hinder them,<br>for the kingdom of heaven<br>belongs to such as these."</p>
         <p class="book-verse-ref">Matthew 19:14</p>
       </div>
 
-      <!-- PAGE 2 — Details -->
+      <!-- PAGE 2 — Ceremony Details -->
       <div class="page" id="page-2">
         <div class="page-num">✦ II ✦</div>
         <p class="book-section">The Ceremony</p>
         <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
         <div class="info-row"><span class="info-label">Date</span><span class="book-gold">Sunday, May 18th</span><span class="book-sub">2025</span></div>
-        <div class="ornament" style="--d:left;margin:2vw auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:4vw;"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
+        <div class="ornament" style="--d:left;margin:clamp(6px,2vw,10px) auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:clamp(12px,4vw,16px);"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
         <div class="info-row"><span class="info-label">Time</span><span class="book-gold">10:30 in the Morning</span></div>
-        <div class="ornament" style="--d:left;margin:2vw auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:4vw;"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
-        <div class="info-row"><span class="info-label">Church</span><span class="book-gold" style="font-size:4.2vw;">Saint Joseph Parish</span><span class="book-detail">Ehden, Lebanon</span></div>
-        <div class="ornament" style="margin-top:3vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
-        <p class="book-detail" style="margin-top:2vw;">Followed by a celebration lunch<br>at the family home</p>
+        <div class="ornament" style="--d:left;margin:clamp(6px,2vw,10px) auto;"><svg viewBox="0 0 20 20" fill="currentColor" style="width:clamp(12px,4vw,16px);"><path d="M10 2L11.8 7.5H17.6L12.9 10.9L14.7 16.4L10 13L5.3 16.4L7.1 10.9L2.4 7.5H8.2Z"/></svg></div>
+        <div class="info-row"><span class="info-label">Church</span><span class="book-gold" style="font-size:clamp(12px,4.2vw,17px);">Saint Joseph Parish</span><span class="book-detail">Ehden, Lebanon</span></div>
+        <div class="ornament" style="margin-top:clamp(10px,3vw,16px);"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-detail">Followed by a celebration lunch<br>at the family home</p>
       </div>
 
       <!-- PAGE 3 — Prayer -->
@@ -280,14 +288,14 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
         <div class="page-num">✦ III ✦</div>
         <p class="book-section">A Prayer</p>
         <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
-        <p class="book-verse" style="font-size:3.8vw;">
+        <p class="book-verse">
           <span class="dropcap">D</span>ear Lord,<br><br>
           On this blessed day, Sofia opens<br>her heart to receive You<br>for the first time.<br><br>
           May Your presence fill her with<br>joy, peace, and endless love.<br><br>
           May she walk always in Your light,<br>guided by faith and surrounded<br>by those who love her.
         </p>
-        <div class="ornament" style="--d:left;margin:4vw auto 3vw;"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
-        <p class="book-verse-ref" style="font-size:3vw;">Amen ✦</p>
+        <div class="ornament" style="--d:left;margin:clamp(12px,4vw,18px) auto clamp(8px,3vw,14px);"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 20 20 10 Q30 0 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p class="book-verse-ref">Amen ✦</p>
       </div>
 
       <!-- PAGE 4 — RSVP -->
@@ -295,7 +303,7 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
         <div class="page-num">✦ IV ✦</div>
         <p class="book-section">Your Reply</p>
         <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
-        <p class="book-detail" style="margin-bottom:3vw;">Kindly respond before<br><strong style="font-style:normal;color:var(--burgundy);">May 10th, 2025</strong></p>
+        <p class="book-detail" style="margin-bottom:clamp(8px,3vw,14px);">Kindly respond before<br><strong style="font-style:normal;color:var(--burgundy);">May 10th, 2025</strong></p>
         <div id="rsvp-form-wrap">
           <div class="rsvp-form">
             <div><label class="rsvp-label">Your Name</label><input type="text" class="rsvp-field" id="rv-name" placeholder="e.g. John & Mary Smith"></div>
@@ -306,9 +314,9 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
                 <option value="no">✗ Regretfully declines</option>
               </select>
             </div>
-            <div><label class="rsvp-label">A blessing <span style="opacity:.5;font-size:2vw;">(optional)</span></label><textarea class="rsvp-field" id="rv-msg" rows="3" placeholder="Share a blessing for Sofia…" style="border:1px solid rgba(160,120,40,.4);padding:2vw;resize:none;"></textarea></div>
+            <div><label class="rsvp-label">A blessing <span style="opacity:.5;font-size:clamp(7px,2vw,9px);">(optional)</span></label><textarea class="rsvp-field" id="rv-msg" rows="2" placeholder="Share a blessing for Sofia…" style="border:1px solid rgba(160,120,40,.4);padding:clamp(6px,2vw,10px);resize:none;"></textarea></div>
             <button class="rsvp-btn" onclick="submitRSVP()">Send ✦</button>
-            <p id="rsvp-error" style="display:none;color:#8b2020;font-size:3vw;font-family:'Cinzel',serif;letter-spacing:.1em;text-align:center;margin-top:2vw;"></p>
+            <p id="rsvp-error" style="display:none;color:#8b2020;font-size:clamp(8px,3vw,12px);font-family:'Cinzel',serif;letter-spacing:.1em;text-align:center;margin-top:clamp(4px,2vw,8px);"></p>
           </div>
         </div>
         <div class="rsvp-ok" id="rsvp-ok">
@@ -324,29 +332,56 @@ html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; backgroun
         <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
       </div>
       <div class="page-nav" id="page-nav"></div>
-
     </div>
   </div>
 </div>
 
 <script>
-/* ── Open Bible — 3D flip then switch scenes ── */
+/* ── Open Bible ── */
 function openBible() {
-  const flipper = document.getElementById('cover-flipper');
-  const sceneClosed = document.getElementById('scene-closed');
-  const sceneOpen   = document.getElementById('scene-open');
-
-  // Trigger 3D flip
-  flipper.classList.add('open');
-
-  // After flip completes, swap scenes
+  document.getElementById('cover-flipper').classList.add('open');
   setTimeout(() => {
-    sceneClosed.style.display = 'none';
-    sceneOpen.classList.add('visible');
+    document.getElementById('scene-closed').style.display = 'none';
+    document.getElementById('scene-open').classList.add('visible');
     buildDots();
-    // Scroll to top
     window.scrollTo(0, 0);
   }, 1100);
+}
+
+/* ── Close Bible — go back to cover ── */
+function closeBible() {
+  const sceneOpen   = document.getElementById('scene-open');
+  const sceneClosed = document.getElementById('scene-closed');
+  const flipper     = document.getElementById('cover-flipper');
+
+  // Fade out open scene
+  sceneOpen.style.opacity = '0';
+  sceneOpen.style.transition = 'opacity .4s ease';
+
+  setTimeout(() => {
+    sceneOpen.classList.remove('visible');
+    sceneOpen.style.opacity = '';
+    sceneOpen.style.transition = '';
+
+    // Reset cover to closed position
+    flipper.style.transition = 'none';
+    flipper.classList.remove('open');
+
+    // Show closed scene
+    sceneClosed.style.display = 'flex';
+
+    // Re-enable click after brief delay
+    setTimeout(() => {
+      flipper.style.transition = '';
+    }, 50);
+
+    // Reset pages back to page 1
+    current = 1;
+    document.querySelectorAll('.page').forEach((p, i) => p.classList.toggle('active', i === 0));
+    document.getElementById('page-label').textContent = 'Page 1 of 4';
+    document.getElementById('btn-prev').disabled = true;
+    document.getElementById('btn-next').disabled = false;
+  }, 400);
 }
 
 /* ── Page navigation ── */
@@ -366,13 +401,10 @@ function buildDots() {
 
 function goTo(n) {
   if(n === current) return;
-
-  // Animate page flip sheet
   const sheet = document.getElementById('flip-sheet');
   sheet.classList.remove('animate');
   void sheet.offsetWidth;
   sheet.classList.add('animate');
-
   setTimeout(() => {
     document.getElementById('page-' + current).classList.remove('active');
     current = Math.max(1, Math.min(TOTAL, n));
@@ -381,19 +413,19 @@ function goTo(n) {
     document.getElementById('page-label').textContent = 'Page ' + current + ' of ' + TOTAL;
     document.getElementById('btn-prev').disabled = current === 1;
     document.getElementById('btn-next').disabled = current === TOTAL;
-    // Scroll open book to top
     document.getElementById('scene-open').scrollTo(0, 0);
   }, 220);
 }
 
 function changePage(dir) { goTo(current + dir); }
 
-// Swipe support
+// Swipe
 let sx = 0;
 document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
 document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - sx;
-  if(Math.abs(dx) > 50) changePage(dx < 0 ? 1 : -1);
+  if(Math.abs(dx) > 50 && document.getElementById('scene-open').classList.contains('visible'))
+    changePage(dx < 0 ? 1 : -1);
 }, { passive: true });
 
 /* ── RSVP ── */
