@@ -49,11 +49,11 @@ html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 
 .cover-face {
   position: absolute; inset: 0;
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/4.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/6.png') center/cover no-repeat;
   border-radius: 3px 10px 10px 3px;
   box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), inset -3px 0 8px rgba(0,0,0,.4), 4px 8px 30px rgba(0,0,0,.6);
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  padding: clamp(16px, 6%, 32px) clamp(16px, 6%, 32px) clamp(40px, 12%, 60px); overflow: hidden;
+  padding: clamp(16px, 6%, 32px) clamp(16px, 6%, 32px) clamp(60px, 18%, 90px) clamp(26px, 9%, 50px); overflow: hidden;
 }
 .cover-face::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,5,2,.7) 0%, rgba(10,5,2,.15) 50%, transparent 100%); border-radius: inherit; pointer-events: none; }
 
@@ -101,7 +101,7 @@ html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 
 }
 .back-cover-face {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/4.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/6.png') center/cover no-repeat;
   border-radius: 3px 10px 10px 3px;
   box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), 4px 8px 30px rgba(0,0,0,.6);
   display: flex; flex-direction: column; align-items: center;
@@ -529,16 +529,34 @@ function photoGoTo(idx) {
 }
 function photoMove(dir) { photoGoTo(photoIdx + dir); }
 
-// Swipe
-let sx = 0;
-document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+// ── Page swipe (whole document, always works on any page) ──
+let sx = 0, sy = 0;
+document.addEventListener('touchstart', e => {
+  sx = e.touches[0].clientX;
+  sy = e.touches[0].clientY;
+}, { passive: true });
 document.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - sx;
-  if(Math.abs(dx) > 50 && document.getElementById('scene-open').classList.contains('visible')) {
-    if(current === 4) { photoMove(dx < 0 ? 1 : -1); }
-    else { changePage(dx < 0 ? 1 : -1); }
-  }
+  const dy = e.changedTouches[0].clientY - sy;
+  if(Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+  if(!document.getElementById('scene-open').classList.contains('visible')) return;
+  changePage(dx < 0 ? 1 : -1);
 }, { passive: true });
+
+// ── Photo swipe (carousel only, independent) ──
+let px = 0;
+const carousel = document.getElementById('photo-carousel');
+if(carousel) {
+  carousel.addEventListener('touchstart', e => {
+    px = e.touches[0].clientX;
+  }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - px;
+    if(Math.abs(dx) < 30) return;
+    photoMove(dx < 0 ? 1 : -1);
+    e.stopPropagation(); // prevent page swipe from also firing
+  }, { passive: true });
+}
 
 /* ── RSVP ── */
 function submitRSVP() {
