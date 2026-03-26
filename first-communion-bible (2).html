@@ -18,7 +18,7 @@
   --ivory-dk:   #f0e4c8;
   --ink:        #2a1a0a;
   --ink-lt:     #5a3a1a;
-  --bw: min(82vw, 370px);
+  --bw: min(92vw, 420px);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -124,10 +124,10 @@ html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 
 /* ══════ OPEN SCENE ══════ */
 #scene-open {
   display: none;
-  width: 100vw; min-height: 100vh;
+  width: 100vw; height: 100vh;
   background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%);
-  padding: clamp(20px, 6vw, 40px) 0 clamp(40px, 10vw, 60px);
-  align-items: flex-start; justify-content: center;
+  padding: 0;
+  align-items: center; justify-content: center;
   overflow-y: auto;
 }
 #scene-open.visible { display: flex; }
@@ -137,7 +137,7 @@ html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 
 
 /* Navigation — overlaid on open-book (outside book-spread overflow) */
 .page-arrows {
-  position: absolute; bottom: clamp(8px,3vw,14px); left: 0; right: 0;
+  position: absolute; bottom: clamp(6px,2vw,10px); left: 0; right: 0;
   z-index: 20;
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 clamp(10px, 4vw, 18px);
@@ -153,14 +153,8 @@ html, body { width: 100%; overflow-x: hidden; background: #0a0404; font-family: 
 .page-arrow-btn:hover { opacity: .6; }
 .page-arrow-btn:disabled { opacity: .25; cursor: default; }
 .page-label { font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 9px); color: var(--gold-dk); letter-spacing: .1em; opacity: .6; }
-.page-nav {
-  position: absolute; bottom: clamp(34px, 9vw, 44px); left: 0; right: 0;
-  z-index: 20;
-  display: flex; justify-content: center; gap: clamp(6px, 2.5vw, 10px);
-  pointer-events: none;
-}
-.page-dot { pointer-events: auto; width: clamp(7px, 2.2vw, 10px); height: clamp(7px, 2.2vw, 10px); border-radius: 50%; background: rgba(160,120,40,.25); border: 1px solid var(--gold-dk); cursor: pointer; transition: all .3s; }
-.page-dot.active { background: var(--gold); transform: scale(1.3); }
+/* Dots removed — hidden */
+.page-nav { display: none; }
 
 .book-spread {
   width: 100%;
@@ -493,7 +487,6 @@ function goTo(n) {
     document.querySelectorAll('.page-dot').forEach((d, i) => d.classList.toggle('active', i + 1 === current));
     document.getElementById('page-label').textContent = 'Page ' + current + ' of ' + TOTAL;
     updateNavButtons();
-    document.getElementById('scene-open').scrollTo(0, 0);
   }, 220);
 }
 
