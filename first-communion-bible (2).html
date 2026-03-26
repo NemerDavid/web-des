@@ -139,7 +139,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 
 /* Navigation — overlaid on open-book (outside book-spread overflow) */
 .page-arrows {
-  position: absolute; bottom: clamp(6px,2vw,10px); left: 0; right: 0;
+  position: absolute; bottom: clamp(2px,0.8vw,5px); left: 0; right: 0;
   z-index: 20;
   display: flex; justify-content: space-between; align-items: center;
   padding: 0 clamp(10px, 4vw, 18px);
@@ -227,9 +227,13 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 .page-icon { width: clamp(32px, 10vw, 44px); height: clamp(32px, 10vw, 44px); object-fit: contain; opacity: .75; margin-bottom: clamp(4px, 1.5vw, 8px); }
 .page-icon-pair { display: flex; gap: clamp(10px, 4vw, 18px); align-items: center; justify-content: center; margin-bottom: clamp(4px, 1.5vw, 8px); }
 .page-icon-pair .page-icon { margin-bottom: 0; }
+/* ── Music button ── */
 </style>
 </head>
 <body>
+
+<!-- ══════ HYMN AUDIO ══════ -->
+<audio id="hymn" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Christian_Hymn_-_Jesus_Loves_Me_CeeNaija.com_.mp3" loop preload="auto"></audio>
 
 <!-- ══════ CLOSED BIBLE ══════ -->
 <div id="scene-closed">
@@ -397,6 +401,13 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 <script>
 const TOTAL = 5;
 let current = 1;
+
+/* ── Hymn music — plays on first interaction ── */
+const hymn = document.getElementById('hymn');
+document.addEventListener('click', function startMusic() {
+  hymn.play().catch(()=>{});
+  document.removeEventListener('click', startMusic);
+}, { once: true });
 
 /* ── Open Bible ── */
 function openBible() {
