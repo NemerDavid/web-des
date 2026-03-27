@@ -347,10 +347,11 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
         <img class="page-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Cross.png" alt="">
         <p class="book-section">Your Reply</p>
         <div class="ornament"><svg viewBox="0 0 40 20" fill="none"><path d="M0 10 Q10 0 20 10 Q30 20 40 10" stroke="currentColor" stroke-width="1"/><circle cx="20" cy="10" r="2" fill="currentColor"/></svg></div>
+        <p id="dear-guest" class="book-detail" style="font-family:'Great Vibes',cursive;font-size:clamp(18px,6vw,26px);color:var(--burgundy);font-style:normal;margin-bottom:clamp(3px,1vw,6px);"></p>
         <p class="book-detail" style="margin-bottom:clamp(5px,2vw,9px);">Kindly respond before<br><strong style="font-style:normal;color:var(--burgundy);">May 10th, 2025</strong></p>
         <div id="rsvp-form-wrap">
           <div class="rsvp-form">
-            <div><label class="rsvp-label">Your Name</label><input type="text" class="rsvp-field" id="rv-name" placeholder="e.g. John & Mary Smith"></div>
+            <div id="rv-name-row"><label class="rsvp-label">Your Name</label><input type="text" class="rsvp-field" id="rv-name" placeholder="e.g. John & Mary Smith"></div>
             <div><label class="rsvp-label">Attending?</label>
               <select class="rsvp-field" id="rv-att" style="cursor:pointer;">
                 <option value="">— Please select —</option>
@@ -401,6 +402,18 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 <script>
 const TOTAL = 5;
 let current = 1;
+
+/* ── Read guest name from URL ?guest=Name ── */
+const guestName = decodeURIComponent(new URLSearchParams(window.location.search).get('guest') || '');
+if(guestName) {
+  const dearEl = document.getElementById('dear-guest');
+  if(dearEl) dearEl.textContent = 'Dear ' + guestName + ',';
+  const nameField = document.getElementById('rv-name');
+  if(nameField) nameField.value = guestName;
+  // Hide the name field — we already know who they are
+  const nameRow = document.getElementById('rv-name-row');
+  if(nameRow) nameRow.style.display = 'none';
+}
 
 /* ── Hymn music — plays on first interaction ── */
 const hymn = document.getElementById('hymn');
