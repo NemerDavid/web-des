@@ -41,7 +41,8 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #1a0e05; f
 
 .church-bg {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Church/Church4.png') center center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Church/Church4.png') center center/contain no-repeat;
+  background-color: #0a0502;
   transition: transform 2.5s cubic-bezier(.4,0,.2,1), filter 2.5s ease;
 }
 
@@ -112,9 +113,9 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #1a0e05; f
 
 @media (max-width: 500px) {
   .door-container {
-    top: 70%;
+    top: 68%;
     width: clamp(110px, 42vw, 170px);
-    height: clamp(154px, 52vw, 238px);
+    height: clamp(154px, 42vw, 238px);
   }
 }
 
@@ -166,21 +167,21 @@ html, body { width: 100%; height: 100%; overflow: hidden; background: #1a0e05; f
 .door-right::after { left: 0;  background: linear-gradient(to left,  transparent, rgba(0,0,0,.4)); }
 
 /* ── OPEN BUTTON ── */
-.open-btn {
-  position: absolute; bottom: clamp(16px, 3vh, 32px); left: 50%; transform: translateX(-50%);
-  z-index: 5;
-  font-family: 'Cinzel', serif; font-size: clamp(9px,2.5vw,12px);
-  letter-spacing: .3em; text-transform: uppercase;
-  color: var(--gold-lt); border: 1px solid rgba(232,204,128,.45);
-  padding: clamp(10px,2.5vw,14px) clamp(20px,6vw,36px);
-  cursor: pointer; transition: all .3s;
-  backdrop-filter: blur(6px);
-  background: rgba(10,5,2,.4);
+.open-btn { display: none; }
+
+/* Tap hint directly on the door */
+.door-tap-hint {
+  position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
+  z-index: 6; text-align: center; pointer-events: none;
+  animation: hintPulse 2s ease-in-out infinite;
   white-space: nowrap;
-  animation: fadeUp 1.4s .4s ease both, hintPulse 2.5s 2s ease-in-out infinite;
 }
-.open-btn:hover { border-color: var(--gold); color: #fff; background: rgba(201,168,76,.15); }
-@keyframes hintPulse { 0%,100%{opacity:.8} 50%{opacity:1} }
+.door-tap-hint span {
+  font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,10px);
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(232,204,128,.85);
+}
+@keyframes hintPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
 
 /* Light rays that appear when doors open */
 .light-rays {
@@ -364,7 +365,7 @@ textarea.form-field { border:1px solid rgba(201,168,76,.3); padding:clamp(5px,2v
     <div class="church-gradient"></div>
     <div class="light-rays"></div>
 
-    <div class="door-container" id="door-container">
+    <div class="door-container" id="door-container" onclick="openDoors()" style="cursor:pointer;">
       <div class="door-pair">
         <div class="door-left" id="door-left">
           <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Church/Left.png" alt="Left door">
@@ -372,6 +373,9 @@ textarea.form-field { border:1px solid rgba(201,168,76,.3); padding:clamp(5px,2v
         <div class="door-right" id="door-right">
           <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Church/Right.png" alt="Right door">
         </div>
+      </div>
+      <div class="door-tap-hint">
+        <span>✦ Open ✦</span>
       </div>
     </div>
 
@@ -383,7 +387,6 @@ textarea.form-field { border:1px solid rgba(201,168,76,.3); padding:clamp(5px,2v
       <span class="n-date">14 August 2027 · Ehden, Lebanon</span>
     </div>
 
-    <button class="open-btn" id="open-btn" onclick="openDoors()">Open Invitation ✦</button>
   </div>
 </div>
 
@@ -582,8 +585,9 @@ if(guestName) {
 
 /* ── DOOR OPENING SEQUENCE ── */
 function openDoors() {
-  const btn = document.getElementById('open-btn');
-  btn.style.display = 'none';
+  // Disable further clicks
+  document.getElementById('door-container').style.pointerEvents = 'none';
+  document.querySelector('.door-tap-hint').style.display = 'none';
 
   // 1. Open the doors
   document.getElementById('door-left').classList.add('open');
