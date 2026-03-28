@@ -252,7 +252,6 @@
           </div>
           <div class="cards-track-wrap">
             <div class="cards-track" id="row2">
-              <!-- 10. Soft Floral Book — FIXED: card-garden → card-blue -->
               <div class="card-wrap card-blue reveal">
                 <div class="card-header" onclick="window.open('Blue_wed_book.html','_blank')"><span class="card-header-num">10</span><span class="card-header-name">Soft Floral Book</span></div>
                 <div class="template-card card-blue" onclick="window.open('Blue_wed_book.html','_blank')">
@@ -261,10 +260,9 @@
                   <div class="card-strip" style="--accent:#8a9bb5;"></div>
                 </div>
               </div>
-              <!-- 11. Garden in Bloom -->
-              <div class="card-wrap card-garden reveal">
+              <div class="card-wrap card-blue reveal">
                 <div class="card-header" onclick="window.open('Garden_in_Bloom.html','_blank')"><span class="card-header-num">11</span><span class="card-header-name">Blue Rose Garden</span></div>
-                <div class="template-card card-garden" onclick="window.open('Garden_in_Bloom.html','_blank')">
+                <div class="template-card card-blue" onclick="window.open('Garden_in_Bloom.html','_blank')">
                   <iframe class="card-preview" src="Garden_in_Bloom.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
                   <div class="card-overlay"><div class="card-name">Blue Rose Garden</div><div class="card-desc">Romantic · Watercolor · Enchanted</div><a href="Garden_in_Bloom.html" target="_blank" class="card-btn">View Template →</a></div>
                   <div class="card-strip" style="--accent:#8a9bb5;"></div>
@@ -325,16 +323,15 @@
         entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); } });
       }, { threshold: .08 });
       document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-      /* FIXED: book invitations use narrower virtual viewport so the book fills the preview card */
       function scaleIframes() {
         document.querySelectorAll('.template-card').forEach(card => {
           const iframe = card.querySelector('.card-preview');
           if(!iframe) return;
           const cw = card.offsetWidth, ch = card.offsetHeight;
           const src = iframe.getAttribute('src') || '';
-          const isBook = src.includes('Blue_wed_book') || src.includes('Garden_in_Bloom') || src.includes('Classy');
-          const vw = isBook ? 480 : 390;
-          const vh = isBook ? 850 : 844;
+          const isBook = src.includes('Blue_wed_book') || src.includes('Garden_in_Bloom');
+          const vw = isBook ? 460 : 390;
+          const vh = isBook ? 580 : 844;
           const scale = Math.min(cw / vw, ch / vh);
           iframe.style.width = vw + 'px'; iframe.style.height = vh + 'px';
           iframe.style.transform = `scale(${scale})`; iframe.style.transformOrigin = 'top left';
