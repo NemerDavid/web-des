@@ -64,16 +64,22 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .cover-back-inner { width:85%; height:85%; border:1px solid var(--border); }
 .spine { position:absolute; top:0; left:-8px; width:8px; height:100%; background:linear-gradient(to right,#888480,#aaa8a4,#909088); border-radius:3px 0 0 3px; z-index:20; pointer-events:none; }
 
-/* Cover text */
-.cover-monogram { position:relative; z-index:1; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(28px,9vw,46px); color:var(--navy); letter-spacing:.1em; margin-bottom:clamp(4px,1.5vw,8px); }
-.cover-line { width:55%; height:1px; background:linear-gradient(to right,transparent,var(--gold),transparent); margin:clamp(4px,1.5vw,8px) auto; position:relative; z-index:1; }
+/* Cover text — monogram, date, hint: dark+bold. Names: keep original colors */
+  .cover-monogram { position:relative; z-index:1; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(28px,9vw,46px); 
+   color:var(--navy); letter-spacing:.1em; margin-bottom:clamp(4px,1.5vw,8px); }
+.cover-line { width:55%; height:1px; background:linear-gradient(to right,transparent,rgba(0,0,0,.45),transparent); margin:clamp(4px,1.5vw,8px) auto; position:relative; z-index:1; }
 .cover-names { position:relative; z-index:1; text-align:center; }
 .cover-name-script { font-family:'Great Vibes',cursive; font-size:clamp(28px,9vw,44px); color:var(--navy); line-height:1.15; display:block; }
-.cover-amp { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(13px,3.8vw,18px); color:var(--gold-dk); opacity:.9; display:block; margin:2px 0; }
-.cover-date { font-family:'Cinzel',serif; font-size:clamp(8px,2.4vw,12px); color:var(--navy-lt); letter-spacing:.22em; text-transform:uppercase; position:relative; z-index:1; margin-top:clamp(6px,2vw,10px); opacity:.8; }
+.cover-amp { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(13px,3.8vw,18px); color:#000; font-weight:700; text-shadow:0 1px 4px rgba(255,255,255,.5); display:block; margin:2px 0; }
+    .cover-date { font-family:'Cinzel',serif; font-size:clamp(8px,2.4vw,12px); color:var(--navy-lt); letter-spacing:.22em; text-transform:uppercase; position:relative; z-index:1; margin-top:clamp(6px,2vw,10px); opacity:.8; }
 .tap-hint { position:absolute; bottom:5%; left:50%; transform:translateX(-50%); z-index:2; display:flex; flex-direction:column; align-items:center; gap:6px; animation:hintPulse 2s ease-in-out infinite; }
-.tap-hint span { font-family:'Cinzel',serif; font-size:clamp(8px,2.5vw,11px); color:var(--navy); letter-spacing:.2em; text-transform:uppercase; opacity:.65; }
-.tap-hint svg { width:clamp(14px,4.5vw,20px); opacity:.45; }
+.tap-hint span {
+  font-family:'Cinzel',serif; font-weight:700;
+  font-size:clamp(8px,2.5vw,11px);
+  color:#000; letter-spacing:.2em; text-transform:uppercase;
+  text-shadow: 0 1px 4px rgba(255,255,255,.5);
+}
+.tap-hint svg { width:clamp(14px,4.5vw,20px); opacity:1; }
 @keyframes hintPulse { 0%,100%{opacity:.5;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-3px)} }
 
 /* ══════ BACK COVER ══════ */
@@ -88,12 +94,25 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
   display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
   padding:clamp(16px,6%,32px) clamp(16px,6%,32px) clamp(40px,12%,60px); overflow:hidden;
 }
-.back-cover-face::before { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(20,30,50,.45) 0%,transparent 60%); pointer-events:none; }
+.back-cover-face::before { content:""; position:absolute; inset:0; background:linear-gradient(to top,rgba(240,235,225,.7) 0%,transparent 60%); pointer-events:none; }
 .back-spine { position:absolute; top:0; left:-8px; width:8px; height:100%; background:linear-gradient(to right,#888480,#aaa8a4,#909088); border-radius:3px 0 0 3px; z-index:5; }
 .back-cover-text { position:relative; z-index:1; text-align:center; margin-bottom:clamp(6px,2vw,12px); }
 .back-cover-text p { font-family:'Great Vibes',cursive; font-size:clamp(22px,8vw,36px); color:var(--navy); margin-bottom:clamp(4px,1.5vw,8px); }
-.back-cover-text small { font-family:'Cinzel',serif; font-size:clamp(8px,2.2vw,11px); color:var(--navy-lt); letter-spacing:.2em; text-transform:uppercase; opacity:.7; }
-.back-reopen-btn { position:relative; z-index:2; font-family:'Cinzel',serif; font-size:clamp(8px,2.5vw,11px); letter-spacing:.2em; text-transform:uppercase; color:var(--navy); background:none; border:none; padding:0; cursor:pointer; opacity:.65; animation:hintPulse 2s ease-in-out infinite; }
+.back-cover-text small {
+  font-family:'Cinzel',serif; font-weight:700;
+  font-size:clamp(8px,2.2vw,11px);
+  color:#000; letter-spacing:.2em; text-transform:uppercase;
+  text-shadow:0 1px 4px rgba(255,255,255,.5);
+}
+.back-reopen-btn {
+  position:relative; z-index:2;
+  font-family:'Cinzel',serif; font-weight:700;
+  font-size:clamp(8px,2.5vw,11px);
+  letter-spacing:.2em; text-transform:uppercase;
+  color:#000; background:none; border:none; padding:0; cursor:pointer;
+  text-shadow:0 1px 4px rgba(255,255,255,.5);
+  animation:hintPulse 2s ease-in-out infinite;
+}
 
 /* ══════ OPEN SCENE ══════ */
 #scene-open { display:none; width:100vw; height:100vh; background:radial-gradient(ellipse at center,#ccc8c0 0%,#b8b4ae 100%); align-items:center; justify-content:center; overflow-y:auto; }
@@ -123,22 +142,17 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .page.active { display:flex; }
 @keyframes pgIn { from{opacity:0;transform:translateX(6px)} to{opacity:1;transform:none} }
 
-/* Nav */
 .page-arrows { position:absolute; bottom:clamp(2px,.8vw,5px); left:0; right:0; z-index:20; display:flex; justify-content:space-between; align-items:center; padding:0 clamp(10px,4vw,18px); pointer-events:none; }
 .page-arrow-btn { pointer-events:auto; font-family:'Cinzel',serif; font-size:clamp(8px,2.8vw,12px); letter-spacing:.1em; text-transform:uppercase; color:var(--navy); background:none; border:none; padding:0; cursor:pointer; transition:opacity .2s; font-weight:500; }
 .page-arrow-btn:hover { opacity:.6; }
 .page-label { font-family:'Cinzel',serif; font-size:clamp(7px,2vw,9px); color:var(--gold-dk); letter-spacing:.1em; opacity:.65; }
 .page-nav { display:none; }
 
-/* ── Typography ── */
 .page-num { font-family:'Cinzel',serif; font-size:clamp(8px,2.5vw,11px); color:var(--gold-dk); letter-spacing:.12em; margin-bottom:clamp(3px,1.2vw,6px); opacity:.7; }
-
-/* Heart divider */
 .heart-div { display:flex; align-items:center; gap:clamp(5px,2vw,10px); margin:clamp(5px,1.8vw,9px) auto; width:78%; color:#8a9bb5; }
 .heart-div::before { content:""; flex:1; height:1px; background:linear-gradient(to right, transparent, #8a9bb5); opacity:.45; }
 .heart-div::after  { content:""; flex:1; height:1px; background:linear-gradient(to left,  transparent, #8a9bb5); opacity:.45; }
 .heart-div svg { flex-shrink:0; display:block; }
-
 .book-eyebrow { font-family:'Cinzel',serif; font-size:clamp(8px,2.5vw,11px); letter-spacing:.3em; text-transform:uppercase; color:var(--gold-dk); margin-bottom:clamp(4px,1.5vw,7px); opacity:.85; }
 .book-bigname { font-family:'Great Vibes',cursive; font-size:clamp(34px,12vw,54px); color:var(--navy); line-height:1.05; }
 .book-amp { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(15px,4.5vw,20px); color:var(--navy-lt); margin:clamp(2px,1vw,4px) 0; }
@@ -154,7 +168,6 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .t-parent { font-family:'Cormorant Garamond',serif; font-size:clamp(11px,3.5vw,15px); color:var(--ink); line-height:1.4; }
 .t-label-sm { font-family:'Cinzel',serif; font-size:clamp(7px,1.8vw,9px); letter-spacing:.15em; text-transform:uppercase; color:var(--gold-dk); opacity:.75; margin-bottom:2px; }
 
-/* ── Calendar ── */
 .cal-box { background:rgba(255,255,255,.42); backdrop-filter:blur(4px); border:1px solid var(--border); padding:clamp(7px,2.5vw,13px) clamp(5px,2vw,10px); width:100%; margin:clamp(4px,1.5vw,8px) 0; border-radius:2px; }
 .cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:.3vw; }
 .cal-cell { text-align:center; padding:clamp(2px,1vw,4px) .5vw; font-size:clamp(8px,2.8vw,12px); color:var(--ink-lt); font-family:'Cinzel',serif; }
@@ -162,13 +175,11 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .cal-cell.empty { opacity:0; }
 .cal-cell.highlight { color:var(--navy); font-weight:600; position:relative; }
 
-/* ── Countdown ── */
 .countdown { display:flex; justify-content:center; gap:clamp(4px,2vw,10px); margin-top:clamp(6px,2.5vw,12px); }
 .flip { text-align:center; background:rgba(255,255,255,.42); backdrop-filter:blur(4px); border:1px solid var(--border); padding:clamp(6px,2.5vw,10px) clamp(4px,1.5vw,8px); min-width:clamp(42px,14vw,58px); border-radius:2px; }
 .flip .num { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(16px,6vw,26px); color:var(--navy); line-height:1; }
 .flip .lbl { font-family:'Cinzel',serif; font-size:clamp(6px,1.8vw,8px); letter-spacing:.1em; text-transform:uppercase; color:var(--gold-dk); margin-top:clamp(2px,1vw,4px); opacity:.8; }
 
-/* ── Timeline ── */
 .tl-wrap { width:100%; margin-top:clamp(4px,1.5vw,7px); }
 .tl-row { display:grid; grid-template-columns:1fr clamp(38px,14vw,62px) 1fr; align-items:center; gap:clamp(3px,1.5vw,6px); margin-bottom:clamp(5px,2vw,10px); }
 .tl-left { text-align:right; padding-right:clamp(4px,1.5vw,8px); }
@@ -183,10 +194,8 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .tl-icon img { width:clamp(22px,8vw,34px); height:clamp(22px,8vw,34px); object-fit:contain; opacity:.75; }
 .tl-label { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(14px,5vw,22px); color:var(--navy); }
 
-/* ── Gift ── */
 .gift-box { background:rgba(255,255,255,.42); backdrop-filter:blur(4px); border:1px solid var(--border); display:inline-block; padding:clamp(8px,3vw,14px) clamp(14px,5vw,24px); border-radius:2px; }
 
-/* ── Photos ── */
 .photo-carousel { width:100%; position:relative; overflow:hidden; }
 .photo-track { display:flex; transition:transform .4s cubic-bezier(.25,.46,.45,.94); }
 .photo-slide { min-width:100%; }
@@ -195,7 +204,6 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #dcd8d2;
 .photo-arrows { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; padding:0 clamp(6px,2vw,10px); transform:translateY(-50%); pointer-events:none; }
 .photo-arr { pointer-events:auto; background:rgba(250,247,242,.8); border:1px solid var(--border); color:var(--navy); width:clamp(24px,7vw,32px); height:clamp(24px,7vw,32px); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:clamp(12px,4vw,16px); cursor:pointer; }
 
-/* ── RSVP ── */
 .rsvp-box { background:rgba(255,255,255,.48); backdrop-filter:blur(6px); border:1px solid var(--border); padding:clamp(10px,3.5vw,16px); width:100%; border-radius:2px; }
 .step-dots { display:flex; align-items:center; justify-content:center; gap:clamp(4px,2vw,8px); margin-bottom:clamp(8px,2.5vw,12px); }
 .step-dot { width:clamp(6px,2vw,9px); height:clamp(6px,2vw,9px); border-radius:50%; background:rgba(184,150,46,.2); border:1px solid var(--gold-dk); transition:all .3s; }
@@ -222,6 +230,9 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
 </head>
 <body>
 
+<audio id="wedding-music" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Music/CHRISTINA%20PERRI.mp3" loop preload="auto"></audio>
+<audio id="page-flip-sound" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
+
 <!-- ══════ CLOSED BOOK ══════ -->
 <div id="scene-closed">
   <div class="bible-3d">
@@ -239,7 +250,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         <div class="cover-date">14 August 2027 · Ehden</div>
         <div class="tap-hint">
           <span>Open</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </div>
       <div class="cover-back"><div class="cover-back-inner"></div></div>
@@ -254,7 +265,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
     <div class="book-spread">
       <div class="flip-sheet" id="flip-sheet"></div>
 
-      <!-- PAGE 1 — Title & Verse -->
+      <!-- PAGE 1 -->
       <div class="page active" id="page-1">
         <div class="page-num">✦ I ✦</div>
         <p class="book-eyebrow">Wedding Invitation</p>
@@ -262,12 +273,12 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         <div class="book-bigname">Thomas</div>
         <div class="book-amp">&amp;</div>
         <div class="book-bigname">Sarah</div>
-        <div class="heart-div" style="--d:left"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="heart-div"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
         <p class="book-verse">"What therefore God has joined together,<br>let no man put asunder."</p>
         <p class="book-verse-ref">Matthew 19:6</p>
       </div>
 
-      <!-- PAGE 2 — Parents & Honor -->
+      <!-- PAGE 2 -->
       <div class="page" id="page-2">
         <div class="page-num">✦ II ✦</div>
         <p class="book-detail" style="margin-bottom:clamp(4px,1.5vw,8px);">Together with their families</p>
@@ -277,13 +288,13 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         </div>
         <div class="heart-div"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
         <p class="book-detail">Request the honour of your presence<br>at the wedding of their son and daughter</p>
-        <div class="heart-div" style="--d:left"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="heart-div"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
         <div class="book-bigname" style="font-size:clamp(30px,10vw,48px);">Thomas</div>
         <div class="book-amp">&amp;</div>
         <div class="book-bigname" style="font-size:clamp(30px,10vw,48px);">Sarah</div>
       </div>
 
-      <!-- PAGE 3 — Calendar & Countdown -->
+      <!-- PAGE 3 -->
       <div class="page" id="page-3">
         <div class="page-num">✦ III ✦</div>
         <p class="book-section">Wedding Day</p>
@@ -301,7 +312,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         </div>
       </div>
 
-      <!-- PAGE 4 — Timeline -->
+      <!-- PAGE 4 -->
       <div class="page" id="page-4">
         <div class="page-num">✦ IV ✦</div>
         <p class="book-section">The Celebration</p>
@@ -330,7 +341,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         </div>
       </div>
 
-      <!-- PAGE 5 — Gift Registry -->
+      <!-- PAGE 5 -->
       <div class="page" id="page-5">
         <div class="page-num">✦ V ✦</div>
         <p class="book-section">Gift Registry</p>
@@ -342,7 +353,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         </div>
       </div>
 
-      <!-- PAGE 6 — Photos -->
+      <!-- PAGE 6 -->
       <div class="page" id="page-6">
         <div class="page-num">✦ VI ✦</div>
         <p class="book-section" style="margin-bottom:clamp(2px,1vw,4px);">Our Story</p>
@@ -363,7 +374,7 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
         <div class="photo-counter" id="photo-counter">1 / 4</div>
       </div>
 
-      <!-- PAGE 7 — RSVP -->
+      <!-- PAGE 7 -->
       <div class="page" id="page-7">
         <div class="page-num">✦ VII ✦</div>
         <p class="book-section">RSVP</p>
@@ -375,17 +386,12 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
             <div class="step-dot" id="dot-2"></div>
             <div class="step-dot" id="dot-3"></div>
           </div>
-          <!-- Step 1 -->
           <div id="s1">
             <p id="dear-guest" style="font-family:'Great Vibes',cursive;font-size:clamp(18px,6vw,26px);color:var(--navy);margin-bottom:clamp(3px,1vw,5px);text-align:center;"></p>
-            <div id="rv-name-row">
-              <label class="form-label">Your Full Name</label>
-              <input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah &amp; Mark Johnson">
-            </div>
+            <div id="rv-name-row"><label class="form-label">Your Full Name</label><input id="f-name" type="text" class="form-field" placeholder="e.g. Sarah &amp; Mark Johnson"></div>
             <p class="error-msg" id="e-name">Please enter your name.</p>
             <button class="rsvp-single-btn" onclick="goStep(1,2)">Continue →</button>
           </div>
-          <!-- Step 2 -->
           <div id="s2" style="display:none;">
             <label class="form-label">Will you be attending?</label>
             <div class="attend-grid">
@@ -399,13 +405,11 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
             <p class="error-msg" id="e-attend">Please select an option.</p>
             <div class="btn-grid"><button class="btn-rose" onclick="goStep(2,1)">← Back</button><button class="btn-rose btn-solid" onclick="goStep(2,3)">Continue →</button></div>
           </div>
-          <!-- Step 3 -->
           <div id="s3" style="display:none;">
             <label class="form-label">A wish <span style="opacity:.4;">(optional)</span></label>
             <textarea id="f-msg" class="form-field" rows="2" placeholder="Share a wish for Thomas &amp; Sarah…"></textarea>
             <div class="btn-grid" style="margin-top:clamp(4px,1.5vw,8px);"><button class="btn-rose" onclick="goStep(3,2)">← Back</button><button class="btn-rose btn-solid" onclick="submitRSVP()">Send ✦</button></div>
           </div>
-          <!-- Success -->
           <div id="s-ok" style="display:none;text-align:center;padding:clamp(8px,3vw,14px) 0;">
             <div style="font-size:clamp(20px,8vw,32px);margin-bottom:clamp(4px,1.5vw,8px);">💐</div>
             <p style="font-family:'Great Vibes',cursive;font-size:clamp(20px,7vw,30px);color:var(--navy);margin-bottom:clamp(3px,1vw,5px);">Thank you!</p>
@@ -435,26 +439,29 @@ textarea.form-field { border:1px solid var(--border); padding:clamp(5px,2vw,8px)
           <p>Thomas &amp; Sarah</p>
           <small>14 August 2027 · Ehden, Lebanon</small>
         </div>
-        <button class="back-reopen-btn" onclick="reopenFromBack()">← Back to Book</button>
+        <button class="back-reopen-btn" onclick="reopenFromBack()">← Back to Invitation</button>
       </div>
     </div>
   </div>
 </div>
 
-<audio id="page-flip-sound" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
-
 <script>
 const TOTAL=7; let current=1;
 
-/* ── Guest URL param ── */
+/* Music on first tap */
+const music=document.getElementById('wedding-music');
+music.volume=0.4;
+document.addEventListener('click',function startMusic(){music.play().catch(()=>{});document.removeEventListener('click',startMusic);},{once:true});
+
+/* Guest URL param */
 const guestName=decodeURIComponent(new URLSearchParams(window.location.search).get('guest')||'');
 if(guestName){
-  const d=document.getElementById('dear-guest'); if(d) d.textContent='Dear '+guestName+',';
-  const f=document.getElementById('f-name'); if(f) f.value=guestName;
-  const r=document.getElementById('rv-name-row'); if(r) r.style.display='none';
+  const d=document.getElementById('dear-guest');if(d)d.textContent='Dear '+guestName+',';
+  const f=document.getElementById('f-name');if(f)f.value=guestName;
+  const r=document.getElementById('rv-name-row');if(r)r.style.display='none';
 }
 
-/* ── Book open/close ── */
+/* Open book */
 function openBible(){
   document.getElementById('cover-flipper').classList.add('open');
   setTimeout(()=>{
@@ -463,11 +470,15 @@ function openBible(){
     updateNavButtons();
   },1100);
 }
+
+/* Close to back cover */
 function closeBible(){
   const s=document.getElementById('scene-open');
   s.style.opacity='0';s.style.transition='opacity .4s ease';
   setTimeout(()=>{s.classList.remove('visible');s.style.opacity='';s.style.transition='';document.getElementById('scene-back').classList.add('visible');},400);
 }
+
+/* Close to front cover */
 function closeBibleToFront(){
   const s=document.getElementById('scene-open'),sc=document.getElementById('scene-closed'),fl=document.getElementById('cover-flipper');
   s.style.opacity='0';s.style.transition='opacity .4s ease';
@@ -479,7 +490,17 @@ function closeBibleToFront(){
     document.getElementById('page-label').textContent='Page 1 of '+TOTAL;updateNavButtons();
   },400);
 }
-function reopenFromBack(){document.getElementById('scene-back').classList.remove('visible');document.getElementById('scene-open').classList.add('visible');goTo(TOTAL);}
+
+/* Back cover → front cover */
+function reopenFromBack(){
+  document.getElementById('scene-back').classList.remove('visible');
+  const sc=document.getElementById('scene-closed'),fl=document.getElementById('cover-flipper');
+  fl.style.transition='none';fl.classList.remove('open');sc.style.display='flex';
+  setTimeout(()=>{fl.style.transition='';},50);
+  current=1;document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===0));
+  document.getElementById('page-label').textContent='Page 1 of '+TOTAL;updateNavButtons();
+}
+
 function updateNavButtons(){
   document.getElementById('btn-prev').textContent=current===1?'✕ Close':'← Prev';
   document.getElementById('btn-next').textContent=current===TOTAL?'Close ✕':'Next →';
@@ -497,7 +518,7 @@ function goTo(n){
 }
 function changePage(dir){const t=current+dir;if(t<1){closeBibleToFront();return;}if(t>TOTAL){closeBible();return;}goTo(t);}
 
-/* ── Calendar — Aug 2027 starts Sunday = 6 empty cells ── */
+/* Calendar — Aug 2027 starts Sunday = 6 empty cells */
 (function(){
   const g=document.getElementById('cal-grid');
   ['M','T','W','T','F','S','S'].forEach(d=>{const e=document.createElement('div');e.className='cal-cell hdr';e.textContent=d;g.appendChild(e);});
@@ -507,31 +528,30 @@ function changePage(dir){const t=current+dir;if(t<1){closeBibleToFront();return;
     if(d===14){
       e.className+=' highlight';
       e.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span>'
-        +'<svg viewBox="0 0 44 44" fill="none" style="position:absolute;inset:0;width:100%;height:100%;">'
-        +'<path d="M22 33C22 33 10 25 10 17C10 12.5 13.5 10 17 10C19.5 10 21 11.5 22 13C23 11.5 24.5 10 27 10C30.5 10 34 12.5 34 17C34 25 22 33 22 33Z" stroke="#b8962e" stroke-width="1.2" fill="none" opacity="0.85"/></svg>';
+        +'<img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Heart.jpeg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.55;" alt="heart"/>';
     }else{e.textContent=d;}
     g.appendChild(e);
   }
 })();
 
-/* ── Countdown ── */
+/* Countdown */
 const TARGET=new Date('2027-08-14T18:00:00');
 function tick(){const diff=Math.max(0,TARGET-new Date());const pad=n=>String(n).padStart(2,'0');document.getElementById('cd-d').textContent=Math.floor(diff/86400000);document.getElementById('cd-h').textContent=pad(Math.floor(diff/3600000)%24);document.getElementById('cd-m').textContent=pad(Math.floor(diff/60000)%60);document.getElementById('cd-s').textContent=pad(Math.floor(diff/1000)%60);}
 tick();setInterval(tick,1000);
 
-/* ── Photos ── */
+/* Photos */
 let photoIdx=0;const PHOTO_TOTAL=4;
 function photoGoTo(i){photoIdx=Math.max(0,Math.min(PHOTO_TOTAL-1,i));document.getElementById('photo-track').style.transform='translateX(-'+(photoIdx*100)+'%)';document.getElementById('photo-counter').textContent=(photoIdx+1)+' / '+PHOTO_TOTAL;}
 function photoMove(d){photoGoTo(photoIdx+d);}
 const car=document.getElementById('photo-carousel');
 if(car){let px=0;car.addEventListener('touchstart',e=>{px=e.touches[0].clientX;},{passive:true});car.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-px;if(Math.abs(dx)<30)return;photoMove(dx<0?1:-1);e.stopPropagation();},{passive:true});}
 
-/* ── Swipe pages ── */
+/* Swipe pages */
 let sx=0,sy=0;
 document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
 document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)<40||Math.abs(dx)<Math.abs(dy))return;if(!document.getElementById('scene-open').classList.contains('visible'))return;changePage(dx<0?1:-1);},{passive:true});
 
-/* ── RSVP ── */
+/* RSVP */
 let gCount=1;
 document.querySelectorAll('input[name="attend"]').forEach(r=>{r.addEventListener('change',()=>{document.getElementById('count-wrap').style.display=r.value==='yes'?'block':'none';});});
 function chCount(d){gCount=Math.max(1,Math.min(10,gCount+d));document.getElementById('cnt-disp').textContent=gCount;}
