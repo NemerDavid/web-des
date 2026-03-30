@@ -105,14 +105,15 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 
 /* ══════ OPEN BOOK SCENE ══════ */
 #scene-open {
-  display: none; width: 100vw; height: 100vh;
+  display: none; width: 100vw; min-height: 100vh;
   background: radial-gradient(ellipse at center, #1e2840 0%, #0e1420 100%);
   align-items: center; justify-content: center; overflow-y: auto;
+  padding: 20px 0 30px;
 }
 #scene-open.visible { display: flex; }
-.open-book { width: var(--bw); position: relative; }
+.open-book { width: var(--bw); position: relative; display: flex; flex-direction: column; align-items: stretch; }
 .open-spine {
-  position: absolute; top: 0; left: -8px; width: 8px; height: 100%;
+  position: absolute; top: 0; left: -8px; width: 8px; height: var(--page-h);
   background: linear-gradient(to right, #3a3020, #6a5a30, #3a3020);
   border-radius: 4px 0 0 4px; z-index: 5; pointer-events: none;
 }
@@ -154,20 +155,21 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 .page {
   display: none; flex-direction: column; align-items: center; text-align: center;
   height: var(--page-h); overflow: hidden;
-  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px) clamp(44px,12vw,58px);
+  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px) clamp(20px,6vw,30px);
   position: relative; z-index: 6; animation: pgIn .35s ease; justify-content: center;
 }
 .page.active { display: flex; }
 @keyframes pgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 
-/* Nav */
+/* Nav — now OUTSIDE the book, below it */
 .page-arrows {
-  position: absolute; bottom: clamp(0px,2.5vw,0px); left: 0; right: 0;
-  z-index: 20; display: flex; justify-content: space-between; align-items: center;
-  padding: 0 clamp(14px,5vw,24px); pointer-events: none;
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px clamp(14px,5vw,24px) 0;
+  margin-top: 2px;
 }
 .page-arrow-btn {
-  pointer-events: auto; font-family: 'Cinzel', serif; font-size: clamp(8px,2.8vw,12px);
+  font-family: 'Cinzel', serif; font-size: clamp(8px,2.8vw,12px);
   letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt);
   background: none; border: none; padding: 0; cursor: pointer; transition: opacity .2s; font-weight: 400;
 }
@@ -309,6 +311,8 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
 <div id="scene-open">
   <div class="open-book">
     <div class="open-spine"></div>
+
+    <!-- Book frame -->
     <div class="book-spread">
       <div class="flip-sheet" id="flip-sheet"></div>
 
@@ -465,14 +469,16 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
         </div>
       </div>
 
-      <!-- Nav -->
-      <div class="page-arrows">
-        <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)">← Prev</button>
-        <span class="page-label" id="page-label">Page 1 of 7</span>
-        <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
-      </div>
+    </div><!-- end .book-spread -->
+
+    <!-- Nav — outside the book frame, directly below -->
+    <div class="page-arrows">
+      <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)">← Prev</button>
+      <span class="page-label" id="page-label">Page 1 of 7</span>
+      <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
     </div>
-  </div>
+
+  </div><!-- end .open-book -->
 </div>
 
 <!-- ══════ BACK COVER ══════ -->
@@ -500,11 +506,11 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
   const canvas = document.getElementById('petals-canvas');
   const ctx = canvas.getContext('2d');
   const colors = [
-    'rgba(201,168,76,',   // gold
-    'rgba(226,201,126,',  // gold-lt
-    'rgba(245,240,232,',  // ivory
-    'rgba(232,160,144,',  // peach
-    'rgba(255,255,255,',  // white
+    'rgba(201,168,76,',
+    'rgba(226,201,126,',
+    'rgba(245,240,232,',
+    'rgba(232,160,144,',
+    'rgba(255,255,255,',
   ];
   let petals = [];
 
