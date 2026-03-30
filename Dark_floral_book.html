@@ -47,7 +47,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 }
 .cover-bg {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover2.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover.png') center/cover no-repeat;
 }
 .cover-content {
   position: absolute; top: 44%; left: 50%;
@@ -89,7 +89,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
   opacity: .6; margin: clamp(5px,1.5vw,8px) auto;
 }
 .cover-open-hint {
-  position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 22%; left: 50%; transform: translateX(-50%);
   z-index: 3; text-align: center;
   animation: hintPulse 2s ease-in-out infinite; cursor: pointer;
 }
@@ -107,8 +107,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 #scene-open {
   display: none; width: 100vw; height: 100vh;
   background: radial-gradient(ellipse at center, #1e2840 0%, #0e1420 100%);
-  flex-direction: column; align-items: center; justify-content: center; overflow-y: auto;
-  gap: 14px;
+  align-items: center; justify-content: center; overflow-y: auto;
 }
 #scene-open.visible { display: flex; }
 .open-book { width: var(--bw); position: relative; }
@@ -155,21 +154,22 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 .page {
   display: none; flex-direction: column; align-items: center; text-align: center;
   height: var(--page-h); overflow: hidden;
-  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px);
+  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px) clamp(44px,12vw,58px);
   position: relative; z-index: 6; animation: pgIn .35s ease; justify-content: center;
 }
 .page.active { display: flex; }
 @keyframes pgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
 
-/* Nav — outside the book, below it */
+/* Nav */
 .page-arrows {
-  width: var(--bw); display: flex; justify-content: space-between; align-items: center;
-  padding: 0 clamp(10px,4vw,18px);
+  position: absolute; bottom: clamp(0px,2.5vw,0px); left: 0; right: 0;
+  z-index: 20; display: flex; justify-content: space-between; align-items: center;
+  padding: 0 clamp(14px,5vw,24px); pointer-events: none;
 }
 .page-arrow-btn {
-  font-family: 'Cinzel', serif; font-size: clamp(9px,3vw,13px);
+  pointer-events: auto; font-family: 'Cinzel', serif; font-size: clamp(8px,2.8vw,12px);
   letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt);
-  background: none; border: none; padding: 4px 0; cursor: pointer; transition: opacity .2s; font-weight: 400;
+  background: none; border: none; padding: 0; cursor: pointer; transition: opacity .2s; font-weight: 400;
 }
 .page-arrow-btn:hover { opacity: .6; }
 .page-label { font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,9px); color: var(--gold); letter-spacing: .1em; opacity: .7; }
@@ -255,7 +255,7 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
 .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(4px,2vw,8px); margin-top: clamp(4px,1.5vw,8px); }
 .btn-rsvp { display: block; width: 100%; padding: clamp(6px,2vw,10px); border: 1px solid var(--border); color: var(--gold-lt); font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .15em; text-transform: uppercase; cursor: pointer; background: rgba(255,255,255,.04); transition: all .2s; }
 .btn-solid { background: var(--gold-dk); border-color: var(--gold); color: var(--ivory); }
-.rsvp-single-btn { width: 100%; padding: clamp(8px,2.5vw,11px); background: rgba(201,168,76,.08); border: 1px solid var(--gold); color: var(--ivory); font-family: 'Cinzel', serif; font-size: clamp(9px,2.8vw,12px); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; margin-top: clamp(5px,2vw,9px); }
+.rsvp-single-btn { width: 100%; padding: clamp(8px,2.5vw,11px); background: rgba(255,255,255,.04); border: 1px solid var(--gold); color: var(--ivory); font-family: 'Cinzel', serif; font-size: clamp(9px,2.8vw,12px); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; margin-top: clamp(5px,2vw,9px); }
 
 /* ══════ BACK COVER ══════ */
 #scene-back { display: none; width: 100vw; height: 100vh; background: radial-gradient(ellipse at center,#1e2840 0%,#0e1420 100%); align-items: center; justify-content: center; }
@@ -265,7 +265,7 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
 .back-wrap { position: relative; width: var(--bw); height: var(--page-h); }
 .back-face {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover2.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover.png') center/cover no-repeat;
   border-radius: 4px 12px 12px 4px;
   box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.6);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -465,16 +465,13 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
         </div>
       </div>
 
-        </div>
+      <!-- Nav -->
+      <div class="page-arrows">
+        <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)">← Prev</button>
+        <span class="page-label" id="page-label">Page 1 of 7</span>
+        <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
       </div>
     </div>
-  </div>
-
-  <!-- Nav — below the book -->
-  <div class="page-arrows">
-    <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)">← Prev</button>
-    <span class="page-label" id="page-label">Page 1 of 7</span>
-    <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
   </div>
 </div>
 
