@@ -49,13 +49,13 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 #scene-back { display: none; width: 100vw; height: 100vh; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, #2e0e0e 0%, #0a0404 100%); perspective: 1400px; }
 #scene-back.visible { display: flex; }
 .back-cover-wrap { width: var(--bw); height: clamp(500px, 145vw, 580px); position: relative; transform-style: preserve-3d; transform-origin: left center; }
-.back-cover-face { position: absolute; inset: 0; background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/6.png') center/cover no-repeat; border-radius: 3px 10px 10px 3px; box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), 4px 8px 30px rgba(0,0,0,.6); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: clamp(16px, 6%, 32px); overflow: hidden; }
+.back-cover-face { position: absolute; inset: 0; background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/6.png') center/cover no-repeat; border-radius: 3px 10px 10px 3px; box-shadow: -8px 0 0 #1a0808, -14px 4px 24px rgba(0,0,0,.85), 4px 8px 30px rgba(0,0,0,.6); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: clamp(16px, 6%, 32px); padding-bottom: clamp(60px,18%,90px); overflow: hidden; }
 .back-cover-face::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,5,2,.75) 0%, rgba(10,5,2,.1) 50%, transparent 100%); pointer-events: none; }
 .back-spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #0e0404, #2a0808, #1a0404); border-radius: 3px 0 0 3px; z-index: 5; }
-.back-cover-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(6px,2vw,12px); }
-.back-cover-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px, 8vw, 36px); color: var(--gold-lt); text-shadow: 0 0 20px rgba(201,168,76,.6); margin-bottom: clamp(4px, 1.5vw, 8px); }
-.back-cover-text small { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 11px); color: rgba(232,204,128,.6); letter-spacing: .2em; text-transform: uppercase; }
-.back-reopen-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 12px); letter-spacing: .2em; text-transform: uppercase; color: rgba(232,204,128,.75); background: none; border: none; padding: 0; cursor: pointer; opacity: .8; transition: opacity .2s; animation: hintPulse 2s ease-in-out infinite; }
+.back-cover-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(4px,1.5vw,8px); }
+.back-cover-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px, 8vw, 36px); color: var(--gold-lt); text-shadow: 0 0 20px rgba(201,168,76,.8), 0 2px 8px rgba(0,0,0,.8); margin-bottom: clamp(2px, 1vw, 4px); }
+.back-cover-text small { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 11px); color: rgba(232,204,128,.95); letter-spacing: .2em; text-transform: uppercase; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+.back-reopen-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 12px); letter-spacing: .2em; text-transform: uppercase; color: rgba(232,204,128,.95); background: none; border: none; padding: 0; cursor: pointer; opacity: .95; text-shadow: 0 1px 6px rgba(0,0,0,.8); transition: opacity .2s; animation: hintPulse 2s ease-in-out infinite; display: block; margin-bottom: clamp(5px,2vw,10px); }
 .back-reopen-btn:hover { opacity: 1; }
 
 /* ══════ OPEN SCENE ══════ */
@@ -99,12 +99,11 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 .ornament-img img { flex-shrink: 0; opacity: .8; }
 .ornament-img img.size-grail  { width: clamp(36px, 10vw, 48px); }
 .ornament-img img.size-cross  { width: clamp(20px, 5vw, 28px); }
-.ornament-img img.size-candle { width: clamp(54px, 10vw, 54px); }
+.ornament-img img.size-candle { width: clamp(48px, 10vw, 48px); }
 .book-eyebrow { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.5vw, 11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold-dk); margin-bottom: clamp(4px, 1.5vw, 7px); opacity: .85; }
 .book-bigname { font-family: 'Great Vibes', cursive; font-size: clamp(38px, 14vw, 60px); color: var(--burgundy); line-height: 1.05; text-shadow: 0 2px 8px rgba(90,26,42,.2); }
 .book-verse { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(12px, 3.4vw, 15px); color: var(--ink-lt); line-height: 1.55; max-width: 90%; }
 .book-verse-ref { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 10px); color: var(--gold-dk); letter-spacing: .15em; margin-top: clamp(4px, 1.5vw, 7px); }
-.book-verse-ref2 { font-family: 'Cinzel', serif; font-size: clamp(8px, 2.2vw, 10px); color: var(--gold-dk); letter-spacing: .15em; margin-top: clamp(-12px, 1.5vw, -14px); }
 .book-section { font-family: 'Cinzel', serif; font-size: clamp(13px, 4.5vw, 18px); color: var(--burgundy); letter-spacing: .12em; margin-bottom: clamp(3px, 1.2vw, 6px); }
 .book-gold { font-family: 'Cinzel', serif; font-size: clamp(12px, 4.2vw, 17px); color: var(--burgundy); letter-spacing: .05em; margin: clamp(2px, 1vw, 5px) 0; }
 .book-detail { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(12px, 3.4vw, 15px); color: var(--ink-lt); line-height: 1.5; }
@@ -113,7 +112,12 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
 .info-label { font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 9px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); opacity: .8; }
 .dropcap { display: inline; font-family: 'Cinzel Decorative', serif; font-size: clamp(28px, 10vw, 42px); line-height: 1; color: var(--burgundy); margin-right: clamp(1px, .5vw, 3px); text-shadow: 2px 2px 0 rgba(201,168,76,.3); vertical-align: bottom; }
 
-/* Map link */
+/* Cardia Studios credit */
+.cardia-credit { position: absolute; bottom: clamp(10px,3%,18px); left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; white-space: nowrap; }
+.cardia-credit a { font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 9px); letter-spacing: .12em; color: rgba(232,204,128,.55); text-decoration: none; text-transform: uppercase; transition: opacity .2s; display: inline-flex; align-items: center; gap: 4px; }
+.cardia-credit a span { border-bottom: 1px solid rgba(232,204,128,.55); padding-bottom: 1px; }
+.cardia-credit a img { width: clamp(14px, 3.5vw, 18px); opacity: .8; flex-shrink: 0; filter: invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(0.85); }
+.cardia-credit a:hover { opacity: 1; }
 .map-link { display: inline-flex; align-items: center; gap: 3px; font-family: 'Cinzel', serif; font-size: clamp(8px, 2.4vw, 11px); color: var(--burgundy); text-decoration: none; letter-spacing: .08em; border-bottom: 1px solid rgba(90,26,42,.3); padding-bottom: 1px; margin-top: clamp(2px,0.8vw,4px); transition: opacity .2s; }
 .map-link:hover { opacity: .7; }
 .map-link svg { flex-shrink: 0; }
@@ -258,7 +262,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
           May she walk always in Your light,<br>guided by faith and surrounded<br>by those who love her.
         </p>
         <div class="ornament-img"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Candle.png" class="size-candle" alt="✦"></div>
-        <p class="book-verse-ref2">Amen ✦</p>
+        <p class="book-verse-ref">Amen ✦</p>
       </div>
 
       <!-- PAGE 4 — Photos (unchanged) -->
@@ -326,6 +330,12 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0a0404;
           <small>First Holy Communion · April 18, 2026</small>
         </div>
         <button class="back-reopen-btn" onclick="reopenFromBack()">← Back to Book</button>
+        <div class="cardia-credit">
+          <a href="https://nemerdavid.github.io/web-des/" target="_blank">
+            Powered by <span>Cardia Studios</span>
+            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Chain2.png" alt="">
+          </a>
+        </div>
       </div>
     </div>
   </div>
