@@ -59,7 +59,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 .cat-arrow { width: 32px; height: 32px; border: 1px solid var(--border); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--ink-lt); font-size: .9rem; transition: all .2s; flex-shrink: 0; }
 .cat-arrow:hover { background: var(--ink); color: var(--gold-lt); border-color: var(--ink); }
 .cards-track-wrap { position: relative; overflow: hidden; padding: 0 2rem; }
-.cards-track { display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; padding-bottom: 12px; cursor: grab; }
+.cards-track { display: flex; gap: 16px; overflow-x: hidden; scrollbar-width: none; padding-bottom: 12px; cursor: grab; user-select: none; }
 .cards-track:active { cursor: grabbing; }
 .cards-track::-webkit-scrollbar { display: none; }
 .card-wrap { flex: 0 0 auto; width: clamp(180px,28vw,280px); display: flex; flex-direction: column; box-shadow: 0 -3px 0 0 var(--card-accent, var(--gold)); }
@@ -213,329 +213,287 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
     <div class="gold-line"></div>
   </div>
 
+  <!-- ══ ROW 1: Book-Style Invitations ══ -->
+  <div class="category-block reveal">
+    <div class="category-header">
+      <div class="category-title">
+        Book Invitations
+        <span>Auto-scrolling ›</span>
+      </div>
+      <div class="category-arrows">
+        <button class="cat-arrow" onclick="nudgeRow('row2', -1)">‹</button>
+        <button class="cat-arrow" onclick="nudgeRow('row2', 1)">›</button>
+      </div>
+    </div>
+    <div class="cards-track-wrap">
+      <div class="cards-track" id="row2">
 
-
- <!-- ══ ROW 1: Book-Style Invitations ══ -->
-        <div class="category-block reveal">
-          <div class="category-header">
-            <div class="category-title">
-              Book Invitations
-              <span>Swipe to explore ›</span>
-            </div>
-            <div class="category-arrows">
-              <button class="cat-arrow" onclick="scrollRow('row2', -1)">‹</button>
-              <button class="cat-arrow" onclick="scrollRow('row2', 1)">›</button>
-            </div>
+        <!-- 1. Soft Floral Book -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('Blue_wed_book.html','_blank')">
+            <span class="card-header-num">01</span><span class="card-header-name">Soft Floral Book</span>
           </div>
-          <div class="cards-track-wrap">
-            <div class="cards-track" id="row2">
-
-             
-              <!-- 1. Blue Rose Garden  -->
-<div class="card-wrap card-garden reveal">
-  <div class="card-header" onclick="window.open('Blue_wed_book.html','_blank')">
-    <span class="card-header-num">01</span><span class="card-header-name">Soft Floral Book</span>
-  </div>
-  <div class="template-card card-garden" onclick="window.open('Blue_wed_book.html','_blank')">
-    <iframe class="card-preview" src="Blue_wed_book.html" loading="lazy" scrolling="no" title="Soft Floral Book"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Soft Floral Book</div>
-      <div class="card-desc">Elegant · Floral · Timeless</div>
-      <a href="Blue_wed_book.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:
-#8a9bb5;"></div>
-  </div>
-</div>
-
-
-<!-- 2. Garden in Bloom -->
-<div class="card-wrap card-garden reveal">
-  <div class="card-header" onclick="window.open('Garden_in_Bloom.html','_blank')">
-    <span class="card-header-num">02</span><span class="card-header-name">Blue Rose Garden</span>
-  </div>
-  <div class="template-card card-garden" onclick="window.open('Garden_in_Bloom.html','_blank')">
-    <iframe class="card-preview" src="Garden_in_Bloom.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Blue Rose Garden</div>
-      <div class="card-desc">Romantic · Watercolor · Enchanted</div>
-      <a href="Garden_in_Bloom.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:#8a9bb5;"></div>
-  </div>
-</div>
-<!-- 3. Dark floral book -->
-<div class="card-wrap card-garden reveal">
-  <div class="card-header" onclick="window.open('Dark_floral_book.html','_blank')">
-    <span class="card-header-num">03</span><span class="card-header-name">Dark blue Garden</span>
-  </div>
-  <div class="template-card card-garden" onclick="window.open('Dark_floral_book.html','_blank')">
-    <iframe class="card-preview" src="Dark_floral_book.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Dark blue & gold Rose garden </div>
-      <div class="card-desc">Romantic · gold · Enchanted</div>
-      <a href="Dark_floral_book.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:#8a9bb5;"></div>
-  </div>
-</div>
-              
-<!-- 4. Classy Blues -->
-<div class="card-wrap card-garden reveal">
-  <div class="card-header" onclick="window.open('French_village_book.html','_blank')">
-    <span class="card-header-num">04</span><span class="card-header-name">French Village</span>
-  </div>
-  <div class="template-card card-garden" onclick="window.open('French_village_book.html','_blank')">
-    <iframe class="card-preview" src="French_village_book.html" loading="lazy" scrolling="no" title="French Village"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Jardin de Fleurs — French Village</div>
-      <div class="card-desc">Romantic · Watercolor · Pastel bloom</div>
-      <a href="French_village_book.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:#c4848a;"></div>
-  </div>
-</div>
-
-              
-
-
-<!-- 5. Die_cut Book -->
-<div class="card-wrap card-garden reveal">
-  <div class="card-header" onclick="window.open('Die_cut Book.html','_blank')">
-    <span class="card-header-num">05</span><span class="card-header-name">Jardin de Fleurs</span>
-  </div>
-  <div class="template-card card-garden" onclick="window.open('Die_cut Book.html','_blank')">
-    <iframe class="card-preview" src="Die_cut Book.html" loading="lazy" scrolling="no" title="Jardin de Fleurs"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Jardin de Fleurs — Engraving Edition</div>
-      <div class="card-desc">Vintage · Sepia · Hand-engraved</div>
-      <a href="Die_cut Book.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:#8a5a2a;"></div>
-  </div>
-</div>
-            
-<!-- 6 Sky Blue Book -->
-<div class="card-wrap reveal">
-  <div class="card-header" onclick="window.open('skyblue_book.html','_blank')">
-    <span class="card-header-num">06</span><span class="card-header-name">Ciel Divin</span>
-  </div>
-  <div class="template-card" onclick="window.open('skyblue_book.html','_blank')">
-    <iframe class="card-preview" src="skyblue_book.html" loading="lazy" scrolling="no" title="Ciel Divin"></iframe>
-    <div class="card-overlay">
-      <div class="card-name">Ciel Divin — Heavenly Sky</div>
-      <div class="card-desc">Divine · Sky blue · Gold banner</div>
-      <a href="skyblue_book.html" target="_blank" class="card-btn">View Template →</a>
-    </div>
-    <div class="card-strip" style="--accent:#4a7ab5;"></div>
-  </div>
-</div>
-              
- <!-- 09 Classy Blues -->
-
- <!-- 09 Classy Blues -->
-
-
-
-              
-
-            </div><!-- end row2 track -->
-            
-            
-            
-            
-            
-            
+          <div class="template-card card-garden" onclick="window.open('Blue_wed_book.html','_blank')">
+            <iframe class="card-preview" src="Blue_wed_book.html" loading="lazy" scrolling="no" title="Soft Floral Book"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Soft Floral Book</div>
+              <div class="card-desc">Elegant · Floral · Timeless</div>
+              <a href="Blue_wed_book.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#8a9bb5;"></div>
           </div>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- ROW 2 -->
-<div class="category-block reveal">
-          <div class="category-header">
-            <div class="category-title">
-              Classic Invitations
-              <span>Swipe to explore ›</span>
-            </div>
-            <div class="category-arrows">
-              <button class="cat-arrow" onclick="scrollRow('row1', -1)">‹</button>
-              <button class="cat-arrow" onclick="scrollRow('row1', 1)">›</button>
-            </div>
+        <!-- 2. Blue Rose Garden -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('Garden_in_Bloom.html','_blank')">
+            <span class="card-header-num">02</span><span class="card-header-name">Blue Rose Garden</span>
           </div>
-          <div class="cards-track-wrap">
-            <div class="cards-track" id="row1">
-
-            <!-- 1. Terracotta -->
-              <div class="card-wrap card-terracotta reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_terracotta.html','_blank')">
-                <span class="card-header-num">01</span><span class="card-header-name">Dark Gold Luxury</span>
-              </div>
-              <div class="template-card card-terracotta" onclick="window.open('wedding-invitation_terracotta.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_terracotta.html" loading="lazy" scrolling="no" title="Dark Gold Luxury"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Dark Gold Luxury</div>
-                  <div class="card-desc">Dark · Gold · Floral · Luxurious</div>
-                  <a href="wedding-invitation_terracotta.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#c4674a;"></div>
-              </div>
+          <div class="template-card card-garden" onclick="window.open('Garden_in_Bloom.html','_blank')">
+            <iframe class="card-preview" src="Garden_in_Bloom.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Blue Rose Garden</div>
+              <div class="card-desc">Romantic · Watercolor · Enchanted</div>
+              <a href="Garden_in_Bloom.html" target="_blank" class="card-btn">View Template →</a>
             </div>
-            
-         <!-- 2. Vintage -->
-                     <div class="card-wrap card-vintage reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_vintage.html','_blank')">
-                <span class="card-header-num">02</span><span class="card-header-name">Vintage</span>
-              </div>
-              <div class="template-card card-vintage" onclick="window.open('wedding-invitation_vintage.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Vintage & Romantic</div>
-                  <div class="card-desc">Aged parchment · Sepia · Ornate frames</div>
-                  <a href="wedding-invitation_vintage.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#c4a456;"></div>
-              </div>
-            </div>
-<!-- 3. Garden & Floral -->
-
-
-               <div class="card-wrap card-garden reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_garden.html','_blank')">
-                <span class="card-header-num">03</span><span class="card-header-name">Garden & Floral</span>
-              </div>
-              <div class="template-card card-garden" onclick="window.open('wedding-invitation_garden.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Garden & Floral</div>
-                  <div class="card-desc">Sage green · Botanical · Fresh</div>
-                  <a href="wedding-invitation_garden.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#7a9e7e;"></div>
-              </div>
-            </div>
-
-            <!-- 4. Classy -->
-
-
-               <div class="card-wrap card-garden reveal">
-              <div class="card-header" onclick="window.open('Classy.html','_blank')">
-                <span class="card-header-num">04</span><span class="card-header-name">Classy</span>
-              </div>
-              <div class="template-card card-garden" onclick="window.open('Classy.html','_blank')">
-                <iframe class="card-preview" src="Classy.html" loading="lazy" scrolling="no" title="Garden"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Classy blues</div>
-                  <div class="card-desc">Classy · blues · Fresh</div>
-                  <a href="Classy.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#7a9e7e;"></div>
-              </div>
-            </div>
-
-
-            
-             <!-- 5. Soft Floral Book -->
-            <div class="card-wrap card-soft reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_soft.html','_blank')">
-                <span class="card-header-num">05</span><span class="card-header-name">Soft & Minimal</span>
-              </div>
-              <div class="template-card card-soft" onclick="window.open('wedding-invitation_soft.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Soft & Minimal</div>
-                  <div class="card-desc">Blush · Minimal · Pure elegance</div>
-                  <a href="wedding-invitation_soft.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#c9958a;"></div>
-              </div>
-            </div>
-             <!-- 6. Soft Floral Book -->
-      <div class="card-wrap card-dark reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_dark.html','_blank')">
-                <span class="card-header-num">06</span><span class="card-header-name">Dark & Moody</span>
-              </div>
-              <div class="template-card card-dark" onclick="window.open('wedding-invitation_dark.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Dark & Moody</div>
-                  <div class="card-desc">Deep charcoal · Gold · Dramatic</div>
-                  <a href="wedding-invitation_dark.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#c9a84c;"></div>
-              </div>
-            </div>
-            
-            
-         
-             <!-- 7. Soft Floral Book -->
-            <div class="card-wrap card-midnight reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_night.html','_blank')">
-                <span class="card-header-num">07</span><span class="card-header-name">Midnight Blue</span>
-              </div>
-              <div class="template-card card-midnight" onclick="window.open('wedding-invitation_night.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Midnight Blue</div>
-                  <div class="card-desc">Navy · Silver · Twinkling stars</div>
-                  <a href="wedding-invitation_night.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#8aaa98;"></div>
-              </div>
-            </div>
-             <!-- 8. Soft Floral Book -->
-          <div class="card-wrap card-classic reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_classic.html','_blank')">
-                <span class="card-header-num">08</span><span class="card-header-name">Classic</span>
-              </div>
-              <div class="template-card card-classic" onclick="window.open('wedding-invitation_classic.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Classic</div>
-                  <div class="card-desc">Warm paper · Torn edges · Gold accents</div>
-                  <a href="wedding-invitation_classic.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#c9a96e;"></div>
-              </div>
-            </div>
-             <!-- 9. Soft Floral Book -->
-            <div class="card-wrap card-elvish reveal">
-              <div class="card-header" onclick="window.open('wedding-invitation_lotr.html','_blank')">
-                <span class="card-header-num">09</span><span class="card-header-name">Elvish Fantasy</span>
-              </div>
-              <div class="template-card card-elvish" onclick="window.open('wedding-invitation_lotr.html','_blank')">
-                <iframe class="card-preview" src="wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
-                <div class="card-overlay">
-                  <div class="card-name">Elvish Fantasy</div>
-                  <div class="card-desc">Forest green · Gold · Fireflies · LOTR</div>
-                  <a href="wedding-invitation_lotr.html" target="_blank" class="card-btn">View Template →</a>
-                </div>
-                <div class="card-strip" style="--accent:#2d6e3a;"></div>
-              </div>
-            </div>
-
-            </div><!-- end row1 track -->
+            <div class="card-strip" style="--accent:#8a9bb5;"></div>
           </div>
         </div>
 
-        <div class="category-divider"></div>
+        <!-- 3. Dark floral book -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('Dark_floral_book.html','_blank')">
+            <span class="card-header-num">03</span><span class="card-header-name">Dark blue Garden</span>
+          </div>
+          <div class="template-card card-garden" onclick="window.open('Dark_floral_book.html','_blank')">
+            <iframe class="card-preview" src="Dark_floral_book.html" loading="lazy" scrolling="no" title="Dark blue Garden"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Dark blue &amp; gold Rose garden</div>
+              <div class="card-desc">Romantic · gold · Enchanted</div>
+              <a href="Dark_floral_book.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#8a9bb5;"></div>
+          </div>
+        </div>
 
+        <!-- 4. French Village -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('French_village_book.html','_blank')">
+            <span class="card-header-num">04</span><span class="card-header-name">French Village</span>
+          </div>
+          <div class="template-card card-garden" onclick="window.open('French_village_book.html','_blank')">
+            <iframe class="card-preview" src="French_village_book.html" loading="lazy" scrolling="no" title="French Village"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Jardin de Fleurs — French Village</div>
+              <div class="card-desc">Romantic · Watercolor · Pastel bloom</div>
+              <a href="French_village_book.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c4848a;"></div>
+          </div>
+        </div>
 
+        <!-- 5. Die_cut Book -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('Die_cut Book.html','_blank')">
+            <span class="card-header-num">05</span><span class="card-header-name">Jardin de Fleurs</span>
+          </div>
+          <div class="template-card card-garden" onclick="window.open('Die_cut Book.html','_blank')">
+            <iframe class="card-preview" src="Die_cut Book.html" loading="lazy" scrolling="no" title="Jardin de Fleurs"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Jardin de Fleurs — Engraving Edition</div>
+              <div class="card-desc">Vintage · Sepia · Hand-engraved</div>
+              <a href="Die_cut Book.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#8a5a2a;"></div>
+          </div>
+        </div>
 
-       
+        <!-- 6. Sky Blue Book -->
+        <div class="card-wrap">
+          <div class="card-header" onclick="window.open('skyblue_book.html','_blank')">
+            <span class="card-header-num">06</span><span class="card-header-name">Ciel Divin</span>
+          </div>
+          <div class="template-card" onclick="window.open('skyblue_book.html','_blank')">
+            <iframe class="card-preview" src="skyblue_book.html" loading="lazy" scrolling="no" title="Ciel Divin"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Ciel Divin — Heavenly Sky</div>
+              <div class="card-desc">Divine · Sky blue · Gold banner</div>
+              <a href="skyblue_book.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#4a7ab5;"></div>
+          </div>
+        </div>
 
-      </section>
+      </div><!-- end row2 track -->
+    </div>
+  </div>
+
+  <!-- ══ ROW 2: Classic Invitations ══ -->
+  <div class="category-block reveal">
+    <div class="category-header">
+      <div class="category-title">
+        Classic Invitations
+        <span>Auto-scrolling ›</span>
+      </div>
+      <div class="category-arrows">
+        <button class="cat-arrow" onclick="nudgeRow('row1', -1)">‹</button>
+        <button class="cat-arrow" onclick="nudgeRow('row1', 1)">›</button>
+      </div>
+    </div>
+    <div class="cards-track-wrap">
+      <div class="cards-track" id="row1">
+
+        <!-- 1. Terracotta -->
+        <div class="card-wrap card-terracotta">
+          <div class="card-header" onclick="window.open('wedding-invitation_terracotta.html','_blank')">
+            <span class="card-header-num">01</span><span class="card-header-name">Dark Gold Luxury</span>
+          </div>
+          <div class="template-card card-terracotta" onclick="window.open('wedding-invitation_terracotta.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_terracotta.html" loading="lazy" scrolling="no" title="Dark Gold Luxury"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Dark Gold Luxury</div>
+              <div class="card-desc">Dark · Gold · Floral · Luxurious</div>
+              <a href="wedding-invitation_terracotta.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c4674a;"></div>
+          </div>
+        </div>
+
+        <!-- 2. Vintage -->
+        <div class="card-wrap card-vintage">
+          <div class="card-header" onclick="window.open('wedding-invitation_vintage.html','_blank')">
+            <span class="card-header-num">02</span><span class="card-header-name">Vintage</span>
+          </div>
+          <div class="template-card card-vintage" onclick="window.open('wedding-invitation_vintage.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Vintage &amp; Romantic</div>
+              <div class="card-desc">Aged parchment · Sepia · Ornate frames</div>
+              <a href="wedding-invitation_vintage.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c4a456;"></div>
+          </div>
+        </div>
+
+        <!-- 3. Garden & Floral -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('wedding-invitation_garden.html','_blank')">
+            <span class="card-header-num">03</span><span class="card-header-name">Garden &amp; Floral</span>
+          </div>
+          <div class="template-card card-garden" onclick="window.open('wedding-invitation_garden.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Garden &amp; Floral</div>
+              <div class="card-desc">Sage green · Botanical · Fresh</div>
+              <a href="wedding-invitation_garden.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#7a9e7e;"></div>
+          </div>
+        </div>
+
+        <!-- 4. Classy -->
+        <div class="card-wrap card-garden">
+          <div class="card-header" onclick="window.open('Classy.html','_blank')">
+            <span class="card-header-num">04</span><span class="card-header-name">Classy</span>
+          </div>
+          <div class="template-card card-garden" onclick="window.open('Classy.html','_blank')">
+            <iframe class="card-preview" src="Classy.html" loading="lazy" scrolling="no" title="Classy"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Classy blues</div>
+              <div class="card-desc">Classy · blues · Fresh</div>
+              <a href="Classy.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#7a9e7e;"></div>
+          </div>
+        </div>
+
+        <!-- 5. Soft & Minimal -->
+        <div class="card-wrap card-soft">
+          <div class="card-header" onclick="window.open('wedding-invitation_soft.html','_blank')">
+            <span class="card-header-num">05</span><span class="card-header-name">Soft &amp; Minimal</span>
+          </div>
+          <div class="template-card card-soft" onclick="window.open('wedding-invitation_soft.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Soft &amp; Minimal</div>
+              <div class="card-desc">Blush · Minimal · Pure elegance</div>
+              <a href="wedding-invitation_soft.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c9958a;"></div>
+          </div>
+        </div>
+
+        <!-- 6. Dark & Moody -->
+        <div class="card-wrap card-dark">
+          <div class="card-header" onclick="window.open('wedding-invitation_dark.html','_blank')">
+            <span class="card-header-num">06</span><span class="card-header-name">Dark &amp; Moody</span>
+          </div>
+          <div class="template-card card-dark" onclick="window.open('wedding-invitation_dark.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Dark &amp; Moody</div>
+              <div class="card-desc">Deep charcoal · Gold · Dramatic</div>
+              <a href="wedding-invitation_dark.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c9a84c;"></div>
+          </div>
+        </div>
+
+        <!-- 7. Midnight Blue -->
+        <div class="card-wrap card-midnight">
+          <div class="card-header" onclick="window.open('wedding-invitation_night.html','_blank')">
+            <span class="card-header-num">07</span><span class="card-header-name">Midnight Blue</span>
+          </div>
+          <div class="template-card card-midnight" onclick="window.open('wedding-invitation_night.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Midnight Blue</div>
+              <div class="card-desc">Navy · Silver · Twinkling stars</div>
+              <a href="wedding-invitation_night.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#8aaa98;"></div>
+          </div>
+        </div>
+
+        <!-- 8. Classic -->
+        <div class="card-wrap card-classic">
+          <div class="card-header" onclick="window.open('wedding-invitation_classic.html','_blank')">
+            <span class="card-header-num">08</span><span class="card-header-name">Classic</span>
+          </div>
+          <div class="template-card card-classic" onclick="window.open('wedding-invitation_classic.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Classic</div>
+              <div class="card-desc">Warm paper · Torn edges · Gold accents</div>
+              <a href="wedding-invitation_classic.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#c9a96e;"></div>
+          </div>
+        </div>
+
+        <!-- 9. Elvish Fantasy -->
+        <div class="card-wrap card-elvish">
+          <div class="card-header" onclick="window.open('wedding-invitation_lotr.html','_blank')">
+            <span class="card-header-num">09</span><span class="card-header-name">Elvish Fantasy</span>
+          </div>
+          <div class="template-card card-elvish" onclick="window.open('wedding-invitation_lotr.html','_blank')">
+            <iframe class="card-preview" src="wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
+            <div class="card-overlay">
+              <div class="card-name">Elvish Fantasy</div>
+              <div class="card-desc">Forest green · Gold · Fireflies · LOTR</div>
+              <a href="wedding-invitation_lotr.html" target="_blank" class="card-btn">View Template →</a>
+            </div>
+            <div class="card-strip" style="--accent:#2d6e3a;"></div>
+          </div>
+        </div>
+
+      </div><!-- end row1 track -->
+    </div>
+  </div>
+
+  <div class="category-divider"></div>
+
+</section>
 
 <!-- HOW IT WORKS -->
 <section class="how-section" id="how">
@@ -572,7 +530,6 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         <li class="price-feature"><span>Delivered in 48h</span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
-     <!--  <a href="#contact" class="price-cta">Get Started</a>-->
     </div>
 
     <!-- PREMIUM -->
@@ -593,7 +550,6 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         <li class="price-feature"><span>Delivered in 24h</span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
-       <!--  <a href="#contact" class="price-cta">Get Started</a>-->
     </div>
 
     <!-- LUXURY -->
@@ -611,7 +567,6 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         </li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
-      <!--  <a href="#contact" class="price-cta">Get Started</a>-->
       <a href="https://nemerdavid.github.io/web-des/Invitation%20generator.html" target="_blank" class="price-cta">See Invitation Generator &#8599;</a>
     </div>
 
@@ -625,7 +580,7 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
         <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/flags/France.png" alt="France flag">
         France, EU &amp; Worldwide
       </h4>
-      <p>Pick your template and reach out by email or WhatsApp. We'll customize it with your details and send you a preview to approve — payment is only requested once you're happy with the result. </p>
+      <p>Pick your template and reach out by email or WhatsApp. We'll customize it with your details and send you a preview to approve — payment is only requested once you're happy with the result.</p>
       <div class="payment-methods">
         <div class="pay-method">
           <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Payment/virement.png" alt="Virement bancaire" class="pay-icon">
@@ -682,11 +637,13 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 </section>
 
 <script>
+/* ── Reveal on scroll ── */
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); ro.unobserve(e.target); } });
 }, { threshold: .08 });
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
+/* ── Scale iframes ── */
 function scaleIframes(){
   document.querySelectorAll('.template-card').forEach(card => {
     const iframe = card.querySelector('.card-preview');
@@ -702,25 +659,95 @@ function scaleIframes(){
 window.addEventListener('resize', scaleIframes);
 scaleIframes();
 
-function scrollRow(id, dir){
-  const track = document.getElementById(id);
-  const cardW = track.querySelector('.card-wrap').offsetWidth + 16;
-  track.scrollBy({ left: dir * cardW * 2, behavior: 'smooth' });
+/* ── Arrow nudge (manual) ── */
+function nudgeRow(id, dir){
+  const state = window._autoScroll && window._autoScroll[id];
+  if(!state) return;
+  state.pos += dir * (state.cardWidth * 2);
 }
 
-document.querySelectorAll('.cards-track').forEach(track => {
-  let isDown = false, startX, scrollLeft;
-  track.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
-  track.addEventListener('mouseleave', () => { isDown = false; });
-  track.addEventListener('mouseup', () => { isDown = false; });
+/* ── Auto-scroll with seamless loop ── */
+function setupAutoScroll(trackId, speed) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+
+  /* Duplicate cards for seamless loop */
+  const originals = Array.from(track.children);
+  originals.forEach(card => {
+    const clone = card.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  /* Measure original set width after render */
+  let originalWidth = 0;
+  let cardWidth = 0;
+
+  function measureWidth() {
+    originalWidth = originals.reduce((sum, card) => sum + card.offsetWidth + 16, 0);
+    cardWidth = originals[0] ? originals[0].offsetWidth + 16 : 200;
+  }
+  measureWidth();
+  window.addEventListener('resize', () => { measureWidth(); scaleIframes(); });
+
+  const state = { pos: 0, paused: false, dragging: false, cardWidth: 0 };
+  window._autoScroll = window._autoScroll || {};
+  window._autoScroll[trackId] = state;
+
+  function tick() {
+    state.cardWidth = cardWidth;
+    if (!state.paused && !state.dragging) {
+      state.pos += speed;
+      if (state.pos >= originalWidth) state.pos -= originalWidth;
+    }
+    track.scrollLeft = state.pos;
+    requestAnimationFrame(tick);
+  }
+
+  /* Pause on hover */
+  track.addEventListener('mouseenter', () => state.paused = true);
+  track.addEventListener('mouseleave', () => { state.paused = false; state.dragging = false; });
+
+  /* Drag to scrub */
+  let startX, scrollStart;
+  track.addEventListener('mousedown', e => {
+    state.dragging = true;
+    state.paused = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollStart = state.pos;
+  });
+  track.addEventListener('mouseup', () => { state.dragging = false; state.paused = false; });
   track.addEventListener('mousemove', e => {
-    if(!isDown) return;
+    if (!state.dragging) return;
     e.preventDefault();
     const x = e.pageX - track.offsetLeft;
-    track.scrollLeft = scrollLeft - (x - startX);
+    state.pos = scrollStart - (x - startX);
+    if (state.pos < 0) state.pos += originalWidth;
+    if (state.pos >= originalWidth) state.pos -= originalWidth;
   });
-});
 
+  /* Touch support */
+  let touchStartX, touchScrollStart;
+  track.addEventListener('touchstart', e => {
+    state.paused = true;
+    touchStartX = e.touches[0].pageX;
+    touchScrollStart = state.pos;
+  }, { passive: true });
+  track.addEventListener('touchend', () => { state.paused = false; });
+  track.addEventListener('touchmove', e => {
+    const x = e.touches[0].pageX;
+    state.pos = touchScrollStart - (x - touchStartX);
+    if (state.pos < 0) state.pos += originalWidth;
+    if (state.pos >= originalWidth) state.pos -= originalWidth;
+  }, { passive: true });
+
+  requestAnimationFrame(tick);
+}
+
+setupAutoScroll('row1', 0.6);
+setupAutoScroll('row2', 0.6);
+
+/* ── Smooth anchor links ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const t = document.querySelector(a.getAttribute('href'));
