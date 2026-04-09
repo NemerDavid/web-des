@@ -55,11 +55,11 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
 .cover-eyebrow {
   font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 10px);
   letter-spacing: .35em; text-transform: uppercase;
-  color: var(--sepia-dk); font-weight: 500;
-  background: rgba(250,244,232,.55);
+  color: var(--sepia-dk); font-weight: 900;
+  background: rgba(250,244,232,.35);
   padding: 2px clamp(6px,2vw,10px);
   border-radius: 2px;
-  margin-bottom: clamp(4px,1.5vw,8px); display: block;
+  margin-top: clamp(100px,1.5vw,120px); display: block;
 }
 .cover-name {
   font-family: 'Great Vibes', cursive;
@@ -77,8 +77,8 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
 .cover-date {
   font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 10px);
   letter-spacing: .25em; text-transform: uppercase;
-  color: var(--sepia-dk); font-weight: 500;
-  background: rgba(250,244,232,.55);
+  color: var(--sepia-dk); font-weight: 900;
+  background: rgba(250,244,232,.35);
   padding: 2px clamp(6px,2vw,10px);
   border-radius: 2px;
   margin-top: clamp(5px,1.5vw,9px); display: block;
@@ -94,9 +94,9 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
   animation: hintPulse 2s ease-in-out infinite; cursor: pointer;
 }
 .cover-open-hint span {
-  font-family: 'Cinzel', serif; font-size: clamp(7px,2.2vw,10px);
+  font-family: 'Cinzel', serif; font-size: clamp(7px,2.2vw,10px);font-weight: 999;
   letter-spacing: .25em; text-transform: uppercase;
-  color: var(--sepia); display: block; margin-bottom: 5px;
+  color: var(--sepia); display: block; margin-bottom: -5px;
 }
 .cover-open-hint svg { width: clamp(13px,3.8vw,17px); opacity: .7; }
 @keyframes hintPulse { 0%,100%{opacity:.5;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-4px)} }
@@ -275,16 +275,16 @@ textarea.form-field { border: 1px solid rgba(90,42,10,.2); padding: clamp(5px,2v
   padding: clamp(16px,6%,32px); padding-bottom: clamp(50px,15%,80px); overflow: hidden;
 }
 .back-face::before { content: ""; position: absolute; inset: 0; background: rgba(250,244,232,.08); pointer-events: none; }
-.back-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(4px,1.5vw,8px); }
+.back-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(114px,1.5vw,118px); }
 .back-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px,8vw,36px); color: var(--sepia-dk); text-shadow: 0 1px 4px rgba(255,255,255,.4); margin-bottom: clamp(4px,1.5vw,8px); }
 .back-text small { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,11px); color: var(--sepia); letter-spacing: .2em; text-transform: uppercase; }
-.back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: var(--sepia); font-weight: 400; background: none; border: none; padding: 0; cursor: pointer; animation: hintPulse 2s ease-in-out infinite; display: block; margin-bottom: clamp(6px,2vw,12px); }
+.back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: var(--sepia); font-weight: 900; background: none; border: none; padding: 0; cursor: pointer; animation: hintPulse 2s ease-in-out infinite; display: block; margin-bottom: clamp(176px,2vw,176px); }
 
 /* Cardia credit */
 .cardia-credit { position: absolute; bottom: clamp(10px,3%,18px); left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; white-space: nowrap; }
 .cardia-credit a { font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,9px); letter-spacing: .12em; color: rgba(90,42,10,.6); text-decoration: none; text-transform: uppercase; transition: opacity .2s; display: inline-flex; align-items: center; gap: 4px; }
 .cardia-credit a span { border-bottom: 1px solid rgba(90,42,10,.45); padding-bottom: 1px; }
-.cardia-credit a img { width: clamp(14px,3.5vw,18px); opacity: .65; flex-shrink: 0; filter: sepia(1) saturate(2) brightness(.6); }
+.cardia-credit a img { width: clamp(4px,3.5vw,8px); opacity: .65; flex-shrink: 0; filter: sepia(1) saturate(2) brightness(.6); }
 .cardia-credit a:hover { opacity: .9; }
 </style>
 </head>
