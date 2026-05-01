@@ -3,16 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Thomas & Sarah — Wedding Invitation | Invitation de mariage</title>
+  <title>Thomas & Sarah — Wedding Invitation | Multi-palette template</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root{
+      --bg:#f7f0f2;
+      --bg-soft:#fdf6f8;
+      --cream:#fff9fb;
+      --white:#ffffff;
+      --gold:#a05878;
+      --gold-soft:#c98ca6;
+      --gold-pale:#edd8e2;
+      --text:#6b4a56;
+      --text-soft:#a07a8a;
+      --muted:#c4aab5;
+      --border:rgba(160,88,120,.22);
+      --shadow:0 18px 45px rgba(100,50,70,.10);
+      --radius:24px;
+      --hero-overlay:linear-gradient(to bottom, rgba(60,20,35,.05), rgba(80,30,50,.16), rgba(100,40,60,.26));
+      --gold-gradient:radial-gradient(circle at center, #c98ca6 0%, #b07090 55%, #a05878 100%);
+      --photo-overlay:rgba(247,240,242,.58);
+      --illustration-filter:sepia(1) saturate(1.2) hue-rotate(295deg) brightness(0.85);
+    }
+
+    body[data-theme="classic-gold"]{
       --bg:#f6f1ea;
       --bg-soft:#fbf8f3;
       --cream:#fffdf9;
-      --white:#ffffff;
       --gold:#b89254;
       --gold-soft:#d8bf8c;
       --gold-pale:#eee2c8;
@@ -21,7 +40,82 @@
       --muted:#b8ad9d;
       --border:rgba(184,146,84,.25);
       --shadow:0 18px 45px rgba(84,64,35,.10);
-      --radius:24px;
+      --hero-overlay:linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.14), rgba(0,0,0,.22));
+      --gold-gradient:radial-gradient(circle at center, #d8c091 0%, #c4a468 55%, #b89254 100%);
+      --photo-overlay:rgba(246,241,234,.58);
+      --illustration-filter:none;
+    }
+
+    body[data-theme="dusty-rose"]{
+      --bg:#f7f0f2;
+      --bg-soft:#fdf6f8;
+      --cream:#fff9fb;
+      --gold:#a05878;
+      --gold-soft:#c98ca6;
+      --gold-pale:#edd8e2;
+      --text:#6b4a56;
+      --text-soft:#a07a8a;
+      --muted:#c4aab5;
+      --border:rgba(160,88,120,.22);
+      --shadow:0 18px 45px rgba(100,50,70,.10);
+      --hero-overlay:linear-gradient(to bottom, rgba(60,20,35,.05), rgba(80,30,50,.16), rgba(100,40,60,.26));
+      --gold-gradient:radial-gradient(circle at center, #c98ca6 0%, #b07090 55%, #a05878 100%);
+      --photo-overlay:rgba(247,240,242,.58);
+      --illustration-filter:sepia(1) saturate(1.2) hue-rotate(295deg) brightness(0.85);
+    }
+
+    body[data-theme="navy-champagne"]{
+      --bg:#f1f0ec;
+      --bg-soft:#fbfaf6;
+      --cream:#fffdf8;
+      --gold:#24364f;
+      --gold-soft:#c8aa6e;
+      --gold-pale:#e8d7b3;
+      --text:#24364f;
+      --text-soft:#69758a;
+      --muted:#a7adba;
+      --border:rgba(36,54,79,.22);
+      --shadow:0 18px 45px rgba(22,33,48,.12);
+      --hero-overlay:linear-gradient(to bottom, rgba(14,24,38,.05), rgba(14,24,38,.20), rgba(14,24,38,.34));
+      --gold-gradient:radial-gradient(circle at center, #3d526f 0%, #2f425d 55%, #24364f 100%);
+      --photo-overlay:rgba(241,240,236,.58);
+      --illustration-filter:sepia(1) saturate(1.1) hue-rotate(175deg) brightness(0.62);
+    }
+
+    body[data-theme="olive-green"]{
+      --bg:#f2f5f1;
+      --bg-soft:#f8faf7;
+      --cream:#ffffff;
+      --gold:#7a8f7b;
+      --gold-soft:#a8bca9;
+      --gold-pale:#dde6dd;
+      --text:#4f5e52;
+      --text-soft:#7f8d80;
+      --muted:#aab5aa;
+      --border:rgba(122,143,123,.25);
+      --shadow:0 18px 45px rgba(60,80,60,.10);
+      --hero-overlay:linear-gradient(to bottom, rgba(35,55,38,.05), rgba(55,80,58,.16), rgba(70,95,70,.26));
+      --gold-gradient:radial-gradient(circle at center, #a8bca9 0%, #8ea58f 55%, #7a8f7b 100%);
+      --photo-overlay:rgba(242,245,241,.58);
+      --illustration-filter:sepia(1) saturate(1.15) hue-rotate(55deg) brightness(0.82);
+    }
+
+    body[data-theme="terracotta"]{
+      --bg:#f6eee7;
+      --bg-soft:#fff8f2;
+      --cream:#fffaf5;
+      --gold:#a85f45;
+      --gold-soft:#d49a7e;
+      --gold-pale:#edd0bf;
+      --text:#654438;
+      --text-soft:#967363;
+      --muted:#c1a395;
+      --border:rgba(168,95,69,.24);
+      --shadow:0 18px 45px rgba(120,65,45,.11);
+      --hero-overlay:linear-gradient(to bottom, rgba(90,42,28,.05), rgba(120,55,35,.16), rgba(140,65,40,.28));
+      --gold-gradient:radial-gradient(circle at center, #d49a7e 0%, #bd775d 55%, #a85f45 100%);
+      --photo-overlay:rgba(246,238,231,.58);
+      --illustration-filter:sepia(1) saturate(1.35) hue-rotate(330deg) brightness(0.82);
     }
 
     *{box-sizing:border-box;margin:0;padding:0;}
@@ -36,13 +130,17 @@
     .lang-toggle button{border:0;background:transparent;color:var(--text);padding:9px 13px;border-radius:999px;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;cursor:pointer;}
     .lang-toggle button.active{background:var(--gold);color:#fff;}
 
+    .theme-toggle{position:fixed;top:18px;left:calc(50% - 240px);z-index:100;border:0;border-radius:999px;padding:13px 16px;background:#fff;color:var(--text);font-family:'Cormorant Garamond',serif;font-weight:600;font-size:14px;box-shadow:0 8px 25px rgba(0,0,0,.12);cursor:pointer;display:flex;align-items:center;gap:8px;}
+    .theme-toggle .swatch{width:14px;height:14px;border-radius:50%;background:var(--gold);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08);}
+    @media(max-width:560px){.theme-toggle{left:18px;top:70px;padding:11px 14px;font-size:13px;}}
+
     .music-btn{position:fixed;right:calc(50% - 240px);bottom:26px;z-index:100;width:52px;height:52px;border-radius:50%;border:1px solid rgba(0,0,0,.08);background:#fff;color:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(0,0,0,.14);cursor:pointer;font-size:18px;}
     @media(max-width:560px){.music-btn{right:18px;}}
 
-    .hero-cover{min-height:100vh;position:relative;overflow:hidden;background:#f6f1ea;cursor:pointer;}
+    .hero-cover{min-height:100vh;position:relative;overflow:hidden;background:var(--bg);cursor:pointer;}
     .hero-cover img,
     .hero-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-    .hero-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.14), rgba(0,0,0,.22));z-index:1;}
+    .hero-cover::after{content:"";position:absolute;inset:0;background:var(--hero-overlay);z-index:1;}
     .hero-content{position:relative;z-index:2;min-height:100vh;text-align:center;color:#fff;padding:0 30px;}
     .hero-top{position:absolute;top:92px;left:30px;right:30px;display:flex;flex-direction:column;align-items:center;}
     .hero-bottom{position:absolute;left:30px;right:30px;bottom:166px;display:flex;flex-direction:column;align-items:center;}
@@ -68,9 +166,9 @@
     #mainInvite.visible{opacity:1;}
 
     .section{position:relative;padding:76px 28px;text-align:center;overflow:hidden;background:var(--bg-soft);}
-    .section.gold{background:radial-gradient(circle at center, #d8c091 0%, #c4a468 55%, #b89254 100%);color:#fff;}
+    .section.gold{background:var(--gold-gradient);color:#fff;}
     .section.photo-bg{background-size:cover;background-position:center;}
-    .section.photo-bg::before{content:"";position:absolute;inset:0;background:rgba(246,241,234,.58);backdrop-filter:blur(1px);}
+    .section.photo-bg::before{content:"";position:absolute;inset:0;background:var(--photo-overlay);backdrop-filter:blur(1px);}
     .section > *{position:relative;z-index:2;}
     /* simple clean background: no decorative curves */
     .ornament-bg::before,
@@ -78,6 +176,9 @@
 
     .icon{width:150px;max-width:70%;margin:0 auto 38px;opacity:.78;}
     .icon.small{width:120px;margin-bottom:32px;}.icon.medium{width:170px;margin-bottom:34px;}.icon.large{width:270px;max-width:92%;margin-bottom:28px;}
+
+    /* Theme illustration tint */
+    .icon{filter:sepia(1) saturate(1.2) hue-rotate(295deg) brightness(0.85);}
 
     .script-title{font-family:'Great Vibes',cursive;font-size:45px;line-height:1.05;color:var(--gold);font-weight:400;}
     .gold .script-title{color:#fff;}
@@ -103,7 +204,8 @@
     .count-label{margin-top:12px;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:500;}
 
     .card{width:100%;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px 26px;margin:34px auto 0;overflow:hidden;}
-    .venue-card{padding:0 0 30px;}.venue-img{width:100%;padding:32px 22px 12px;}
+    .venue-card{padding:0 0 30px;}
+    .venue-img{width:100%;padding:32px 22px 12px;filter:var(--illustration-filter);}
     .venue-name{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);margin-top:8px;}
     .thin-line{width:74px;height:1px;background:var(--border);margin:22px auto;}
     .venue-meta{display:flex;justify-content:center;gap:28px;font-family:'Cormorant Garamond',serif;color:var(--text-soft);font-size:18px;margin-bottom:24px;}
@@ -129,14 +231,14 @@
     .album{margin-top:34px;position:relative;overflow:hidden;border-radius:22px;touch-action:pan-y;width:calc(100% + 36px);margin-left:-18px;margin-right:-18px;}
     .album-track{display:flex;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform;}
     .album-slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0;}
-    .album-slide img{width:100%;height:410px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(70,45,20,.08);}
-    .album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid rgba(184,146,84,.28);background:rgba(255,255,255,.86);color:var(--gold);font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.10);}
+    .album-slide img{width:100%;height:410px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(100,50,70,.10);}
+    .album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid rgba(160,88,120,.28);background:rgba(255,255,255,.86);color:var(--gold);font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.10);}
     .album-arrow.prev{left:8px;}.album-arrow.next{right:8px;}
     .album-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
-    .album-dot{width:8px;height:8px;border-radius:50%;background:rgba(184,146,84,.25);border:0;cursor:pointer;}.album-dot.active{background:var(--gold);}
+    .album-dot{width:8px;height:8px;border-radius:50%;background:rgba(160,88,120,.25);border:0;cursor:pointer;}.album-dot.active{background:var(--gold);}
 
     .gift-card{max-width:430px;margin:0 auto;}
-    .bank-box{text-align:left;background:#faf7f1;border-radius:12px;padding:22px;margin-top:18px;border:1px solid rgba(184,146,84,.13);}
+    .bank-box{text-align:left;background:#fdf5f7;border-radius:12px;padding:22px;margin-top:18px;border:1px solid rgba(160,88,120,.13);}
     .bank-name{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:10px;}
     .bank-line{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--text-soft);line-height:1.5;}
 
@@ -144,14 +246,14 @@
     .question{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text);margin:22px 0 12px;font-weight:600;}
     .radio-line{display:grid;grid-template-columns:22px 1fr;align-items:center;gap:10px;margin:12px 0;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);}
     .radio-line input{width:auto;margin:0;accent-color:var(--gold);}
-    input,textarea{width:100%;border:1px solid rgba(184,146,84,.23);background:#fcfaf6;border-radius:7px;padding:14px 15px;margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);outline:none;}
+    input,textarea{width:100%;border:1px solid rgba(160,88,120,.23);background:#fdf8f9;border-radius:7px;padding:14px 15px;margin-top:12px;font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--text);outline:none;}
     textarea{min-height:110px;resize:vertical;}
     .guest-counter{display:flex;align-items:center;gap:18px;margin-top:14px;}
-    .guest-counter button{width:42px;height:42px;border-radius:7px;border:1px solid rgba(184,146,84,.23);background:#fff;color:var(--gold);font-size:20px;cursor:pointer;}
+    .guest-counter button{width:42px;height:42px;border-radius:7px;border:1px solid rgba(160,88,120,.23);background:#fff;color:var(--gold);font-size:20px;cursor:pointer;}
     .guest-counter span{min-width:20px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--text);font-weight:600;}
     .send-btn{margin-top:26px;width:100%;border:0;background:var(--gold);color:#fff;border-radius:7px;padding:15px 18px;font-family:'Cormorant Garamond',serif;font-size:18px;cursor:pointer;}
 
-    .footer{padding:70px 28px 90px;text-align:center;background:linear-gradient(to bottom, var(--bg-soft), #f2eadf);}
+    .footer{padding:70px 28px 90px;text-align:center;background:linear-gradient(to bottom, var(--bg-soft), #f2e4ea);}
     .footer .names{font-family:'Great Vibes',cursive;color:var(--gold);font-size:55px;line-height:1.1;}
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease;}.reveal.visible{opacity:1;transform:none;}
 
@@ -163,7 +265,8 @@
   </style>
 </head>
 
-<body>
+<body data-theme="dusty-rose">
+  <button class="theme-toggle" id="themeToggle" type="button" onclick="cycleTheme()" aria-label="Switch color palette"><span class="swatch"></span><span id="themeLabel">Dusty Rose</span></button>
   <div class="lang-toggle">
     <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
     <button id="btnFR" onclick="setLang('fr')">FR</button>
@@ -400,6 +503,31 @@ For those who wish, a wedding list is available at all Whish Money branches:</sp
       observeReveals();
       initAlbum();
     }
+
+    const THEMES = [
+      {id:'classic-gold', label:'Classic Gold'},
+      {id:'dusty-rose', label:'Dusty Rose'},
+      {id:'navy-champagne', label:'Navy Champagne'},
+      {id:'olive-green', label:'Olive Green'},
+      {id:'terracotta', label:'Terracotta'}
+    ];
+
+    function setTheme(themeId){
+      const theme = THEMES.find(t => t.id === themeId) || THEMES[1];
+      document.body.setAttribute('data-theme', theme.id);
+      const label = document.getElementById('themeLabel');
+      if(label) label.textContent = theme.label;
+      try{ localStorage.setItem('weddingPalette', theme.id); }catch(e){}
+    }
+
+    function cycleTheme(){
+      const current = document.body.getAttribute('data-theme') || 'dusty-rose';
+      const index = THEMES.findIndex(t => t.id === current);
+      const next = THEMES[(index + 1) % THEMES.length];
+      setTheme(next.id);
+    }
+
+    try{ setTheme(localStorage.getItem('weddingPalette') || 'dusty-rose'); }catch(e){ setTheme('dusty-rose'); }
 
     function currentLang(){return document.body.classList.contains('fr')?'fr':'en';}
     function t(en,fr){return currentLang()==='fr'?fr:en;}
