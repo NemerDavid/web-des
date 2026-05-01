@@ -43,11 +43,12 @@
     .hero-cover img,
     .hero-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
     .hero-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.14), rgba(0,0,0,.22));z-index:1;}
-    .hero-content{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:32px;}
-    .hero-small{font-size:14px;font-weight: 900;letter-spacing:.32em;text-transform:uppercase;margin-bottom:18px;opacity:.95;}
-    .hero-name{font-family:'Great Vibes',cursive;font-size:76px;line-height:.92;font-weight:400;text-shadow:0 8px 30px rgba(0,0,0,.22);}
+    .hero-content{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;color:#fff;padding:120px 32px 32px;}
+    .hero-small{font-size:14px;margin-top:0px;font-weight: 900;letter-spacing:.32em;text-transform:uppercase;opacity:.95;}
+    .hero-name{font-family:'Great Vibes',cursive;font-size:76px;margin-top:10px;line-height:.92;font-weight:400;text-shadow:0 8px 30px rgba(0,0,0,.22);}
     .hero-and{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold-pale);margin:8px 0;}
-    .hero-date{margin-top:24px;font-size:13px;font-weight: 900;letter-spacing:.24em;text-transform:uppercase;text-shadow:0 5px 18px rgba(0,0,0,.25);}
+    .hero-spacer{height:150px;}
+    .hero-date{margin-top:0;font-size:13px;font-weight: 900;;margin-top:170px;letter-spacing:.24em;text-transform:uppercase;text-shadow:0 5px 18px rgba(0,0,0,.25);}
     .open-btn{margin-top:34px;border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.16);backdrop-filter:blur(7px);color:#fff;border-radius:999px;padding:13px 28px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;cursor:pointer;}
 
     .intro-video{display:none;min-height:100vh;position:relative;overflow:hidden;background:#111;}
@@ -148,7 +149,7 @@
     .footer .names{font-family:'Great Vibes',cursive;color:var(--gold);font-size:55px;line-height:1.1;}
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease;}.reveal.visible{opacity:1;transform:none;}
 
-    .lang-es{display:none;}body.es .lang-en{display:none;}body.es .lang-es{display:inline;}body.es .block.lang-es{display:block;}body.es .block.lang-en{display:none;}
+    .lang-fr{display:none;}body.fr .lang-en{display:none;}body.fr .lang-fr{display:inline;}body.fr .block.lang-fr{display:block;}body.fr .block.lang-en{display:none;}
 
     @media(max-width:420px){
       .hero-name{font-size:68px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
@@ -159,7 +160,7 @@
 <body>
   <div class="lang-toggle">
     <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
-    <button id="btnES" onclick="setLang('es')">ES</button>
+    <button id="btnFR" onclick="setLang('fr')">FR</button>
   </div>
 
   <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music">♪</button>
@@ -174,12 +175,15 @@
         <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/Envelope%20video.mp4" type="video/mp4">
       </video>
       <div class="hero-content">
-        <p class="hero-small"><span class="lang-en">Together with their families</span><span class="lang-es">Junto a sus familias</span></p>
+        <p class="hero-small"><span class="lang-en">Together with their families</span><span class="lang-fr">Avec leurs familles</span></p>
         <h1 class="hero-name">Thomas</h1>
         <div class="hero-and">&</div>
         <h1 class="hero-name">Sarah</h1>
-        <p class="hero-date">14 August 2027 · Ehden, Lebanon</p>
-        <button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-es">Abrir invitación</span></button>
+
+        <div class="hero-spacer"></div>
+
+        <p class="hero-date"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p>
+        <button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-fr">Ouvrir l’invitation</span></button>
       </div>
     </section>
 
@@ -195,7 +199,7 @@
       <section class="section ornament-bg" id="countdownSection">
         <div class="reveal">
           <h2 class="script-title">Countdown</h2>
-          <p class="subtitle"><span class="lang-en">Until 14 August 2027</span><span class="lang-es">Hasta el 14 de agosto de 2027</span></p>
+          <p class="subtitle"><span class="lang-en">Until 14 August 2027</span><span class="lang-fr">Jusqu’au 14 août 2027</span></p>
           <div class="countdown">
             <div class="count-item"><div class="count-num" id="cdDays">--</div><div class="count-label">Days</div></div>
             <div class="count-item"><div class="count-num" id="cdHours">--</div><div class="count-label">Hours</div></div>
@@ -209,7 +213,7 @@
         <div class="reveal">
           <img class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/cupid-illustration-BO3_EWaD.png" alt="Cupid illustration">
           <h2 class="script-title">Welcome!</h2>
-          <p class="body-text"><span class="lang-en">We warmly invite you to celebrate our wedding day with us in beautiful Ehden, Lebanon. We look forward to sharing this unforgettable moment with our most special people.</span><span class="lang-es">Les invitamos con mucho cariño a celebrar nuestra boda con nosotros en la hermosa Ehden, Líbano. Estamos deseando compartir este momento inolvidable con nuestras personas más especiales.</span></p>
+          <p class="body-text"><span class="lang-en">We warmly invite you to celebrate our wedding day with us in beautiful Ehden, Lebanon. We look forward to sharing this unforgettable moment with our most special people.</span><span class="lang-fr">Nous vous invitons chaleureusement à célébrer notre mariage avec nous dans la belle ville d’Ehden, au Liban. Nous avons hâte de partager ce moment inoubliable avec les personnes qui nous sont les plus chères.</span></p>
         </div>
       </section>
 
@@ -218,7 +222,7 @@
       <section class="section gold" id="venue">
         <div class="reveal">
           <h2 class="section-title">The Venue</h2>
-          <p class="subtitle"><span class="lang-en">Where we celebrate</span><span class="lang-es">Donde celebramos</span></p>
+          <p class="subtitle"><span class="lang-en">Where we celebrate</span><span class="lang-fr">Lieu de célébration</span></p>
           <div class="card venue-card">
             <img class="venue-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/venue-hedsor-DSq2yQw3.png" alt="Venue illustration">
             <h3 class="venue-name">Twinz Hotel</h3>
@@ -280,7 +284,7 @@
 
       <section class="section gold" id="gifts">
         <div class="reveal"><img class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/bow-illustration-DWFdIPv5.png" alt="Bow illustration"><div class="card gift-card"><h2 class="section-title">Gifts</h2><p class="bank-line" style="font-size:21px;"><span class="lang-en">Your love, laughter, and presence are all we could wish for.
-For those who wish, a wedding list is available at all Whish Money branches:</span><span class="lang-es">Su presencia es nuestro mayor regalo. Si desean tener un detalle con nosotros, encontrarán la información a continuación:</span></p><div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"></div><div class="bank-line">ACC# xxxxxx</div></div></div></div>
+For those who wish, a wedding list is available at all Whish Money branches:</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money :</span></p><div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"></div><div class="bank-line">ACC# xxxxxx</div></div></div></div>
       </section>
 
       <section class="section"><div class="reveal"><img class="icon medium" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Royal/swans-framed-ByH4RE7t.png" alt="Wedding rings"></div></section>
@@ -288,17 +292,17 @@ For those who wish, a wedding list is available at all Whish Money branches:</sp
       <section class="section gold" id="rsvp">
         <div class="reveal">
           <h2 class="section-title">RSVP</h2>
-          <p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2027</span><span class="lang-es">Por favor confirma antes del 1 de agosto de 2027</span></p>
+          <p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2027</span><span class="lang-fr">Merci de répondre avant le 1er août 2027</span></p>
           <div class="card rsvp-box">
             <form id="rsvpForm" onsubmit="sendRSVP(event)">
-              <p class="question"><span class="lang-en">Will you be attending? *</span><span class="lang-es">¿Asistirás? *</span></p>
-              <label class="radio-line"><input type="radio" name="attending" value="Yes" checked> <span class="lang-en">Yes, I'll be there</span><span class="lang-es">Sí, asistiré</span></label>
-              <label class="radio-line"><input type="radio" name="attending" value="No"> <span class="lang-en">Unfortunately, I can't make it</span><span class="lang-es">Lamentablemente, no podré asistir</span></label>
-              <p class="question"><span class="lang-en">How many guests?</span><span class="lang-es">¿Cuántos invitados?</span></p>
+              <p class="question"><span class="lang-en">Will you be attending? *</span><span class="lang-fr">Serez-vous présent ? *</span></p>
+              <label class="radio-line"><input type="radio" name="attending" value="Yes" checked> <span class="lang-en">Yes, I'll be there</span><span class="lang-fr">Oui, je serai présent(e)</span></label>
+              <label class="radio-line"><input type="radio" name="attending" value="No"> <span class="lang-en">Unfortunately, I can't make it</span><span class="lang-fr">Malheureusement, je ne pourrai pas être présent(e)</span></label>
+              <p class="question"><span class="lang-en">How many guests?</span><span class="lang-fr">Combien d’invités ?</span></p>
               <div class="guest-counter"><button type="button" onclick="changeGuests(-1)">−</button><span id="guestCount">1</span><button type="button" onclick="changeGuests(1)">+</button></div>
-              <p class="question"><span class="lang-en">Person 1 / Main contact</span><span class="lang-es">Persona 1 / Contacto principal</span></p>
+              <p class="question"><span class="lang-en">Person 1 / Main contact</span><span class="lang-fr">Personne 1 / Contact principal</span></p>
               <input id="fullName" required type="text" placeholder="Full name">
-              <p class="question"><span class="lang-en">Message for the couple</span><span class="lang-es">Mensaje para la pareja</span></p>
+              <p class="question"><span class="lang-en">Message for the couple</span><span class="lang-fr">Message pour les mariés</span></p>
               <textarea id="message" placeholder="Is there anything you'd like to tell us?"></textarea>
               <button class="send-btn" type="submit">Send RSVP</button><p id="formStatus" style="text-align:center;margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);"></p>
             </form>
@@ -306,7 +310,13 @@ For those who wish, a wedding list is available at all Whish Money branches:</sp
         </div>
       </section>
 
-      <footer class="footer ornament-bg"><div class="reveal"><img class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Royal/wedding-rings-_6IG5mf0.png" alt="Wedding rings"><div class="names">Thomas<br>&<br>Sarah</div><p class="subtitle">14 August 2027 · Ehden, Lebanon</p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);">cardia.studios@gmail.com</p></div></footer>
+      <footer class="footer ornament-bg"><div class="reveal"><img class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Royal/wedding-rings-_6IG5mf0.png" alt="Wedding rings"><div class="names">Thomas<br>&<br>Sarah</div><p class="subtitle">14 August 2027 · Ehden, Lebanon</p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);">
+  Powered by 
+  <a href="https://www.cardiastudios.com/" target="_blank"
+     style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">
+     Cardia Studios
+  </a>
+</p></div></footer>
     </div>
   </main>
 
@@ -381,7 +391,7 @@ For those who wish, a wedding list is available at all Whish Money branches:</sp
       initAlbum();
     }
 
-    function setLang(lang){document.body.classList.toggle('es',lang==='es');document.getElementById('btnEN').classList.toggle('active',lang==='en');document.getElementById('btnES').classList.toggle('active',lang==='es');}
+    function setLang(lang){document.body.classList.toggle('fr',lang==='fr');document.getElementById('btnEN').classList.toggle('active',lang==='en');document.getElementById('btnFR').classList.toggle('active',lang==='fr');}
 
     const music=document.getElementById('bgMusic');const musicBtn=document.getElementById('musicBtn');let musicOn=false;
     function tryPlayMusic(){music.play().then(()=>{musicOn=true;musicBtn.textContent='♪';}).catch(()=>{musicOn=false;musicBtn.textContent='×';});}
