@@ -43,9 +43,9 @@
     .hero-cover img,
     .hero-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
     .hero-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.14), rgba(0,0,0,.22));z-index:1;}
-    .hero-content{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;color:#fff;padding:58px 30px 166px;}
-    .hero-top{width:100%;display:flex;flex-direction:column;align-items:center;transform:translateY(4px);}
-    .hero-bottom{width:100%;display:flex;flex-direction:column;align-items:center;}
+    .hero-content{position:relative;z-index:2;min-height:100vh;text-align:center;color:#fff;padding:0 30px;}
+    .hero-top{position:absolute;top:92px;left:30px;right:30px;display:flex;flex-direction:column;align-items:center;}
+    .hero-bottom{position:absolute;left:30px;right:30px;bottom:166px;display:flex;flex-direction:column;align-items:center;}
     .hero-small{display:inline-flex;align-items:center;justify-content:center;gap:13px;max-width:100%;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;line-height:1.35;opacity:.98;text-shadow:0 4px 16px rgba(82,62,34,.28);white-space:nowrap;}
     .hero-small::before,.hero-small::after{content:"";width:34px;height:1px;background:linear-gradient(to right, transparent, rgba(255,255,255,.82));}
     .hero-small::after{background:linear-gradient(to left, transparent, rgba(255,255,255,.82));}
@@ -158,7 +158,7 @@
     .lang-fr{display:none;}body.fr .lang-en{display:none;}body.fr .lang-fr{display:inline;}body.fr .block.lang-fr{display:block;}body.fr .block.lang-en{display:none;}
 
     @media(max-width:420px){
-      .hero-content{padding:48px 20px 158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:8px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
+      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:8px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
     }
   </style>
 </head>
@@ -178,7 +178,7 @@
     <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
     <section class="hero-cover" id="heroCover" onclick="openInvitation()">
       <video id="envelopeVideo" muted playsinline preload="metadata">
-        <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/Envelope%20video3.mp4" type="video/mp4">
+        <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/Envelope%20video.mp4" type="video/mp4">
       </video>
       <div class="hero-content">
         <div class="hero-top">
