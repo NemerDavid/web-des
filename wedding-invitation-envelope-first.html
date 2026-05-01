@@ -39,7 +39,7 @@
     .music-btn{position:fixed;right:calc(50% - 240px);bottom:26px;z-index:100;width:52px;height:52px;border-radius:50%;border:1px solid rgba(0,0,0,.08);background:#fff;color:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 25px rgba(0,0,0,.14);cursor:pointer;font-size:18px;}
     @media(max-width:560px){.music-btn{right:18px;}}
 
-    .hero-cover{min-height:100vh;position:relative;overflow:hidden;background:#f6f1ea;}
+    .hero-cover{min-height:100vh;position:relative;overflow:hidden;background:#f6f1ea;cursor:pointer;}
     .hero-cover img,
     .hero-cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
     .hero-cover::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.06), rgba(0,0,0,.14), rgba(0,0,0,.22));z-index:1;}
@@ -169,7 +169,7 @@
 
   <main class="invite">
     <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
-    <section class="hero-cover" id="heroCover">
+    <section class="hero-cover" id="heroCover" onclick="openInvitation()">
       <video id="envelopeVideo" muted playsinline preload="metadata">
         <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/Envelope%20video.mp4" type="video/mp4">
       </video>
@@ -179,7 +179,7 @@
         <div class="hero-and">&</div>
         <h1 class="hero-name">Sarah</h1>
         <p class="hero-date">14 August 2027 · Ehden, Lebanon</p>
-        <button class="open-btn" onclick="openInvitation()"><span class="lang-en">Open invitation</span><span class="lang-es">Abrir invitación</span></button>
+        <button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-es">Abrir invitación</span></button>
       </div>
     </section>
 
@@ -313,7 +313,11 @@ For those who wish, a wedding list is available at all Whish Money branches:</sp
   <script>
     const CONFIG = {coupleName:'Thomas & Sarah',weddingDate:'2027-08-14T18:00:00',rsvpDeadline:'2027-08-01',location:'Ehden, Lebanon',church:'St. Mourra Church, Ehden',reception:'Twinz Hotel, Ehden',rsvpEmail:'nemer.david9@gmail.com'};
 
+    let invitationOpening = false;
+
     function openInvitation(){
+      if(invitationOpening) return;
+      invitationOpening = true;
       const hero = document.getElementById('heroCover');
       const envelope = document.getElementById('envelopeVideo');
       const heroContent = hero.querySelector('.hero-content');
