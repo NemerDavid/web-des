@@ -177,8 +177,10 @@
     .icon{width:150px;max-width:70%;margin:0 auto 38px;opacity:.78;}
     .icon.small{width:120px;margin-bottom:32px;}.icon.medium{width:170px;margin-bottom:34px;}.icon.large{width:270px;max-width:92%;margin-bottom:28px;}
 
-    /* Theme illustration tint */
-    .icon{filter:sepia(1) saturate(1.2) hue-rotate(295deg) brightness(0.85);}
+    /* Theme illustration tint: all decorative illustrations follow the active palette */
+    .icon,
+    .venue-img,
+    .event-card img{filter:var(--illustration-filter);transition:filter .35s ease, opacity .35s ease;}
 
     .script-title{font-family:'Great Vibes',cursive;font-size:45px;line-height:1.05;color:var(--gold);font-weight:400;}
     .gold .script-title{color:#fff;}
@@ -205,7 +207,7 @@
 
     .card{width:100%;background:rgba(255,255,255,.92);border:1px solid rgba(255,255,255,.8);border-radius:var(--radius);box-shadow:var(--shadow);padding:34px 26px;margin:34px auto 0;overflow:hidden;}
     .venue-card{padding:0 0 30px;}
-    .venue-img{width:100%;padding:32px 22px 12px;filter:var(--illustration-filter);}
+    .venue-img{width:100%;padding:32px 22px 12px;}
     .venue-name{font-family:'Great Vibes',cursive;font-size:36px;color:var(--gold);margin-top:8px;}
     .thin-line{width:74px;height:1px;background:var(--border);margin:22px auto;}
     .venue-meta{display:flex;justify-content:center;gap:28px;font-family:'Cormorant Garamond',serif;color:var(--text-soft);font-size:18px;margin-bottom:24px;}
@@ -266,7 +268,6 @@
 </head>
 
 <body data-theme="dusty-rose">
-  <button class="theme-toggle" id="themeToggle" type="button" onclick="cycleTheme()" aria-label="Switch color palette"><span class="swatch"></span><span id="themeLabel">Dusty Rose</span></button>
   <div class="lang-toggle">
     <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
     <button id="btnFR" onclick="setLang('fr')">FR</button>
@@ -309,6 +310,7 @@
     </section>
 
     <div id="mainInvite">
+      <button class="theme-toggle" id="themeToggle" type="button" onclick="cycleTheme()" aria-label="Switch color palette"><span class="swatch"></span><span id="themeLabel">Dusty Rose</span></button>
       <section class="section ornament-bg" id="countdownSection">
         <div class="reveal">
           <h2 class="script-title"><span class="lang-en">Countdown</span><span class="lang-fr">Compte à rebours</span></h2>
