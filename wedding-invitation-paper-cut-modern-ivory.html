@@ -489,7 +489,7 @@
     .gallery-full-frame .album{
       position:relative;
       z-index:2;
-      width:100%;
+      width:1100%;
       margin:0;
       border-radius:16px;
       overflow:hidden;
@@ -500,7 +500,7 @@
     .gallery-full-frame .album-slide img,
     .paper-cut-invite .gallery-full-frame .album-slide img{
       width:100%;
-      height:520px;
+      height:1520px;
       object-fit:cover;
       object-position:center;
       border-radius:0;
@@ -573,6 +573,404 @@
         letter-spacing:.15em;
       }
     }
+
+
+    /* Final gallery layout: title above frame, photo fills frame, frame stays in front */
+    .gallery-section{
+      padding:64px 16px 88px;
+      background:transparent;
+    }
+
+    .gallery-title-above{
+      position:relative;
+      z-index:5;
+      text-align:center;
+      margin:0 auto 18px;
+      max-width:464px;
+    }
+
+    .gallery-title-above .section-title{
+      margin:0 0 14px;
+      line-height:1;
+    }
+
+    .gallery-title-above .subtitle{
+      margin:0;
+      letter-spacing:.18em;
+    }
+
+    .gallery-full-frame{
+      position:relative;
+      width:100%;
+      max-width:464px;
+      margin:0 auto;
+      min-height:620px;
+      padding:34px 34px 42px;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+      border-radius:0;
+      overflow:visible;
+    }
+
+    .gallery-full-frame .paper-frame-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:100% 100%;
+      opacity:.86;
+      z-index:6; /* frame in front */
+      pointer-events:none;
+      filter:var(--icon-filter) !important;
+    }
+
+    .gallery-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .gallery-full-frame .album{
+      position:relative;
+      z-index:2;
+      width:100%;
+      margin:0;
+      border-radius:18px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:none;
+    }
+
+    .gallery-full-frame .album-slide img,
+    .paper-cut-invite .gallery-full-frame .album-slide img{
+      width:100%;
+      height:560px;
+      object-fit:cover;
+      object-position:center;
+      border-radius:0;
+      box-shadow:none;
+    }
+
+    .gallery-full-frame .album-arrow{
+      z-index:8;
+      background:rgba(255,255,255,.92);
+    }
+
+    .gallery-full-frame .album-dots{
+      position:relative;
+      z-index:8;
+      margin-top:18px;
+    }
+
+    @media(max-width:420px){
+      .gallery-section{
+        padding:52px 8px 82px;
+      }
+
+      .gallery-title-above{
+        margin-bottom:16px;
+      }
+
+      .gallery-full-frame{
+        min-height:590px;
+        padding:30px 24px 38px;
+      }
+
+      .gallery-full-frame .album-slide img,
+      .paper-cut-invite .gallery-full-frame .album-slide img{
+        height:520px;
+      }
+    }
+
+
+    /* ===== FINAL OVERRIDE: Gallery photo fills full frame, frame stays in front ===== */
+    #gallery.gallery-section{
+      padding:64px 16px 88px !important;
+      background:transparent !important;
+    }
+
+    #gallery .gallery-title-above{
+      position:relative;
+      z-index:20;
+      text-align:center;
+      max-width:464px;
+      margin:0 auto 18px;
+    }
+
+    #gallery .gallery-title-above .section-title{
+      margin:0 0 14px !important;
+      line-height:1;
+    }
+
+    #gallery .gallery-title-above .subtitle{
+      margin:0 !important;
+      letter-spacing:.18em;
+    }
+
+    #gallery .gallery-full-frame{
+      position:relative !important;
+      width:100% !important;
+      max-width:464px !important;
+      height:720px !important;
+      min-height:0 !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+      border-radius:0 !important;
+      overflow:hidden !important;
+    }
+
+    #gallery .gallery-full-frame::before,
+    #gallery .gallery-full-frame::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    #gallery .gallery-full-frame .paper-frame-bg{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      object-fit:100% 100% !important;
+      opacity:.88 !important;
+      z-index:10 !important;
+      pointer-events:none !important;
+      filter:var(--icon-filter) !important;
+    }
+
+    #gallery .gallery-content{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      z-index:2 !important;
+      display:block !important;
+    }
+
+    #gallery .gallery-full-frame .album{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      z-index:2 !important;
+      border-radius:0 !important;
+      overflow:hidden !important;
+      background:#fff !important;
+      box-shadow:none !important;
+    }
+
+    #gallery .gallery-full-frame .album-track{
+      height:100% !important;
+      display:flex !important;
+    }
+
+    #gallery .gallery-full-frame .album-slide{
+      min-width:100% !important;
+      height:100% !important;
+      display:block !important;
+      padding:0 !important;
+    }
+
+    #gallery .gallery-full-frame .album-slide img,
+    .paper-cut-invite #gallery .gallery-full-frame .album-slide img{
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      filter:none !important;
+    }
+
+    #gallery .gallery-full-frame .album-arrow{
+      z-index:30 !important;
+      background:rgba(255,255,255,.92) !important;
+    }
+
+    #gallery .gallery-full-frame .album-dots{
+      position:absolute !important;
+      left:50% !important;
+      bottom:24px !important;
+      transform:translateX(-50%) !important;
+      z-index:30 !important;
+      margin:0 !important;
+    }
+
+    @media(max-width:420px){
+      #gallery.gallery-section{
+        padding:52px 8px 82px !important;
+      }
+
+      #gallery .gallery-title-above{
+        margin-bottom:16px !important;
+      }
+
+      #gallery .gallery-full-frame{
+        height:680px !important;
+      }
+    }
+
+
+    /* ===== FINAL GALLERY POLISH: bigger PNG frame + rounded photo album edges ===== */
+    #gallery.gallery-section{
+      padding:64px 16px 92px !important;
+      background:transparent !important;
+    }
+
+    #gallery .gallery-title-above{
+      position:relative !important;
+      z-index:40 !important;
+      text-align:center !important;
+      max-width:464px !important;
+      margin:0 auto 18px !important;
+    }
+
+    #gallery .gallery-title-above .section-title{
+      margin:0 0 14px !important;
+      line-height:1 !important;
+    }
+
+    #gallery .gallery-title-above .subtitle{
+      margin:0 !important;
+      letter-spacing:.18em !important;
+    }
+
+    #gallery .gallery-full-frame{
+      position:relative !important;
+      width:100% !important;
+      max-width:464px !important;
+      height:720px !important;
+      min-height:0 !important;
+      margin:0 auto !important;
+      padding:0 !important;
+      background:transparent !important;
+      border:0 !important;
+      box-shadow:none !important;
+      border-radius:34px !important;
+      overflow:visible !important;
+    }
+
+    #gallery .gallery-full-frame::before,
+    #gallery .gallery-full-frame::after{
+      display:none !important;
+      content:none !important;
+    }
+
+    /* Make the decorative PNG frame slightly larger than the image area */
+    #gallery .gallery-full-frame .paper-frame-bg{
+      position:absolute !important;
+      top:-22px !important;
+      left:-22px !important;
+      width:calc(100% + 44px) !important;
+      height:calc(100% + 44px) !important;
+      max-width:none !important;
+      object-fit:100% 100% !important;
+      opacity:.88 !important;
+      z-index:20 !important;
+      pointer-events:none !important;
+      filter:var(--icon-filter) !important;
+    }
+
+    #gallery .gallery-content{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      z-index:2 !important;
+      display:block !important;
+      overflow:hidden !important;
+      border-radius:30px !important;
+    }
+
+    /* The photo album now fills the full frame area with modern curved corners */
+    #gallery .gallery-full-frame .album{
+      position:absolute !important;
+      inset:0 !important;
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 !important;
+      z-index:2 !important;
+      border-radius:30px !important;
+      overflow:hidden !important;
+      background:#fff !important;
+      box-shadow:none !important;
+    }
+
+    #gallery .gallery-full-frame .album-track{
+      height:100% !important;
+      display:flex !important;
+    }
+
+    #gallery .gallery-full-frame .album-slide{
+      min-width:100% !important;
+      height:100% !important;
+      display:block !important;
+      padding:0 !important;
+    }
+
+    #gallery .gallery-full-frame .album-slide img,
+    .paper-cut-invite #gallery .gallery-full-frame .album-slide img{
+      width:100% !important;
+      height:100% !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      border-radius:30px !important;
+      box-shadow:none !important;
+      filter:none !important;
+    }
+
+    #gallery .gallery-full-frame .album-arrow{
+      z-index:35 !important;
+      background:rgba(255,255,255,.92) !important;
+    }
+
+    #gallery .gallery-full-frame .album-dots{
+      position:absolute !important;
+      left:50% !important;
+      bottom:22px !important;
+      transform:translateX(-50%) !important;
+      z-index:35 !important;
+      margin:0 !important;
+    }
+
+    @media(max-width:420px){
+      #gallery.gallery-section{
+        padding:52px 8px 86px !important;
+      }
+
+      #gallery .gallery-title-above{
+        margin-bottom:16px !important;
+      }
+
+      #gallery .gallery-full-frame{
+        height:680px !important;
+        border-radius:30px !important;
+      }
+
+      #gallery .gallery-full-frame .paper-frame-bg{
+        top:-18px !important;
+        left:-18px !important;
+        width:calc(100% + 36px) !important;
+        height:calc(100% + 36px) !important;
+      }
+
+      #gallery .gallery-content,
+      #gallery .gallery-full-frame .album,
+      #gallery .gallery-full-frame .album-slide img,
+      .paper-cut-invite #gallery .gallery-full-frame .album-slide img{
+        border-radius:26px !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -628,7 +1026,6 @@
 <h2 class="paper-names">Sarah</h2>
 <p class="paper-verse"><span class="lang-en">Together with their families, they invite you to share a day of love, joy, and celebration.</span><span class="lang-fr">Avec leurs familles, ils vous invitent à partager une journée d’amour, de joie et de célébration.</span></p>
 <p class="paper-date"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p>
-
 </div>
 </section>
 <section class="section">
@@ -686,11 +1083,9 @@
 </div>
 </section>
 <section class="section gallery-section" id="gallery">
-<div class="reveal paper-gallery-frame gallery-full-frame">
+<div class="gallery-title-above"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p></div><div class="reveal paper-gallery-frame gallery-full-frame">
 <img alt="" aria-hidden="true" class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Frame.png"/>
 <div class="gallery-content">
-<h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2>
-<p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
 <div class="album" id="album">
 <div class="album-track" id="albumTrack">
 <div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
