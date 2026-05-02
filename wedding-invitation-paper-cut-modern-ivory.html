@@ -971,6 +971,294 @@
         border-radius:26px !important;
       }
     }
+
+
+    /* ===== FINAL OVERRIDE: Photo album back to normal container, no PNG frame ===== */
+    #gallery.gallery-section{
+      padding:64px 22px 92px !important;
+      background:transparent !important;
+    }
+
+    #gallery .normal-gallery-card{
+      position:relative !important;
+      width:100% !important;
+      max-width:464px !important;
+      height:auto !important;
+      min-height:0 !important;
+      margin:0 auto !important;
+      padding:58px 28px 44px !important;
+      background:var(--paper-card-bg) !important;
+      border:1px solid rgba(255,255,255,.92) !important;
+      border-radius:18px !important;
+      box-shadow:var(--shadow), inset 0 0 0 1px var(--border) !important;
+      overflow:hidden !important;
+    }
+
+    #gallery .normal-gallery-card::before{
+      content:"" !important;
+      position:absolute !important;
+      inset:8px !important;
+      border:1px solid var(--border) !important;
+      border-radius:13px !important;
+      pointer-events:none !important;
+      display:block !important;
+    }
+
+    #gallery .normal-gallery-card::after{
+      content:"" !important;
+      position:absolute !important;
+      inset:0 !important;
+      background:radial-gradient(circle at 50% 5%,rgba(255,255,255,.82),transparent 40%),
+                 linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,transparent),transparent 35%,color-mix(in srgb,var(--gold) 9%,transparent)) !important;
+      pointer-events:none !important;
+      display:block !important;
+    }
+
+    #gallery .normal-gallery-card > *{
+      position:relative !important;
+      z-index:2 !important;
+    }
+
+    #gallery .gallery-content{
+      position:relative !important;
+      inset:auto !important;
+      width:100% !important;
+      height:auto !important;
+      z-index:2 !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      overflow:visible !important;
+      border-radius:0 !important;
+    }
+
+    #gallery .section-title{
+      margin:0 0 14px !important;
+      line-height:1 !important;
+    }
+
+    #gallery .subtitle{
+      margin:0 0 30px !important;
+      letter-spacing:.18em !important;
+    }
+
+    #gallery .normal-gallery-card .album{
+      position:relative !important;
+      inset:auto !important;
+      width:100% !important;
+      height:auto !important;
+      margin:0 !important;
+      padding:0 !important;
+      z-index:2 !important;
+      border-radius:24px !important;
+      overflow:hidden !important;
+      background:#fff !important;
+      box-shadow:0 14px 34px rgba(70,45,20,.12) !important;
+    }
+
+    #gallery .normal-gallery-card .album-track{
+      height:auto !important;
+      display:flex !important;
+    }
+
+    #gallery .normal-gallery-card .album-slide{
+      min-width:100% !important;
+      height:auto !important;
+      display:block !important;
+      padding:0 !important;
+    }
+
+    #gallery .normal-gallery-card .album-slide img,
+    .paper-cut-invite #gallery .normal-gallery-card .album-slide img{
+      width:100% !important;
+      height:520px !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      filter:none !important;
+    }
+
+    #gallery .normal-gallery-card .album-arrow{
+      z-index:8 !important;
+      background:rgba(255,255,255,.92) !important;
+    }
+
+    #gallery .normal-gallery-card .album-dots{
+      position:relative !important;
+      left:auto !important;
+      bottom:auto !important;
+      transform:none !important;
+      z-index:8 !important;
+      margin-top:22px !important;
+      display:flex !important;
+      justify-content:center !important;
+    }
+
+    @media(max-width:420px){
+      #gallery.gallery-section{
+        padding:52px 16px 86px !important;
+      }
+
+      #gallery .normal-gallery-card{
+        padding:48px 20px 40px !important;
+      }
+
+      #gallery .normal-gallery-card .album{
+        border-radius:22px !important;
+      }
+
+      #gallery .normal-gallery-card .album-slide img,
+      .paper-cut-invite #gallery .normal-gallery-card .album-slide img{
+        height:480px !important;
+      }
+    }
+
+
+    /* ===== FINAL OVERRIDE: Bigger Photo Album images ===== */
+    #gallery.gallery-section{
+      padding:50px 16px 84px !important;
+      background:transparent !important;
+    }
+
+    #gallery .normal-gallery-card{
+      position:relative !important;
+      width:100% !important;
+      max-width:464px !important;
+      height:auto !important;
+      min-height:0 !important;
+      margin:0 auto !important;
+      padding:42px 20px 30px !important;
+      background:var(--paper-card-bg) !important;
+      border:1px solid rgba(255,255,255,.92) !important;
+      border-radius:18px !important;
+      box-shadow:var(--shadow), inset 0 0 0 1px var(--border) !important;
+      overflow:hidden !important;
+    }
+
+    #gallery .normal-gallery-card::before{
+      content:"" !important;
+      position:absolute !important;
+      inset:8px !important;
+      border:1px solid var(--border) !important;
+      border-radius:13px !important;
+      pointer-events:none !important;
+      display:block !important;
+    }
+
+    #gallery .normal-gallery-card::after{
+      content:"" !important;
+      position:absolute !important;
+      inset:0 !important;
+      background:radial-gradient(circle at 50% 5%,rgba(255,255,255,.82),transparent 40%),
+                 linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,transparent),transparent 35%,color-mix(in srgb,var(--gold) 9%,transparent)) !important;
+      pointer-events:none !important;
+      display:block !important;
+    }
+
+    #gallery .normal-gallery-card > *{
+      position:relative !important;
+      z-index:2 !important;
+    }
+
+    #gallery .gallery-content{
+      position:relative !important;
+      inset:auto !important;
+      width:100% !important;
+      height:auto !important;
+      z-index:2 !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      overflow:visible !important;
+      border-radius:0 !important;
+    }
+
+    #gallery .section-title{
+      margin:0 0 10px !important;
+      line-height:1 !important;
+    }
+
+    #gallery .subtitle{
+      margin:0 0 20px !important;
+      letter-spacing:.18em !important;
+    }
+
+    #gallery .normal-gallery-card .album{
+      position:relative !important;
+      inset:auto !important;
+      width:100% !important;
+      height:auto !important;
+      margin:0 !important;
+      padding:0 !important;
+      z-index:2 !important;
+      border-radius:28px !important;
+      overflow:hidden !important;
+      background:#fff !important;
+      box-shadow:0 14px 34px rgba(70,45,20,.12) !important;
+    }
+
+    #gallery .normal-gallery-card .album-track{
+      height:auto !important;
+      display:flex !important;
+    }
+
+    #gallery .normal-gallery-card .album-slide{
+      min-width:100% !important;
+      height:auto !important;
+      display:block !important;
+      padding:0 !important;
+    }
+
+    #gallery .normal-gallery-card .album-slide img,
+    .paper-cut-invite #gallery .normal-gallery-card .album-slide img{
+      width:100% !important;
+      height:640px !important;
+      object-fit:cover !important;
+      object-position:center !important;
+      border-radius:0 !important;
+      box-shadow:none !important;
+      filter:none !important;
+    }
+
+    #gallery .normal-gallery-card .album-arrow{
+      z-index:8 !important;
+      background:rgba(255,255,255,.92) !important;
+    }
+
+    #gallery .normal-gallery-card .album-dots{
+      position:relative !important;
+      left:auto !important;
+      bottom:auto !important;
+      transform:none !important;
+      z-index:8 !important;
+      margin-top:18px !important;
+      display:flex !important;
+      justify-content:center !important;
+    }
+
+    @media(max-width:420px){
+      #gallery.gallery-section{
+        padding:46px 12px 82px !important;
+      }
+
+      #gallery .normal-gallery-card{
+        padding:36px 16px 26px !important;
+      }
+
+      #gallery .subtitle{
+        margin-bottom:16px !important;
+      }
+
+      #gallery .normal-gallery-card .album{
+        border-radius:26px !important;
+      }
+
+      #gallery .normal-gallery-card .album-slide img,
+      .paper-cut-invite #gallery .normal-gallery-card .album-slide img{
+        height:600px !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -1083,9 +1371,8 @@
 </div>
 </section>
 <section class="section gallery-section" id="gallery">
-<div class="gallery-title-above"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p></div><div class="reveal paper-gallery-frame gallery-full-frame">
-<img alt="" aria-hidden="true" class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Frame.png"/>
-<div class="gallery-content">
+<div class="reveal paper-sheet normal-gallery-card">
+<div class="gallery-content"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
 <div class="album" id="album">
 <div class="album-track" id="albumTrack">
 <div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
