@@ -1,13 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Thomas & Sarah &mdash; Paper Cut Modern Wedding Invitation | Invitation de mariage papier d&eacute;coup&eacute;</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Thomas &amp; Sarah — Paper Cut Modern Wedding Invitation | Invitation de mariage papier découpé</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Great+Vibes&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<style>
     :root{
       --bg:#f6f1ea;
       --bg-soft:#fbf8f3;
@@ -158,7 +157,7 @@
     .lang-fr{display:none;}body.fr .lang-en{display:none;}body.fr .lang-fr{display:inline;}body.fr .block.lang-fr{display:block;}body.fr .block.lang-en{display:none;}
 
     @media(max-width:420px){
-      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:8px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
+      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:24px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
     }
 
     /* Paper-cut modern invitation concept */
@@ -526,198 +525,223 @@
     }
 
 
-  </style>
+  
+
+    /* Countdown moved to the top of the main invitation card */
+    .hero-paper > .paper-countdown:first-of-type{
+      margin:-130px auto 26px;
+      margin-bottom:70px; /* spacing below instead */
+      width:100%;
+      max-width:370px;
+    }
+
+    .hero-paper > .paper-countdown:first-of-type .countdown{
+      margin-top:0;
+    }
+
+    .hero-paper > .paper-countdown:first-of-type .count-item{
+      min-width:74px;
+      padding:0 8px;
+    }
+
+    .hero-paper > .paper-countdown:first-of-type .count-num{
+      font-size:31px;
+    }
+
+    .hero-paper > .paper-countdown:first-of-type .count-label{
+      font-size:8px;
+      letter-spacing:.18em;
+    }
+
+    @media(max-width:420px){
+      .hero-paper > .paper-countdown:first-of-type{
+        max-width:320px;
+        margin-bottom:24px;
+      }
+
+      .hero-paper > .paper-countdown:first-of-type .count-item{
+        min-width:62px;
+        padding:0 5px;
+      }
+
+      .hero-paper > .paper-countdown:first-of-type .count-num{
+        font-size:28px;
+      }
+
+      .hero-paper > .paper-countdown:first-of-type .count-label{
+        font-size:7px;
+        letter-spacing:.15em;
+      }
+    }
+</style>
 </head>
-
 <body>
-  <div class="lang-toggle">
-    <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
-    <button id="btnFR" onclick="setLang('fr')">FR</button>
-  </div>
+<div class="lang-toggle">
+<button class="active" id="btnEN" onclick="setLang('en')">EN</button>
+<button id="btnFR" onclick="setLang('fr')">FR</button>
+</div>
+<button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
+<audio id="bgMusic" loop="" preload="auto">
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/CHRISTINA%20PERRI.mp3" type="audio/mpeg"/>
+</audio>
+<main class="invite">
+<!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
+<section class="hero-cover" id="heroCover" onclick="openInvitation()">
+<video id="envelopeVideo" muted="" playsinline="" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope2.png" preload="metadata">
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Envelope4.mp4" type="video/mp4"/>
+</video>
+<div class="hero-content">
+<div class="hero-top">
+<h1 class="hero-name">Thomas</h1>
+<div class="hero-and">&amp;</div>
+<h1 class="hero-name">Sarah</h1>
+</div>
+<div class="hero-spacer"></div>
+<div class="hero-bottom">
+<p class="hero-date"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p>
+<button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-fr">Ouvrir l’invitation</span></button>
+</div>
+</div>
+</section>
+<div class="paper-cut-invite" id="mainInvite">
+<div aria-label="Choose invitation color palette" class="theme-switch">
+<button aria-label="Classic gold palette" class="theme-dot active" data-theme="classic" onclick="setTheme('classic')" type="button"></button>
+<button aria-label="Dusty rose palette" class="theme-dot" data-theme="rose" onclick="setTheme('rose')" type="button"></button>
+<button aria-label="Navy champagne palette" class="theme-dot" data-theme="navy" onclick="setTheme('navy')" type="button"></button>
+<button aria-label="Olive green palette" class="theme-dot" data-theme="olive" onclick="setTheme('olive')" type="button"></button>
+<button aria-label="Terracotta palette" class="theme-dot" data-theme="terracotta" onclick="setTheme('terracotta')" type="button"></button>
+</div>
+<section class="section" id="countdownSection">
+<div class="reveal paper-sheet hero-paper">
+<img alt="" aria-hidden="true" class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png"/>
+<div class="paper-countdown">
+<div class="countdown">
+<div class="count-item"><div class="count-num" id="cdDays">--</div><div class="count-label"><span class="lang-en">Days</span><span class="lang-fr">Jours</span></div></div>
+<div class="count-item"><div class="count-num" id="cdHours">--</div><div class="count-label"><span class="lang-en">Hours</span><span class="lang-fr">Heures</span></div></div>
+<div class="count-item"><div class="count-num" id="cdMinutes">--</div><div class="count-label"><span class="lang-en">Minutes</span><span class="lang-fr">Minutes</span></div></div>
+<div class="count-item"><div class="count-num" id="cdSeconds">--</div><div class="count-label"><span class="lang-en">Seconds</span><span class="lang-fr">Secondes</span></div></div>
+</div>
+</div>
+<p class="paper-kicker"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
+<h2 class="paper-names">Thomas</h2>
+<div class="paper-amp">&amp;</div>
+<h2 class="paper-names">Sarah</h2>
+<p class="paper-verse"><span class="lang-en">Together with their families, they invite you to share a day of love, joy, and celebration.</span><span class="lang-fr">Avec leurs familles, ils vous invitent à partager une journée d’amour, de joie et de célébration.</span></p>
+<p class="paper-date"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p>
 
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" aria-label="Toggle music / Activer la musique">♪</button>
-  <audio id="bgMusic" loop preload="auto">
-    <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/CHRISTINA%20PERRI.mp3" type="audio/mpeg">
-  </audio>
-
-  <main class="invite">
-    <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
-    <section class="hero-cover" id="heroCover" onclick="openInvitation()">
-      <video id="envelopeVideo" muted playsinline preload="metadata" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope2.png">
-        <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Envelope3.mp4" type="video/mp4">
-      </video>
-      <div class="hero-content">
-        <div class="hero-top">
-
-          <h1 class="hero-name">Thomas</h1>
-          <div class="hero-and">&</div>
-          <h1 class="hero-name">Sarah</h1>
-        </div>
-
-        <div class="hero-spacer"></div>
-
-        <div class="hero-bottom">
-          <p class="hero-date"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p>
-          <button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-fr">Ouvrir l’invitation</span></button>
-        </div>
-      </div>
-    </section>
-
-
-
-    <div id="mainInvite" class="paper-cut-invite">
-
-      <div class="theme-switch" aria-label="Choose invitation color palette">
-        <button class="theme-dot active" type="button" data-theme="classic" onclick="setTheme('classic')" aria-label="Classic gold palette"></button>
-        <button class="theme-dot" type="button" data-theme="rose" onclick="setTheme('rose')" aria-label="Dusty rose palette"></button>
-        <button class="theme-dot" type="button" data-theme="navy" onclick="setTheme('navy')" aria-label="Navy champagne palette"></button>
-        <button class="theme-dot" type="button" data-theme="olive" onclick="setTheme('olive')" aria-label="Olive green palette"></button>
-        <button class="theme-dot" type="button" data-theme="terracotta" onclick="setTheme('terracotta')" aria-label="Terracotta palette"></button>
-      </div>
-      <section class="section" id="countdownSection">
-        <div class="reveal paper-sheet hero-paper">
-          <img class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png" alt="" aria-hidden="true">
-          <img class="paper-doves" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Doves4.png" alt="Paper-cut doves and wedding rings">
-          <p class="paper-kicker"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
-          <h2 class="paper-names">Thomas</h2>
-          <div class="paper-amp">&</div>
-          <h2 class="paper-names">Sarah</h2>
-          <p class="paper-verse"><span class="lang-en">Together with their families, they invite you to share a day of love, joy, and celebration.</span><span class="lang-fr">Avec leurs familles, ils vous invitent &agrave; partager une journ&eacute;e d&rsquo;amour, de joie et de c&eacute;l&eacute;bration.</span></p>
-          <p class="paper-date"><span class="lang-en">14 August 2027 &middot; Ehden, Lebanon</span><span class="lang-fr">14 ao&ucirc;t 2027 &middot; Ehden, Liban</span></p>
-          <div class="paper-countdown">
-            <div class="countdown">
-              <div class="count-item"><div class="count-num" id="cdDays">--</div><div class="count-label"><span class="lang-en">Days</span><span class="lang-fr">Jours</span></div></div>
-              <div class="count-item"><div class="count-num" id="cdHours">--</div><div class="count-label"><span class="lang-en">Hours</span><span class="lang-fr">Heures</span></div></div>
-              <div class="count-item"><div class="count-num" id="cdMinutes">--</div><div class="count-label"><span class="lang-en">Minutes</span><span class="lang-fr">Minutes</span></div></div>
-              <div class="count-item"><div class="count-num" id="cdSeconds">--</div><div class="count-label"><span class="lang-en">Seconds</span><span class="lang-fr">Secondes</span></div></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Rings2.png" alt="Paper-cut wedding rings">
-          <p class="paper-kicker"><span class="lang-en">Together with their families</span><span class="lang-fr">Avec leurs familles</span></p>
-          <div class="paper-divider">&#10022;</div>
-          <p class="paper-body"><span class="lang-en">We warmly invite you to celebrate our wedding day with us in beautiful Ehden, Lebanon. We look forward to sharing this unforgettable moment with our most special people.</span><span class="lang-fr">Nous vous invitons chaleureusement &agrave; c&eacute;l&eacute;brer notre mariage avec nous dans la belle ville d&rsquo;Ehden, au Liban. Nous avons h&acirc;te de partager ce moment inoubliable avec les personnes qui nous sont les plus ch&egrave;res.</span></p>
-        </div>
-      </section>
-
-      <section class="section gold" id="venue">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset large" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/car3.png" alt="Paper-cut vintage wedding car">
-          
-          <div class="paper-card">
-             <h3 class="venue-name">
-    <span class="lang-en">The Reception</span>
-    <span class="lang-fr">La réception</span>
-  </h3>
-
-  <h3 class="venue-name">
-    <span class="lang-en">Where we celebrate</span>
-    <span class="lang-fr">Lieu de célébration</span>
-  </h3>
-
-  <h3 class="venue-name">Twinz Hotel</h3>
-            <div class="thin-line"></div>
-            <div class="venue-meta"><span><span class="lang-en">14 August 2027</span><span class="lang-fr">14 ao&ucirc;t 2027</span></span><span><span class="lang-en">7:30 PM</span><span class="lang-fr">19h30</span></span></div>
-            <p class="venue-address">Twinz Hotel<br><span class="lang-en">Ehden, Lebanon</span><span class="lang-fr">Ehden, Liban</span></p>
-            <div class="map-wrap"><iframe loading="lazy" allowfullscreen src="https://www.google.com/maps?q=Twinz%20Hotel%20Ehden%20Lebanon&output=embed"></iframe></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="programme">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Champagne9.png" alt="Paper-cut champagne bucket">
-          <h2 class="section-title"><span class="lang-en">Day Programme</span><span class="lang-fr">Programme de la journ&eacute;e</span></h2>
-          <p class="subtitle"><span class="lang-en">14 August 2027</span><span class="lang-fr">14 ao&ucirc;t 2027</span></p>
-          <div class="paper-timeline">
-            <div class="paper-time-row"><div class="paper-time"><span class="lang-en">6:00 PM</span><span class="lang-fr">18h00</span></div><div class="paper-label"><span class="lang-en">Ceremony</span><span class="lang-fr">C&eacute;r&eacute;monie</span></div></div>
-            <div class="paper-time-row"><div class="paper-time"><span class="lang-en">7:30 PM</span><span class="lang-fr">19h30</span></div><div class="paper-label"><span class="lang-en">Cocktails</span><span class="lang-fr">Cocktail</span></div></div>
-            <div class="paper-time-row"><div class="paper-time"><span class="lang-en">8:00 PM</span><span class="lang-fr">20h00</span></div><div class="paper-label"><span class="lang-en">Dinner</span><span class="lang-fr">D&icirc;ner</span></div></div>
-            <div class="paper-time-row"><div class="paper-time"><span class="lang-en">9:00 PM</span><span class="lang-fr">21h00</span></div><div class="paper-label"><span class="lang-en">Dancing</span><span class="lang-fr">Soir&eacute;e dansante</span></div></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section gold" id="church">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset large" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Church3.png" alt="Paper-cut church illustration">
-      
-          <div class="paper-card">
-               <h3 class="venue-name"><span class="lang-en">The Ceremony</span><span class="lang-fr">La c&eacute;r&eacute;monie</span></h3>
-            <h3 class="venue-name"><span class="lang-en">St. Mourra Church</span><span class="lang-fr">&Eacute;glise St. Mourra</span></h3>
-            <div class="thin-line"></div>
-            <div class="venue-meta"><span><span class="lang-en">14 August 2027</span><span class="lang-fr">14 ao&ucirc;t 2027</span></span><span><span class="lang-en">6:00 PM</span><span class="lang-fr">18h00</span></span></div>
-            <p class="venue-address"><span class="lang-en">St. Mourra Church</span><span class="lang-fr">&Eacute;glise St. Mourra</span><br><span class="lang-en">Ehden, Lebanon</span><span class="lang-fr">Ehden, Liban</span></p>
-            <div class="map-wrap"><iframe loading="lazy" allowfullscreen src="https://www.google.com/maps?q=St%20Mourra%20Church%20Ehden%20Lebanon&output=embed"></iframe></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section gallery-section" id="gallery">
-        <div class="reveal paper-gallery-frame gallery-full-frame">
-          <img class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Frame.png" alt="" aria-hidden="true">
-          <div class="gallery-content">
-            <h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2>
-            <p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
-            <div class="album" id="album">
-              <div class="album-track" id="albumTrack">
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=800&auto=format&fit=crop" alt="Wedding table"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?q=80&w=800&auto=format&fit=crop" alt="Bride bouquet"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Wedding couple"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=800&auto=format&fit=crop" alt="Wedding dinner"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop" alt="Wedding detail"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&w=800&auto=format&fit=crop" alt="Wedding ceremony"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&w=800&auto=format&fit=crop" alt="Wedding flowers"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop" alt="Wedding rings"></div>
-                <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=800&auto=format&fit=crop" alt="Wedding celebration"></div>
-              </div>
-              <button class="album-arrow prev" onclick="albumMove(-1)" aria-label="Previous album slide / Photo pr&eacute;c&eacute;dente">&lsaquo;</button><button class="album-arrow next" onclick="albumMove(1)" aria-label="Next album slide / Photo suivante">&rsaquo;</button>
-            </div>
-            <div class="album-dots" id="albumDots"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section gold" id="gifts">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Cake5.png" alt="Paper-cut wedding cake">
-          <h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
-          <p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre pr&eacute;sence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
-          <div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC# xxxxxx</span><span class="lang-fr">Compte n&deg; xxxxxx</span></div></div>
-        </div>
-      </section>
-
-      <section class="section" id="rsvp">
-        <div class="reveal paper-sheet">
-          <img class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Doves4.png" alt="Paper-cut doves and wedding rings">
-          <h2 class="section-title"><span class="lang-en">RSVP</span><span class="lang-fr">R&eacute;ponse</span></h2>
-          <p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2027</span><span class="lang-fr">Merci de r&eacute;pondre avant le 1er ao&ucirc;t 2027</span></p>
-          <div class="card rsvp-box">
-            <form id="rsvpForm" onsubmit="sendRSVP(event)">
-              <p class="question"><span class="lang-en">Will you be attending? *</span><span class="lang-fr">Serez-vous pr&eacute;sent ? *</span></p>
-              <label class="radio-line"><input type="radio" name="attending" value="Yes" checked> <span class="lang-en">Yes, I'll be there</span><span class="lang-fr">Oui, je serai pr&eacute;sent(e)</span></label>
-              <label class="radio-line"><input type="radio" name="attending" value="No"> <span class="lang-en">Unfortunately, I can't make it</span><span class="lang-fr">Malheureusement, je ne pourrai pas &ecirc;tre pr&eacute;sent(e)</span></label>
-              <p class="question"><span class="lang-en">How many guests?</span><span class="lang-fr">Combien d&rsquo;invit&eacute;s ?</span></p>
-              <div class="guest-counter"><button type="button" onclick="changeGuests(-1)">&minus;</button><span id="guestCount">1</span><button type="button" onclick="changeGuests(1)">+</button></div>
-              <p class="question"><span class="lang-en">Person 1 / Main contact</span><span class="lang-fr">Personne 1 / Contact principal</span></p>
-              <input id="fullName" required type="text" data-placeholder-en="Full name" data-placeholder-fr="Nom complet" placeholder="Full name">
-              <p class="question"><span class="lang-en">Message for the couple</span><span class="lang-fr">Message pour les mari&eacute;s</span></p>
-              <textarea id="message" data-placeholder-en="Is there anything you'd like to tell us?" data-placeholder-fr="Souhaitez-vous nous laisser un message ?" placeholder="Is there anything you'd like to tell us?"></textarea>
-              <button class="send-btn" type="submit"><span class="lang-en">Send RSVP</span><span class="lang-fr">Envoyer la r&eacute;ponse</span></button><p id="formStatus" style="text-align:center;margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);"></p>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer ornament-bg"><div class="reveal"><img class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/cupid-illustration-BO3_EWaD.png" alt="Paper-cut wedding rings"><div class="names">Thomas<br>&<br>Sarah</div><p class="subtitle"><span class="lang-en">14 August 2027 &middot; Ehden, Lebanon</span><span class="lang-fr">14 ao&ucirc;t 2027 &middot; Ehden, Liban</span></p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);"><span class="lang-en">Powered by</span><span class="lang-fr">Cr&eacute;&eacute; par</span> <a href="https://www.cardiastudios.com/" target="_blank" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">Cardia Studios</a></p></div></footer>
-    </div>
-  </main>
-
-  <script>
+</div>
+</section>
+<section class="section">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut wedding rings" class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Rings2.png"/>
+<p class="paper-kicker"><span class="lang-en">Together with their families</span><span class="lang-fr">Avec leurs familles</span></p>
+<div class="paper-divider">✦</div>
+<p class="paper-body"><span class="lang-en">We warmly invite you to celebrate our wedding day with us in beautiful Ehden, Lebanon. We look forward to sharing this unforgettable moment with our most special people.</span><span class="lang-fr">Nous vous invitons chaleureusement à célébrer notre mariage avec nous dans la belle ville d’Ehden, au Liban. Nous avons hâte de partager ce moment inoubliable avec les personnes qui nous sont les plus chères.</span></p>
+</div>
+</section>
+<section class="section gold" id="venue">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut vintage wedding car" class="paper-asset large" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/car3.png"/>
+<div class="paper-card">
+<h3 class="venue-name">
+<span class="lang-en">The Reception</span>
+<span class="lang-fr">La réception</span>
+</h3>
+<h3 class="venue-name">
+<span class="lang-en">Where we celebrate</span>
+<span class="lang-fr">Lieu de célébration</span>
+</h3>
+<h3 class="venue-name">Twinz Hotel</h3>
+<div class="thin-line"></div>
+<div class="venue-meta"><span><span class="lang-en">14 August 2027</span><span class="lang-fr">14 août 2027</span></span><span><span class="lang-en">7:30 PM</span><span class="lang-fr">19h30</span></span></div>
+<p class="venue-address">Twinz Hotel<br/><span class="lang-en">Ehden, Lebanon</span><span class="lang-fr">Ehden, Liban</span></p>
+<div class="map-wrap"><iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps?q=Twinz%20Hotel%20Ehden%20Lebanon&amp;output=embed"></iframe></div>
+</div>
+</div>
+</section>
+<section class="section" id="programme">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut champagne bucket" class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Cake5.png"/>
+<h2 class="section-title"><span class="lang-en">Day Programme</span><span class="lang-fr">Programme de la journée</span></h2>
+<p class="subtitle"><span class="lang-en">14 August 2027</span><span class="lang-fr">14 août 2027</span></p>
+<div class="paper-timeline">
+<div class="paper-time-row"><div class="paper-time"><span class="lang-en">6:00 PM</span><span class="lang-fr">18h00</span></div><div class="paper-label"><span class="lang-en">Ceremony</span><span class="lang-fr">Cérémonie</span></div></div>
+<div class="paper-time-row"><div class="paper-time"><span class="lang-en">7:30 PM</span><span class="lang-fr">19h30</span></div><div class="paper-label"><span class="lang-en">Cocktails</span><span class="lang-fr">Cocktail</span></div></div>
+<div class="paper-time-row"><div class="paper-time"><span class="lang-en">8:00 PM</span><span class="lang-fr">20h00</span></div><div class="paper-label"><span class="lang-en">Dinner</span><span class="lang-fr">Dîner</span></div></div>
+<div class="paper-time-row"><div class="paper-time"><span class="lang-en">9:00 PM</span><span class="lang-fr">21h00</span></div><div class="paper-label"><span class="lang-en">Dancing</span><span class="lang-fr">Soirée dansante</span></div></div>
+</div>
+</div>
+</section>
+<section class="section gold" id="church">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut church illustration" class="paper-asset large" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Church3.png"/>
+<div class="paper-card">
+<h3 class="venue-name"><span class="lang-en">The Ceremony</span><span class="lang-fr">La cérémonie</span></h3>
+<h3 class="venue-name"><span class="lang-en">St. Mourra Church</span><span class="lang-fr">Église St. Mourra</span></h3>
+<div class="thin-line"></div>
+<div class="venue-meta"><span><span class="lang-en">14 August 2027</span><span class="lang-fr">14 août 2027</span></span><span><span class="lang-en">6:00 PM</span><span class="lang-fr">18h00</span></span></div>
+<p class="venue-address"><span class="lang-en">St. Mourra Church</span><span class="lang-fr">Église St. Mourra</span><br/><span class="lang-en">Ehden, Lebanon</span><span class="lang-fr">Ehden, Liban</span></p>
+<div class="map-wrap"><iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps?q=St%20Mourra%20Church%20Ehden%20Lebanon&amp;output=embed"></iframe></div>
+</div>
+</div>
+</section>
+<section class="section gallery-section" id="gallery">
+<div class="reveal paper-gallery-frame gallery-full-frame">
+<img alt="" aria-hidden="true" class="paper-frame-bg" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Frame.png"/>
+<div class="gallery-content">
+<h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2>
+<p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
+<div class="album" id="album">
+<div class="album-track" id="albumTrack">
+<div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Bride bouquet" loading="lazy" src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding couple" loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding dinner" loading="lazy" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding detail" loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding ceremony" loading="lazy" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding flowers" loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding rings" loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding celebration" loading="lazy" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+</div>
+<button aria-label="Previous album slide / Photo précédente" class="album-arrow prev" onclick="albumMove(-1)">‹</button><button aria-label="Next album slide / Photo suivante" class="album-arrow next" onclick="albumMove(1)">›</button>
+</div>
+<div class="album-dots" id="albumDots"></div>
+</div>
+</div>
+</section>
+<section class="section gold" id="gifts">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut wedding cake" class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Champagne9.png"/>
+<h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
+<p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
+<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC# xxxxxx</span><span class="lang-fr">Compte n° xxxxxx</span></div></div>
+</div>
+</section>
+<section class="section" id="rsvp">
+<div class="reveal paper-sheet">
+<img alt="Paper-cut doves and wedding rings" class="paper-asset" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Doves4.png"/>
+<h2 class="section-title"><span class="lang-en">RSVP</span><span class="lang-fr">Réponse</span></h2>
+<p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2027</span><span class="lang-fr">Merci de répondre avant le 1er août 2027</span></p>
+<div class="card rsvp-box">
+<form id="rsvpForm" onsubmit="sendRSVP(event)">
+<p class="question"><span class="lang-en">Will you be attending? *</span><span class="lang-fr">Serez-vous présent ? *</span></p>
+<label class="radio-line"><input checked="" name="attending" type="radio" value="Yes"/> <span class="lang-en">Yes, I'll be there</span><span class="lang-fr">Oui, je serai présent(e)</span></label>
+<label class="radio-line"><input name="attending" type="radio" value="No"/> <span class="lang-en">Unfortunately, I can't make it</span><span class="lang-fr">Malheureusement, je ne pourrai pas être présent(e)</span></label>
+<p class="question"><span class="lang-en">How many guests?</span><span class="lang-fr">Combien d’invités ?</span></p>
+<div class="guest-counter"><button onclick="changeGuests(-1)" type="button">−</button><span id="guestCount">1</span><button onclick="changeGuests(1)" type="button">+</button></div>
+<p class="question"><span class="lang-en">Person 1 / Main contact</span><span class="lang-fr">Personne 1 / Contact principal</span></p>
+<input data-placeholder-en="Full name" data-placeholder-fr="Nom complet" id="fullName" placeholder="Full name" required="" type="text"/>
+<p class="question"><span class="lang-en">Message for the couple</span><span class="lang-fr">Message pour les mariés</span></p>
+<textarea data-placeholder-en="Is there anything you'd like to tell us?" data-placeholder-fr="Souhaitez-vous nous laisser un message ?" id="message" placeholder="Is there anything you'd like to tell us?"></textarea>
+<button class="send-btn" type="submit"><span class="lang-en">Send RSVP</span><span class="lang-fr">Envoyer la réponse</span></button><p id="formStatus" style="text-align:center;margin-top:16px;font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--gold);"></p>
+</form>
+</div>
+</div>
+</section>
+<footer class="footer ornament-bg"><div class="reveal"><img alt="Paper-cut wedding rings" class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/cupid-illustration-BO3_EWaD.png"/><div class="names">Thomas<br/>&amp;<br/>Sarah</div><p class="subtitle"><span class="lang-en">14 August 2027 · Ehden, Lebanon</span><span class="lang-fr">14 août 2027 · Ehden, Liban</span></p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);"><span class="lang-en">Powered by</span><span class="lang-fr">Créé par</span> <a href="https://www.cardiastudios.com/" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;" target="_blank">Cardia Studios</a></p></div></footer>
+</div>
+</main>
+<script>
     const CONFIG = {coupleName:'Thomas & Sarah',weddingDate:'2027-08-14T18:00:00',rsvpDeadline:'2027-08-01',location:'Ehden, Lebanon',church:'St. Mourra Church, Ehden',reception:'Twinz Hotel, Ehden',rsvpEmail:'nemer.david9@gmail.com'};
 
 
