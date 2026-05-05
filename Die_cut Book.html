@@ -19,6 +19,9 @@
   --page-h: calc(var(--bw) * 1.5);
 }
 
+
+
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05; font-family: 'EB Garamond', serif; color: var(--sepia-dk); user-select: none; }
 
@@ -28,12 +31,12 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
 #scene-cover {
   width: 100vw; height: 100vh;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(ellipse at center, #2e1a08 0%, #1a0e05 100%);
+  background: radial-gradient(ellipse at center, #faf4e8 0%, #faf4e8 100%);
 }
 .cover-outer { position: relative; width: var(--bw); }
 .cover-spine {
   position: absolute; top: 0; left: -8px; width: 8px; height: 100%;
-  background: linear-gradient(to right, #0e0804, #3a1e08, #0e0804);
+  background: linear-gradient(to right, #faf4e8, #faf4e8, #0e0804);
   border-radius: 4px 0 0 4px; z-index: 20; pointer-events: none;
 }
 .cover-wrap {
@@ -83,13 +86,13 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
   border-radius: 2px;
   margin-top: clamp(5px,1.5vw,9px); display: block;
 }
-.cover-line {
+.cover-line {a
   width: 65%; height: 1px;
   background: linear-gradient(to right, transparent, var(--sepia-lt), transparent);
   opacity: .5; margin: clamp(5px,1.5vw,8px) auto;
 }
 .cover-open-hint {
-  position: absolute; bottom: 5%; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 1%; left: 50%; transform: translateX(-50%);
   z-index: 3; text-align: center;
   animation: hintPulse 2s ease-in-out infinite; cursor: pointer;
 }
@@ -105,7 +108,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #1a0e05;
 /* ══════ OPEN BOOK ══════ */
 #scene-open {
   display: none; width: 100vw; min-height: 100vh;
-  background: radial-gradient(ellipse at center, #2e1a08 0%, #1a0e05 100%);
+  background: radial-gradient(ellipse at center, #faf4e8 0%, #faf4e8 100%);
   align-items: center; justify-content: center; overflow-y: auto;
   padding: 20px 0 30px;
 }
@@ -261,7 +264,7 @@ textarea.form-field { border: 1px solid rgba(90,42,10,.2); padding: clamp(5px,2v
 .rsvp-single-btn { width: 100%; padding: clamp(8px,2.5vw,11px); background: rgba(255,255,255,.25); border: 1px solid rgba(90,42,10,.3); color: var(--sepia-dk); font-family: 'Cinzel', serif; font-size: clamp(9px,2.8vw,12px); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; margin-top: clamp(5px,2vw,9px); }
 
 /* ══════ BACK COVER ══════ */
-#scene-back { display: none; width: 100vw; height: 100vh; background: radial-gradient(ellipse at center, #2e1a08 0%, #1a0e05 100%); align-items: center; justify-content: center; }
+#scene-back { display: none; width: 100vw; height: 100vh; background: radial-gradient(ellipse at center, #faf4e8 0%, #faf4e8 100%); align-items: center; justify-content: center; }
 #scene-back.visible { display: flex; }
 .back-outer { width: var(--bw); position: relative; }
 .back-spine { position: absolute; top: 0; left: -8px; width: 8px; height: clamp(500px,145vw,630px); background: linear-gradient(to right, #0e0804, #3a1e08, #0e0804); border-radius: 4px 0 0 4px; z-index: 5; }
@@ -437,7 +440,7 @@ textarea.form-field { border: 1px solid rgba(90,42,10,.2); padding: clamp(5px,2v
         <span class="cover-date">14 August 2027 · Ehden, Lebanon</span>
       </div>
       <div class="cover-open-hint">
-        <span>✦ Open Invitation ✦</span>
+        <span>✦ Open Invitation </span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--sepia)"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
     </div>
