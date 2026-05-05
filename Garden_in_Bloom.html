@@ -17,7 +17,7 @@
   --ivory:   #faf7f2;
   --ink:     #3a4a5e;
   --ink-lt:  #6a7a8e;
- --bw: min(92vw, 420px);
+  --bw: min(92vw, 420px);
 --page-h: calc(var(--bw) * 1.5);
 }
 
@@ -293,10 +293,147 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 }
 .back-face::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(220,230,240,.7) 0%, transparent 60%); pointer-events: none; }
 .back-spine-el { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right, #b0b8c8, #d0d8e4, #b0b8c8); border-radius: 4px 0 0 4px; z-index: 5; }
-.back-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(6px,2vw,12px); }
+.back-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(136px,2vw,138px); }
 .back-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px,8vw,36px); color: var(--blue-dk); margin-bottom: clamp(4px,1.5vw,8px); }
 .back-text small { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,11px); color: #000000; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; opacity: 1; text-shadow: 0 1px 4px rgba(255,255,255,.6); }
-.back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: #000000; font-weight: 700; background: none; border: none; padding: 0; cursor: pointer; opacity: 1; text-shadow: 0 1px 4px rgba(255,255,255,.6); animation: hintPulse 2s ease-in-out infinite; }
+.back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: #000000; font-weight: 700; background: none; border: none; padding: 0; cursor: pointer; opacity: 1; text-shadow: 0 1px 4px rgba(255,255,255,.6);margin-bottom: clamp(116px,2vw,118px);animation: hintPulse 2s ease-in-out infinite; }
+
+/* Cardia credit */
+.cardia-credit { position: absolute; bottom: clamp(10px,3%,18px); left: 50%; transform: translateX(-50%); z-index: 2; text-align: center; white-space: nowrap; }
+.cardia-credit a { font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,9px); letter-spacing: .12em; color: rgba(74,42,48,.55); text-decoration: none; text-transform: uppercase; transition: opacity .2s; display: inline-flex; align-items: center; gap: 4px; }
+.cardia-credit a span { border-bottom: 1px solid rgba(74,42,48,.4); padding-bottom: 1px; }
+.cardia-credit a img { width: clamp(4px,3.5vw,8px); opacity: .6; flex-shrink: 0; filter: sepia(1) saturate(2) hue-rotate(300deg) brightness(.75); }
+.cardia-credit a:hover { opacity: .9; }
+
+
+
+
+/* Phone 9:16 enlargement pass */
+:root {
+  --bw: min(96vw, calc((100svh - 32px) * 9 / 16), 520px);
+  --page-h: calc(var(--bw) * 16 / 9);
+}
+.cover-wrap,
+.cover-flipper,
+.back-cover-wrap,
+.back-wrap,
+.back-cover-face,
+.page {
+  height: var(--page-h) !important;
+}
+#scene-open { align-items: center; }
+.page {
+  padding-left: clamp(22px, 6.2vw, 38px) !important;
+  padding-right: clamp(22px, 6.2vw, 38px) !important;
+}
+.cover-eyebrow,
+.cover-monogram,
+.cover-date,
+.cover-date-below,
+.cover-open-hint span,
+.tap-hint span,
+.page-arrow-btn,
+.page-label,
+.page-num,
+.book-eyebrow,
+.book-sub,
+.info-label,
+.t-label-sm,
+.form-label,
+.error-msg,
+.photo-counter,
+.back-cover-text small,
+.back-text small,
+.back-reopen-btn,
+.back-btn {
+  font-size: clamp(10px, 3vw, 15px) !important;
+}
+.cover-name,
+.cover-name-script {
+  font-size: clamp(72px, 19vw, 104px) !important;
+}
+.cover-amp {
+  font-size: clamp(24px, 6.4vw, 36px) !important;
+}
+.cover-script,
+.cover-invite,
+.book-verse,
+.book-detail,
+.t-parent,
+.tl-venue,
+.attend-label,
+.form-field {
+  font-size: clamp(16px, 4.3vw, 22px) !important;
+  line-height: 1.55 !important;
+}
+.book-bigname {
+  font-size: clamp(54px, 14.5vw, 82px) !important;
+}
+.book-amp {
+  font-size: clamp(22px, 5.8vw, 32px) !important;
+}
+.book-section,
+.tl-label,
+.back-cover-text p,
+.back-text p {
+  font-size: clamp(26px, 7vw, 40px) !important;
+}
+.book-gold,
+.tl-time {
+  font-size: clamp(18px, 5vw, 28px) !important;
+}
+.cal-cell {
+  font-size: clamp(12px, 3.4vw, 17px) !important;
+  padding-block: clamp(4px, 1.2vw, 7px) !important;
+}
+.cal-cell.hdr {
+  font-size: clamp(10px, 2.7vw, 14px) !important;
+}
+.flip {
+  min-width: clamp(58px, 16vw, 78px) !important;
+}
+.flip .num,
+.count-num,
+.count-num-disp {
+  font-size: clamp(26px, 7vw, 38px) !important;
+}
+.flip .lbl {
+  font-size: clamp(8px, 2.3vw, 12px) !important;
+}
+.tl-row {
+  grid-template-columns: 1fr clamp(48px, 15vw, 72px) 1fr !important;
+}
+.tl-icon img {
+  width: clamp(32px, 9vw, 46px) !important;
+  height: clamp(32px, 9vw, 46px) !important;
+}
+.photo-carousel {
+  width: min(100%, calc(var(--bw) - 28px)) !important;
+  margin-inline: auto !important;
+}
+.photo-slide img {
+  width: 100% !important;
+  height: min(calc(var(--page-h) - 170px), calc(var(--bw) * 1.28)) !important;
+  min-height: clamp(360px, 92vw, 560px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.photo-arr,
+.count-btn {
+  width: clamp(36px, 9vw, 48px) !important;
+  height: clamp(36px, 9vw, 48px) !important;
+  font-size: clamp(18px, 5vw, 24px) !important;
+}
+.rsvp-box,
+.gift-box,
+.cal-box {
+  padding: clamp(14px, 4vw, 22px) !important;
+}
+@media (min-width: 720px) {
+  :root {
+    --bw: min(72vw, calc((100svh - 48px) * 9 / 16), 560px);
+  }
+}
 </style>
 </head>
 <body>
@@ -508,6 +645,15 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
           <small>14 August 2027 · Ehden, Lebanon</small>
         </div>
         <button class="back-btn" onclick="reopenFromBack()">← Back to Invitation</button>
+           <div class="cardia-credit">
+          <a href="https://nemerdavid.github.io/web-des/" target="_blank">
+            Powered by <span>Cardia Studios</span>
+            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Chain2.png" alt="">
+          </a>
+        </div>
+        
+        
+        
       </div>
     </div>
   </div>
