@@ -47,7 +47,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 }
 .cover-bg {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover2.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Dark_floral/cover2.png') center/cover no-repeat;
 }
 .cover-content {
   position: absolute; top: 44%; left: 50%;
@@ -119,7 +119,7 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #0e1420;
 }
 .book-spread {
   width: 100%;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/pages.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Dark_floral/pages.png') center/cover no-repeat;
   border-radius: 4px 12px 12px 4px;
   box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.55), 0 16px 36px rgba(0,0,0,.45);
   overflow: hidden; position: relative; perspective: 800px;
@@ -267,7 +267,7 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
 .back-wrap { position: relative; width: var(--bw); height: var(--page-h); }
 .back-face {
   position: absolute; inset: 0;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark_floral/cover2.png') center/cover no-repeat;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Dark_floral/cover2.png') center/cover no-repeat;
   border-radius: 4px 12px 12px 4px;
   box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.6);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -278,6 +278,155 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
 .back-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px,8vw,36px); color: var(--gold-lt); margin-bottom: clamp(4px,1.5vw,8px); text-shadow: 0 0 20px rgba(201,168,76,.4); }
 .back-text small { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,11px); color: var(--gold); font-weight: 400; letter-spacing: .2em; text-transform: uppercase; }
 .back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-lt); font-weight: 400; background: none; border: none; padding: 0; cursor: pointer; animation: hintPulse 2s ease-in-out infinite; text-shadow: 0 1px 6px rgba(0,0,0,.8); }
+
+
+
+.cardia-credit {
+  position: relative; z-index: 2;
+  text-align: center; margin-top: clamp(80px, 3vw, 96px);
+}
+.cardia-credit a {
+  display: inline-flex; align-items: center; gap: clamp(4px, 1.5vw, 8px);
+  font-family: 'Cinzel', serif; font-size: clamp(7px, 2.2vw, 10px);
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-lt); text-decoration: none; transition: color .2s;
+}
+.cardia-credit a:hover { color: var(--gold); }
+.cardia-credit span { color: var(--gold); }
+.cardia-credit img {
+  height: clamp(6px, 3.5vw, 8px); width: auto;
+  filter: invert(72%) sepia(30%) saturate(400%) hue-rotate(5deg) brightness(90%);
+}
+
+
+
+
+/* Phone 9:16 enlargement pass */
+:root {
+  --bw: min(96vw, calc((100svh - 32px) * 9 / 16), 520px);
+  --page-h: calc(var(--bw) * 16 / 9);
+}
+.cover-wrap,
+.cover-flipper,
+.back-cover-wrap,
+.back-wrap,
+.back-cover-face,
+.page {
+  height: var(--page-h) !important;
+}
+#scene-open { align-items: center; }
+.page {
+  padding-left: clamp(22px, 6.2vw, 38px) !important;
+  padding-right: clamp(22px, 6.2vw, 38px) !important;
+}
+.cover-eyebrow,
+.cover-monogram,
+.cover-date,
+.cover-date-below,
+.cover-open-hint span,
+.tap-hint span,
+.page-arrow-btn,
+.page-label,
+.page-num,
+.book-eyebrow,
+.book-sub,
+.info-label,
+.t-label-sm,
+.form-label,
+.error-msg,
+.photo-counter,
+.back-cover-text small,
+.back-text small,
+.back-reopen-btn,
+.back-btn {
+  font-size: clamp(10px, 3vw, 15px) !important;
+}
+.cover-name,
+.cover-name-script {
+  font-size: clamp(72px, 19vw, 104px) !important;
+}
+.cover-amp {
+  font-size: clamp(24px, 6.4vw, 36px) !important;
+}
+.cover-script,
+.cover-invite,
+.book-verse,
+.book-detail,
+.t-parent,
+.tl-venue,
+.attend-label,
+.form-field {
+  font-size: clamp(16px, 4.3vw, 22px) !important;
+  line-height: 1.55 !important;
+}
+.book-bigname {
+  font-size: clamp(54px, 14.5vw, 82px) !important;
+}
+.book-amp {
+  font-size: clamp(22px, 5.8vw, 32px) !important;
+}
+.book-section,
+.tl-label,
+.back-cover-text p,
+.back-text p {
+  font-size: clamp(26px, 7vw, 40px) !important;
+}
+.book-gold,
+.tl-time {
+  font-size: clamp(18px, 5vw, 28px) !important;
+}
+.cal-cell {
+  font-size: clamp(12px, 3.4vw, 17px) !important;
+  padding-block: clamp(4px, 1.2vw, 7px) !important;
+}
+.cal-cell.hdr {
+  font-size: clamp(10px, 2.7vw, 14px) !important;
+}
+.flip {
+  min-width: clamp(58px, 16vw, 78px) !important;
+}
+.flip .num,
+.count-num,
+.count-num-disp {
+  font-size: clamp(26px, 7vw, 38px) !important;
+}
+.flip .lbl {
+  font-size: clamp(8px, 2.3vw, 12px) !important;
+}
+.tl-row {
+  grid-template-columns: 1fr clamp(48px, 15vw, 72px) 1fr !important;
+}
+.tl-icon img {
+  width: clamp(32px, 9vw, 46px) !important;
+  height: clamp(32px, 9vw, 46px) !important;
+}
+.photo-carousel {
+  width: min(100%, calc(var(--bw) - 28px)) !important;
+  margin-inline: auto !important;
+}
+.photo-slide img {
+  width: 100% !important;
+  height: min(calc(var(--page-h) - 170px), calc(var(--bw) * 1.28)) !important;
+  min-height: clamp(360px, 92vw, 560px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.photo-arr,
+.count-btn {
+  width: clamp(36px, 9vw, 48px) !important;
+  height: clamp(36px, 9vw, 48px) !important;
+  font-size: clamp(18px, 5vw, 24px) !important;
+}
+.rsvp-box,
+.gift-box,
+.cal-box {
+  padding: clamp(14px, 4vw, 22px) !important;
+}
+@media (min-width: 720px) {
+  :root {
+    --bw: min(72vw, calc((100svh - 48px) * 9 / 16), 560px);
+  }
+}
 </style>
 </head>
 <body>
@@ -371,22 +520,22 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
         <div class="tl-wrap">
           <div class="tl-row">
             <div class="tl-left"><div class="tl-time">6:00 PM</div><div class="tl-venue">St. Mourra Church<br>Ehden</div></div>
-            <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Rings-removebg-preview.png" alt=""></div>
+            <div class="tl-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Rings-removebg-preview.png" alt=""></div>
             <div class="tl-right"><div class="tl-label">We do</div></div>
           </div>
           <div class="tl-row">
             <div class="tl-left"><div class="tl-time">7:30 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
-            <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Drink-removebg-preview.png" alt=""></div>
+            <div class="tl-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Drink-removebg-preview.png" alt=""></div>
             <div class="tl-right"><div class="tl-label">We drink</div></div>
           </div>
           <div class="tl-row">
             <div class="tl-left"><div class="tl-time">8:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
-            <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dine-removebg-preview.png" alt=""></div>
+            <div class="tl-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Dine-removebg-preview.png" alt=""></div>
             <div class="tl-right"><div class="tl-label">We dine</div></div>
           </div>
           <div class="tl-row">
             <div class="tl-left"><div class="tl-time">9:00 PM</div><div class="tl-venue">Twinz Hotel<br>Ehden</div></div>
-            <div class="tl-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dance-removebg-preview.png" alt=""></div>
+            <div class="tl-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Dance-removebg-preview.png" alt=""></div>
             <div class="tl-right"><div class="tl-label">We dance</div></div>
           </div>
         </div>
@@ -414,7 +563,7 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
           <div class="photo-track" id="photo-track">
             <div class="photo-slide"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt=""></div>
             <div class="photo-slide"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=800&auto=format&fit=crop" alt=""></div>
-            <div class="photo-slide"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/weddd.jpg" alt=""></div>
+            <div class="photo-slide"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/BG/weddd.jpg" alt=""></div>
             <div class="photo-slide"><img src="https://images.pexels.com/photos/182006/pexels-photo-182006.jpeg?auto=compress&cs=tinysrgb&w=800" alt=""></div>
           </div>
           <div class="photo-arrows">
@@ -492,13 +641,19 @@ textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px
           <small>14 August 2027 · Ehden, Lebanon</small>
         </div>
         <button class="back-btn" onclick="reopenFromBack()">← Back to Invitation</button>
+        <div class="cardia-credit">
+  <a href="https://www.cardiastudios.com/" target="_blank">
+    Powered by <span>Cardia Studios</span>
+    <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Chain2.png" alt="">
+  </a>
+</div>
       </div>
     </div>
   </div>
 </div>
 
-<audio id="page-flip-sound" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
-<audio id="wedding-music" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Music/CHRISTINA%20PERRI.mp3" loop preload="auto"></audio>
+<audio id="page-flip-sound" src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
+<audio id="wedding-music" src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Music/CHRISTINA%20PERRI.mp3" loop preload="auto"></audio>
 
 <script>
 /* ══════ FALLING PETALS ══════ */
@@ -662,7 +817,7 @@ function buildCalendar(){
     const e=document.createElement('div');e.className='cal-cell';
     if(d===14){
       e.className+=' highlight';
-      e.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Heart.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.55;" alt="heart"/>';
+      e.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Heart.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.55;" alt="heart"/>';
     } else { e.textContent=d; }
     g.appendChild(e);
   }
