@@ -1094,13 +1094,38 @@ Centered on the bottle label with MORE spacing.
       }
 
       .footer {
-        padding: 130px 24px 92px;
+        min-height: 620px;
+        padding: 250px 24px 110px;
         background:
           var(--ivory)
           url("https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/1.png")
-          center top / contain no-repeat !important;
+          center bottom / cover no-repeat !important;
       }
-      .footer .names { font-size: 50px; }
+      .footer .names {
+        font-size: 50px;
+        color: #006b57;
+        text-shadow:
+          0 3px 12px rgba(255,255,255,.95),
+          0 0 2px rgba(255,255,255,.9);
+      }
+      .footer .date-line {
+        color: #ffffff;
+        font-size: 16px;
+        letter-spacing: .22em;
+        line-height: 1.7;
+        text-shadow:
+          0 2px 10px rgba(0,0,0,.58),
+          0 0 4px rgba(0,0,0,.38);
+      }
+      .footer .cardia-credit {
+        margin-top: 36px;
+      }
+      .footer .cardia-credit a {
+        color: #ffffff;
+        text-shadow:
+          0 2px 10px rgba(0,0,0,.62),
+          0 0 4px rgba(0,0,0,.42);
+      }
       #countdownSection { padding: 28px 0 38px; }
       #countdownSection .page-card {
         padding-top: 8px;
@@ -1120,11 +1145,11 @@ Centered on the bottle label with MORE spacing.
         padding: 0 4.2%;
       }
       #countdownSection .barrel-count .barrel-num {
-        top: 66%;
+        top: 63%;
         left: 50%;
         font-size: clamp(18px, 6.2vw, 26px);
       }
-      #countdownSection .barrel-count .barrel-num { top: 66%; left: 50%; }
+      #countdownSection .barrel-count .barrel-num { top: 63%; left: 50%; }
       #countdownSection .running-note { margin-top: -46px; font-size: 16px; }
     }
   </style>
