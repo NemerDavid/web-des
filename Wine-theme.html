@@ -745,20 +745,79 @@ Centered on the bottle label with MORE spacing.
     .album-counter { margin-top: 12px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; }
 
     /* RSVP */
-    .rsvp-section { background: var(--ivory) var(--paper-bg) center / cover no-repeat !important; }
+/* RSVP - MODERN CARD LIKE CHURCH / HOTEL */
+    .rsvp-section {
+      padding: 0 !important;
+      min-height: 100vh;
+      background: var(--ivory) var(--paper-bg) center / cover no-repeat !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .rsvp-section .page-card {
-      background: rgba(14,100,79,0.8);
-      border-radius: 26px;
-      box-shadow: 0 18px 52px rgba(0,0,0,.12);
-      border: 1px solid var(--border-col);
-      padding: 52px 36px 52px;
+      width: calc(100% - 44px);
+      max-width: 440px;
+      margin: 50px auto;
+      padding: 0 !important;
+      overflow: hidden;
+      border-radius: 28px;
+      background: rgba(255,255,255,.92) !important;
+      border: 1px solid rgba(0,107,87,.16);
+      box-shadow: 0 24px 60px rgba(21,45,39,.18);
       backdrop-filter: blur(2px);
     }
-    .rsvp-box { border-radius: 0; padding: 24px 0 0; margin-top: 24px; background: transparent !important; border: none !important; }
-    .step-dots { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
-    .step-dot { width: 6px; height: 6px; border-radius: 50%; transition: .3s; }
-    .form-label, .question { display: block; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin: 24px 0 10px; color: rgba(255,255,255); }
-    .form-field, input:not([type="radio"]), textarea {
+
+    .rsvp-section .section-icon {
+      width: 100%;
+      height: 270px;
+      max-height: none;
+      margin: 0;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0;
+      background: #f2eadc;
+    }
+
+    .rsvp-section .kicker {
+      margin: 34px auto 12px;
+      color: var(--emerald) !important;
+      font-size: 10px;
+      letter-spacing: .32em;
+    }
+
+    .rsvp-section .section-title {
+      color: var(--emerald-dark) !important;
+      font-size: 58px;
+      line-height: .95;
+    }
+
+    .rsvp-box {
+      width: 100%;
+      padding: 24px 30px 34px !important;
+      margin-top: 10px !important;
+      background: rgba(255,255,255,.92) !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+
+    .step-dots { display: none !important; }
+
+    .form-label,
+    .question {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--emerald-dark) !important;
+      font-size: 9px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin: 24px 0 10px;
+    }
+
+    .form-field,
+    input:not([type="radio"]),
+    textarea {
       width: 100%;
       border-radius: 0;
       padding: 13px 0;
@@ -767,48 +826,137 @@ Centered on the bottle label with MORE spacing.
       font-size: 19px;
       outline: none;
       background: transparent;
-      color: rgba(255,255,255);
+      color: var(--dark-text) !important;
       border: none;
-      border-bottom: 1.5px solid var(--border-col);
+      border-bottom: 1.5px solid rgba(0,107,87,.22) !important;
       transition: border-color .25s;
     }
-    .form-field:focus, input:not([type="radio"]):focus, textarea:focus { border-bottom-color: rgba(255,255,255);; }
-    textarea { min-height: 90px; resize: none; border: none; border-bottom: 1.5px solid rgba(255,255,255);; }
+
+    .form-field::placeholder,
+    input:not([type="radio"])::placeholder,
+    textarea::placeholder {
+      color: rgba(34,58,52,.48);
+      opacity: 1;
+    }
+
+    .form-field::-webkit-input-placeholder,
+    input:not([type="radio"])::-webkit-input-placeholder,
+    textarea::-webkit-input-placeholder {
+      color: rgba(34,58,52,.48);
+    }
+
+    .form-field:focus,
+    input:not([type="radio"]):focus,
+    textarea:focus {
+      border-bottom-color: var(--emerald) !important;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: none;
+      border: none;
+      border-bottom: 1.5px solid rgba(0,107,87,.22) !important;
+    }
+
     .attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
     .attend-opt { position: relative; cursor: pointer; }
     .attend-opt input { position: absolute; opacity: 0; pointer-events: none; }
-    .attend-box { border-radius: 12px; padding: 16px 10px; text-align: center; transition: .25s; background: transparent; border: 1.5px solid rgba(255,255,255);; }
-    .attend-opt input:checked + .attend-box { border-color: var(--emerald); background: rgba(255,255,255,0.7); }
-    .attend-label { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: rgba(255,255,255,0.7); }
+
+    .attend-box {
+      border-radius: 12px;
+      padding: 16px 10px;
+      text-align: center;
+      transition: .25s;
+      background: rgba(0,107,87,.04) !important;
+      border: 1.5px solid rgba(0,107,87,.22) !important;
+    }
+
+    .attend-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      color: var(--dark-text) !important;
+    }
+
+    .attend-opt input:checked + .attend-box {
+      background: var(--emerald) !important;
+      border-color: var(--emerald) !important;
+      box-shadow: 0 10px 26px rgba(0,107,87,.18);
+    }
+
+    .attend-opt input:checked + .attend-box .attend-label { color: #fff !important; }
+
     .count-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 16px 0; }
-    .count-btn { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; background: transparent; border: 1.5px solid var(--border-col); font-size: 20px; transition: .2s; color: var(--emerald); }
-    .guest-num { min-width: 24px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.7);; }
+
+    .count-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      transition: .2s;
+      border: 1.5px solid rgba(0,107,87,.22) !important;
+      color: var(--emerald) !important;
+      background: transparent !important;
+    }
+
+    .guest-num {
+      min-width: 24px;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--dark-text) !important;
+    }
+
     .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
-    .btn-soft, .btn-solid { width: 100%; border-radius: 12px; padding: 14px 16px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; transition: .25s; }
-    .btn-soft { background: transparent; color: rgba(255,255,255,0.7); border: 1.5px solid var(--border-col); }
-    .btn-solid { background: var(--emerald); border: 1px solid var(--emerald); color: #fff; }
-    .btn-solid:hover { background: var(--emerald-dark); transform: translateY(-1px); }
-    .btn-soft:hover { border-color: var(--emerald); color: var(--emerald); transform: translateY(-1px); }
-    .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: rgba(255,255,255,0.7); }
 
+    .btn-soft,
+    .btn-solid {
+      width: 100%;
+      border-radius: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: .25s;
+    }
 
+    .btn-soft {
+      background: transparent !important;
+      border: 1.5px solid rgba(0,107,87,.22) !important;
+      color: var(--emerald-dark) !important;
+    }
 
-/* PLACEHOLDER COLOR */
-.form-field::placeholder,
-input:not([type="radio"])::placeholder,
-textarea::placeholder{
-  color: rgba(255,255,255,.72);
-  opacity: 1;
-}
+    .btn-soft:hover {
+      background: rgba(0,107,87,.06) !important;
+      border-color: var(--emerald) !important;
+      color: var(--emerald) !important;
+      transform: translateY(-1px);
+    }
 
-/* Safari/iPhone support */
-.form-field::-webkit-input-placeholder,
-input:not([type="radio"])::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder{
-  color: rgba(255,255,255,.72);
-}
+    .btn-solid {
+      background: var(--emerald) !important;
+      border: 1px solid var(--emerald) !important;
+      color: #fff !important;
+      box-shadow: 0 10px 26px rgba(0,107,87,.20);
+    }
 
+    .btn-solid:hover {
+      background: var(--emerald-dark) !important;
+      transform: translateY(-1px);
+    }
 
+    .error-msg {
+      font-size: 12px;
+      margin-top: 8px;
+      display: none;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: .08em;
+      color: var(--wine) !important;
+    }
 
 
 
@@ -1174,7 +1322,7 @@ textarea::-webkit-input-placeholder{
       #countdownSection .barrel-count .barrel-num {
         top: 60%;
         left: 50%;
-        font-size: clamp(12px, 6.2vw, 18px);
+        font-size: clamp(14px, 6.2vw, 20px);
       }
       #countdownSection .barrel-count .barrel-num { top: 60%; left: 50%; }
       #countdownSection .running-note { margin-top: -46px; font-size: 16px; }
@@ -1394,7 +1542,7 @@ textarea::-webkit-input-placeholder{
       <!-- PAGE 8 RSVP -->
       <section class="section rsvp-section" id="rsvp">
         <div class="reveal page-card">
-          <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/14a.png" alt="Wine box" />
+          <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/14.png" alt="Wine box" />
           <p class="kicker">Kindly reply before 1 August 2027</p>
           <h2 class="section-title">RSVP</h2>
           <div class="rsvp-box">
