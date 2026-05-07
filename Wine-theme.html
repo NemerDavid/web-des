@@ -404,7 +404,7 @@
     }
     .barrel-count .barrel-num {
       position: absolute;
-      top: 40%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 70%;
@@ -549,7 +549,7 @@
     
 /* =========================================
 WINE BOTTLE LABEL OVERLAY
-Centered on the bottle label with more vertical spacing.
+Centered on the bottle label with MORE spacing.
 ========================================= */
 
 .wine-label-overlay{
@@ -562,7 +562,7 @@ Centered on the bottle label with more vertical spacing.
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
+  justify-content:center;
   text-align:center;
   pointer-events:none;
   z-index:5;
@@ -572,16 +572,18 @@ Centered on the bottle label with more vertical spacing.
 .wine-main-title{
   font-family:'Cormorant Garamond', serif;
   font-size:clamp(10px,1.75vw,16px);
-  line-height:1.45;
+  line-height:1.8;
   font-weight:700;
   letter-spacing:.22em;
   text-transform:uppercase;
   color:#5b3522;
   max-width:100%;
+  margin-bottom:18px;
 }
 
 .wine-subtitle{
-  margin-top:13px;
+  margin-top:0;
+  margin-bottom:24px;
   font-family:'Great Vibes', cursive;
   font-size:clamp(19px,3.6vw,30px);
   line-height:1;
@@ -591,14 +593,14 @@ Centered on the bottle label with more vertical spacing.
 .wine-divider{
   width:58%;
   height:1px;
-  margin:14px auto 14px;
+  margin:0 auto 24px;
   background:rgba(91,53,34,.30);
 }
 
 .wine-events{
   font-family:'Montserrat', sans-serif;
   font-size:clamp(5px,.95vw,8px);
-  line-height:1.9;
+  line-height:2.35;
   font-weight:600;
   letter-spacing:.13em;
   text-transform:uppercase;
@@ -973,9 +975,12 @@ Centered on the bottle label with more vertical spacing.
 
     /* FOOTER ON 1.png PAPER BACKGROUND */
     .footer {
-      background: var(--ivory) url("https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/1a.png") center / cover no-repeat !important;
+      background:
+        var(--ivory)
+        url("https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/1a.png")
+        center top / contain no-repeat !important;
       min-height: auto;
-      padding: 54px 28px 130px;
+      padding: 120px 28px 130px;
       text-align: center;
       color: var(--dark-text);
     }
@@ -1070,25 +1075,30 @@ Centered on the bottle label with more vertical spacing.
       .wine-main-title{
         font-size:clamp(9px,2.5vw,12px);
         letter-spacing:.20em;
-        line-height:1.45;
+        line-height:1.8;
+        margin-bottom:16px;
       }
       .wine-subtitle{
-        margin-top:11px;
+        margin-top:0;
+        margin-bottom:20px;
         font-size:clamp(18px,5vw,24px);
       }
       .wine-divider{
-        margin:12px auto 12px;
+        margin:0 auto 20px;
         width:58%;
       }
       .wine-events{
         font-size:clamp(4.8px,1.55vw,7px);
         letter-spacing:.11em;
-        line-height:1.85;
+        line-height:2.25;
       }
 
       .footer {
-        padding: 76px 24px 92px;
-        background: var(--ivory) url("https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/1.png") center / cover no-repeat !important;
+        padding: 130px 24px 92px;
+        background:
+          var(--ivory)
+          url("https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/1.png")
+          center top / contain no-repeat !important;
       }
       .footer .names { font-size: 50px; }
       #countdownSection { padding: 28px 0 38px; }
@@ -1110,11 +1120,11 @@ Centered on the bottle label with more vertical spacing.
         padding: 0 4.2%;
       }
       #countdownSection .barrel-count .barrel-num {
-        top: 41%;
+        top: 66%;
         left: 50%;
         font-size: clamp(18px, 6.2vw, 26px);
       }
-      #countdownSection .barrel-count .barrel-num { top: 40%; left: 50%; }
+      #countdownSection .barrel-count .barrel-num { top: 66%; left: 50%; }
       #countdownSection .running-note { margin-top: -46px; font-size: 16px; }
     }
   </style>
