@@ -747,7 +747,7 @@ Centered on the bottle label with MORE spacing.
     /* RSVP */
     .rsvp-section { background: var(--ivory) var(--paper-bg) center / cover no-repeat !important; }
     .rsvp-section .page-card {
-      background: #74E1D1;
+      background: rgba(14,100,79,0.8);
       border-radius: 26px;
       box-shadow: 0 18px 52px rgba(0,0,0,.12);
       border: 1px solid var(--border-col);
@@ -757,7 +757,7 @@ Centered on the bottle label with MORE spacing.
     .rsvp-box { border-radius: 0; padding: 24px 0 0; margin-top: 24px; background: transparent !important; border: none !important; }
     .step-dots { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
     .step-dot { width: 6px; height: 6px; border-radius: 50%; transition: .3s; }
-    .form-label, .question { display: block; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin: 24px 0 10px; color: var(--soft-text); }
+    .form-label, .question { display: block; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin: 24px 0 10px; color: rgba(255,255,255); }
     .form-field, input:not([type="radio"]), textarea {
       width: 100%;
       border-radius: 0;
@@ -767,29 +767,56 @@ Centered on the bottle label with MORE spacing.
       font-size: 19px;
       outline: none;
       background: transparent;
-      color: var(--dark-text);
+      color: rgba(255,255,255);
       border: none;
       border-bottom: 1.5px solid var(--border-col);
       transition: border-color .25s;
     }
-    .form-field:focus, input:not([type="radio"]):focus, textarea:focus { border-bottom-color: var(--emerald); }
-    textarea { min-height: 90px; resize: none; border: none; border-bottom: 1.5px solid var(--border-col); }
+    .form-field:focus, input:not([type="radio"]):focus, textarea:focus { border-bottom-color: rgba(255,255,255);; }
+    textarea { min-height: 90px; resize: none; border: none; border-bottom: 1.5px solid rgba(255,255,255);; }
     .attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
     .attend-opt { position: relative; cursor: pointer; }
     .attend-opt input { position: absolute; opacity: 0; pointer-events: none; }
-    .attend-box { border-radius: 12px; padding: 16px 10px; text-align: center; transition: .25s; background: transparent; border: 1.5px solid var(--border-col); }
-    .attend-opt input:checked + .attend-box { border-color: var(--emerald); background: rgba(0,107,87,.07); }
-    .attend-label { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--dark-text); }
+    .attend-box { border-radius: 12px; padding: 16px 10px; text-align: center; transition: .25s; background: transparent; border: 1.5px solid rgba(255,255,255);; }
+    .attend-opt input:checked + .attend-box { border-color: var(--emerald); background: rgba(255,255,255,0.7); }
+    .attend-label { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: rgba(255,255,255,0.7); }
     .count-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 16px 0; }
     .count-btn { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; background: transparent; border: 1.5px solid var(--border-col); font-size: 20px; transition: .2s; color: var(--emerald); }
-    .guest-num { min-width: 24px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--dark-text); }
+    .guest-num { min-width: 24px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.7);; }
     .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
     .btn-soft, .btn-solid { width: 100%; border-radius: 12px; padding: 14px 16px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; transition: .25s; }
-    .btn-soft { background: transparent; color: var(--soft-text); border: 1.5px solid var(--border-col); }
+    .btn-soft { background: transparent; color: rgba(255,255,255,0.7); border: 1.5px solid var(--border-col); }
     .btn-solid { background: var(--emerald); border: 1px solid var(--emerald); color: #fff; }
     .btn-solid:hover { background: var(--emerald-dark); transform: translateY(-1px); }
     .btn-soft:hover { border-color: var(--emerald); color: var(--emerald); transform: translateY(-1px); }
-    .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: var(--wine); }
+    .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: rgba(255,255,255,0.7); }
+
+
+
+/* PLACEHOLDER COLOR */
+.form-field::placeholder,
+input:not([type="radio"])::placeholder,
+textarea::placeholder{
+  color: rgba(255,255,255,.72);
+  opacity: 1;
+}
+
+/* Safari/iPhone support */
+.form-field::-webkit-input-placeholder,
+input:not([type="radio"])::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{
+  color: rgba(255,255,255,.72);
+}
+
+
+
+
+
+
+
+
+
+
 
     /* DIVIDERS */
     .section-divider {
@@ -1147,7 +1174,7 @@ Centered on the bottle label with MORE spacing.
       #countdownSection .barrel-count .barrel-num {
         top: 60%;
         left: 50%;
-        font-size: clamp(8px, 6.2vw, 16px);
+        font-size: clamp(12px, 6.2vw, 18px);
       }
       #countdownSection .barrel-count .barrel-num { top: 60%; left: 50%; }
       #countdownSection .running-note { margin-top: -46px; font-size: 16px; }
@@ -1367,7 +1394,7 @@ Centered on the bottle label with MORE spacing.
       <!-- PAGE 8 RSVP -->
       <section class="section rsvp-section" id="rsvp">
         <div class="reveal page-card">
-          <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/14.png" alt="Wine box" />
+          <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/14a.png" alt="Wine box" />
           <p class="kicker">Kindly reply before 1 August 2027</p>
           <h2 class="section-title">RSVP</h2>
           <div class="rsvp-box">
