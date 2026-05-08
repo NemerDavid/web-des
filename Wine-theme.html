@@ -504,7 +504,7 @@
     }
     .programme-slot {
       position: absolute;
-      right: 10.8%;
+      right: 10.5%; /* bigger numbers, move to the left */
       width: 29.5%;
       height: 11.2%;
       display: flex;
@@ -523,10 +523,18 @@
     .programme-slot.s2 { top: 31.8%; }
     .programme-slot.s3 { top: 54.0%; }
     .programme-slot.s4 { top: 75.5%; }
+    .programme-slot .slot-icon {
+      width: clamp(38px, 8vw, 56px);
+      height: clamp(38px, 8vw, 56px);
+      object-fit: contain;
+      margin: 0 auto 5px;
+      opacity: .78;
+      filter: sepia(.28) saturate(.72) brightness(.72) contrast(1.08);
+    }
     .programme-slot .slot-time {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 700;
-      font-size: clamp(17px, 5vw, 24px);
+      font-size: clamp(15px, 4.2vw, 22px);
       line-height: 1;
       color: #5f331e;
       width: 100%;
@@ -535,11 +543,11 @@
     .programme-slot .slot-label {
       margin-top: 4px;
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(7px, 2vw, 10px);
+      font-size: clamp(6px, 1.65vw, 9px);
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
-      line-height: 1.25;
+      line-height: 1.22;
       color: #3c2a1f;
       width: 100%;
       text-align: center;
@@ -1433,21 +1441,25 @@ Centered on the bottle label with MORE spacing.
             </div>
 
             <div class="programme-slot s1">
+              <img class="slot-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Rings-removebg-preview.png" alt="Ceremony rings icon" />
               <div class="slot-time">6:00 PM</div>
               <div class="slot-label">Ceremony<br>St. Mourra</div>
             </div>
 
             <div class="programme-slot s2">
+              <img class="slot-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Drink-removebg-preview.png" alt="Reception drinks icon" />
               <div class="slot-time">7:30 PM</div>
               <div class="slot-label">Wine<br>Reception</div>
             </div>
 
             <div class="programme-slot s3">
+              <img class="slot-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dine-removebg-preview.png" alt="Dinner icon" />
               <div class="slot-time">8:00 PM</div>
               <div class="slot-label">Dinner<br>Terrace</div>
             </div>
 
             <div class="programme-slot s4">
+              <img class="slot-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dance-removebg-preview.png" alt="Dancing icon" />
               <div class="slot-time">9:00 PM</div>
               <div class="slot-label">Dancing<br>Stars</div>
             </div>
@@ -1610,9 +1622,17 @@ Centered on the bottle label with MORE spacing.
       const countdownSection = document.getElementById('countdownSection');
 
       const showInvitation = () => {
+        /* Once the opening video is finished, permanently remove the hero/video page.
+           This prevents visitors from scrolling or swiping back up to the first page. */
+        if (heroCover) {
+          heroCover.style.display = 'none';
+          heroCover.setAttribute('aria-hidden', 'true');
+          heroCover.onclick = null;
+        }
+
         main.classList.add('open');
         setTimeout(() => main.classList.add('visible'), 30);
-        setTimeout(() => countdownSection.scrollIntoView({ behavior: 'smooth' }), 350);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         setTimeout(() => document.querySelectorAll('#mainInvite .reveal').forEach(el => observer.observe(el)), 400);
       };
 
@@ -1649,7 +1669,7 @@ Centered on the bottle label with MORE spacing.
         music.play().then(() => btn.textContent = '♪').catch(() => {});
       } else {
         music.pause();
-        btn.textContent = '♫';
+        btn.textContent = 'Ⅱ';
       }
     }
 
