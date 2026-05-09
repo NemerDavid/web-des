@@ -30,14 +30,37 @@
   }
 
   /* ═══════════════════════════════════════════
+     RESPONSIVE DESKTOP-SCALE SYSTEM
+     Your PNG positions/sizes are designed on a 1480px PC canvas.
+     On smaller screens, the whole invitation scales down proportionally,
+     so the design keeps the exact same composition on phone/tablet.
+  ═══════════════════════════════════════════ */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .page-scale-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+  }
+
+  /* ═══════════════════════════════════════════
      SCENE WRAPPER — mobile-first, max 480px
   ═══════════════════════════════════════════ */
   .page {
-    max-width: 1480px;
+    width: 1480px;
+    max-width: none;
     margin: 0 auto;
     background: var(--warm-bg);
     position: relative;
     overflow: hidden;
+    transform-origin: top center;
+    will-change: transform;
   }
 
   /* ─── RAW GITHUB BASE ─── */
@@ -703,7 +726,8 @@
 </head>
 <body>
 
-<div class="page">
+<div class="page-scale-holder" id="page-scale-holder">
+<div class="page" id="page">
 
   <!-- ══════════════════════════════════════════
        SECTION 1 — HERO
@@ -999,9 +1023,34 @@
   </footer>
 
 </div><!-- /page -->
+</div><!-- /page-scale-holder -->
 
 
 <script>
+// ─── RESPONSIVE DESKTOP-SCALE ───
+// The artwork was positioned for a 1480px-wide PC canvas.
+// This keeps that same layout on phones by scaling the whole canvas.
+const DESIGN_WIDTH = 1480;
+
+function scaleInvitation() {
+  const page = document.getElementById('page');
+  const holder = document.getElementById('page-scale-holder');
+  if (!page || !holder) return;
+
+  const availableWidth = window.innerWidth;
+  const scale = Math.min(1, availableWidth / DESIGN_WIDTH);
+
+  page.style.transform = `scale(${scale})`;
+
+  // Because transform does not affect document flow, we manually reserve
+  // the scaled height so the page scrolls normally on phone screens.
+  holder.style.height = `${page.scrollHeight * scale}px`;
+}
+
+window.addEventListener('load', scaleInvitation);
+window.addEventListener('resize', scaleInvitation);
+window.addEventListener('orientationchange', () => setTimeout(scaleInvitation, 250));
+
 // ─── RSVP ───
 let attending = null;
 
@@ -1040,32 +1089,9 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // ─── PARALLAX ───
-let ticking = false;
-const parallaxEls = [
-  { el: document.querySelector('.l-balloon'),  speed: 0.12 },
-  { el: document.querySelector('.l-castle'),   speed: 0.06 },
-  { el: document.querySelector('.l-trunk'),    speed: 0.04 },
-  { el: document.querySelector('.l-trunk-left'), speed: 0.04 },
-  { el: document.querySelector('.l-torn1a'),   speed: 0.15 },
-  { el: document.querySelector('.l-torn2a'),   speed: 0.13 },
-  { el: document.querySelector('.l-torn3'),    speed: 0.09 },
-  { el: document.querySelector('.l-torn3a'),   speed: 0.09 },
-];
-
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      parallaxEls.forEach(({ el, speed }) => {
-        if (el) el.style.transform = el.style.transform.includes('scaleX')
-          ? `scaleX(-1) translateY(${y * speed}px)`
-          : `translateY(${y * speed}px)`;
-      });
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
+// Disabled intentionally: the layout now scales as one fixed PC canvas.
+// Keeping scroll parallax would overwrite transform-based positions such as
+// translateX(-50%) and scaleX(-1), which is what caused mobile misalignment.
 </script>
 
 </body>
