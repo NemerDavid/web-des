@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Wedding Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
@@ -11,6 +11,7 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
+    --section-bg-img: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Moving_png/Pages2.png');
     --cream:    #f5edd8;
     --parchment:#e8d5a8;
     --gold:     #c9a84c;
@@ -20,9 +21,21 @@
     --warm-bg:  #fdf6e8;
     --text-dark:#3a2a1a;
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   html, body {
-    background: var(--warm-bg);
+    width: 100%;
+    background: #eef0f5;
     font-family: 'Cormorant Garamond', serif;
     overflow-x: hidden;
     min-height: 100%;
@@ -32,11 +45,17 @@
      SCENE WRAPPER — mobile-first, max 480px
   ═══════════════════════════════════════════ */
   .page {
-    max-width: 1480px;
+    width: 100%;
+    max-width: 520px;
     margin: 0 auto;
     background: var(--warm-bg);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 60px rgba(0,0,0,.10);
+  }
+
+  @media (max-width: 560px) {
+    .page { max-width: 100%; box-shadow: none; }
   }
 
   /* ─── RAW GITHUB BASE ─── */
@@ -48,42 +67,18 @@
   .section-hero {
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 720px;
-    overflow: hidden;
-    background: var(--warm-bg);
-  }
-
-  /*
-    RESPONSIVE ARTBOARD SYSTEM
-    The PC composition is designed on a 1480 × 1280 stage.
-    On phones, the stage scales like background-size: cover,
-    so all PNG positions stay visually locked instead of moving.
-  */
-  .hero-stage {
-    --hero-scale: 1;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 1480px;
-    height: 1280px;
-    transform: translate(-50%, -50%) scale(var(--hero-scale));
-    transform-origin: center center;
+    min-height: 100vh;
+    min-height: 100svh;
     overflow: hidden;
   }
 
-  /* Sky-cream gradient background */
+  /* Paper illustration background */
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      180deg,
-      #d4e8f0 0%,
-      #c8dde8 15%,
-      #d8e8c8 45%,
-      #e8d8a8 70%,
-      #f0e0b0 100%
-    );
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.08) 0%, rgba(253,246,232,0.22) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
   }
 
   /* Subtle texture overlay */
@@ -104,18 +99,18 @@
 
   /* TRUNK — right side tree */
   .l-trunk {
-    right: -260px;
-    bottom: -80px;
-    width: 530px;
+    right: -50%;
+    bottom: -8%;
+    width: 102%;
     z-index: 2;
     animation: floatSlow 6s ease-in-out infinite;
   }
 
   /* TRUNK left mirror */
   .l-trunk-left {
-    left: -260px;
-    bottom: -80px;
-    width: 530px;
+    left: -50%;
+    bottom: -8%;
+    width: 102%;
     z-index: 2;
     transform: scaleX(-1);
     animation: floatSlow 7s ease-in-out infinite 0.5s;
@@ -123,20 +118,34 @@
 
   /* HOT AIR BALLOON */
   .l-balloon {
-    left: 5%;
-    top: 8%;
+    left: 25%;
+    top: 38%;
     width: 150px;
     z-index: 4;
     animation: floatBalloon 5s ease-in-out infinite;
     transform-origin: center top;
   }
 
+
+  /* HOT AIR BALLOON */
+  .l-balloonA {
+    left: 25%;
+    top: 12%;
+    width: 250px;
+    z-index: 4;
+    animation: floatBalloon 5s ease-in-out infinite;
+    transform-origin: center top;
+  }
+
+
+
+
   /* CASTLE — center-bottom */
   .l-castle {
-    left: 50%;
+    left: 5%;
     transform: translateX(-50%);
     bottom: 8%;
-    width: 560px;
+    width: 108%;
     z-index: 3;
     animation: floatMed 6s ease-in-out infinite 0.8s;
   }
@@ -144,7 +153,7 @@
   /* TORN PAPER ELEMENTS — decorative botanical */
   .l-torn1a {
     left: -30px;
-    bottom: 25%;
+    bottom: 72%;
     width: 180px;
     z-index: 5;
     animation: floatFast 4s ease-in-out infinite 0.2s;
@@ -153,24 +162,24 @@
   .l-torn1b {
     left: 50%;
     transform: translateX(-50%);
-    top: 195%;
-    width: 460px;
+    top: 12%;
+    width: 160px;
     z-index: 3;
     animation: floatMed 7s ease-in-out infinite 1s;
     opacity: 0.85;
   }
 
   .l-torn2a {
-    right: -20px;
-    bottom: 25%;
-    width: 470px;
+    right: 52px;
+    bottom: 75%;
+    width: 170px;
     z-index: 5;
-    animation: floatFast 4.5s ease-in-out infinite 0.7s;
+    animation: floatMed 7s ease-in-out infinite 0.7s;
   }
 
 .l-torn2aa {
     right: -20px;
-    bottom: 25%;
+    bottom: 73%;
     width: 170px;
     z-index: 5;
     animation: floatFast 4.5s ease-in-out infinite 0.7s;
@@ -178,8 +187,8 @@
 
   .l-torn3a {
     left: 55px;
-    top: 35%;
-    width: 440px;
+    top: 12%;
+    width: 140px;
     z-index: 3;
     transform: scaleX(-1);
     animation: floatMed 5s ease-in-out infinite 0.3s;
@@ -189,7 +198,7 @@
   .l-cover-frame {
     inset: 0;
     width: 100%;
-    height: 80%;
+    height: 40%;
     position: absolute;
     top: -15%;
 
@@ -211,7 +220,7 @@
 
   .hero-name {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.8rem, 9vw, 4.2rem);
+    font-size: clamp(1.8rem, 9vw, 2.2rem);
     color: var(--text-dark);
     line-height: 1;
     display: block;
@@ -232,8 +241,12 @@
   ═══════════════════════════════════════════ */
   .section-details {
     position: relative;
-    background: linear-gradient(180deg, var(--warm-bg) 0%, #f0e8d0 100%);
-    padding: 0 0 60px;
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.18) 0%, rgba(240,232,208,0.34) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+    padding: 70px 0 90px;
     overflow: hidden;
   }
 
@@ -267,10 +280,13 @@
 
   /* Heart ornament */
   .detail-heart {
-    display: block;
-    margin: 0 auto 20px;
-    width: 120px;
-    animation: floatMed 5s ease-in-out infinite 0.5s;
+   position: absolute;
+    right: -10px;
+    top: 40px;
+    width: 110px;
+    z-index: 2;
+    animation: floatBalloon 6s ease-in-out infinite 1s;
+    opacity: 0.85;
   }
 
   .detail-content {
@@ -342,9 +358,13 @@
   ═══════════════════════════════════════════ */
   .section-medallion {
     position: relative;
-    padding: 20px 0 60px;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 90px 0 100px;
     text-align: center;
-    background: linear-gradient(180deg, #f0e8d0 0%, var(--warm-bg) 100%);
+    background:
+      linear-gradient(180deg, rgba(240,232,208,0.30) 0%, rgba(253,246,232,0.24) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
     overflow: hidden;
   }
 
@@ -449,8 +469,12 @@
   ═══════════════════════════════════════════ */
   .section-events {
     position: relative;
-    padding: 40px 30px 80px;
-    background: linear-gradient(180deg, var(--warm-bg) 0%, #f0e8d0 100%);
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 90px 30px 100px;
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.18) 0%, rgba(240,232,208,0.34) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
     overflow: hidden;
   }
 
@@ -515,8 +539,12 @@
   ═══════════════════════════════════════════ */
   .section-rsvp {
     position: relative;
-    padding: 60px 30px 80px;
-    background: linear-gradient(180deg, #f0e8d0 0%, #e8dcc8 100%);
+    min-height: 100vh;
+    min-height: 100svh;
+    padding: 90px 30px 100px;
+    background:
+      linear-gradient(180deg, rgba(240,232,208,0.34) 0%, rgba(232,220,200,0.42) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
     text-align: center;
     overflow: hidden;
   }
@@ -629,7 +657,9 @@
      FOOTER
   ═══════════════════════════════════════════ */
   .section-footer {
-    background: #3a2a1a;
+    background:
+      linear-gradient(180deg, rgba(58,42,26,0.70), rgba(58,42,26,0.82)),
+      var(--section-bg-img) center center / cover no-repeat;
     color: var(--parchment);
     text-align: center;
     padding: 40px 30px;
@@ -714,138 +744,6 @@
     0%, 100% { opacity: 0.3; transform: scale(1); }
     50%       { opacity: 0.9; transform: scale(1.2); }
   }
-
-  /* ═══════════════════════════════════════════
-     RESPONSIVE BREAKPOINTS — inspired by Framer:
-     desktop / tablet / phone variants
-  ═══════════════════════════════════════════ */
-
-  @media (max-width: 1199.98px) {
-    .page {
-      max-width: 100%;
-    }
-
-    .section-hero {
-      min-height: 100svh;
-      height: 100svh;
-    }
-
-    .section-details,
-    .section-medallion,
-    .section-events,
-    .section-rsvp {
-      background-size: cover;
-      background-position: center center;
-    }
-  }
-
-  @media (max-width: 809.98px) {
-    html, body {
-      width: 100%;
-      background: var(--warm-bg);
-    }
-
-    .page {
-      width: 100%;
-      max-width: 390px;
-      margin: 0 auto;
-      overflow: hidden;
-      background: var(--warm-bg);
-    }
-
-    .section-hero {
-      height: 100svh;
-      min-height: 760px;
-      max-height: 960px;
-    }
-
-    .hero-stage {
-      /* JS updates --hero-scale; this is the safe fallback for phones */
-      --hero-scale: .64;
-    }
-
-    .hero-name {
-      font-size: 4.2rem;
-    }
-
-    .hero-weds {
-      font-size: .75rem;
-    }
-
-    .section-details,
-    .section-medallion,
-    .section-events,
-    .section-rsvp {
-      background-size: cover;
-      background-position: center top;
-    }
-
-    .detail-content {
-      padding: 34px 28px 46px;
-    }
-
-    .detail-balloon {
-      width: 92px;
-      right: -20px;
-      top: 28px;
-    }
-
-    .detail-floral-left {
-      width: 96px;
-      left: -26px;
-      top: 70px;
-    }
-
-    .event-card {
-      padding: 16px 14px;
-      gap: 12px;
-    }
-
-    .event-icon {
-      width: 48px;
-      height: 48px;
-    }
-
-    .event-name {
-      font-size: 1.15rem;
-    }
-
-    .event-date {
-      font-size: .54rem;
-      letter-spacing: .16em;
-    }
-
-    .rsvp-choice {
-      flex-direction: column;
-    }
-
-    .btn-rsvp {
-      padding: 13px 28px;
-      letter-spacing: .22em;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .page {
-      max-width: 100%;
-    }
-
-    .section-hero {
-      min-height: 720px;
-    }
-
-    .hero-name {
-      font-size: 3.8rem;
-    }
-
-    .detail-content,
-    .section-events,
-    .section-rsvp {
-      padding-left: 22px;
-      padding-right: 22px;
-    }
-  }
-
 </style>
 </head>
 <body>
@@ -856,7 +754,6 @@
        SECTION 1 — HERO
   ══════════════════════════════════════════ -->
   <section class="section-hero">
-    <div class="hero-stage">
 
     <!-- Background sky gradient -->
     <div class="hero-bg"></div>
@@ -886,7 +783,12 @@
 
     <!-- HOT AIR BALLOON -->
     <img class="layer l-balloon"
-      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air.png"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png"
+      alt="" />
+      
+         <!-- Heart -->
+    <img class="layer l-balloonA"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn1b.png"
       alt="" />
 
     <!-- Botanical torn left bottom -->
@@ -921,7 +823,6 @@
       <span class="hero-name">Marguerite</span>
     </div>
 
-    </div><!-- /hero-stage -->
   </section>
 
 
@@ -1188,58 +1089,9 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// ─── RESPONSIVE HERO STAGE ───
-// Inspired by Framer-style breakpoints: the phone view uses a 390px layout,
-// while the artwork itself stays on the original 1480 × 1280 PC artboard.
-function updateHeroStageScale() {
-  const stage = document.querySelector('.hero-stage');
-  const hero = document.querySelector('.section-hero');
-  const page = document.querySelector('.page');
-  if (!stage || !hero || !page) return;
-
-  const stageW = 1480;
-  const stageH = 1280;
-
-  const availableW = Math.min(window.innerWidth, page.getBoundingClientRect().width || window.innerWidth);
-  const availableH = hero.getBoundingClientRect().height || window.innerHeight;
-
-  // cover scale = fills the phone screen without changing layer positions
-  const scale = Math.max(availableW / stageW, availableH / stageH);
-  stage.style.setProperty('--hero-scale', scale.toFixed(4));
-}
-
-window.addEventListener('resize', updateHeroStageScale, { passive: true });
-window.addEventListener('orientationchange', updateHeroStageScale, { passive: true });
-window.addEventListener('load', updateHeroStageScale);
-updateHeroStageScale();
-
 // ─── PARALLAX ───
-// Kept for desktop, disabled on phone so it does not disturb the locked mobile composition.
-let ticking = false;
-const parallaxEls = [
-  { el: document.querySelector('.l-balloon'),  speed: 0.12, base: '' },
-  { el: document.querySelector('.l-castle'),   speed: 0.06, base: 'translateX(-50%)' },
-  { el: document.querySelector('.l-trunk'),    speed: 0.04, base: '' },
-  { el: document.querySelector('.l-trunk-left'), speed: 0.04, base: 'scaleX(-1)' },
-  { el: document.querySelector('.l-torn1a'),   speed: 0.15, base: '' },
-  { el: document.querySelector('.l-torn2a'),   speed: 0.13, base: '' },
-  { el: document.querySelector('.l-torn3a'),   speed: 0.09, base: 'scaleX(-1)' },
-];
-
-window.addEventListener('scroll', () => {
-  if (window.matchMedia('(max-width: 809.98px)').matches) return;
-
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const y = window.scrollY;
-      parallaxEls.forEach(({ el, speed, base }) => {
-        if (el) el.style.transform = `${base} translateY(${y * speed}px)`.trim();
-      });
-      ticking = false;
-    });
-    ticking = true;
-  }
-}, { passive: true });
+// Disabled on purpose: this template now uses the same narrow phone-ratio layout on PC and mobile,
+// so the PNG positions stay identical instead of being rewritten while scrolling.
 </script>
 
 </body>
