@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Cinzel:wght@400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  /* ─── RESET ─── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --section-bg-img: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Moving_png/Pages2.png');
+    --cream:    #f5edd8;
+    --parchment:#e8d5a8;
+    --gold:     #c9a84c;
+    --gold-light:#e8c97a;
+    --rose:     #d4907a;
+    --sage:     #8a9a6a;
+    --warm-bg:  #fdf6e8;
+    --text-dark:#3a2a1a;
+  }
+
+  html, body {
+    background: var(--warm-bg);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    min-height: 100%;
+  }
+
+  /* ═══════════════════════════════════════════
+     SCENE WRAPPER — mobile-first, max 480px
+  ═══════════════════════════════════════════ */
+  .page {
+    max-width: 1480px;
+    margin: 0 auto;
+    background: var(--warm-bg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ─── RAW GITHUB BASE ─── */
+  /* All assets from https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/ */
+
+  /* ══════════════════════════════════════════════
+     SECTION 1 — HERO / COVER
+  ══════════════════════════════════════════════ */
+  .section-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 1280px;
+    overflow: hidden;
+  }
+
+  /* Paper illustration background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.16) 0%, rgba(253,246,232,0.36) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+  }
+
+  /* Subtle texture overlay */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    mix-blend-mode: multiply;
+  }
+
+  /* ─── LAYER SYSTEM ─── */
+  .layer {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  /* TRUNK — right side tree */
+  .l-trunk {
+    right: -260px;
+    bottom: -80px;
+    width: 530px;
+    z-index: 2;
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  /* TRUNK left mirror */
+  .l-trunk-left {
+    left: -260px;
+    bottom: -80px;
+    width: 530px;
+    z-index: 2;
+    transform: scaleX(-1);
+    animation: floatSlow 7s ease-in-out infinite 0.5s;
+  }
+
+  /* HOT AIR BALLOON */
+  .l-balloon {
+    left: 5%;
+    top: 68%;
+    width: 350px;
+    z-index: 4;
+    animation: floatBalloon 5s ease-in-out infinite;
+    transform-origin: center top;
+  }
+
+  /* CASTLE — center-bottom */
+  .l-castle {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8%;
+    width: 560px;
+    z-index: 3;
+    animation: floatMed 6s ease-in-out infinite 0.8s;
+  }
+
+  /* TORN PAPER ELEMENTS — decorative botanical */
+  .l-torn1a {
+    left: -30px;
+    bottom: 55%;
+    width: 180px;
+    z-index: 5;
+    animation: floatFast 4s ease-in-out infinite 0.2s;
+  }
+
+  .l-torn1b {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    width: 760px;
+    z-index: 3;
+    animation: floatMed 7s ease-in-out infinite 1s;
+    opacity: 0.85;
+  }
+
+  .l-torn2a {
+    right: 155px;
+    bottom: 55%;
+    width: 470px;
+    z-index: 5;
+    animation: floatMed 7s ease-in-out infinite 0.7s;
+  }
+
+.l-torn2aa {
+    right: -20px;
+    bottom: 55%;
+    width: 270px;
+    z-index: 5;
+    animation: floatFast 4.5s ease-in-out infinite 0.7s;
+  }
+
+  .l-torn3a {
+    left: 55px;
+    top: 20%;
+    width: 440px;
+    z-index: 3;
+    transform: scaleX(-1);
+    animation: floatMed 5s ease-in-out infinite 0.3s;
+  }
+
+  /* COVER FRAME — sits on top of everything */
+  .l-cover-frame {
+    inset: 0;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    top: -35%;
+
+    z-index: 8;
+    object-fit: cover;
+  }
+
+  /* COUPLE TEXT */
+  .hero-text {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    text-align: center;
+    width: 90%;
+    animation: fadeInDown 1.2s ease-out 0.3s both;
+  }
+
+  .hero-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.8rem, 9vw, 4.2rem);
+    color: var(--text-dark);
+    line-height: 1;
+    display: block;
+    text-shadow: 0 2px 12px rgba(201,168,76,0.3);
+  }
+
+  .hero-weds {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    display: block;
+    margin: 0.4em 0;
+  }
+
+  /* ═══════════════════════════════════════════
+     SECTION 2 — DETAILS / SCROLL CONTENT
+  ═══════════════════════════════════════════ */
+  .section-details {
+    position: relative;
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.35) 0%, rgba(240,232,208,0.55) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+    padding: 0 0 60px;
+    overflow: hidden;
+  }
+
+  /* Decorative torn top divider */
+  .divider-top {
+    width: 100%;
+    margin-top: -2px;
+    display: block;
+  }
+
+  /* Balloon in details section */
+  .detail-balloon {
+    position: absolute;
+    right: -10px;
+    top: 40px;
+    width: 110px;
+    z-index: 2;
+    animation: floatBalloon 6s ease-in-out infinite 1s;
+    opacity: 0.85;
+  }
+
+  .detail-floral-left {
+    position: absolute;
+    left: -15px;
+    top: 80px;
+    width: 120px;
+    z-index: 2;
+    animation: floatMed 5s ease-in-out infinite;
+    opacity: 0.9;
+  }
+
+  /* Heart ornament */
+  .detail-heart {
+    display: block;
+    margin: 0 auto 20px;
+    width: 120px;
+    animation: floatMed 5s ease-in-out infinite 0.5s;
+  }
+
+  .detail-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    padding: 20px 40px 40px;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .divider-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 16px auto;
+  }
+
+  .detail-block {
+    margin: 18px 0;
+  }
+
+  .detail-block .label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .detail-block .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 300;
+    display: block;
+  }
+
+  .detail-block .sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    color: #7a6a5a;
+    opacity: 0.7;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ═══════════════════════════════════════════
+     SECTION 3 — SPINNING MEDALLION / RSVP
+  ═══════════════════════════════════════════ */
+  .section-medallion {
+    position: relative;
+    padding: 20px 0 60px;
+    text-align: center;
+    background:
+      linear-gradient(180deg, rgba(240,232,208,0.52) 0%, rgba(253,246,232,0.42) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+    overflow: hidden;
+  }
+
+  /* Background botanicals */
+  .med-torn-left {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%) scaleX(-1);
+    width: 130px;
+    opacity: 0.7;
+    animation: floatSlow 8s ease-in-out infinite;
+  }
+
+  .med-torn-right {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 130px;
+    opacity: 0.7;
+    animation: floatSlow 7s ease-in-out infinite 1s;
+  }
+
+  /* Spinning medallion */
+  .medallion-wrap {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 20px auto;
+  }
+
+  .medallion-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    animation: spinRing 25s linear infinite;
+    border-radius: 50%;
+  }
+
+  .medallion-inner {
+    position: absolute;
+    inset: 15%;
+    border-radius: 50%;
+    background: radial-gradient(circle, #f5edd8 0%, #e8d5a8 60%, #d4b896 100%);
+    border: 2px solid var(--gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow: inset 0 0 20px rgba(201,168,76,0.2);
+  }
+
+  .medallion-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-style: italic;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .medallion-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* RSVP Button */
+  .btn-rsvp {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 14px 48px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    color: var(--text-dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.35);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    position: relative;
+    z-index: 3;
+  }
+
+  .btn-rsvp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+  }
+
+  /* ═══════════════════════════════════════════
+     SECTION 4 — EVENTS
+  ═══════════════════════════════════════════ */
+  .section-events {
+    position: relative;
+    padding: 40px 30px 80px;
+    background:
+      linear-gradient(180deg, rgba(253,246,232,0.42) 0%, rgba(240,232,208,0.58) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+    overflow: hidden;
+  }
+
+  .events-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 7vw, 2.8rem);
+    color: var(--text-dark);
+    text-align: center;
+    display: block;
+    margin-bottom: 30px;
+  }
+
+  .event-card {
+    background: rgba(245, 237, 216, 0.8);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    backdrop-filter: blur(4px);
+  }
+
+  .event-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    flex-shrink: 0;
+    animation: floatMed 5s ease-in-out infinite;
+  }
+
+  .event-info { flex: 1; }
+
+  .event-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-style: italic;
+    display: block;
+  }
+
+  .event-date {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    display: block;
+    margin-top: 3px;
+  }
+
+  .event-venue {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.65rem;
+    color: #7a6a5a;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* ═══════════════════════════════════════════
+     SECTION 5 — RSVP FORM
+  ═══════════════════════════════════════════ */
+  .section-rsvp {
+    position: relative;
+    padding: 60px 30px 80px;
+    background:
+      linear-gradient(180deg, rgba(240,232,208,0.55) 0%, rgba(232,220,200,0.65) 100%),
+      var(--section-bg-img) center center / cover no-repeat;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* Decorative balloons in background */
+  .rsvp-balloon {
+    position: absolute;
+    opacity: 0.12;
+    animation: floatBalloon 8s ease-in-out infinite;
+  }
+
+  .rsvp-balloon.left  { left: -30px; top: 10%; width: 140px; animation-delay: 0s; }
+  .rsvp-balloon.right { right: -30px; top: 30%; width: 140px; animation-delay: 2s; }
+
+  .rsvp-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.2rem, 7vw, 3rem);
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .rsvp-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: #7a6a5a;
+    font-style: italic;
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  .rsvp-input {
+    width: 100%;
+    padding: 13px 18px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.5);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--text-dark);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+  }
+
+  .rsvp-input:focus { border-color: rgba(201,168,76,0.9); }
+
+  .rsvp-choice {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .rsvp-choice button {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255,255,255,0.4);
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--text-dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+
+  .rsvp-choice button.active {
+    background: rgba(201,168,76,0.3);
+    border-color: rgba(201,168,76,0.9);
+  }
+
+  .rsvp-submit {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    border: none;
+    color: var(--text-dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    margin-top: 4px;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+    transition: transform 0.3s;
+  }
+
+  .rsvp-submit:hover { transform: translateY(-2px); }
+
+  .rsvp-confirm {
+    display: none;
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+  }
+
+  .rsvp-confirm p {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: var(--gold);
+  }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════════ */
+  .section-footer {
+    background: #3a2a1a;
+    color: var(--parchment);
+    text-align: center;
+    padding: 40px 30px;
+  }
+
+  .footer-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: var(--gold-light);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .footer-copy {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.25em;
+    opacity: 0.5;
+    display: block;
+    margin-top: 12px;
+  }
+
+  /* ═══════════════════════════════════════════
+     ANIMATIONS
+  ═══════════════════════════════════════════ */
+  @keyframes floatBalloon {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    33%       { transform: translateY(-16px) rotate(1deg); }
+    66%       { transform: translateY(-8px) rotate(-1deg); }
+  }
+
+  @keyframes floatSlow {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+
+  @keyframes floatMed {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-12px) rotate(1deg); }
+  }
+
+  @keyframes floatFast {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-8px); }
+  }
+
+  @keyframes spinRing {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll-reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Stars scattered */
+  .star {
+    position: absolute;
+    background: var(--gold);
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50%       { opacity: 0.9; transform: scale(1.2); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ══════════════════════════════════════════
+       SECTION 1 — HERO
+  ══════════════════════════════════════════ -->
+  <section class="section-hero">
+
+    <!-- Background sky gradient -->
+    <div class="hero-bg"></div>
+
+    <!-- Scattered stars -->
+    <div class="star layer" style="left:12%;top:20%;width:10px;height:10px;animation-delay:0s"></div>
+    <div class="star layer" style="left:75%;top:14%;width:14px;height:14px;animation-delay:0.7s"></div>
+    <div class="star layer" style="left:45%;top:8%;width:8px;height:8px;animation-delay:1.4s"></div>
+    <div class="star layer" style="left:85%;top:38%;width:12px;height:12px;animation-delay:0.4s"></div>
+    <div class="star layer" style="left:22%;top:55%;width:8px;height:8px;animation-delay:2s"></div>
+    <div class="star layer" style="left:60%;top:68%;width:10px;height:10px;animation-delay:1.1s"></div>
+
+    <!-- TRUNK right -->
+    <img class="layer l-trunk"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Trunc1.png"
+      alt="" />
+
+    <!-- TRUNK left (mirrored) -->
+    <img class="layer l-trunk-left"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Trunc1.png"
+      alt="" />
+
+    <!-- CASTLE -->
+    <img class="layer l-castle"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Castle.png"
+      alt="" />
+
+    <!-- HOT AIR BALLOON -->
+    <img class="layer l-balloon"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png"
+      alt="" />
+
+    <!-- Botanical torn left bottom -->
+    <img class="layer l-torn1a"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn3a.png"
+      alt="" />
+
+    <!-- Botanical right -->
+    <img class="layer l-torn2a"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn2a.png"
+      alt="" />
+
+    <!-- Botanical right top -->
+    <img class="layer l-torn2aa"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn3.png"
+      alt="" />
+
+    <!-- Botanical left top -->
+    <img class="layer l-torn3a"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn3.png"
+      alt="" />
+
+    <!-- COVER FRAME — sits on top -->
+    <img class="layer l-cover-frame"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Moving_png/Cover3.png"
+      alt="" />
+
+    <!-- COUPLE NAMES TEXT -->
+    <div class="hero-text">
+      <span class="hero-name">Alexandre</span>
+      <span class="hero-weds">— weds —</span>
+      <span class="hero-name">Marguerite</span>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 2 — DATE & DETAILS
+  ══════════════════════════════════════════ -->
+  <section class="section-details">
+
+    <!-- Balloon decoration -->
+    <img class="detail-balloon"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air2.png"
+      alt="" />
+
+    <!-- Floral left decoration -->
+    <img class="detail-floral-left"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn3a.png"
+      alt="" />
+
+    <div class="detail-content reveal">
+
+      <!-- Heart ornament -->
+      <img class="detail-heart"
+        src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn1b.png"
+        alt="" />
+
+      <span class="section-label">Together with their families</span>
+      <span class="section-title">You Are Invited</span>
+
+      <div class="divider-line"></div>
+
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#7a6a5a;font-size:1rem;line-height:1.7;margin-bottom:20px;">
+        We joyfully invite you to celebrate the union of our two hearts and two families as we begin our journey together.
+      </p>
+
+      <div class="detail-block">
+        <span class="label">Date</span>
+        <span class="value">Saturday, the 14th of August</span>
+        <span class="sub">2027 · 6:30 in the Evening</span>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <div class="detail-block">
+        <span class="label">Venue</span>
+        <span class="value">Château des Étoiles</span>
+        <span class="sub">12 Rue du Palais · Lyon, France</span>
+      </div>
+
+      <div class="divider-line"></div>
+
+      <div class="detail-block">
+        <span class="label">Dress Code</span>
+        <span class="value">Garden Formal</span>
+        <span class="sub">Pastels & florals encouraged</span>
+      </div>
+
+      <a class="btn-rsvp" href="#rsvp">Kindly Reply by July 1st</a>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 3 — SPINNING MEDALLION
+  ══════════════════════════════════════════ -->
+  <section class="section-medallion">
+
+    <!-- Background botanicals -->
+    <img class="med-torn-left"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn2a.png"
+      alt="" />
+    <img class="med-torn-right"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn3.png"
+      alt="" />
+
+    <div class="reveal">
+      <span class="section-label" style="margin-bottom:16px;display:block;">With Love</span>
+
+      <!-- SPINNING MEDALLION using Torn1a as the spinning ring -->
+      <div class="medallion-wrap">
+        <img class="medallion-ring"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn1a.png"
+          alt="" />
+        <div class="medallion-inner">
+          <p class="medallion-text">
+            "Two souls, one heart, one journey"
+          </p>
+          <p class="medallion-sub">Alexandre & Marguerite</p>
+        </div>
+      </div>
+
+      <p style="font-family:'Cormorant Garamond',serif;color:#7a6a5a;font-style:italic;font-size:0.95rem;max-width:280px;margin:0 auto 20px;line-height:1.7;">
+        We are so delighted you can join us in celebrating the happiest day of our lives.
+      </p>
+
+      <a class="btn-rsvp" href="#rsvp">Open Map & Directions</a>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 4 — EVENTS
+  ══════════════════════════════════════════ -->
+  <section class="section-events">
+
+    <!-- Background balloon -->
+    <img style="position:absolute;right:-20px;bottom:20px;width:100px;opacity:0.12;animation:floatBalloon 7s ease-in-out infinite;"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png"
+      alt="" />
+
+    <span class="events-title reveal">The Celebrations</span>
+
+    <div class="event-card reveal">
+      <img class="event-icon"
+        src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air4.png"
+        alt="Cocktail" />
+      <div class="event-info">
+        <span class="event-name">Welcome Cocktail</span>
+        <span class="event-date">Friday · August 13, 2027 · 7:00 PM</span>
+        <span class="event-venue">Château Gardens, Lyon</span>
+      </div>
+    </div>
+
+    <div class="event-card reveal">
+      <img class="event-icon"
+        src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air2.png"
+        alt="Ceremony" />
+      <div class="event-info">
+        <span class="event-name">Wedding Ceremony</span>
+        <span class="event-date">Saturday · August 14, 2027 · 4:00 PM</span>
+        <span class="event-venue">Château des Étoiles Chapel</span>
+      </div>
+    </div>
+
+    <div class="event-card reveal">
+      <img class="event-icon"
+        src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png"
+        alt="Reception" />
+      <div class="event-info">
+        <span class="event-name">Reception & Dinner</span>
+        <span class="event-date">Saturday · August 14, 2027 · 6:30 PM</span>
+        <span class="event-venue">Grand Ballroom, Château</span>
+      </div>
+    </div>
+
+    <div class="event-card reveal">
+      <img class="event-icon"
+        src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air.png"
+        alt="Brunch" />
+      <div class="event-info">
+        <span class="event-name">Farewell Brunch</span>
+        <span class="event-date">Sunday · August 15, 2027 · 11:00 AM</span>
+        <span class="event-venue">Orangerie, Château</span>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       SECTION 5 — RSVP
+  ══════════════════════════════════════════ -->
+  <section class="section-rsvp" id="rsvp">
+
+    <img class="rsvp-balloon left"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air.png"
+      alt="" />
+    <img class="rsvp-balloon right"
+      src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air2.png"
+      alt="" />
+
+    <div style="position:relative;z-index:3;max-width:360px;margin:0 auto;">
+
+      <!-- Heart top -->
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn1b.png"
+        alt="" style="width:90px;margin:0 auto 16px;display:block;animation:floatMed 5s ease-in-out infinite;" />
+
+      <span class="rsvp-title">RSVP</span>
+      <span class="rsvp-subtitle">Kindly reply by July 1st, 2027</span>
+
+      <input class="rsvp-input" type="text" placeholder="Your full name" />
+      <input class="rsvp-input" type="email" placeholder="Email address" />
+      <input class="rsvp-input" type="number" placeholder="Number of guests" min="1" max="10" />
+
+      <div class="rsvp-choice">
+        <button id="btn-yes" onclick="selectAttend('yes')">Joyfully Attend</button>
+        <button id="btn-no" onclick="selectAttend('no')">Regretfully Decline</button>
+      </div>
+
+      <textarea class="rsvp-input" placeholder="Dietary requirements or notes (optional)" rows="3" style="resize:none;"></textarea>
+
+      <button class="rsvp-submit" onclick="submitRSVP()">Send My Reply</button>
+
+      <div class="rsvp-confirm" id="rsvp-confirm">
+        <p>Merci beaucoup ✦</p>
+        <span style="font-family:'Cormorant Garamond',serif;color:#7a6a5a;font-size:0.9rem;display:block;margin-top:6px;">Your reply has been received. We can't wait to celebrate with you!</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════ -->
+  <footer class="section-footer">
+
+    <!-- Botanical footer decoration -->
+    <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Torn2a.png"
+      alt="" style="width:120px;opacity:0.3;margin-bottom:16px;animation:floatMed 6s ease-in-out infinite;" />
+
+    <span class="footer-names">Alexandre & Marguerite</span>
+
+    <div class="divider-line" style="background:linear-gradient(90deg,transparent,rgba(201,168,76,0.4),transparent);"></div>
+
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:rgba(245,237,216,0.6);font-size:0.85rem;margin:12px 0;">
+      August 14, 2027 · Lyon, France
+    </p>
+
+    <p style="font-family:'Cormorant Garamond',serif;color:rgba(245,237,216,0.5);font-size:0.8rem;margin-bottom:16px;">
+      #AlexandreEtMarguerite
+    </p>
+
+    <span class="footer-copy">Made with love · Cardia Studios</span>
+  </footer>
+
+</div><!-- /page -->
+
+
+<script>
+// ─── RSVP ───
+let attending = null;
+
+function selectAttend(val) {
+  attending = val;
+  const yes = document.getElementById('btn-yes');
+  const no  = document.getElementById('btn-no');
+  if (val === 'yes') {
+    yes.style.background = 'rgba(201,168,76,0.35)';
+    yes.style.borderColor = 'rgba(201,168,76,0.9)';
+    no.style.background  = 'rgba(255,255,255,0.3)';
+    no.style.borderColor = 'rgba(201,168,76,0.3)';
+  } else {
+    no.style.background   = 'rgba(201,168,76,0.35)';
+    no.style.borderColor  = 'rgba(201,168,76,0.9)';
+    yes.style.background  = 'rgba(255,255,255,0.3)';
+    yes.style.borderColor = 'rgba(201,168,76,0.3)';
+  }
+}
+
+function submitRSVP() {
+  const confirm = document.getElementById('rsvp-confirm');
+  confirm.style.display = 'block';
+  confirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── PARALLAX ───
+let ticking = false;
+const parallaxEls = [
+  { el: document.querySelector('.l-balloon'),  speed: 0.12 },
+  { el: document.querySelector('.l-castle'),   speed: 0.06 },
+  { el: document.querySelector('.l-trunk'),    speed: 0.04 },
+  { el: document.querySelector('.l-trunk-left'), speed: 0.04 },
+  { el: document.querySelector('.l-torn1a'),   speed: 0.15 },
+  { el: document.querySelector('.l-torn2a'),   speed: 0.13 },
+  { el: document.querySelector('.l-torn3'),    speed: 0.09 },
+  { el: document.querySelector('.l-torn3a'),   speed: 0.09 },
+];
+
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      parallaxEls.forEach(({ el, speed }) => {
+        if (el) el.style.transform = el.style.transform.includes('scaleX')
+          ? `scaleX(-1) translateY(${y * speed}px)`
+          : `translateY(${y * speed}px)`;
+      });
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+</script>
+
+</body>
+</html>
