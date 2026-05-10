@@ -11,8 +11,8 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue%20bg.png');
-    --paper-bg: url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Blue%20bg.png?raw=true');
+    --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png');
+    --paper-bg: url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Blue-bg9.png');
     --garden-bg: #f4efe3;
     --garden-dark: #244b29;
     --garden-deep: #17371d;
@@ -278,7 +278,7 @@
   width: 350px;
   height: 815px; 
   z-index: 6;
-  animation: floatBalloon 5s ease-in-out infinite;
+  animation: floatBalloon 9s ease-in-out infinite;
   transform-origin: center top; }
   
   
@@ -289,7 +289,7 @@
   width: 550px;
   height: 815px; 
   z-index: 6;
-  animation: floatBalloon 5s ease-in-out infinite; transform-origin: center top; }
+  animation: floatBalloon 9s ease-in-out infinite; transform-origin: center top; }
   
   
   
@@ -358,7 +358,7 @@
 
   .hero-text {
     position: absolute;
-    top: 15%;
+    top: 55%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9;
@@ -368,7 +368,7 @@
   }
   .hero-name {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.8rem, 9vw, 3.2rem);
+    font-size: clamp(4.8rem, 9vw, 5.2rem);
     color: var(--ink);
     line-height: 1;
     display: block;
@@ -376,7 +376,7 @@
   }
   .hero-weds {
     font-family: 'Cinzel', serif;
-    font-size: clamp(.6rem, 1.8vw, .75rem);
+    font-size: clamp(1.6rem, 1.8vw, 1.75rem);
     letter-spacing: .4em;
     color: rgba(255,255,255,.92);
     display: block;
@@ -433,14 +433,15 @@
 
 
   /* ═════════ DIFFERENT BACKGROUND PNG FOR EACH SECTION ═════════ */
-  .section.bg-page2 { background: url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Blue%20bg.png?raw=true') center center / cover no-repeat; }
-  .section.bg-page3 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg2.png') center center / cover no-repeat; }
-  .section.bg-page4 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg3.png') center center / cover no-repeat; }
-  .section.bg-page5 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg4.png') center center / cover no-repeat; }
-  .section.bg-page6 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg5.png') center center / cover no-repeat; }
-  .section.bg-page7 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg6.png') center center / cover no-repeat; }
-  .section.bg-page8 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg7.png') center center / cover no-repeat; }
-  .section.bg-page9 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg8.png') center center / cover no-repeat; }
+  .section.bg-page1 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page2 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page3 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page4 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page5 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page6 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page7 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page8 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page9 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
 
   .section.green.bg-page3 {
     background:
@@ -578,7 +579,7 @@
   .loc-map { width: 100%; height: 240px; border-top: 1px solid rgba(0,0,0,.07); overflow: hidden; border-radius: 0 0 28px 28px; }
   .loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-  .gift-dark-card { background: rgba(255,255,255,.92) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255,.80) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
+  .gift-dark-card { background: rgba(0,255,255,.92) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255,.80) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
   .info-card { width: 100%; border-radius: 16px; padding: 28px 22px; margin-top: 28px; background: rgba(244,239,227,.86); border: 1px solid var(--border); }
   .bank-name { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 16px; color: var(--garden-dark); }
   .bank-line { font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.5; color: var(--ink); }
@@ -739,12 +740,10 @@
 
     <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/23-a.png" alt="" />
     
-    <img class="layer l-Lamp2R" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/LampL.png" alt="" />
+
 
     
-    <img class="layer l-Tree1" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Oak.png" alt="" />
-    <img class="layer l-Tree2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Oak.png" alt="" />
-    <img class="layer l-Tree3" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Oak.png" alt="" />
+
     <img class="layer l-balloon" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png" alt="" />
     
     
@@ -762,7 +761,7 @@
     
     
     
-    <img class="layer l-16png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbiton2.png" alt="" />
+
     <img class="layer l-torn3a" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
     <img class="layer l-Cloud2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
     <img class="layer l-Cloud3" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
