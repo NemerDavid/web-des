@@ -46,7 +46,24 @@
     background: var(--garden-bg);
     box-shadow: 0 0 60px rgba(0,0,0,.12);
   }
-  @media (max-width: 560px) { .page { max-width: 100%; box-shadow: none; } }
+  @media (max-width: 560px) {
+    .page {
+      max-width: 100%;
+      box-shadow: none;
+      padding-left: 12px;
+      padding-right: 12px;
+      background: transparent;
+    }
+
+    .loc-card,
+    .glass-card,
+    .photo-card,
+    .gift-dark-card,
+    .rsvp-section .page-card {
+      width: 100%;
+      border-radius: 24px;
+    }
+  }
 
 
   /* ═════════ OPENING COVER + VIDEO INTRO ═════════ */
@@ -291,9 +308,9 @@
   
   
   
-  .l-Sun { right: 191px;
+  .l-Sun { right: 141px;
   bottom: 57%; 
-  width: 90px;
+  width: 45px;
   z-index: 5;
   animation: floatMed 7s ease-in-out infinite .7s; }
   
@@ -581,12 +598,16 @@
   .btn-solid:hover, .btn-soft:hover { transform: translateY(-1px); }
   .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: #9b3f35; }
 
-  .footer { padding: 70px 28px 90px; text-align: center; background: linear-gradient(180deg, rgba(23,55,29,.90), rgba(23,55,29,.94)), var(--paper-bg) center / cover; }
-  .footer .names { color: #fff; font-size: 58px; }
-  .footer .date-line { color: rgba(255,255,255,.80); }
+  .footer {
+  padding: 70px 28px 90px;
+  text-align: center;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Footer.png') center center / cover no-repeat;
+}
+  .footer .names { color: rgba(0,0,0); font-size: 58px; }
+  .footer .date-line { color: rgba(55,55,55); font-weight: 800; }
   .footer .thin-line { background: rgba(255,255,255,.38); }
   .cardia-credit { margin-top: 34px; text-align: center; }
-  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.68); text-decoration: none; }
+  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(0,0,0); text-decoration: none; }
   .cardia-credit a:hover { color: #fff; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
