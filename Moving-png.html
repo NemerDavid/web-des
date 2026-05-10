@@ -12,7 +12,7 @@
 
   :root {
     --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png');
-    --paper-bg: url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Blue-bg9.png');
+    --paper-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png');
     --garden-bg: #f4efe3;
     --garden-dark: #244b29;
     --garden-deep: #17371d;
@@ -217,17 +217,10 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(180deg, rgba(253,246,232,0.08) 0%, rgba(253,246,232,0.22) 100%),
-      var(--hero-bg) center center / cover no-repeat;
+    background: var(--hero-bg) center center / cover no-repeat;
   }
   .hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    opacity: .45;
-    mix-blend-mode: multiply;
+    content: none;
   }
   .layer { position: absolute; pointer-events: none; user-select: none; }
   .star {
@@ -366,21 +359,42 @@
     width: 90%;
     animation: fadeInDown 1.2s ease-out .3s both;
   }
+  .hero-text::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(92%, 390px);
+    height: 210px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+   
+    z-index: -1;
+    pointer-events: none;
+  }
   .hero-name {
     font-family: 'Great Vibes', cursive;
     font-size: clamp(4.8rem, 9vw, 5.2rem);
-    color: var(--ink);
+    color: #2b2117;
     line-height: 1;
     display: block;
-    text-shadow: 0 2px 12px rgba(255,255,255,.45);
+    -webkit-text-stroke: .35px rgba(255,255,255,.72);
+    text-shadow:
+      0 2px 0 rgba(255,255,255,.55),
+      0 8px 18px rgba(255,255,255,.70),
+      0 2px 8px rgba(0,0,0,.22);
   }
   .hero-weds {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.6rem, 1.8vw, 1.75rem);
     letter-spacing: .4em;
-    color: rgba(255,255,255,.92);
+    color: #ffffff;
     display: block;
     margin: .4em 0;
+    font-weight: 600;
+    text-shadow:
+      0 2px 5px rgba(0,0,0,.42),
+      0 0 14px rgba(255,255,255,.70);
   }
   .open-hint {
     position: absolute;
@@ -471,8 +485,8 @@
   .info-card,
   .gift-dark-card,
   .rsvp-section .page-card {
-    background: rgba(255,255,255,.78);
-    border: 1px solid rgba(255,255,255,.72);
+    background: rgba(255,255,255,);
+    border: 1px solid rgba(255,255,255);
     border-radius: 24px;
     box-shadow: var(--shadow);
     backdrop-filter: blur(5px);
@@ -579,10 +593,31 @@
   .loc-map { width: 100%; height: 240px; border-top: 1px solid rgba(0,0,0,.07); overflow: hidden; border-radius: 0 0 28px 28px; }
   .loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
-  .gift-dark-card { background: rgba(0,255,255,.92) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255,.80) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
+  .gift-dark-card { background: rgba(0,255,255) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
   .info-card { width: 100%; border-radius: 16px; padding: 28px 22px; margin-top: 28px; background: rgba(244,239,227,.86); border: 1px solid var(--border); }
   .bank-name { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 16px; color: var(--garden-dark); }
   .bank-line { font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.5; color: var(--ink); }
+
+  .bg-page7 .gift-dark-card {
+    background: rgba(255,255,255,.88) !important;
+    border: 1px solid rgba(255,255,255,.92) !important;
+  }
+  .bg-page7 .kicker {
+    color: #4f7a35 !important;
+    text-shadow: none;
+  }
+  .bg-page7 .section-title {
+    color: #244b29 !important;
+    text-shadow: 0 2px 10px rgba(255,255,255,.65);
+  }
+  .bg-page7 .body-text {
+    color: #2f2417 !important;
+    font-weight: 500;
+    text-shadow: 0 1px 8px rgba(255,255,255,.70);
+  }
+  .bg-page7 .info-card {
+    background: rgba(244,239,227,.92);
+  }
 
   .photo-section { padding: 58px 20px 70px; }
   .photo-card { width: 100%; max-width: 440px; margin: 0 auto; padding: 42px 28px 48px; background: #ffffff; border: 1px solid var(--border); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,.11), 0 4px 16px rgba(0,0,0,.06); overflow: visible; }
