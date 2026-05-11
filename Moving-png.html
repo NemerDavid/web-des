@@ -231,18 +231,46 @@
     animation: twinkle 2s ease-in-out infinite;
   }
 
-  .l-trunk-left {left: 14%; 
-  bottom: -7%;
-  width: 22%;
+  .l-trunk-left {left: 0%; 
+  bottom: 0%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 7; 
+  transform: scaleX(-1); }
+
+  .l-trunk-top {left: 0%; 
+  top: 0%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
   z-index: 3; 
-  transform: scaleX(-1); 
-  animation: floatSlow 7s ease-in-out infinite .5s; }
+  transform: scaleX(-1); }
+
+
+
+
+  .l-Hobbiton {left: 0%; 
+  bottom: -5%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 1; 
+; 
+ }
+
+
+
+
+
+
+
 
   
     /* Lamp2L */
     .l-Lamp2R {left: -1%; 
     bottom: -43%;
-   width: 900px !important;
+   width: 600px !important;
   max-width: none !important;
      height: auto !important;
   z-index: 3; 
@@ -260,15 +288,53 @@
   
   
   .l-balloon {
-  left: -25%;
-  top: 30%;
-  width: 83% !important;
+  left: -5%;
+  top: 15%;
+  width: 53% !important;
   max-width: none !important;
   height: auto !important;
   z-index: 4;
-  animation: floatBalloon 5s ease-in-out infinite;
+  animation: floatBalloon 6s ease-in-out infinite;
   transform-origin: center top;
 }
+  
+  
+  
+    
+  
+  .l-Sun { right: 71px;
+  bottom: 57%; 
+  width: 25px;
+   width: 23% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 5;
+  animation: floatBalloon 7s ease-in-out infinite;
+  transform-origin: center top;
+    
+  }
+  
+  
+    
+  .l-Sun2 { right: 181px;
+  bottom: 32%; 
+  width: 25px;
+   width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 3;
+  animation: floatBalloon 8s ease-in-out infinite;
+  transform-origin: center top;
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   .l-5png {
@@ -298,10 +364,11 @@
   
   
   
-  .l-Lamp { left: -48%;
-  top: -30%;
-  width: 950px;
-  height: 1515px; 
+  .l-Lamp { left: 0%;
+  top: 5%;
+   width: 60px !important;
+  max-width: none !important;
+     height: auto !important;  
   z-index: 6;
 
   transform-origin: center top; }
@@ -309,10 +376,11 @@
   
   
   
-  .l-LampR { right: -48%; 
-  top: -30%;
-  width: 950px;
-  height: 1515px; 
+  .l-LampR { right: 0%; 
+  top: 5%;
+   width: 60px !important;
+  max-width: none !important;
+     height: auto !important; 
   z-index: 6;
   transform-origin: center top; }
   
@@ -324,15 +392,10 @@
   
   
   
-  
-  
-  
-  
-  
-  .l-8png {
-  left: -7%;
-  bottom: 53%;
-  width: 108% !important;
+    .l-F2png {
+  right: -21%;
+  top: 3%;
+  width: 50% !important;
   max-width: none !important;
   z-index: 5;
   height: auto !important;
@@ -340,13 +403,65 @@
 }
   
   
-  
-  
-  .l-Sun { right: 141px;
-  bottom: 57%; 
-  width: 45px;
+    
+    .l-F2pngL {
+  left: -21%;
+  top: 3%;
+  width: 50% !important;
+  max-width: none !important;
   z-index: 5;
-  animation: floatMed 7s ease-in-out infinite .7s; }
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+  
+  
+  .l-8png {
+  right: -15%;
+  top: -15%;
+  width: 60% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  
+  .l-8pngL {
+  left:  -15%;
+  top: -18%;
+  width: 60% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  .l-8pngT {
+  left:  15%;
+  top: -10%;
+  width: 40% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  .l-8pngD {
+  left:  -15%;
+  top: -10%;
+  width: 120% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+  
+  
+
   
 .l-16png {
   right: -17%;
@@ -718,7 +833,28 @@
     }
   }
 
-  @keyframes floatBalloon { 0%,100% { translate: 0 0; } 33% { translate: 0 -1.7%; } 66% { translate: 0 -.9%; } }
+  @keyframes floatBalloon {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  50% {
+    transform: translateY(-35px) translateX(15px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+}
+  
   @keyframes floatSlow { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.1%; } }
   @keyframes floatMed { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.3%; } }
   @keyframes floatFast { 0%,100% { translate: 0 0; } 50% { translate: 0 -.9%; } }
@@ -790,28 +926,43 @@
     <div class="star layer" style="left:22%;top:55%;width:8px;height:8px;animation-delay:2s"></div>
     <div class="star layer" style="left:60%;top:68%;width:10px;height:10px;animation-delay:1.1s"></div>
 
-    <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/23-a.png" alt="" />
+    <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
     
 
 
+
+    <img class="layer l-Hobbiton" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbiton2.png" alt="" />
+
     
 
-    <img class="layer l-balloon" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Moving_png/Hot_air3.png" alt="" />
+    <img class="layer l-balloon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="" />
     
     
     <img class="layer l-5png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5.png" alt="" />
     <img class="layer l-5pngR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5b.png" alt="" />
     
-        <img class="layer l-Lamp" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Lamp.png" alt="" />
-    <img class="layer l-LampR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Lamp.png" alt="" />
+        <img class="layer l-Lamp" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+    <img class="layer l-LampR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
     
     
     
     
-    <img class="layer l-8png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/8.png" alt="" />
-    <img class="layer l-Sun" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Sun.png" alt="" />
     
-        <img class="layer l-16png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbiton2.png" alt="" />
+        <img class="layer l-8pngD" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/DaisyA.png" alt="" />
+    <img class="layer l-8pngT" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
+        <img class="layer l-8pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
+      <img class="layer l-F2pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aR.png" alt="" />
+    
+    
+    
+    <img class="layer l-8png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aR.png" alt="" />
+      <img class="layer l-F2png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aL.png" alt="" />
+    
+    
+    
+    <img class="layer l-Sun" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+    <img class="layer l-Sun2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="" />
+    
     
 
     <img class="layer l-torn3a" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
@@ -830,7 +981,19 @@
   <main id="mainInvite">
 
     <section class="section loc-section bg-page2" id="invitationPage">
+      
+      
+       
+       
       <div class="loc-card reveal">
+             
+       <img class="layer l-trunk-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+       <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+               <img class="layer l-Lamp" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+    <img class="layer l-LampR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+    
+    
+       
         <div class="loc-illustration-wrap">
           <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/4a.png" alt="Hobbit garden illustration" />
         </div>
