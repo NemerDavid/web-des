@@ -260,6 +260,14 @@
  }
 
 
+  .l-Chariot {left: 35%; 
+  bottom: 13%;
+    width: 80px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 1; 
+; 
+ }
 
 
 
@@ -720,6 +728,77 @@
   .loc-map { width: 100%; height: 240px; border-top: 1px solid rgba(0,0,0,.07); overflow: hidden; border-radius: 0 0 28px 28px; }
   .loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
+  /* Fixed invitation floral frame: cropped from the visible edge so it can sit flush at the top */
+  .loc-card.invitation-frame-card {
+    overflow: hidden;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.92);
+    isolation: isolate;
+  }
+
+  .invite-frame-piece {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 20;
+    max-width: none !important;
+  }
+
+  .invite-frame-top,
+  .invite-frame-bottom {
+    left: 50%;
+    width: 104%;
+    height: 48px;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .invite-frame-top {
+    top: 0;
+    transform: translateX(-50%) rotate(180deg);
+  }
+
+  .invite-frame-bottom {
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .invite-frame-left,
+  .invite-frame-right {
+    top: 0;
+    height: 100%;
+    width: 48px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .invite-frame-left { left: 0; }
+  .invite-frame-right { right: 0; }
+
+  .invitation-frame-card .loc-illustration-wrap {
+    padding-top: 54px;
+  }
+
+  .invitation-frame-card .loc-body {
+    padding-left: 58px;
+    padding-right: 58px;
+    padding-bottom: 58px;
+  }
+
+  @media (max-width: 420px) {
+    .invite-frame-top,
+    .invite-frame-bottom { height: 42px; }
+    .invite-frame-left,
+    .invite-frame-right { width: 42px; }
+    .invitation-frame-card .loc-illustration-wrap { padding-top: 50px; }
+    .invitation-frame-card .loc-body {
+      padding-left: 48px;
+      padding-right: 48px;
+      padding-bottom: 52px;
+    }
+  }
+
+
   .gift-dark-card { background: rgba(0,255,255) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
   .info-card { width: 100%; border-radius: 16px; padding: 28px 22px; margin-top: 28px; background: rgba(244,239,227,.86); border: 1px solid var(--border); }
   .bank-name { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 16px; color: var(--garden-dark); }
@@ -933,6 +1012,9 @@
 
     <img class="layer l-Hobbiton" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbiton2.png" alt="" />
 
+    <img class="layer l-Chariot" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Chariot.png" alt="" />
+
+    
     
 
     <img class="layer l-balloon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="" />
@@ -985,15 +1067,12 @@
       
        
        
-      <div class="loc-card reveal">
-             
-       <img class="layer l-trunk-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
-       <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
-               <img class="layer l-Lamp" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
-    <img class="layer l-LampR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
-    
-    
-       
+      <div class="loc-card reveal invitation-frame-card">
+        <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+
         <div class="loc-illustration-wrap">
           <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/4a.png" alt="Hobbit garden illustration" />
         </div>
