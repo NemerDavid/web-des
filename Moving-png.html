@@ -250,8 +250,8 @@
 
 
 
-  .l-Hobbiton {left: 0%; 
-  bottom: -5%;
+  .l-Hobbiton {left: -25%; 
+  bottom: -8%;
     width: 680px !important;
   max-width: none !important;
      height: auto !important;
@@ -260,12 +260,12 @@
  }
 
 
-  .l-Chariot {left: 35%; 
-  bottom: 13%;
-    width: 80px !important;
+  .l-Chariot {left: 15%; 
+  bottom: 10%;
+    width: 70px !important;
   max-width: none !important;
      height: auto !important;
-  z-index: 1; 
+  z-index: 2; 
 ; 
  }
 
@@ -479,7 +479,7 @@
   height: auto !important;
   z-index: 2;
 }
-  .l-torn3a { left: 55px; top: 32%; width: 340px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
+  .l-torn3a { left: 35px; top: 32%; width: 240px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-Cloud2 { left: 75px; top: 32%; width: 140px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-Cloud3 { right: 65px; top: 35%; width: 140px; z-index: 5; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-cover-frame { inset: 0; width: 100%; height: 30%; position: absolute; top: -1%; z-index: 8; object-fit: cover; }
@@ -651,16 +651,26 @@
   .cal-cell { position: relative; min-height: 34px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink-soft); }
   .cal-cell.hdr { font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--garden-mid); }
   .cal-cell.empty { opacity: 0; }
-  .cal-cell.highlight { color: #fff; font-weight: 700; z-index: 2; }
+  .cal-cell.highlight {
+    position: relative;
+    color: var(--garden-dark);
+    font-weight: 700;
+    overflow: visible;
+    z-index: 2;
+  }
+  .cal-cell.highlight::before { display: none !important; }
   .cal-cell.highlight::after {
     content: '';
     position: absolute;
-    top: 50%; left: 50%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    width: 42px; height: 42px;
-    background: radial-gradient(circle, var(--gold) 0%, #d9b169 72%, transparent 73%);
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Dark%20floral%20envelope/Heart.png') center / contain no-repeat;
+    border-radius: 0;
     z-index: 1;
+    pointer-events: none;
   }
   .cal-cell.highlight .day-txt { position: relative; z-index: 2; }
 
@@ -681,15 +691,48 @@
   .section.green .count-num { color: #fff; }
   .section.green .amp { color: var(--gold-soft); }
   .section.green .time-row { border-color: rgba(255,255,255,.26); }
-  .section.green .time-icon img { filter: brightness(0) invert(1); }
+  .section.green .time-icon img { filter: brightness(0) ; }
 
   .timeline { display: grid; gap: 14px; margin-top: 34px; width: 100%; text-align: left; }
   .time-row { display: grid; grid-template-columns: 74px 50px 1fr; gap: 15px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
   .time-row:last-child { border-bottom: 0; }
+  
+  
+  
+  
+  .timeline-row {
+  display: grid;
+  grid-template-columns: 74px 34px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+
+  
   .time { font-family: 'Cormorant Garamond', serif; font-weight: 700; letter-spacing: .08em; color: var(--garden-dark); }
-  .time-icon { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; }
-  .time-icon img { width: 32px; height: 32px; object-fit: contain; opacity: 1; }
-  .label { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; line-height: 1.55; color: var(--ink-soft); }
+
+.time-icon {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -6px;
+}
+
+
+.time-icon img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  opacity: 1;
+}
+
+
+
+  .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; line-height: 1.55; color: var(--ink-soft); }
 
   .loc-section { padding: 48px 20px 60px; }
   .loc-card {
@@ -719,6 +762,7 @@
     overflow: hidden;
   }
   .loc-illustration-wrap img { width: 245px; max-height: 220px; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 14px 18px rgba(0,0,0,.18)); }
+  .loc-illustration-wrap2 img { width: 345px; margin-top:10px; max-height: 320px; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 14px 18px rgba(0,0,0,.18)); }
   .loc-body { width: 100%; padding: 32px 32px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; }
   .loc-kicker { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .38em; text-transform: uppercase; font-weight: 700; color: var(--garden-mid); margin-bottom: 10px; }
   .loc-title { font-family: 'Great Vibes', cursive; font-size: 48px; color: var(--ink); line-height: 1; font-weight: 400; margin-bottom: 6px; }
@@ -872,7 +916,7 @@
   .footer {
   padding: 70px 28px 90px;
   text-align: center;
-  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Footer.png') center center / cover no-repeat;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Footer2.png') center center / cover no-repeat;
 }
   .footer .names { color: rgba(0,0,0); font-size: 58px; }
   .footer .date-line { color: rgba(55,55,55); font-weight: 800; }
@@ -1019,6 +1063,7 @@
 
     <img class="layer l-balloon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="" />
     
+
     
     <img class="layer l-5png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5.png" alt="" />
     <img class="layer l-5pngR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5b.png" alt="" />
@@ -1028,10 +1073,10 @@
     
     
     
-    
+
     
         <img class="layer l-8pngD" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/DaisyA.png" alt="" />
-    <img class="layer l-8pngT" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
+     <img class="layer l-8pngT" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" /> 
         <img class="layer l-8pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
       <img class="layer l-F2pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aR.png" alt="" />
     
@@ -1073,8 +1118,8 @@
         <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
         <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
 
-        <div class="loc-illustration-wrap">
-          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/4a.png" alt="Hobbit garden illustration" />
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Arwen4.png" alt="Hobbit garden illustration" />
         </div>
         <div class="loc-body">
           <p class="loc-kicker">Matthew 19:6</p>
@@ -1099,7 +1144,14 @@
 
     <section class="section bg-page3">
       <div class="page-card reveal glass-card">
-        <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/2a.png" alt="Sun illustration" />
+       
+        
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Fountain.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
         <p class="kicker">Save the date</p>
         <h2 class="section-title">Wedding Day</h2>
         <p class="subtitle">August 14, 2027</p>
@@ -1124,10 +1176,10 @@
         <h2 class="section-title">Programme</h2>
         <p class="subtitle">Ceremony · Dinner · Dancing</p>
         <div class="timeline">
-          <div class="time-row"><div class="time">6:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Rings-removebg-preview.png" alt="" /></div><div class="label">Church Ceremony<br />St. Mourra Church · Ehden</div></div>
-          <div class="time-row"><div class="time">7:30 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Drink-removebg-preview.png" alt="" /></div><div class="label">Reception Drinks<br />Twinz Hotel · Ehden</div></div>
-          <div class="time-row"><div class="time">8:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dine-removebg-preview.png" alt="" /></div><div class="label">Dinner<br />Twinz Hotel · Ehden</div></div>
-          <div class="time-row"><div class="time">9:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Icon2/Dance-removebg-preview.png" alt="" /></div><div class="label">Dancing<br />Twinz Hotel · Ehden</div></div>
+          <div class="time-row"><div class="time">6:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Rings.png" alt="" /></div><div class="label">Church Ceremony<br />St. Mourra Church · Ehden</div></div>
+          <div class="time-row"><div class="time">7:30 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Glass.png" alt="" /></div><div class="label">Reception Drinks<br />Twinz Hotel · Ehden</div></div>
+          <div class="time-row"><div class="time">8:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Cake.png" alt="" /></div><div class="label">Dinner<br />Twinz Hotel · Ehden</div></div>
+          <div class="time-row"><div class="time">9:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Dance.png" alt="" /></div><div class="label">Dancing<br />Twinz Hotel · Ehden</div></div>
         </div>
       </div>
     </section>
@@ -1147,8 +1199,8 @@
         
         
         
-        <div class="loc-illustration-wrap">
-          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/1a.png" alt="Ceremony illustration" />
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Church.png" alt="Ceremony illustration" />
         </div>
         <div class="loc-body">
           <p class="loc-kicker">The Ceremony</p>
@@ -1169,8 +1221,8 @@
         <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
         <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
         <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
-        <div class="loc-illustration-wrap">
-          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/3a.png" alt="Reception illustration" />
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hotel.png" alt="Reception illustration" />
         </div>
         <div class="loc-body">
           <p class="loc-kicker">Where We Celebrate</p>
@@ -1187,8 +1239,16 @@
 
     <section class="section green bg-page7">
       <div class="page-card reveal gift-dark-card">
+   
         
-        <img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Oak.png" alt="Oak illustration" />
+             <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Statue.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
+        
+        
         <p class="kicker">With love</p>
         <h2 class="section-title">Gift Registry</h2>
         <p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
@@ -1203,7 +1263,15 @@
     <section class="section photo-section bg-page8" id="gallery">
       <div class="photo-card reveal">
         
-        <img class="section-icon wide" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/8b.png" alt="Floral illustration" />
+   
+        
+             
+             <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Tower.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
         <p class="kicker">A glimpse of us</p>
         <h2 class="section-title">Photo Album</h2>
         <p class="subtitle">Swipe to explore</p>
@@ -1227,7 +1295,15 @@
 
     <section class="section rsvp-section bg-page9" id="rsvp">
       <div class="page-card reveal">
-        <img class="section-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/4a.png" alt="Sun icon" />
+       
+              <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Pergola.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
+        
+        
         <p class="kicker">Kindly reply before August 1, 2027</p>
         <h2 class="section-title">RSVP</h2>
         <div class="rsvp-box">
@@ -1454,16 +1530,59 @@
     document.getElementById('step' + to).style.display = 'block';
     [1,2,3].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= to));
   }
+  const COUPLE_NAME = 'Thomas & Sarah';
+  const CLIENT_EMAIL = 'nemer.david9@gmail.com';
+
   function submitRSVP() {
     const name = document.getElementById('guestName').value.trim() || 'Guest';
     const attend = document.querySelector('input[name="attend"]:checked');
+    const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
     const yes = attend && attend.value === 'yes';
-    ['step1','step2','step3'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-    document.querySelector('.step-dots').style.display = 'none';
-    document.getElementById('stepOk').style.display = 'block';
-    document.getElementById('okMsg').innerHTML = yes
-      ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br />See you on August 14th."
-      : "We'll miss you, <strong>" + name + "</strong>.<br />Thank you for letting us know.";
+    const sendBtn = document.getElementById('sendBtn');
+
+    if (sendBtn) {
+      sendBtn.textContent = 'Sending...';
+      sendBtn.disabled = true;
+    }
+
+    fetch('https://formsubmit.co/ajax/' + CLIENT_EMAIL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: 'New RSVP - ' + COUPLE_NAME,
+        _template: 'table',
+        name: name,
+        attending: yes ? 'Yes' : 'No',
+        guests: yes ? guestCount : 0,
+        message: msg || '(none)'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success === 'true' || data.success === true) {
+        ['step1','step2','step3'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.display = 'none';
+        });
+        document.querySelector('.step-dots').style.display = 'none';
+        document.getElementById('stepOk').style.display = 'block';
+        document.getElementById('okMsg').innerHTML = yes
+          ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br />See you on August 14th."
+          : "We'll miss you, <strong>" + name + "</strong>.<br />Thank you for letting us know.";
+      } else {
+        throw new Error('RSVP failed');
+      }
+    })
+    .catch(() => {
+      if (sendBtn) {
+        sendBtn.textContent = 'Send ✦';
+        sendBtn.disabled = false;
+      }
+      alert('Something went wrong. Please try again.');
+    });
   }
 
   (function initAlbum() {
