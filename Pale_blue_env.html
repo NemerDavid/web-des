@@ -374,7 +374,7 @@
   
   
     .l-Rings { right: 181px;
-  bottom: 72%; 
+  bottom: 92%; 
   width: 25px;
    width: 33% !important;
   max-width: none !important;
@@ -798,7 +798,7 @@
   .section.green .kicker,
   .section.green .subtitle,
   .section.green .body-text,
-  .section.green .date-line,
+  .section.green .date-line {color: #fff},
   .section.green .label {color: #A97F36}
   .section.green .section-title,
   .section.green .names,
@@ -1051,11 +1051,11 @@
   text-align: center;
   background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P5.png') center center / cover no-repeat;
 }
-  .footer .names { color: rgba(0,0,0); font-size: 58px; }
-  .footer .date-line { color: rgba(55,55,55); font-weight: 800; }
-  .footer .thin-line { background: rgba(255,255,255,.38); }
+  .footer .names { color: rgba(255,255,255); font-size: 58px; }
+  .footer .date-line { color: rgba(255,255,255); font-weight: 800; }
+  .footer .thin-line { background: rgba(255,255,255); }
   .cardia-credit { margin-top: 34px; text-align: center; }
-  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(0,0,0); text-decoration: none; }
+  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255); text-decoration: none; }
   .cardia-credit a:hover { color: #fff; }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
@@ -1669,28 +1669,31 @@
     overflow:visible !important;
   }
 
-  #page3Calendar .kicker,
-  #page3Calendar .section-title,
-  #page3Calendar .subtitle,
-  #page3Calendar .cal-month,
-  #page3Calendar .cal-cell,
-  #page3Calendar .cal-cell.hdr,
-  #page3Calendar .cal-cell.highlight,
-  #page3Calendar .count-num,
-  #page3Calendar .count-label{
-    color:#897A7D !important;
-    text-shadow:none !important;
-  }
+#page3Calendar,
+#page3Calendar .kicker,
+#page3Calendar .section-title,
+#page3Calendar .subtitle,
+#page3Calendar .cal-month,
+#page3Calendar .cal-cell,
+#page3Calendar .cal-cell.hdr,
+#page3Calendar .cal-cell.highlight,
+#page3Calendar .count-num,
+#page3Calendar .count-label{
+  color:#ffffff !important;
+}
 
-  #page3Calendar .calendar-card{
-    background:#EFF1F0 !important;
-    border:1px solid rgba(137,122,125,.24) !important;
-    box-shadow:none !important;
-  }
+#page3Calendar .calendar-card{
+  border:1px solid rgba(255,255,255,.28) !important;
+}
 
-  #page3Calendar .count-item{
-    border-right:1px solid rgba(137,122,125,.32) !important;
-  }
+#page3Calendar .count-item{
+  border-right:1px solid rgba(255,255,255,.22) !important;
+}
+
+#page3Calendar .cal-cell.highlight::after{
+  filter:brightness(0) invert(1);
+  opacity:.95;
+}
 
   @media (max-width:420px){
     #page3Calendar .page-card{
@@ -1721,21 +1724,21 @@
   }
 
   #page3Calendar .kicker{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:11px !important;
     letter-spacing:.42em !important;
     margin-bottom:10px !important;
   }
 
   #page3Calendar .section-title{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:60px !important;
     margin-bottom:22px !important;
     text-shadow:none !important;
   }
 
   #page3Calendar .subtitle{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:15px !important;
     letter-spacing:.38em !important;
     margin:0 0 42px !important;
@@ -1752,12 +1755,12 @@
   }
 
   #page3Calendar .cal-month{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:32px !important;
     letter-spacing:.18em !important;
     margin:0 0 26px !important;
     padding:0 0 18px !important;
-    border-bottom:1px dashed rgba(137,122,125,.55) !important;
+    border-bottom:1px dashed rgba(252,252,252) !important;
   }
 
   #page3Calendar .cal-grid{
@@ -1765,11 +1768,11 @@
     grid-template-columns:repeat(7, 1fr) !important;
     gap:0 !important;
     padding:0 0 22px !important;
-    border-bottom:1px dashed rgba(137,122,125,.55) !important;
+    border-bottom:1px dashed rgba(252,252,252) !important;
   }
 
   #page3Calendar .cal-cell{
-    color:#897A7D !important;
+    color:#fff !important;
     min-height:42px !important;
     font-size:22px !important;
     line-height:1 !important;
@@ -1777,7 +1780,7 @@
   }
 
   #page3Calendar .cal-cell.hdr{
-    color:#897A7D !important;
+    color:#fff !important;
     min-height:38px !important;
     font-family:'Cormorant Garamond', serif !important;
     font-size:21px !important;
@@ -1787,7 +1790,7 @@
   }
 
   #page3Calendar .cal-cell.highlight{
-    color:#897A7D !important;
+    color:#fff !important;
   }
 
   #page3Calendar .cal-cell.highlight::after{
@@ -1805,17 +1808,17 @@
   #page3Calendar .count-item{
     min-width:86px !important;
     padding:0 12px !important;
-    border-right:1px solid rgba(137,122,125,.32) !important;
+    border-right:1px solid rgba(252,252,252,.32) !important;
   }
 
   #page3Calendar .count-num{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:42px !important;
     text-shadow:none !important;
   }
 
   #page3Calendar .count-label{
-    color:#897A7D !important;
+    color:#fff !important;
     font-size:9px !important;
     letter-spacing:.18em !important;
     margin-top:10px !important;
@@ -2373,6 +2376,313 @@
       object-position: center center !important;
     }
   }
+
+
+  /* ═════════ PAGE 1 — INVITATION TEXT DIRECTLY ON BACKGROUND ═════════ */
+  .page1-invitation{
+    background:#9EC6D2 !important;
+  }
+
+  .page1-invitation .hero-bg{
+    background:var(--hero-bg) center center / cover no-repeat !important;
+  }
+
+  .page1-invitation .l-Container2{
+    display:none !important;
+  }
+
+  .page1-invitation .l-Rings{
+    left:50% !important;
+    right:auto !important;
+    top:6.2% !important;
+    bottom:auto !important;
+    width:35% !important;
+    max-width:none !important;
+    transform:translateX(-50%) !important;
+    z-index:3 !important;
+    opacity:.88;
+  }
+
+  .page1-invitation .l-Flower1,
+  .page1-invitation .l-Flower1R{
+    top:auto !important;
+    bottom:7.5% !important;
+    width:21% !important;
+    opacity:.78;
+    z-index:5 !important;
+  }
+
+  .page1-invitation .l-Flower1{ left:7% !important; }
+  .page1-invitation .l-Flower1R{ right:7% !important; }
+
+  .invitation-direct{
+    position:absolute;
+    left:50%;
+    top:18.5%;
+    transform:translateX(-50%);
+    z-index:9;
+    width:86%;
+    max-width:410px;
+    text-align:center;
+    color:#fff;
+    text-shadow:0 1px 8px rgba(255,255,255,.32);
+  }
+
+  .verse-ref{
+    font-family:'Cinzel', serif;
+    font-size:clamp(16px, 4.2vw, 23px);
+    letter-spacing:.17em;
+    font-weight:400;
+    color:#fff;
+    margin-bottom:14px;
+  }
+
+  .verse-text{
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(16px, 3.9vw, 22px);
+    line-height:1.22;
+    font-style:italic;
+    font-weight:500;
+    color:#fff;
+  }
+
+  .invite-heart-line{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    width:44%;
+    margin:22px auto 18px;
+    color:#fff;
+    font-size:22px;
+    line-height:1;
+  }
+
+  .invite-heart-line::before,
+  .invite-heart-line::after{
+    content:'';
+    flex:1;
+    height:2px;
+    background:rgba(255,255,255,.84);
+  }
+
+  .family-kicker{
+    font-family:'Cinzel', serif;
+    font-size:clamp(11px, 2.9vw, 16px);
+    letter-spacing:.20em;
+    font-weight:600;
+    color:#fff;
+    margin-bottom:80px;
+  }
+
+  .parents-line{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 34px minmax(0,1fr);
+    align-items:center;
+    column-gap:18px;
+    width:100%;
+    margin:0 auto 18px;
+  }
+
+  .parent-script{
+    min-width:0;
+  }
+
+  .parent-script:first-child{
+    text-align:left;
+    transform:translateX(-14px);
+  }
+
+  .parent-script:last-child{
+    text-align:right;
+    transform:translateX(14px);
+  }
+
+  .parent-script span{
+    display:block;
+    font-family:'Great Vibes', cursive;
+    font-size:clamp(18px, 4.4vw, 28px);
+    line-height:1.03;
+    margin-bottom:5px;
+    color:#fff;
+  }
+
+  .parent-script strong{
+    display:block;
+    font-family:'Great Vibes', cursive;
+    font-size:clamp(36px, 8.5vw, 54px);
+    line-height:.92;
+    font-weight:400;
+    color:#fff;
+  }
+
+  .parent-amp{
+    width:34px;
+    text-align:center;
+    justify-self:center;
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(25px, 6.2vw, 38px);
+    line-height:1;
+    color:#fff;
+    font-weight:300;
+  }
+
+  .request-line{
+    font-family:'Cinzel', serif;
+    font-size:clamp(9px, 2.45vw, 14px);
+    line-height:1.55;
+    letter-spacing:.16em;
+    font-weight:600;
+    text-transform:uppercase;
+    color:#fff;
+    margin:16px auto 14px;
+  }
+
+  .couple-script{
+  width:100%;
+  text-align:center;
+  margin-top:128px;
+}
+
+  .couple-script span{
+    display:block;
+    font-family:'Great Vibes', cursive;
+    font-size:clamp(44px, 11.2vw, 70px);
+    line-height:.95;
+    font-weight:400;
+    color:#fff;
+     margin:8px 0 8px;
+  }
+
+  .couple-script em{
+    display:block;
+    font-family:'Cinzel', serif;
+    font-style:normal;
+    font-size:clamp(11px, 2.8vw, 17px);
+    letter-spacing:.20em;
+    line-height:1;
+    color:#fff;
+    margin:8px 0 8px;
+  }
+
+  @media (max-width:420px){
+    .page1-invitation .l-Rings{ top:5.4%; width:33% !important; }
+    .invitation-direct{ top:18.5%; width:88%; }
+    .invite-heart-line{ margin:18px auto 14px; width:40%; font-size:20px; }
+    .family-kicker{ margin-bottom:17px; }
+    .parents-line{ grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr); column-gap:14px; margin-bottom:15px; }
+    .parent-script:first-child{ transform:translateX(-10px); }
+    .parent-script:last-child{ transform:translateX(10px); }
+    .parent-amp{ width:30px; }
+    .parent-script span{ margin-bottom:4px; font-size:clamp(17px, 4.1vw, 25px); }
+    .parent-script strong{ font-size:clamp(34px, 8.1vw, 50px); line-height:.92; }
+    .request-line{ margin-top:13px; margin-bottom:12px; }
+    .couple-script span{ font-size:clamp(42px, 10.8vw, 66px); line-height:.92; }
+    .couple-script em{ margin:7px 0 7px; }
+    .page1-invitation .l-Flower1,
+    .page1-invitation .l-Flower1R{ bottom:6%; width:22% !important; }
+  }
+
+
+  /* Keep the invitation text centered even after the reveal animation is applied */
+  .invitation-direct.reveal.visible{
+    transform:translateX(-50%) !important;
+  }
+
+
+
+  /* ═════════ FINAL UPDATE — WHITE TEXT FOR GIFT, RSVP, AND PROGRAMME ═════════ */
+  #page5Programme,
+  #page5Programme .page-card,
+  #page7Gift,
+  #page7Gift .page-card,
+  #page9Rsvp,
+  #page9Rsvp .page-card{
+    color:#ffffff !important;
+  }
+
+  #page5Programme .kicker,
+  #page5Programme .section-title,
+  #page5Programme .programme-subtitle,
+  #page5Programme .time,
+  #page5Programme .label,
+  #page5Programme .label strong,
+  #page5Programme .label span,
+  #page7Gift .kicker,
+  #page7Gift .section-title,
+  #page7Gift .body-text,
+  #page7Gift .bank-name,
+  #page7Gift .bank-line,
+  #page9Rsvp .kicker,
+  #page9Rsvp .section-title,
+  #page9Rsvp .subtitle,
+  #page9Rsvp .form-label,
+  #page9Rsvp .question,
+  #page9Rsvp .attend-label,
+  #page9Rsvp .guest-label,
+  #page9Rsvp .guest-num,
+  #page9Rsvp .btn-soft,
+  #page9Rsvp #okMsg,
+  #page9Rsvp #stepOk h3,
+  #page9Rsvp .error-msg{
+    color:#ffffff !important;
+    text-shadow:0 2px 10px rgba(0,0,0,.10) !important;
+  }
+
+  #page9Rsvp input,
+  #page9Rsvp textarea{
+    color:#ffffff !important;
+    text-shadow:none !important;
+  }
+
+  #page9Rsvp input::placeholder,
+  #page9Rsvp textarea::placeholder{
+    color:rgba(255,255,255,.72) !important;
+  }
+
+  #page7Gift .thin-line,
+  #page9Rsvp .step-dot.on{
+    background:rgba(255,255,255,.82) !important;
+  }
+
+  #page9Rsvp .step-dot{
+    background:rgba(255,255,255,.35) !important;
+  }
+
+  #page7Gift .info-card,
+  #page9Rsvp .form-field,
+  #page9Rsvp input:not([type='radio']),
+  #page9Rsvp textarea,
+  #page9Rsvp .attend-box,
+  #page9Rsvp .count-btn,
+  #page9Rsvp .btn-soft{
+    border-color:rgba(255,255,255,.58) !important;
+  }
+
+  #page9Rsvp .attend-opt input:checked + .attend-box{
+    border-color:#ffffff !important;
+    background:rgba(255,255,255,.22) !important;
+  }
+
+  #page9Rsvp .count-btn{
+    color:#ffffff !important;
+  }
+
+
+  /* ═════════ FINAL FIX — PAGE 5 PROGRAMME TEXT ONLY IN BLUE ═════════ */
+  #page5Programme .time,
+  #page5Programme .label,
+  #page5Programme .label strong,
+  #page5Programme .label span{
+    color:#9EC6D2 !important;
+  }
+
+  /* Keep the icons unchanged */
+  #page5Programme .time-icon,
+  #page5Programme .time-icon img{
+    color:inherit !important;
+  }
+
 </style>
 </head>
 
@@ -2407,41 +2717,47 @@
 
 
 <!-- ═══ PAGE 1 ═══ -->
-  <section class="section-hero" id="heroCover">
+  <section class="section-hero page1-invitation" id="heroCover">
     <div class="hero-bg"></div>
-
-
 
     <img class="layer l-Flower1" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3a.png" alt="" />
     <img class="layer l-Flower1R" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3b.png" alt="" />
-    
-    
-    <img class="layer l-Rings" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/16.png" alt="" />
-    
-  
-    
-    <img class="layer l-Container2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Container3.png" alt="" />
+
+       
+       
+        <img class="rose-control-png page9-torn-top" style="--x:30%;--y:0%;--w:37%;--z:1;" src=" https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/16.png" alt="" />
+   
 
 
 
 
 
 
+    <div class="invitation-direct reveal">
+      <p class="verse-ref">MATTHEW 19:6</p>
+      <p class="verse-text">“What therefore God has joined together,<br>let no man put asunder.”</p>
 
+      <div class="invite-heart-line"><span>♥</span></div>
 
-    <div class="hero-text">
-      <span class="hero-name">Thomas</span>
-      <span class="hero-weds"> weds </span>
-      <span class="hero-name">Sarah</span>
-      <span class="hero-weds">— ♥ —</span>
+      <p class="family-kicker">TOGETHER WITH THEIR FAMILIES</p>
 
-    <span class="hero-name2">Together with their </span>
-    <span class="hero-name3">  families </span>
-      
-      
+      <div class="parents-line">
+        <div class="parent-script"><span>Robert &amp; Tina</span><strong>Martin</strong></div>
+        <div class="parent-amp">&amp;</div>
+        <div class="parent-script"><span>Michael &amp; Anne</span><strong>Clarke</strong></div>
+      </div>
+
+      <p class="request-line">Request the honor of your presence<br>at the wedding of their son and daughter</p>
+
+      <div class="couple-script">
+        <span>Thomas</span>
+        <em>and</em>
+        <span>Sarah</span>
+      </div>
     </div>
-
   </section>
+
+
 
 
 
@@ -2526,7 +2842,12 @@
       <!-- PAGE 7 — GIFT REGISTRY -->
       <section class="section rose-controlled-page page7-gift" id="page7Gift" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Page3c.png');">
         <img class="rose-control-png page7-torn-top" style="--x:0%;--y:0%;--w:217%;--z:1;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Image1.png" alt="" />
-        <div class="page-card reveal gift-dark-card"><img class="section-icon tall" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/12.png" alt="Gift icon" /><p class="kicker">With love</p><h2 class="section-title">Gift Registry</h2><p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p><div class="info-card"><h3 class="bank-name">Whish Money</h3><div class="thin-line"></div><p class="bank-line">ACC# xxxxxx</p></div></div>
+        <div class="page-card reveal gift-dark-card">
+          
+      <img class="rose-control-png page7-torn-top" style="--x:20%;--y:-16%;--w:57%;--z:1;"  src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/15.png" alt="Gift icon" />
+      
+      
+      <p class="kicker">With love</p><h2 class="section-title">Gift Registry</h2><p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p><div class="info-card"><h3 class="bank-name">Whish Money</h3><div class="thin-line"></div><p class="bank-line">ACC# xxxxxx</p></div></div>
       </section>
 
       <!-- ═══ PAGE 8 — PHOTO ═══ -->
@@ -2543,7 +2864,7 @@
        
        
        
-        <img class="rose-control-png page9-torn-top" style="--x:7%;--y:60%;--w:87%;--z:1;" src="     https://raw.githubusercontent.com/NemerDavid/web-des/main/Green%20envelope/13.png" alt="" />
+        <img class="rose-control-png page9-torn-top" style="--x:7%;--y:60%;--w:87%;--z:1;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/17.png" alt="" />
    
         
         
@@ -2794,7 +3115,19 @@
     [1,2,3].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= to));
   }
   const COUPLE_NAME = 'Thomas & Sarah';
-  const CLIENT_EMAIL = 'nemerdavid9@gmail.com';
+  const CUSTOMER_EMAIL = 'cardiastudios@gmail.com';
+
+
+  /*
+    STEP 1:
+    Deploy the Google Apps Script included with this file.
+
+    STEP 2:
+    Replace this URL with your Apps Script Web App URL.
+    It must look like:
+    https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  */
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxv1f-qT9HxN6ntkScO8sV3TBoo40Ay6NKWjBdLw0Hl1RW2oaszAL1dN41NIaBgcCW9/exec';
 
   function showRSVPThankYou(name, yes) {
     ['step1','step2','step3'].forEach(id => {
@@ -2813,8 +3146,8 @@
     }
   }
 
-  function postRSVPWithHiddenForm(payload) {
-    const iframeName = 'rsvpHiddenFrame';
+  function postRSVPToGoogleSheet(payload) {
+    const iframeName = 'rsvpGoogleSheetFrame';
     let iframe = document.getElementById(iframeName);
     if (!iframe) {
       iframe = document.createElement('iframe');
@@ -2826,7 +3159,7 @@
 
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'https://formsubmit.co/' + CLIENT_EMAIL;
+    form.action = RSVP_SCRIPT_URL;
     form.target = iframeName;
     form.style.display = 'none';
 
@@ -2840,7 +3173,7 @@
 
     document.body.appendChild(form);
     form.submit();
-    setTimeout(() => form.remove(), 1200);
+    setTimeout(() => form.remove(), 1500);
   }
 
   function submitRSVP() {
@@ -2855,19 +3188,27 @@
       sendBtn.disabled = true;
     }
 
+    if (!RSVP_SCRIPT_URL || RSVP_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
+      alert('Please paste your Google Apps Script Web App URL into RSVP_SCRIPT_URL first.');
+      if (sendBtn) {
+        sendBtn.textContent = 'Send RSVP';
+        sendBtn.disabled = false;
+      }
+      return;
+    }
+
     const payload = {
-      _subject: 'New RSVP - ' + COUPLE_NAME,
-      _template: 'table',
-      _captcha: 'false',
-      _next: window.location.href,
-      name: name,
+      event: COUPLE_NAME,
+      customer_email: CUSTOMER_EMAIL,
+      guest_name: name,
       attending: yes ? 'Yes' : 'No',
-      guests: yes ? guestCount : 0,
-      message: msg || '(none)'
+      guest_count: yes ? guestCount : 0,
+      message: msg || '',
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
     };
 
-    /* Reliable FormSubmit send: avoids the AJAX error popup on local HTML files. */
-    postRSVPWithHiddenForm(payload);
+    postRSVPToGoogleSheet(payload);
 
     setTimeout(() => {
       if (sendBtn) {
