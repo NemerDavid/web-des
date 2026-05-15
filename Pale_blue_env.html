@@ -2437,14 +2437,21 @@
     margin-bottom:14px;
   }
 
-  .verse-text{
+ .verse-text{
     font-family:'Cormorant Garamond', serif;
-    font-size:clamp(16px, 3.9vw, 22px);
-    line-height:1.22;
+
+    font-size:clamp(14px, 5vw, 24px);
+
+    line-height:1.25;
     font-style:italic;
     font-weight:500;
     color:#fff;
-  }
+
+    text-align:center;
+
+    max-width:480px;
+    margin:0 auto;
+}
 
   .invite-heart-line{
     display:flex;
@@ -2501,7 +2508,7 @@
   .parent-script span{
     display:block;
     font-family:'Great Vibes', cursive;
-    font-size:clamp(18px, 4.4vw, 28px);
+    font-size:clamp(16px, 2.5vw, 24px);
     line-height:1.03;
     margin-bottom:5px;
     color:#fff;
@@ -2510,10 +2517,11 @@
   .parent-script strong{
     display:block;
     font-family:'Great Vibes', cursive;
-    font-size:clamp(36px, 8.5vw, 54px);
+    font-size:clamp(16px, 2.5vw, 24px);
     line-height:.92;
     font-weight:400;
     color:#fff;
+        text-align: center;
   }
 
   .parent-amp{
@@ -2528,20 +2536,25 @@
   }
 
   .request-line{
-    font-family:'Cinzel', serif;
-    font-size:clamp(9px, 2.45vw, 14px);
-    line-height:1.55;
-    letter-spacing:.16em;
-    font-weight:600;
-    text-transform:uppercase;
+    font-family:'Cormorant Garamond', serif;
+
+    font-size:clamp(14px, 5vw, 24px);
+
+    line-height:1.25;
+    font-style:italic;
+    font-weight:500;
     color:#fff;
-    margin:16px auto 14px;
+
+    text-align:center;
+
+    max-width:280px;
+    margin:0 auto;
   }
 
   .couple-script{
   width:100%;
   text-align:center;
-  margin-top:128px;
+  margin-top:50px;
 }
 
   .couple-script span{
@@ -2554,16 +2567,20 @@
      margin:8px 0 8px;
   }
 
-  .couple-script em{
+.couple-script em{
     display:block;
-    font-family:'Cinzel', serif;
+    font-family:'Ballet', serif;
+    text-transform: uppercase;
     font-style:normal;
     font-size:clamp(11px, 2.8vw, 17px);
     letter-spacing:.20em;
     line-height:1;
     color:#fff;
     margin:8px 0 8px;
-  }
+
+    position: relative;
+    left: 14px;
+}
 
   @media (max-width:420px){
     .page1-invitation .l-Rings{ top:5.4%; width:33% !important; }
@@ -2574,11 +2591,11 @@
     .parent-script:first-child{ transform:translateX(-10px); }
     .parent-script:last-child{ transform:translateX(10px); }
     .parent-amp{ width:30px; }
-    .parent-script span{ margin-bottom:4px; font-size:clamp(17px, 4.1vw, 25px); }
-    .parent-script strong{ font-size:clamp(34px, 8.1vw, 50px); line-height:.92; }
+    .parent-script span{ margin-bottom:4px; font-size:clamp(16px, 4.1vw, 24px); }
+    .parent-script strong{ font-size:clamp(18px, 5.1vw, 26px); line-height:.92; }
     .request-line{ margin-top:13px; margin-bottom:12px; }
-    .couple-script span{ font-size:clamp(42px, 10.8vw, 66px); line-height:.92; }
-    .couple-script em{ margin:7px 0 7px; }
+    .couple-script span{ font-size:clamp(52px, 12.8vw, 66px); line-height:.92; }
+    .couple-script em{font-size:clamp(22px, 6.8vw, 46px); margin:7px 0 7px; }
     .page1-invitation .l-Flower1,
     .page1-invitation .l-Flower1R{ bottom:6%; width:22% !important; }
   }
@@ -2783,12 +2800,17 @@
   <section class="section-hero page1-invitation" id="heroCover">
     <div class="hero-bg"></div>
 
-    <img class="layer l-Flower1" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3a.png" alt="" />
-    <img class="layer l-Flower1R" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3a.png" alt="" />
+
+
 
        
+
+<img class="rose-control-png page9-torn-top" style="--x:80%;--y:%;--w:37%;--z:1;" src=" https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3a.png" alt="" />
+<img class="rose-control-png page9-torn-top" style="--x:10%;--y:65%;--w:37%;--z:1;" src=" https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/Floral3a.png" alt="" />
        
-        <img class="rose-control-png page9-torn-top" style="--x:30%;--y:0%;--w:37%;--z:1;" src=" https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/16.png" alt="" />
+       
+       
+ <img class="rose-control-png page9-torn-top" style="--x:30%;--y:0%;--w:37%;--z:1;" src=" https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/16.png" alt="" />
    
 
 
@@ -2805,16 +2827,18 @@
       <p class="family-kicker">TOGETHER WITH THEIR FAMILIES</p>
 
       <div class="parents-line">
-        <div class="parent-script"><span>Robert &amp; Tina</span><strong>Martin</strong></div>
+        <div class="parent-script"><span><strong>Robert &amp; Tina</strong> </span><strong>Martin</strong></div>
+        
         <div class="parent-amp">&amp;</div>
-        <div class="parent-script"><span>Michael &amp; Anne</span><strong>Clarke</strong></div>
+          <div class="parent-script"><span><strong>Michael &amp; Anne</strong> </span><strong>Clarke</strong></div>
+
       </div>
 
-      <p class="request-line">Request the honor of your presence<br>at the wedding of their son and daughter</p>
+      <p class="request-line">Request the honor of your presence at the wedding of their son and daughter</p>
 
       <div class="couple-script">
         <span>Thomas</span>
-        <em>and</em>
+        <em>And</em>
         <span>Sarah</span>
       </div>
     </div>
