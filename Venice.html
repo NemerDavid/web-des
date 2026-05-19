@@ -352,6 +352,65 @@ top: 80%; left: 90%;
 ════════════════════════════════════════════════ */
 
 /* ── PANEL 1 layers ── */
+
+  .l-balloon {
+  left: -5%;
+  top: 15%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+  .l-balloon1 {
+  left: 3%;
+  top: 40%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 8s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+
+  .l-balloon2 {
+  left: 42%;
+  top: 45%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 9s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+
+  .l-balloon4 {
+  left: 75%;
+  top: 15%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+
+
+
+
+
+
+
+
+
 #p1 .l-bld-left  { left:-18%; bottom:17%; width:58%; z-index:6; }
 #p1 .l-bld-right { left:17%; bottom:17%; width:58%; z-index:5; }
 
@@ -417,6 +476,34 @@ top: 80%; left: 90%;
 #p7 .l-clouds  { left:40%; top:6%;    width:32%; z-index:2; opacity:0.85; filter:none; animation: driftCloud 16s ease-in-out infinite 1s; }
 
 /* ── ANIMATIONS ── */
+
+
+
+  @keyframes floatBalloon {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  50% {
+    transform: translateY(-35px) translateX(15px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+}
+
+
+
+
 @keyframes driftCloud {
   0%,100% { transform: translateX(0); }
   50%      { transform: translateX(18px); }
@@ -542,6 +629,21 @@ top: 80%; left: 90%;
     <div class="section-tag">01 — Invitation</div>
     <div class="water-shimmer"></div>
 
+
+
+ <img class="layer l-balloon"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+
+
+    
+    
+    <img class="layer l-balloon1" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+    <img class="layer l-balloon2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="" />
+
+ <img class="layer l-balloon4"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+
+
     <img class="layer l-bld-left"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/1.png" alt="">
     <img class="layer l-bld-right"
@@ -644,12 +746,12 @@ top: 80%; left: 90%;
 
     <div class="content">
       <div class="badge">Wedding Invitation</div>
-      <div class="script" style="font-size:clamp(52px,8cqw,90px);">Thomas</div>
-      <div class="script" style="font-size:clamp(80px,12cqw,140px);display:block;opacity:0.18;color:var(--gold);margin:-18px 0;">﹠</div>
+      <div class="script" style="font-size:clamp(62px,8cqw,90px);">Thomas</div>
+      <div class="script" style="font-size:clamp(90px,12cqw,140px);display:block;opacity:0.18;color:var(--gold);margin:-18px 0;">﹠</div>
       <div class="script" style="font-size:clamp(52px,8cqw,90px);margin-top:-12px;">Sarah</div>
       <div class="orn"><span></span><em>✦</em><span></span></div>
-      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.6;margin-bottom:4px;">Together with their families</div>
-      <div class="serif" style="font-size:clamp(14px,1.8cqw,19px);color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Venice, Italy</div>
+      <div class="sans" style="font-size:18px;color:var(--deep);opacity:0.6;margin-bottom:24px;">Together with their families</div>
+      <div class="serif" style="font-size:clamp(14px,1.8cqw,19px);color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;margin-bottom:424px;">August 14, 2027 · Venice, Italy</div>
     </div>
   </div>
 
@@ -667,13 +769,13 @@ top: 80%; left: 90%;
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content" style="align-items:flex-start;padding-left:8cqw;">
-      <div class="script" style="font-size:clamp(36px,6cqw,70px);color:var(--deep);">Our Story</div>
-      <div class="orn" style="justify-content:flex-start;"><span style="max-width:50px;"></span><em>✦</em></div>
-      <p class="serif" style="font-size:15px;line-height:2.1;color:var(--deep);max-width:300px;font-style:italic;opacity:0.8;text-align:left;">
+      <div class="script" style="font-size:clamp(36px,6cqw,70px);color:var(--deep);margin-left: 80px;">Our Story</div>
+      <div class="orn" style= "margin-left: -80px;" ><span></span><em>✦</em><span></span></div>
+      <p class="serif" style="font-size:25px;line-height:2.1;color:var(--deep);max-width:300px;font-style:italic;opacity:0.8;text-align:left;margin-bottom: 350px ;margin-left: 10px">
         Two souls who found each other<br>
         by the waters of La Serenissima,<br>
         and chose to walk this path<br>
-        together — forever.
+        together - forever.
       </p>
       <div class="sans" style="font-size:8px;color:var(--gold);margin-top:20px;">Est. 2021 · Paris, France</div>
     </div>
