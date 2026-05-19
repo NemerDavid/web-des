@@ -1453,6 +1453,153 @@ html, body{
   width:0% !important;
 }
 
+
+/* ═════════ FINAL FIX — STABLE 9:16 LAYOUT ON EVERY SCREEN ═════════
+   This keeps the invitation using one fixed 9:16 coordinate system.
+   Text, the Open Invitation button, and the photo album now scale from
+   the stage width, so they do not drift or overlap on shorter screens. */
+#stage{
+  width:min(100vw, 56.25svh) !important;
+  height:min(100svh, 177.7778vw) !important;
+  aspect-ratio:9 / 16 !important;
+  max-width:none !important;
+  max-height:none !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  body{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    width:100vw !important;
+    height:100svh !important;
+    height:100dvh !important;
+    overflow:hidden !important;
+  }
+  #stage{
+    position:relative !important;
+    inset:auto !important;
+    width:min(100vw, 56.25svh) !important;
+    height:min(100svh, 177.7778vw) !important;
+    aspect-ratio:9 / 16 !important;
+    box-shadow:none !important;
+    overflow:hidden !important;
+  }
+}
+
+/* Cover: all text and the CTA are locked to the same relative positions */
+#p1 .cover-copy{
+  top:8.4% !important;
+  width:78% !important;
+}
+#p1 .cover-copy .name{
+  font-size:11.65cqw !important;
+  line-height:.88 !important;
+}
+#p1 .cover-copy .ampersand{
+  font-size:12.3cqw !important;
+  line-height:.72 !important;
+  margin:-0.7cqw 0 -0.9cqw !important;
+}
+#p1 .cover-copy .orn{
+  margin:1.5cqw auto 1.8cqw !important;
+}
+#p1 .cover-copy .families{
+  font-size:2.65cqw !important;
+  line-height:1.45 !important;
+  margin-top:2.8cqw !important;
+  margin-bottom:2.1cqw !important;
+  letter-spacing:.34em !important;
+}
+#p1 .cover-copy .date{
+  font-size:2.7cqw !important;
+  line-height:1.25 !important;
+}
+#p1 .open-invitation-btn{
+  margin-top:4.2cqw !important;
+  padding:2.35cqw 5.7cqw !important;
+  font-size:1.7cqw !important;
+  letter-spacing:.30em !important;
+}
+
+/* Push the first-screen buildings/boat slightly lower so the button never touches them */
+#p1 .l-bld1a,
+#p1 .l-bld2a,
+#p1 .l-bld6a,
+#p1 .l-bld5a,
+#p1 .l-bld3a,
+#p1 .l-bld10a,
+#p1 .l-bld2aa,
+#p1 .l-bld1b,
+#p1 .l-bld4b,
+#p1 .l-bld2b,
+#p1 .l-bld8b,
+#p1 .l-bld1binv,
+#p1 .l-bld5aa,
+#p1 .l-bld8a{
+  bottom:12.2% !important;
+}
+#travelGondola{
+  bottom:5.2% !important;
+}
+
+/* Album: fixed relative height, no screen-to-screen drifting */
+#p5 .album-copy{
+  top:6.6% !important;
+  width:84% !important;
+}
+#p5 .album-copy .script{
+  font-size:10.1cqw !important;
+}
+#p5 .album-copy .sans{
+  font-size:2.15cqw !important;
+}
+.venice-album{
+  margin-top:3.2cqw !important;
+  border-radius:5.2cqw !important;
+}
+.venice-album-slide img{
+  height:76cqw !important;
+  min-height:0 !important;
+  max-height:42svh !important;
+}
+.venice-album-arrow{
+  width:7.2cqw !important;
+  height:7.2cqw !important;
+  font-size:5.2cqw !important;
+}
+.venice-album-counter{
+  margin-top:2.2cqw !important;
+  font-size:1.85cqw !important;
+}
+
+/* RSVP also follows the fixed coordinate system */
+#p6 .rsvp-copy{
+  top:7.2% !important;
+  width:82% !important;
+}
+#p6 .rsvp-copy .script{
+  font-size:10.5cqw !important;
+}
+#p6 .rsvp-copy .sans{
+  font-size:1.85cqw !important;
+}
+#p6 .rsvp-card{
+  max-width:60cqw !important;
+  padding:4.5cqw 6cqw !important;
+  margin-top:3cqw !important;
+}
+#p6 .rsvp-card input,
+#p6 .rsvp-card select{
+  font-size:2.05cqw !important;
+  padding:1.8cqw 0 !important;
+}
+#p6 .rsvp-btn{
+  font-size:1.75cqw !important;
+  padding:2.2cqw !important;
+  margin-top:3cqw !important;
+}
+
 </style>
 </head>
 <body>
