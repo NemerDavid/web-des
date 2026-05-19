@@ -392,7 +392,7 @@ top: 80%; left: 90%;
 
   .l-balloon4 {
   left: 75%;
-  top: 15%;
+  top: 25%;
   width: 33% !important;
   max-width: none !important;
   height: auto !important;
@@ -431,11 +431,11 @@ top: 80%; left: 90%;
 #p1 .l-bld10  { left:332%; bottom:17%; width:58%; z-index:5; }
 
 
-#p1 .l-bld11  { left:612%; bottom:15%; width:68%; z-index:5; }
+#p1 .l-bld11  { left:618%; bottom:17%; width:58%; z-index:5; }
 #p1 .l-bld12  { left:412%; bottom:17%; width:58%; z-index:5; }
 #p1 .l-bld12a  { left:452%; bottom:17%; width:58%; z-index:5; }
 #p1 .l-bld13  { left:492%; bottom:17%; width:58%; z-index:5; }
-#p1 .l-bld14  { left:532%; bottom:17%; width:58%; z-index:5; }
+#p1 .l-bld14  { left:652%; bottom:17%; width:58%; z-index:4; }
 #p1 .l-bld15  { left:582%; bottom:17%; width:58%; z-index:5; }
 
 #p1 .l-bld16  { left:682%; bottom:17%; width:58%; z-index:5; }
@@ -887,11 +887,106 @@ top: 80%; left: 90%;
   opacity:.65 !important;
 }
 
+
+/* ═════════ FINAL USER FIX — CENTERED RSVP/COVER + DRIVING GONDOLA ═════════ */
+
+/* Hide the old gondola that was inside the panorama so only the “driving” boat is visible */
+#panorama .l-gondola{
+  display:none !important;
+}
+
+/* Fixed gondola that stays in the viewer and moves as you travel through pages */
+#travelGondola{
+  position:absolute;
+  left:0;
+  bottom:5.5%;
+  width:46%;
+  height:auto;
+  z-index:75;
+  pointer-events:none;
+  filter:drop-shadow(4px 8px 12px rgba(80,40,10,0.35));
+  will-change:transform;
+}
+
+/* Make all main copy blocks truly centered inside their 9:16 panel */
+.fixed-copy{
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  text-align:center !important;
+}
+
+/* Cover: centered and a little cleaner */
+#p1 .cover-copy{
+  left:50% !important;
+  top:11.5% !important;
+  width:78% !important;
+  transform:translateX(-50%) !important;
+}
+#p1 .cover-copy .badge{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  max-width:380px !important;
+  margin:0 auto 14px !important;
+  text-align:center !important;
+}
+#p1 .cover-copy .families,
+#p1 .cover-copy .date{
+  display:block !important;
+  width:100% !important;
+  text-align:center !important;
+}
+
+/* RSVP: centered title, divider, subtitle, and form */
+#p6 .rsvp-copy{
+  left:50% !important;
+  top:10.5% !important;
+  width:82% !important;
+  transform:translateX(-50%) !important;
+  text-align:center !important;
+}
+#p6 .rsvp-copy .script,
+#p6 .rsvp-copy .sans,
+#p6 .rsvp-copy .orn{
+  text-align:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+#p6 .rsvp-card{
+  display:block !important;
+  width:100% !important;
+  max-width:320px !important;
+  margin:20px auto 0 !important;
+  text-align:left !important;
+}
+#p6 .rsvp-btn{
+  display:block !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Keep section labels from visually competing */
+.section-tag{
+  pointer-events:none !important;
+}
+
+/* Slightly better mobile-safe sizing */
+@media (max-width:600px){
+  #travelGondola{ width:46% !important; bottom:5.5% !important; }
+  #p6 .rsvp-copy{ width:82% !important; }
+}
+
 </style>
 </head>
 <body>
 
 <div id="stage">
+<img id="travelGondola"
+     src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png"
+     alt="">
 <div id="progress"></div>
 <div id="hint">
   <span class="arr l">←</span>
@@ -985,10 +1080,10 @@ top: 80%; left: 90%;
     
     
     <img class="layer l-balloon1" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
-    <img class="layer l-balloon2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="" />
+ 
 
  <img class="layer l-balloon4"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="">
 
 
     <img class="layer l-bld-left"
@@ -1035,7 +1130,7 @@ top: 80%; left: 90%;
          
                
          <img class="layer l-bld11"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/11.png" alt="">      
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/2.png" alt="">      
          
          
          
@@ -1251,10 +1346,13 @@ top: 80%; left: 90%;
   const progress = document.getElementById('progress');
   const hint     = document.getElementById('hint');
   const stage    = document.getElementById('stage');
+  const travelGondola = document.getElementById('travelGondola');
   const PANELS   = 7;
 
   let offset = 0;
   let target = 0;
+  let lastOffset = 0;
+  let boatDir = 1;
 
   const panelW = () => stage.clientWidth;
   const maxOff = () => (PANELS - 1) * panelW();
@@ -1267,6 +1365,27 @@ top: 80%; left: 90%;
     offset = clamp(offset, 0, maxOff());
     panorama.style.transform = `translateX(${-offset}px)`;
     progress.style.width = (offset / maxOff() * 100) + '%';
+
+    /* Driving gondola:
+       - moves left → right as you scroll/drag forward
+       - moves right → left as you go backward
+       - stays visible like the guest is travelling through Venice */
+    if (travelGondola) {
+      const max = Math.max(1, maxOff());
+      const t = offset / max;
+      if (Math.abs(offset - lastOffset) > 0.15) {
+        boatDir = offset >= lastOffset ? 1 : -1;
+      }
+      lastOffset = offset;
+
+      const startX = -stage.clientWidth * 0.30;
+      const endX   =  stage.clientWidth * 0.58;
+      const x = startX + (endX - startX) * t;
+      const bob = Math.sin(t * Math.PI * 10) * 4;
+      travelGondola.style.transform =
+        `translateX(${x}px) translateY(${bob}px) scaleX(${boatDir})`;
+    }
+
     requestAnimationFrame(tick);
   })();
 
