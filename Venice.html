@@ -486,7 +486,7 @@ top: 80%; left: 90%;
 #p1 .l-bld2a { left:8%; bottom:16%; width:64%; z-index:4; }
 #p1 .l-bld6a  { left:40%; bottom:16%; width:64%; z-index:4; }
 #p1 .l-bld5a { left:85%; bottom:16%; width:64%; z-index:4; }
-#p1 .l-bld3a  { left:127%; bottom:16%; width:64%; z-index:5; }
+#p1 .l-bld3a  { left:137%; bottom:15%; width:64%; z-index:5; }
 #p1 .l-bld10a  { left:180%; bottom:17%; width:58%; z-index:4; }
 #p1 .l-bld2aa  { left:260%; bottom:17%; width:58%; z-index:5; }
 
@@ -527,7 +527,7 @@ top: 80%; left: 90%;
 
 
 #p1 .l-bridge  { left:292%; bottom:14%; width:60%; z-index:4; }
-#p1 .l-bridge2  { left:482%; bottom:10%; width:60%; z-index:4; }
+#p1 .l-bridge2  { left:175%; bottom:13%; width:60%; z-index:4; }
 #p1 .l-bridge3  { left:392%; bottom:10%; width:140%; z-index:3; }
 
 
@@ -1173,6 +1173,50 @@ html, body{
   }
 }
 
+
+/* ═════════ USER UPDATE — HIGHER ALBUM/RSVP + OPEN INVITATION CTA ═════════ */
+#p5 .album-copy{
+  top:5.8% !important;
+}
+#p6 .rsvp-copy{
+  top:7.2% !important;
+}
+
+.open-invitation-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:20px auto 0;
+  padding:13px 28px;
+  border-radius:999px;
+  border:1px solid rgba(196,149,106,.55);
+  background:rgba(255,245,230,.62);
+  color:var(--deep);
+  font-family:'Jost', sans-serif;
+  font-size:9px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:0 14px 34px rgba(80,40,10,.18);
+  backdrop-filter:blur(6px);
+  transition:transform .2s ease, background .2s ease, color .2s ease, opacity .2s ease;
+}
+.open-invitation-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(196,149,106,.88);
+  color:#fff;
+}
+.open-invitation-btn.opened{
+  opacity:.72;
+  background:rgba(196,149,106,.88);
+  color:#fff;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p5 .album-copy{ top:5.2% !important; }
+  #p6 .rsvp-copy{ top:6.5% !important; }
+  .open-invitation-btn{ margin-top:18px !important; }
+}
+
 </style>
 </head>
 <body>
@@ -1334,10 +1378,7 @@ html, body{
            <img class="layer l-bld6a"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6a.png" alt="">  
          
-         
-             <img class="layer l-bld5aa"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/5a.png" alt="">  
-         
+       
            <img class="layer l-bld8a"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/8a.png" alt="">  
          
@@ -1366,12 +1407,7 @@ html, body{
           <img class="layer l-bld8b"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/8b.png" alt=""> 
          
-         
 
-         
-          <img class="layer l-bld1binv"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9a.png" alt=""> 
-         
          
          
          
@@ -1447,6 +1483,8 @@ html, body{
           <img class="layer l-bridge"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge.png" alt=""> 
          
+          <img class="layer l-bridge2"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge.png" alt=""> 
    
            <img class="layer l-bridge3"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge3.png" alt=""> 
@@ -1480,6 +1518,7 @@ html, body{
         <div class="orn"><span></span><em>✦</em><span></span></div>
         <div class="sans families" style="color:var(--deep);opacity:0.6;">Together with their families</div>
         <div class="serif date" style="color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Ehden, Lebanon</div>
+        <button id="openInvitationBtn" class="open-invitation-btn" type="button">Open Invitation</button>
       </div>
     </div>
   </div>
@@ -1764,6 +1803,7 @@ html, body{
   /* MUSIC PLAY / STOP */
   const bgMusic = document.getElementById('bgMusic');
   const musicBtn = document.getElementById('musicBtn');
+  const openInvitationBtn = document.getElementById('openInvitationBtn');
 
   function setMusicButton(isPlaying){
     if (!musicBtn) return;
@@ -1772,14 +1812,29 @@ html, body{
     musicBtn.setAttribute('aria-label', isPlaying ? 'Stop music' : 'Play music');
   }
 
+  function startInvitationMusic(){
+    if (!bgMusic) return;
+    bgMusic.play()
+      .then(() => setMusicButton(true))
+      .catch(() => setMusicButton(false));
+  }
+
+  if (openInvitationBtn) {
+    openInvitationBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      startInvitationMusic();
+      openInvitationBtn.textContent = 'Invitation Opened';
+      openInvitationBtn.classList.add('opened');
+    });
+  }
+
   if (musicBtn && bgMusic) {
     musicBtn.addEventListener('click', function(e){
       e.preventDefault();
       e.stopPropagation();
       if (bgMusic.paused) {
-        bgMusic.play()
-          .then(() => setMusicButton(true))
-          .catch(() => setMusicButton(false));
+        startInvitationMusic();
       } else {
         bgMusic.pause();
         setMusicButton(false);
