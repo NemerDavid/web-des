@@ -431,7 +431,7 @@ top: 80%; left: 90%;
 #p1 .l-bld10  { left:332%; bottom:17%; width:58%; z-index:5; }
 
 
-#p1 .l-bld11  { left:372%; bottom:17%; width:58%; z-index:5; }
+#p1 .l-bld11  { left:612%; bottom:15%; width:68%; z-index:5; }
 #p1 .l-bld12  { left:412%; bottom:17%; width:58%; z-index:5; }
 #p1 .l-bld12a  { left:452%; bottom:17%; width:58%; z-index:5; }
 #p1 .l-bld13  { left:492%; bottom:17%; width:58%; z-index:5; }
@@ -536,107 +536,356 @@ top: 80%; left: 90%;
 }
 
 
-/* ═════════ USER UPDATE — FIXED 9:16 TEXT POSITIONS ═════════
-   All text is now positioned with stage units (cqw/cqh), not flex centering
-   or changing clamp sizes. Because #stage is always 9:16, these positions
-   stay identical on desktop preview and mobile. */
+
+/* ═════════ USER FIX — LOCKED TEXT POSITIONS + NAVY INFO + PHOTO ALBUM ═════════
+   All copy now uses absolute % positions inside the 9:16 stage.
+   No clamp/cqw text sizing for these blocks, so the text stays the same
+   relative size/position on PC preview and mobile. */
+.content {
+  padding: 0 !important;
+  display: block !important;
+  pointer-events: none;
+}
+.fixed-copy {
+  position: absolute;
+  z-index: 55;
+  width: 68%;
+  text-align: center;
+  pointer-events: auto;
+}
+.fixed-copy .script {
+  font-size: 46px !important;
+  line-height: .88 !important;
+}
+.fixed-copy .script.small-script {
+  font-size: 38px !important;
+}
+.fixed-copy .sans {
+  font-size: 11px !important;
+  line-height: 1.65 !important;
+  letter-spacing: .28em !important;
+}
+.fixed-copy .serif {
+  font-size: 18px !important;
+  line-height: 1.45 !important;
+}
+.fixed-copy .orn {
+  width: 78% !important;
+  margin: 12px auto !important;
+}
+
+/* Cover: locked, not responsive */
+#p1 .cover-copy {
+  left: 50%;
+  top: 13%;
+  transform: translateX(-50%);
+  width: 72%;
+}
+#p1 .cover-copy .name { font-size: 58px !important; }
+#p1 .cover-copy .ampersand { font-size: 66px !important; margin: -8px 0 -10px !important; }
+#p1 .cover-copy .families { font-size: 15px !important; margin-top: 16px !important; margin-bottom: 18px !important; }
+#p1 .cover-copy .date { font-size: 15px !important; }
+
+/* Story text aligned above buildings */
+#p2 .story-copy {
+  left: 14%;
+  top: 18%;
+  width: 70%;
+  text-align: center;
+}
+#p2 .story-copy p {
+  font-size: 21px !important;
+  line-height: 1.65 !important;
+  text-align: center !important;
+}
+
+/* Ceremony moved to the right and placed above church PNG 9.png */
+#p3 .ceremony-copy {
+  left: 17%;
+  top: 16%;
+  width: 66%;
+}
+#p3 .ceremony-copy .script {
+  font-size: 42px !important;
+}
+#p3 .ceremony-copy .date-line {
+  color: var(--rust) !important;
+  font-size: 18px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+/* Invitation/family text from Navy Blue */
+#p3 .family-copy {
+  left: -72%;
+  top: 16%;
+  width: 72%;
+}
+#p3 .family-copy .script {
+  font-size: 34px !important;
+}
+#p3 .family-copy .serif {
+  font-size: 17px !important;
+}
+#p3 .family-copy .sans {
+  font-size: 10px !important;
+}
+
+/* Reception moved to the right and placed above restaurant PNG 10.png */
+#p4 .reception-copy {
+  left: 16%;
+  top: 15%;
+  width: 68%;
+}
+#p4 .reception-copy .script {
+  font-size: 42px !important;
+}
+#p4 .reception-copy .script + .script {
+  margin-top: -4px !important;
+}
+#p4 .reception-copy p {
+  font-size: 18px !important;
+  line-height: 1.65 !important;
+}
+
+/* RSVP higher */
+#p6 .rsvp-copy {
+  left: 50%;
+  top: 17%;
+  transform: translateX(-50%);
+  width: 78%;
+}
+#p6 .rsvp-copy .script { font-size: 48px !important; }
+#p6 .rsvp-copy .sans { font-size: 8px !important; }
+#p6 .rsvp-card {
+  margin-top: 18px !important;
+  max-width: 310px !important;
+  padding: 26px 34px !important;
+}
+
+/* Photo album panel */
+#p5 .album-copy {
+  left: 50%;
+  top: 8%;
+  transform: translateX(-50%);
+  width: 84%;
+}
+#p5 .album-copy .script { font-size: 48px !important; }
+.venice-album {
+  position: relative;
+  width: 100%;
+  margin: 18px auto 0;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255,245,230,.72);
+  border: 1px solid rgba(196,149,106,.36);
+  box-shadow: 0 18px 45px rgba(80,40,10,.20);
+  touch-action: pan-y;
+  pointer-events: auto;
+}
+.venice-album-track {
+  display: flex;
+  transition: transform .55s ease;
+  will-change: transform;
+}
+.venice-album-slide {
+  min-width: 100%;
+}
+.venice-album-slide img {
+  width: 100%;
+  height: 430px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: none;
+}
+.venice-album-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 8;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(74,46,26,.22);
+  background: rgba(255,255,255,.88);
+  color: var(--deep);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.venice-album-arrow.prev { left: 10px; }
+.venice-album-arrow.next { right: 10px; }
+.venice-album-counter {
+  margin-top: 12px;
+  font-family: 'Jost', sans-serif;
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(74,46,26,.62);
+}
+
+@media (max-width: 600px) {
+  #stage { box-shadow: none; }
+}
+
+
+
+/* ═════════ FINAL CLEAN LAYOUT FIX — BIGGER LOCKED TEXT, NO OVERLAP ═════════ */
 .content{
+  position:absolute !important;
+  inset:0 !important;
   display:block !important;
   padding:0 !important;
-  text-align:center;
+  z-index:50 !important;
+  pointer-events:none !important;
 }
-
 .fixed-copy{
-  position:absolute;
-  transform:translate(-50%, -50%);
-  width:78cqw;
-  z-index:60;
-  pointer-events:auto;
-}
-
-.fixed-copy .script,
-.fixed-copy .serif,
-.fixed-copy .sans,
-.fixed-copy .badge,
-.fixed-copy .orn{
-  pointer-events:auto;
-}
-
-.fixed-copy .orn{
-  width:100%;
-  max-width:180px;
-  margin:8px auto 10px;
-}
-
-.cover-copy{ left:50cqw; top:25cqh; width:82cqw; }
-.story-copy{ left:29cqw; top:23cqh; width:54cqw; text-align:center; }
-.family-copy{ left:21cqw; top:22cqh; width:42cqw; }
-.ceremony-copy{ left:66cqw; top:22cqh; width:46cqw; }
-.reception-copy{ left:56cqw; top:22cqh; width:48cqw; }
-.details-copy{ left:68cqw; top:22cqh; width:54cqw; text-align:right; }
-.rsvp-copy{ left:50cqw; top:36cqh; width:88cqw; }
-.farewell-copy{ left:50cqw; top:34cqh; width:84cqw; }
-
-.title-script-xl{ font-size:13cqw !important; }
-.title-script-lg{ font-size:10.6cqw !important; }
-.title-script-md{ font-size:8.7cqw !important; }
-.amp-fixed{ font-size:13cqw !important; opacity:.18; color:var(--gold); margin:-2cqh 0 -1cqh; }
-.fixed-small{ font-size:2.15cqw !important; }
-.fixed-body{ font-size:3.3cqw !important; line-height:1.55; }
-.fixed-date{ font-size:3.1cqw !important; }
-.fixed-section{ font-size:2.15cqw !important; line-height:1.6; }
-.fixed-rust{ font-size:3.4cqw !important; line-height:1.35; }
-
-.cover-copy .badge{
-  display:inline-block;
-  font-size:1.75cqw !important;
-  padding:1.4cqw 5cqw;
-  margin-bottom:2.8cqh;
-}
-
-.cover-copy .family-line{
-  font-size:3.5cqw !important;
-  letter-spacing:.38em;
-  margin-top:2cqh;
-  margin-bottom:2.4cqh;
-}
-
-.story-copy p{
+  position:absolute !important;
+  z-index:60 !important;
   text-align:center !important;
+  pointer-events:auto !important;
   max-width:none !important;
 }
-
-.rsvp-copy .rsvp-card{
-  width:78cqw;
-  max-width:none;
-  margin:2.2cqh auto 0;
-  padding:4.4cqw 6.2cqw;
+.fixed-copy .script{
+  font-size:54px !important;
+  line-height:.92 !important;
+  white-space:normal !important;
+}
+.fixed-copy .script.small-script{
+  font-size:38px !important;
+  line-height:1 !important;
+}
+.fixed-copy .sans{
+  font-size:12px !important;
+  line-height:1.65 !important;
+  letter-spacing:.28em !important;
+}
+.fixed-copy .serif{
+  font-size:22px !important;
+  line-height:1.45 !important;
+}
+.fixed-copy .orn{
+  width:78% !important;
+  margin:14px auto !important;
 }
 
-.rsvp-copy .rsvp-card input,
-.rsvp-copy .rsvp-card select{
-  font-size:2.35cqw;
-  padding:1.8cqw 0;
-  margin:1.2cqw 0;
+/* Keep every text block safely inside its own 9:16 panel */
+#p1 .cover-copy{
+  left:50% !important;
+  top:12% !important;
+  transform:translateX(-50%) !important;
+  width:76% !important;
+}
+#p1 .cover-copy .name{font-size:62px !important;}
+#p1 .cover-copy .ampersand{font-size:70px !important;margin:-8px 0 -10px !important;}
+#p1 .cover-copy .families{font-size:16px !important;margin-top:18px !important;margin-bottom:18px !important;}
+#p1 .cover-copy .date{font-size:16px !important;}
+
+#p2 .story-copy{
+  left:50% !important;
+  top:15% !important;
+  transform:translateX(-50%) !important;
+  width:78% !important;
+}
+#p2 .story-copy p{
+  font-size:24px !important;
+  line-height:1.75 !important;
 }
 
-.rsvp-copy .rsvp-btn{
-  font-size:2cqw;
-  padding:2.8cqw;
-  margin-top:3.2cqw;
+#p3 .ceremony-copy{
+  left:50% !important;
+  top:14% !important;
+  transform:translateX(-50%) !important;
+  width:78% !important;
+}
+#p3 .ceremony-copy .script{font-size:54px !important;}
+#p3 .ceremony-copy .date-line{
+  color:var(--rust) !important;
+  font-size:22px !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+#p3 .family-copy{
+  left:50% !important;
+  top:39% !important;
+  transform:translateX(-50%) !important;
+  width:78% !important;
+}
+#p3 .family-copy .script{font-size:36px !important;}
+#p3 .family-copy .serif{font-size:20px !important;}
+#p3 .family-copy .sans{font-size:11px !important;}
+
+#p4 .reception-copy{
+  left:50% !important;
+  top:17% !important;
+  transform:translateX(-50%) !important;
+  width:78% !important;
+}
+#p4 .reception-copy .script{font-size:52px !important;}
+#p4 .reception-copy .script.small-script{font-size:46px !important;margin-top:0 !important;}
+#p4 .reception-copy p{font-size:22px !important;line-height:1.7 !important;}
+#p4 .reception-copy .sans{font-size:12px !important;}
+
+#p5 .album-copy{
+  left:50% !important;
+  top:9% !important;
+  transform:translateX(-50%) !important;
+  width:84% !important;
+}
+#p5 .album-copy .script{font-size:54px !important;}
+#p5 .album-copy .sans{font-size:12px !important;}
+.venice-album{margin-top:18px !important;}
+.venice-album-slide img{height:410px !important;}
+
+#p6 .rsvp-copy{
+  left:50% !important;
+  top:11% !important;
+  transform:translateX(-50%) !important;
+  width:82% !important;
+}
+#p6 .rsvp-copy .script{font-size:56px !important;}
+#p6 .rsvp-copy .sans{font-size:9px !important;}
+#p6 .rsvp-card{
+  margin-top:18px !important;
+  max-width:320px !important;
+  padding:24px 34px !important;
+}
+#p6 .rsvp-card input,
+#p6 .rsvp-card select{
+  font-size:12px !important;
+  padding:10px 0 !important;
 }
 
+#p7 .closing-copy{
+  left:50% !important;
+  top:16% !important;
+  transform:translateX(-50%) !important;
+  width:84% !important;
+}
+#p7 .closing-copy .script{font-size:58px !important;}
+#p7 .closing-copy .serif{font-size:20px !important;}
+#p7 .closing-copy .sans{font-size:10px !important;}
+
+/* prevent old inline flow/padding from pushing text off-screen */
+#p2 .content,
+#p3 .content,
+#p4 .content,
+#p5 .content,
+#p6 .content,
+#p7 .content{
+  align-items:initial !important;
+  justify-content:initial !important;
+  padding:0 !important;
+}
+
+/* Keep section labels small and away from main text */
 .section-tag{
-  font-size:1.55cqw !important;
-  top:3cqh !important;
-  right:4cqw !important;
+  top:18px !important;
+  right:18px !important;
+  font-size:7px !important;
+  opacity:.65 !important;
 }
-
-/* Slightly tighter on very small phones while keeping positions identical */
-@media (max-width:600px){
-  #stage{ width:100vw; height:100vh; box-shadow:none; }
-}
-
 
 </style>
 </head>
@@ -784,27 +1033,17 @@ top: 80%; left: 90%;
          
          
          
+               
+         <img class="layer l-bld11"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/11.png" alt="">      
          
          
          
          
          
+
          
-         
-          <img class="layer l-bld11"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/1.png" alt="">
-  
-         
-         
-          <img class="layer l-bld12"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/4.png" alt="">
-         
-             <img class="layer l-bld12a"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/12.png" alt="">
-         
-           <img class="layer l-bld13"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/2.png" alt="">
-         
+
          
          
          
@@ -832,12 +1071,12 @@ top: 80%; left: 90%;
     <div class="content">
       <div class="fixed-copy cover-copy">
         <div class="badge">Wedding Invitation</div>
-        <div class="script title-script-xl">Thomas</div>
-        <div class="script amp-fixed">﹠</div>
-        <div class="script title-script-xl">Sarah</div>
+        <div class="script name">Thomas</div>
+        <div class="script ampersand" style="display:block;opacity:0.18;color:var(--gold);">﹠</div>
+        <div class="script name">Sarah</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans family-line" style="color:var(--deep);opacity:0.6;">Together with their families</div>
-        <div class="serif fixed-date" style="color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Venice, Italy</div>
+        <div class="sans families" style="color:var(--deep);opacity:0.6;">Together with their families</div>
+        <div class="serif date" style="color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Ehden, Lebanon</div>
       </div>
     </div>
   </div>
@@ -857,13 +1096,13 @@ top: 80%; left: 90%;
 
     <div class="content">
       <div class="fixed-copy story-copy">
-        <div class="script title-script-md" style="color:var(--deep);">Our Story</div>
+        <div class="script" style="color:var(--deep);">Our Story</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <p class="serif fixed-body" style="color:var(--deep);font-style:italic;opacity:0.8;">
+        <p class="serif" style="color:var(--deep);font-style:italic;opacity:0.86;">
           Two souls who found each other<br>
           by the waters of La Serenissima,<br>
           and chose to walk this path<br>
-          together - forever.
+          together — forever.
         </p>
       </div>
     </div>
@@ -876,48 +1115,28 @@ top: 80%; left: 90%;
   <div class="panel" id="p3" style="left:200cqw;">
     <div class="section-tag">03 — Ceremony</div>
     <div class="water-shimmer"></div>
+
     <div class="content">
-      <div class="fixed-copy family-copy">
-        <div class="script title-script-md" style="color:var(--deep);">Together</div>
+      <div class="fixed-copy ceremony-copy">
+        <div class="script" style="color:var(--deep);">The Ceremony</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans fixed-section" style="color:var(--deep);opacity:0.65;margin-bottom:1.2cqh;">Robert &amp; Tina Martin</div>
-        <div class="sans fixed-section" style="color:var(--deep);opacity:0.65;margin-bottom:1.2cqh;">Michael &amp; Anne Clarke</div>
-        <div class="serif fixed-rust" style="color:var(--rust);font-weight:300;">
+        <div class="sans" style="color:var(--deep);opacity:0.66;">St. Mourra Church · Ehden</div>
+        <div class="sans" style="color:var(--deep);opacity:0.66;margin-top:8px;">6 : 00 PM</div>
+        <div class="serif date-line" style="font-weight:300;margin-top:10px;">Thursday, August 14, 2027</div>
+      </div>
+
+      <div class="fixed-copy family-copy">
+        <div class="script small-script" style="color:var(--deep);">Together with their families</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans" style="color:var(--deep);opacity:.66;">Robert &amp; Tina Martin</div>
+        <div class="sans" style="color:var(--deep);opacity:.66;">Michael &amp; Anne Clarke</div>
+        <div class="serif" style="color:var(--rust);font-weight:300;margin-top:10px;">
           Request the honor of your presence<br>
           at the wedding of their son and daughter
         </div>
       </div>
-
-      <div class="fixed-copy ceremony-copy">
-        <div class="script title-script-md" style="color:var(--deep);">The Ceremony</div>
-        <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans fixed-section" style="color:var(--deep);opacity:0.6;margin-bottom:1.2cqh;">Basilica di Santa Maria · Venice</div>
-        <div class="sans fixed-section" style="color:var(--deep);opacity:0.6;margin-bottom:1.2cqh;">4 : 00 PM</div>
-        <div class="serif fixed-rust" style="color:var(--rust);font-weight:300;">Thursday, August 14, 2027</div>
-      </div>
     </div>
-
-    
-    
-    
-    
-    
   </div>
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   <!-- ══════════════════════════════════
        PANEL 4 — Reception
@@ -927,19 +1146,19 @@ top: 80%; left: 90%;
     <div class="section-tag">04 — Reception</div>
     <div class="water-shimmer"></div>
 
-
     <img class="layer l-gondola"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
 
     <div class="content">
       <div class="fixed-copy reception-copy">
-        <div class="script title-script-md" style="color:var(--deep);">Dinner &amp; Celebration</div>
-        <div class="script title-script-md" style="color:var(--deep);margin-top:-1.1cqh;">The Reception</div>
+        <div class="script" style="color:var(--deep);">Dinner &amp;</div>
+        <div class="script" style="color:var(--deep);">Celebration</div>
+        <div class="script small-script" style="color:var(--deep);margin-top:2px;"></div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <p class="serif fixed-body" style="letter-spacing:0.08em;color:var(--deep);line-height:1.65;font-style:italic;opacity:0.85;">
-          Palazzo Veneto<br>
-          Grand Canal Terrace<br>
-          <span class="sans fixed-section" style="font-style:normal;">7:00 PM — Late</span>
+        <p class="serif" style="letter-spacing:0.08em;color:var(--deep);font-style:italic;opacity:0.85;">
+          Twinz Hotel<br>
+          Ehden, Lebanon<br>
+          <span class="sans" style="font-style:normal;font-size:10px;">7:30 PM — Late</span>
         </p>
       </div>
     </div>
@@ -950,29 +1169,28 @@ top: 80%; left: 90%;
        Buildings: 13.png (left), 14.png (right)
   ══════════════════════════════════ -->
   <div class="panel" id="p5" style="left:400cqw;">
-    <div class="section-tag">05 — Details</div>
+    <div class="section-tag">05 — Photo Album</div>
     <div class="water-shimmer"></div>
-
 
     <img class="layer l-clouds"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
-      <div class="fixed-copy details-copy">
-        <div class="script title-script-md" style="color:var(--deep);">Good to Know</div>
-        <div class="orn" style="margin-left:auto;margin-right:0;"><em>✦</em><span></span></div>
-        <div style="text-align:right;margin:1.5cqh 0;">
-          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Dress Code</div>
-          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Garden Black-Tie</div>
+      <div class="fixed-copy album-copy">
+        <div class="script" style="color:var(--deep);">Photo Album</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans" style="color:var(--deep);opacity:.58;">Swipe to explore</div>
+
+        <div class="venice-album" id="veniceAlbum">
+          <div class="venice-album-track" id="veniceAlbumTrack">
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 1"></div>
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 2"></div>
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 3"></div>
+          </div>
+          <button class="venice-album-arrow prev" type="button" aria-label="Previous photo" onclick="moveVeniceAlbum(-1)">‹</button>
+          <button class="venice-album-arrow next" type="button" aria-label="Next photo" onclick="moveVeniceAlbum(1)">›</button>
         </div>
-        <div style="text-align:right;margin:1.5cqh 0;">
-          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Accommodation</div>
-          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Hotel Danieli, Venice</div>
-        </div>
-        <div style="text-align:right;margin:1.5cqh 0;">
-          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Getting There</div>
-          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Water taxi from Marco Polo</div>
-        </div>
+        <div class="venice-album-counter" id="veniceAlbumCounter">1 / 3</div>
       </div>
     </div>
   </div>
@@ -985,17 +1203,16 @@ top: 80%; left: 90%;
     <div class="section-tag">06 — RSVP</div>
     <div class="water-shimmer"></div>
 
-
     <div class="content">
       <div class="fixed-copy rsvp-copy">
-        <div class="script title-script-lg" style="color:var(--deep);">RSVP</div>
-        <div class="orn" style="margin:1cqh auto .6cqh;"><span></span><em>✦</em><span></span></div>
-        <div class="sans fixed-small" style="color:var(--deep);opacity:0.5;margin-bottom:1cqh;">Kindly reply before June 1, 2027</div>
+        <div class="script" style="color:var(--deep);">RSVP</div>
+        <div class="orn" style="margin:4px auto 0;"><span></span><em>✦</em><span></span></div>
+        <div class="sans" style="color:var(--deep);opacity:0.5;margin-bottom:4px;">Kindly reply before August 1, 2027</div>
         <div class="rsvp-card">
           <input type="text" placeholder="Your Full Name"/>
           <select><option value="">Attending?</option><option>Joyfully Accepts</option><option>Regretfully Declines</option></select>
           <input type="number" placeholder="Number of Guests" min="1" max="4"/>
-          <input type="text" placeholder="Dietary Requirements"/>
+          <input type="text" placeholder="Leave a wish"/>
           <button class="rsvp-btn">Send with Love</button>
         </div>
       </div>
@@ -1012,22 +1229,23 @@ top: 80%; left: 90%;
 
    
 
-    <img class="layer l-gondola"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
+
     <img class="layer l-clouds"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
-      <div class="fixed-copy farewell-copy">
-        <div class="sans fixed-small" style="color:var(--deep);opacity:0.45;margin-bottom:2cqh;">We cannot wait to celebrate with you</div>
-        <div class="script title-script-xl" style="color:var(--deep);">Thomas &amp; Sarah</div>
-        <div style="font-size:5cqw;margin:1.8cqh 0;color:var(--rust);">♥</div>
-        <div class="serif fixed-date" style="color:var(--deep);letter-spacing:0.14em;font-style:italic;opacity:0.75;">August 14, 2027 · Venice, Italy</div>
-        <div class="orn" style="margin-top:2cqh;"><span></span><em>✦</em><span></span></div>
-        <div class="sans fixed-small" style="color:var(--deep);opacity:0.3;margin-top:1.5cqh;">Designed with love · Cardia Studios</div>
+      <div class="fixed-copy closing-copy">
+        <div class="sans" style="color:var(--deep);opacity:0.52;margin-bottom:14px;">We cannot wait to celebrate with you</div>
+        <div class="script" style="color:var(--deep);">Thomas &amp; Sarah</div>
+        <div style="font-size:30px;margin:14px 0;color:var(--rust);">♥</div>
+        <div class="serif" style="color:var(--deep);letter-spacing:0.12em;font-style:italic;opacity:0.78;">August 14, 2027 · Ehden, Lebanon</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans" style="color:var(--deep);opacity:0.42;margin-top:12px;">Designed with love · Cardia Studios</div>
       </div>
     </div>
-  </div><!-- /panorama -->
+  </div>
+
+</div><!-- /panorama -->
 </div><!-- /stage -->
 
 <script>
@@ -1086,6 +1304,46 @@ top: 80%; left: 90%;
     if (e.key === 'ArrowRight') { target = clamp(target + step, 0, maxOff()); hideHint(); }
     if (e.key === 'ArrowLeft')  { target = clamp(target - step, 0, maxOff()); hideHint(); }
   });
+
+
+  /* PHOTO ALBUM */
+  let veniceAlbumIndex = 0;
+  const veniceAlbumTrack = document.getElementById('veniceAlbumTrack');
+  const veniceAlbumCounter = document.getElementById('veniceAlbumCounter');
+  const veniceAlbumTotal = veniceAlbumTrack ? veniceAlbumTrack.children.length : 0;
+
+  function updateVeniceAlbum() {
+    if (!veniceAlbumTrack) return;
+    veniceAlbumTrack.style.transform = `translateX(${-veniceAlbumIndex * 100}%)`;
+    if (veniceAlbumCounter) veniceAlbumCounter.textContent = `${veniceAlbumIndex + 1} / ${veniceAlbumTotal}`;
+  }
+
+  function moveVeniceAlbum(dir) {
+    if (!veniceAlbumTotal) return;
+    veniceAlbumIndex = (veniceAlbumIndex + dir + veniceAlbumTotal) % veniceAlbumTotal;
+    updateVeniceAlbum();
+  }
+
+  const veniceAlbum = document.getElementById('veniceAlbum');
+  if (veniceAlbum) {
+    veniceAlbum.addEventListener('wheel', e => e.stopPropagation(), { passive: true });
+    veniceAlbum.addEventListener('mousedown', e => e.stopPropagation());
+    veniceAlbum.addEventListener('mousemove', e => e.stopPropagation());
+    veniceAlbum.addEventListener('mouseup', e => e.stopPropagation());
+    let ax = null;
+    veniceAlbum.addEventListener('touchstart', e => {
+      ax = e.touches[0].clientX;
+      e.stopPropagation();
+    }, { passive: true });
+    veniceAlbum.addEventListener('touchmove', e => e.stopPropagation(), { passive: true });
+    veniceAlbum.addEventListener('touchend', e => {
+      if (ax === null) return;
+      const bx = e.changedTouches[0].clientX;
+      if (Math.abs(ax - bx) > 40) moveVeniceAlbum(ax > bx ? 1 : -1);
+      ax = null;
+      e.stopPropagation();
+    }, { passive: true });
+  }
 
   window.addEventListener('resize', () => {
     target = clamp(target, 0, maxOff());
