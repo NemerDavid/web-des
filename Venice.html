@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Thomas & Sarah — Venice Wedding</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
@@ -400,6 +400,77 @@ top: 80%; left: 90%;
   animation: floatBalloon 6s ease-in-out infinite;
   transform-origin: center top;
 }
+
+
+
+
+
+  .l-balloon5 {
+  left: 175%;
+  top: 21%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+  .l-balloon6 {
+  left: 275%;
+  top: 35%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+  .l-balloon7 {
+  left: 375%;
+  top: 15%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+
+  .l-balloon8 {
+  left: 485%;
+  top: 35%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 5;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+  .l-balloon9 {
+  left: 575%;
+  top: 15%;
+  width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+
+
+
+
+
+
 
 
 
@@ -979,11 +1050,119 @@ top: 80%; left: 90%;
   #p6 .rsvp-copy{ width:82% !important; }
 }
 
+/* ═════════ FINAL USER UPDATE — TRUE MOBILE FULL SCREEN + MUSIC + PERMANENT DRAG HINT ═════════ */
+
+/* No outside gaps on phones: the stage fills the browser viewport */
+html, body{
+  margin:0 !important;
+  padding:0 !important;
+  width:100% !important;
+  height:100% !important;
+  min-height:100% !important;
+  overflow:hidden !important;
+  background:#d4b896 !important;
+  overscroll-behavior:none !important;
+}
+
+/* Permanent swipe/drag instruction */
+#hint{
+  opacity:1 !important;
+  animation:none !important;
+  bottom:14px !important;
+  left:50% !important;
+  transform:translateX(-50%) !important;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  background:rgba(255,245,230,.56) !important;
+  border:1px solid rgba(196,149,106,.32) !important;
+  backdrop-filter:blur(5px) !important;
+  box-shadow:0 10px 25px rgba(80,40,10,.14) !important;
+}
+#hint.gone{
+  opacity:1 !important;
+}
+#hint span{
+  color:rgba(74,46,26,.62) !important;
+  font-size:8px !important;
+  white-space:nowrap !important;
+}
+#hint .arr{
+  color:rgba(74,46,26,.66) !important;
+}
+
+/* Music play / stop button */
+#musicBtn{
+  position:absolute;
+  right:16px;
+  bottom:62px;
+  z-index:450;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid rgba(196,149,106,.45);
+  background:rgba(255,245,230,.72);
+  color:var(--deep);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'Jost', sans-serif;
+  font-size:18px;
+  letter-spacing:0;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(80,40,10,.22);
+  backdrop-filter:blur(6px);
+}
+#musicBtn.music-on{
+  background:rgba(196,149,106,.88);
+  color:#fff;
+}
+
+/* Mobile: do not preserve the desktop preview frame — fill the actual phone screen */
+@media (max-width:600px), (pointer:coarse){
+  body{
+    display:block !important;
+    align-items:initial !important;
+    justify-content:initial !important;
+  }
+
+  #stage{
+    position:fixed !important;
+    inset:0 !important;
+    width:100vw !important;
+    height:100vh !important;
+    height:100svh !important;
+    height:100dvh !important;
+    max-width:none !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+    box-shadow:none !important;
+    border:0 !important;
+    overflow:hidden !important;
+  }
+
+  #panorama{
+    height:100% !important;
+  }
+
+  #hint{
+    bottom:calc(12px + env(safe-area-inset-bottom)) !important;
+  }
+
+  #musicBtn{
+    right:calc(14px + env(safe-area-inset-right)) !important;
+    bottom:calc(58px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
 </style>
 </head>
 <body>
 
 <div id="stage">
+<audio id="bgMusic" preload="auto" loop>
+  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" type="button" aria-label="Play or stop music">♪</button>
 <img id="travelGondola"
      src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png"
      alt="">
@@ -1084,6 +1263,57 @@ top: 80%; left: 90%;
 
  <img class="layer l-balloon4"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="">
+
+
+
+
+
+ <img class="layer l-balloon5"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+
+
+    
+    
+    <img class="layer l-balloon6" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+ 
+
+ <img class="layer l-balloon4"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="">
+
+
+
+
+
+
+
+ <img class="layer l-balloon7"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+
+
+    
+    
+    <img class="layer l-balloon8" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+ 
+
+ <img class="layer l-balloon9"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     <img class="layer l-bld-left"
@@ -1391,9 +1621,9 @@ top: 80%; left: 90%;
 
   let hintGone = false;
   function hideHint() {
-    if (hintGone) return;
-    hintGone = true;
-    hint.classList.add('gone');
+    /* Permanent instruction: keep the drag hint visible. */
+    hintGone = false;
+    if (hint) hint.classList.remove('gone');
   }
 
   // WHEEL
@@ -1460,6 +1690,32 @@ top: 80%; left: 90%;
       ax = null;
       e.stopPropagation();
     }, { passive: true });
+  }
+
+  /* MUSIC PLAY / STOP */
+  const bgMusic = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+
+  function setMusicButton(isPlaying){
+    if (!musicBtn) return;
+    musicBtn.textContent = isPlaying ? 'Ⅱ' : '♪';
+    musicBtn.classList.toggle('music-on', isPlaying);
+    musicBtn.setAttribute('aria-label', isPlaying ? 'Stop music' : 'Play music');
+  }
+
+  if (musicBtn && bgMusic) {
+    musicBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if (bgMusic.paused) {
+        bgMusic.play()
+          .then(() => setMusicButton(true))
+          .catch(() => setMusicButton(false));
+      } else {
+        bgMusic.pause();
+        setMusicButton(false);
+      }
+    });
   }
 
   window.addEventListener('resize', () => {
