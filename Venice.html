@@ -536,9 +536,107 @@ top: 80%; left: 90%;
 }
 
 
-@media (max-width: 600px) {
-  #stage { box-shadow: none; }
+/* ═════════ USER UPDATE — FIXED 9:16 TEXT POSITIONS ═════════
+   All text is now positioned with stage units (cqw/cqh), not flex centering
+   or changing clamp sizes. Because #stage is always 9:16, these positions
+   stay identical on desktop preview and mobile. */
+.content{
+  display:block !important;
+  padding:0 !important;
+  text-align:center;
 }
+
+.fixed-copy{
+  position:absolute;
+  transform:translate(-50%, -50%);
+  width:78cqw;
+  z-index:60;
+  pointer-events:auto;
+}
+
+.fixed-copy .script,
+.fixed-copy .serif,
+.fixed-copy .sans,
+.fixed-copy .badge,
+.fixed-copy .orn{
+  pointer-events:auto;
+}
+
+.fixed-copy .orn{
+  width:100%;
+  max-width:180px;
+  margin:8px auto 10px;
+}
+
+.cover-copy{ left:50cqw; top:25cqh; width:82cqw; }
+.story-copy{ left:29cqw; top:23cqh; width:54cqw; text-align:center; }
+.family-copy{ left:21cqw; top:22cqh; width:42cqw; }
+.ceremony-copy{ left:66cqw; top:22cqh; width:46cqw; }
+.reception-copy{ left:56cqw; top:22cqh; width:48cqw; }
+.details-copy{ left:68cqw; top:22cqh; width:54cqw; text-align:right; }
+.rsvp-copy{ left:50cqw; top:36cqh; width:88cqw; }
+.farewell-copy{ left:50cqw; top:34cqh; width:84cqw; }
+
+.title-script-xl{ font-size:13cqw !important; }
+.title-script-lg{ font-size:10.6cqw !important; }
+.title-script-md{ font-size:8.7cqw !important; }
+.amp-fixed{ font-size:13cqw !important; opacity:.18; color:var(--gold); margin:-2cqh 0 -1cqh; }
+.fixed-small{ font-size:2.15cqw !important; }
+.fixed-body{ font-size:3.3cqw !important; line-height:1.55; }
+.fixed-date{ font-size:3.1cqw !important; }
+.fixed-section{ font-size:2.15cqw !important; line-height:1.6; }
+.fixed-rust{ font-size:3.4cqw !important; line-height:1.35; }
+
+.cover-copy .badge{
+  display:inline-block;
+  font-size:1.75cqw !important;
+  padding:1.4cqw 5cqw;
+  margin-bottom:2.8cqh;
+}
+
+.cover-copy .family-line{
+  font-size:3.5cqw !important;
+  letter-spacing:.38em;
+  margin-top:2cqh;
+  margin-bottom:2.4cqh;
+}
+
+.story-copy p{
+  text-align:center !important;
+  max-width:none !important;
+}
+
+.rsvp-copy .rsvp-card{
+  width:78cqw;
+  max-width:none;
+  margin:2.2cqh auto 0;
+  padding:4.4cqw 6.2cqw;
+}
+
+.rsvp-copy .rsvp-card input,
+.rsvp-copy .rsvp-card select{
+  font-size:2.35cqw;
+  padding:1.8cqw 0;
+  margin:1.2cqw 0;
+}
+
+.rsvp-copy .rsvp-btn{
+  font-size:2cqw;
+  padding:2.8cqw;
+  margin-top:3.2cqw;
+}
+
+.section-tag{
+  font-size:1.55cqw !important;
+  top:3cqh !important;
+  right:4cqw !important;
+}
+
+/* Slightly tighter on very small phones while keeping positions identical */
+@media (max-width:600px){
+  #stage{ width:100vw; height:100vh; box-shadow:none; }
+}
+
 
 </style>
 </head>
@@ -672,12 +770,12 @@ top: 80%; left: 90%;
          <img class="layer l-bld7"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/7.png" alt="">
     <img class="layer l-bld8"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/8.png" alt="">         
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9.png" alt="">         
          
          
          
           <img class="layer l-bld9"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9.png" alt="">   
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/8.png" alt="">   
          
          
          
@@ -732,13 +830,15 @@ top: 80%; left: 90%;
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
-      <div class="badge">Wedding Invitation</div>
-      <div class="script" style="font-size:clamp(62px,8cqw,90px);">Thomas</div>
-      <div class="script" style="font-size:clamp(90px,12cqw,140px);display:block;opacity:0.18;color:var(--gold);margin:-18px 0;">﹠</div>
-      <div class="script" style="font-size:clamp(52px,8cqw,90px);margin-top:-12px;">Sarah</div>
-      <div class="orn"><span></span><em>✦</em><span></span></div>
-      <div class="sans" style="font-size:18px;color:var(--deep);opacity:0.6;margin-bottom:24px;">Together with their families</div>
-      <div class="serif" style="font-size:clamp(14px,1.8cqw,19px);color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;margin-bottom:424px;">August 14, 2027 · Venice, Italy</div>
+      <div class="fixed-copy cover-copy">
+        <div class="badge">Wedding Invitation</div>
+        <div class="script title-script-xl">Thomas</div>
+        <div class="script amp-fixed">﹠</div>
+        <div class="script title-script-xl">Sarah</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans family-line" style="color:var(--deep);opacity:0.6;">Together with their families</div>
+        <div class="serif fixed-date" style="color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Venice, Italy</div>
+      </div>
     </div>
   </div>
 
@@ -755,16 +855,17 @@ top: 80%; left: 90%;
     <img class="layer l-clouds"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
-    <div class="content" style="align-items:flex-start;padding-left:8cqw;">
-      <div class="script" style="font-size:clamp(36px,6cqw,70px);color:var(--deep);margin-left: 80px;">Our Story</div>
-      <div class="orn" style= "margin-left: -80px;" ><span></span><em>✦</em><span></span></div>
-      <p class="serif" style="font-size:25px;line-height:2.1;color:var(--deep);max-width:300px;font-style:italic;opacity:0.8;text-align:left;margin-bottom: 350px ;margin-left: 10px">
-        Two souls who found each other<br>
-        by the waters of La Serenissima,<br>
-        and chose to walk this path<br>
-        together - forever.
-      </p>
-  
+    <div class="content">
+      <div class="fixed-copy story-copy">
+        <div class="script title-script-md" style="color:var(--deep);">Our Story</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <p class="serif fixed-body" style="color:var(--deep);font-style:italic;opacity:0.8;">
+          Two souls who found each other<br>
+          by the waters of La Serenissima,<br>
+          and chose to walk this path<br>
+          together - forever.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -775,17 +876,48 @@ top: 80%; left: 90%;
   <div class="panel" id="p3" style="left:200cqw;">
     <div class="section-tag">03 — Ceremony</div>
     <div class="water-shimmer"></div>
+    <div class="content">
+      <div class="fixed-copy family-copy">
+        <div class="script title-script-md" style="color:var(--deep);">Together</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans fixed-section" style="color:var(--deep);opacity:0.65;margin-bottom:1.2cqh;">Robert &amp; Tina Martin</div>
+        <div class="sans fixed-section" style="color:var(--deep);opacity:0.65;margin-bottom:1.2cqh;">Michael &amp; Anne Clarke</div>
+        <div class="serif fixed-rust" style="color:var(--rust);font-weight:300;">
+          Request the honor of your presence<br>
+          at the wedding of their son and daughter
+        </div>
+      </div>
 
-
-
-    <div class="content" style="justify-content:flex-end;padding-bottom:8cqh;">
-      <div class="script" style="font-size:clamp(32px,5cqw,62px);color:var(--deep);">The Ceremony</div>
-      <div class="orn"><span></span><em>✦</em><span></span></div>
-      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.6;">Basilica di Santa Maria · Venice</div>
-      <div class="serif" style="font-size:clamp(42px,7cqw,80px);color:var(--rust);font-weight:300;">4 : 00 PM</div>
-      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.55;">Thursday, August 14, 2027</div>
+      <div class="fixed-copy ceremony-copy">
+        <div class="script title-script-md" style="color:var(--deep);">The Ceremony</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="sans fixed-section" style="color:var(--deep);opacity:0.6;margin-bottom:1.2cqh;">Basilica di Santa Maria · Venice</div>
+        <div class="sans fixed-section" style="color:var(--deep);opacity:0.6;margin-bottom:1.2cqh;">4 : 00 PM</div>
+        <div class="serif fixed-rust" style="color:var(--rust);font-weight:300;">Thursday, August 14, 2027</div>
+      </div>
     </div>
+
+    
+    
+    
+    
+    
   </div>
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   <!-- ══════════════════════════════════
        PANEL 4 — Reception
@@ -800,14 +932,16 @@ top: 80%; left: 90%;
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
 
     <div class="content">
-      <div class="badge">Dinner &amp; Celebration</div>
-      <div class="script" style="font-size:clamp(30px,5cqw,58px);color:var(--deep);">The Reception</div>
-      <div class="orn"><span></span><em>✦</em><span></span></div>
-      <p class="serif" style="font-size:14px;letter-spacing:0.08em;color:var(--deep);max-width:280px;line-height:2.2;font-style:italic;opacity:0.85;">
-        Palazzo Veneto<br>
-        Grand Canal Terrace<br>
-        <span class="sans" style="font-style:normal;font-size:9px;">7:00 PM — Late</span>
-      </p>
+      <div class="fixed-copy reception-copy">
+        <div class="script title-script-md" style="color:var(--deep);">Dinner &amp; Celebration</div>
+        <div class="script title-script-md" style="color:var(--deep);margin-top:-1.1cqh;">The Reception</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <p class="serif fixed-body" style="letter-spacing:0.08em;color:var(--deep);line-height:1.65;font-style:italic;opacity:0.85;">
+          Palazzo Veneto<br>
+          Grand Canal Terrace<br>
+          <span class="sans fixed-section" style="font-style:normal;">7:00 PM — Late</span>
+        </p>
+      </div>
     </div>
   </div>
 
@@ -823,20 +957,22 @@ top: 80%; left: 90%;
     <img class="layer l-clouds"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
-    <div class="content" style="align-items:flex-end;padding-right:8cqw;">
-      <div class="script" style="font-size:clamp(30px,5cqw,58px);color:var(--deep);text-align:right;">Good to Know</div>
-      <div class="orn" style="justify-content:flex-end;"><em>✦</em><span style="max-width:50px;"></span></div>
-      <div style="text-align:right;margin:9px 0;">
-        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Dress Code</div>
-        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Garden Black-Tie</div>
-      </div>
-      <div style="text-align:right;margin:9px 0;">
-        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Accommodation</div>
-        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Hotel Danieli, Venice</div>
-      </div>
-      <div style="text-align:right;margin:9px 0;">
-        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Getting There</div>
-        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Water taxi from Marco Polo</div>
+    <div class="content">
+      <div class="fixed-copy details-copy">
+        <div class="script title-script-md" style="color:var(--deep);">Good to Know</div>
+        <div class="orn" style="margin-left:auto;margin-right:0;"><em>✦</em><span></span></div>
+        <div style="text-align:right;margin:1.5cqh 0;">
+          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Dress Code</div>
+          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Garden Black-Tie</div>
+        </div>
+        <div style="text-align:right;margin:1.5cqh 0;">
+          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Accommodation</div>
+          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Hotel Danieli, Venice</div>
+        </div>
+        <div style="text-align:right;margin:1.5cqh 0;">
+          <div class="sans fixed-section" style="color:var(--gold);margin-bottom:.6cqh;">Getting There</div>
+          <div class="serif fixed-body" style="color:var(--deep);font-style:italic;">Water taxi from Marco Polo</div>
+        </div>
       </div>
     </div>
   </div>
@@ -851,15 +987,17 @@ top: 80%; left: 90%;
 
 
     <div class="content">
-      <div class="script" style="font-size:clamp(32px,5cqw,56px);color:var(--deep);">RSVP</div>
-      <div class="orn" style="margin:4px 0 0;"><span></span><em>✦</em><span></span></div>
-      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.5;margin-bottom:4px;">Kindly reply before June 1, 2027</div>
-      <div class="rsvp-card">
-        <input type="text" placeholder="Your Full Name"/>
-        <select><option value="">Attending?</option><option>Joyfully Accepts</option><option>Regretfully Declines</option></select>
-        <input type="number" placeholder="Number of Guests" min="1" max="4"/>
-        <input type="text" placeholder="Dietary Requirements"/>
-        <button class="rsvp-btn">Send with Love</button>
+      <div class="fixed-copy rsvp-copy">
+        <div class="script title-script-lg" style="color:var(--deep);">RSVP</div>
+        <div class="orn" style="margin:1cqh auto .6cqh;"><span></span><em>✦</em><span></span></div>
+        <div class="sans fixed-small" style="color:var(--deep);opacity:0.5;margin-bottom:1cqh;">Kindly reply before June 1, 2027</div>
+        <div class="rsvp-card">
+          <input type="text" placeholder="Your Full Name"/>
+          <select><option value="">Attending?</option><option>Joyfully Accepts</option><option>Regretfully Declines</option></select>
+          <input type="number" placeholder="Number of Guests" min="1" max="4"/>
+          <input type="text" placeholder="Dietary Requirements"/>
+          <button class="rsvp-btn">Send with Love</button>
+        </div>
       </div>
     </div>
   </div>
@@ -880,16 +1018,16 @@ top: 80%; left: 90%;
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
-      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.45;margin-bottom:16px;">We cannot wait to celebrate with you</div>
-      <div class="script" style="font-size:clamp(44px,8cqw,86px);color:var(--deep);">Thomas &amp; Sarah</div>
-      <div style="font-size:24px;margin:14px 0;color:var(--rust);">♥</div>
-      <div class="serif" style="font-size:clamp(14px,1.8cqw,18px);color:var(--deep);letter-spacing:0.14em;font-style:italic;opacity:0.75;">August 14, 2027 · Venice, Italy</div>
-      <div class="orn" style="margin-top:18px;"><span></span><em>✦</em><span></span></div>
-      <div class="sans" style="font-size:7px;color:var(--deep);opacity:0.3;margin-top:12px;">Designed with love · Cardia Studios</div>
+      <div class="fixed-copy farewell-copy">
+        <div class="sans fixed-small" style="color:var(--deep);opacity:0.45;margin-bottom:2cqh;">We cannot wait to celebrate with you</div>
+        <div class="script title-script-xl" style="color:var(--deep);">Thomas &amp; Sarah</div>
+        <div style="font-size:5cqw;margin:1.8cqh 0;color:var(--rust);">♥</div>
+        <div class="serif fixed-date" style="color:var(--deep);letter-spacing:0.14em;font-style:italic;opacity:0.75;">August 14, 2027 · Venice, Italy</div>
+        <div class="orn" style="margin-top:2cqh;"><span></span><em>✦</em><span></span></div>
+        <div class="sans fixed-small" style="color:var(--deep);opacity:0.3;margin-top:1.5cqh;">Designed with love · Cardia Studios</div>
+      </div>
     </div>
-  </div>
-
-</div><!-- /panorama -->
+  </div><!-- /panorama -->
 </div><!-- /stage -->
 
 <script>
