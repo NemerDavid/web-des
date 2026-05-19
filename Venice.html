@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thomas & Sarah — Venice Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #f9f4ec;
+  --gold:  #c4956a;
+  --deep:  #4a2e1a;
+  --blush: #e8c9b0;
+  --rust:  #c97b4b;
+
+  /* BASE PATH — change once if you move assets */
+  --cdn: "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/";
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #d4b896;
+  font-family: 'Jost', sans-serif;
+}
+
+/* ── STAGE ── */
+#stage {
+  position: fixed; inset: 0;
+  overflow: hidden;
+  cursor: ew-resize;
+}
+
+/* ── PANORAMA STRIP  700vw wide ── */
+#panorama {
+  position: absolute;
+  top: 0; left: 0;
+  width: 700vw;
+  height: 100vh;
+  will-change: transform;
+}
+
+/* ── CONTINUOUS BACKGROUND LAYERS ── */
+/* Sky stretches full 700vw */
+#bg-sky {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* Sea sits at bottom ~45% height */
+#bg-sea {
+  position: absolute;
+  top: 80%; left: 0;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+}
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea1 {
+  position: absolute;
+  top: 80%; left: 10%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+    transform: scaleX(-1); /* mirror horizontally */
+}
+
+/* Sea sits at bottom ~45% height */
+#bg-sea2 {
+  position: absolute;
+top: 80%; left: 20%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+
+}
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea3 {
+  position: absolute;
+ top: 80%; left: 30%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+    transform: scaleX(-1); /* mirror horizontally */
+}
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea4 {
+  position: absolute;
+top: 80%; left: 40%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+
+}
+
+
+
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea5 {
+  position: absolute;
+top: 80%;; left: 50%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+    transform: scaleX(-1); /* mirror horizontally */
+}
+
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea6 {
+  position: absolute;
+top: 80%; left: 60%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+
+}
+
+
+
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea7 {
+  position: absolute;
+ top: 80%;; left: 70%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+    transform: scaleX(-1); /* mirror horizontally */
+}
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea8 {
+  position: absolute;
+  top: 80%; left: 80%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+
+}
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sea9 {
+  position: absolute;
+top: 80%; left: 90%;
+  width: 10%; height: 48%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+    transform: scaleX(-1); /* mirror horizontally */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── PANEL ── each 100vw wide, absolute positioned inside panorama */
+.panel {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* panels don't clip children — layers can bleed between panels */
+  overflow: visible;
+}
+
+/* ── LAYER SYSTEM ──
+   Every PNG asset gets class="layer" plus a unique id.
+   Position/size/z-index all live in #panel-N .l-name rules below.
+   You can also override inline with style="" per element.
+*/
+.layer {
+  position: absolute;
+  /* defaults — override per element */
+  width: 40%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(4px 8px 12px rgba(80,40,10,0.35));
+}
+
+/* ── CONTENT OVERLAY ── */
+.content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  z-index: 50; /* above all building layers */
+  pointer-events: none;
+}
+.content * { pointer-events: auto; }
+
+.script { font-family: 'Great Vibes', cursive; color: var(--gold); line-height: 1; text-shadow: 0 2px 12px rgba(255,255,255,0.6); }
+.serif  { font-family: 'Cormorant Garamond', serif; }
+.sans   { font-family: 'Jost', sans-serif; letter-spacing: 0.22em; text-transform: uppercase; }
+
+.orn { display:flex; align-items:center; gap:14px; width:100%; justify-content:center; margin:10px 0; }
+.orn span { flex:1; max-width:70px; height:1px; background:var(--gold); opacity:0.6; }
+.orn em   { font-style:normal; color:var(--gold); font-size:13px; }
+
+.badge {
+  background: rgba(255,245,230,0.55);
+  border: 1px solid rgba(196,149,106,0.5);
+  border-radius: 40px;
+  padding: 6px 22px;
+  font-size: 9px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--deep);
+  margin-bottom: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.section-tag {
+  position: absolute;
+  top: 22px; right: 24px;
+  font-family: 'Jost'; font-size: 8px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  color: rgba(74,46,26,0.4);
+  z-index: 51;
+}
+
+/* ── PROGRESS BAR ── */
+#progress {
+  position: fixed; bottom: 0; left: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--blush));
+  width: 0%; z-index: 300; pointer-events: none;
+  transition: width 0.05s linear;
+}
+
+/* ── SCROLL HINT ── */
+#hint {
+  position: fixed; bottom: 30px; left: 50%;
+  transform: translateX(-50%);
+  z-index: 300; display:flex; align-items:center; gap:10px;
+  opacity: 0; animation: hintIn 0.6s ease 1.2s forwards;
+  pointer-events: none;
+}
+@keyframes hintIn { to { opacity:1; } }
+#hint.gone { opacity:0 !important; transition: opacity 0.3s; }
+#hint .arr {
+  font-size:16px; color:rgba(74,46,26,0.5);
+  animation: nudge 1.5s ease-in-out infinite;
+}
+#hint .arr.l { animation-name: nudgeL; }
+@keyframes nudge  { 0%,100%{transform:translateX(0)} 50%{transform:translateX(4px)} }
+@keyframes nudgeL { 0%,100%{transform:translateX(0)} 50%{transform:translateX(-4px)} }
+#hint span { font-family:'Jost'; font-size:8px; letter-spacing:0.28em; text-transform:uppercase; color:rgba(74,46,26,0.45); }
+
+/* ── RSVP ── */
+.rsvp-card {
+  background: rgba(255,245,230,0.55);
+  border: 1px solid rgba(196,149,106,0.4);
+  border-radius: 4px; padding: 26px 34px;
+  margin-top: 18px; backdrop-filter: blur(8px);
+  max-width: 310px; width: 100%;
+}
+.rsvp-card input, .rsvp-card select {
+  width: 100%; background: transparent;
+  border: none; border-bottom: 1px solid rgba(74,46,26,0.25);
+  color: var(--deep); font-family: 'Jost'; font-size: 11px;
+  letter-spacing: 0.15em; padding: 9px 0; margin: 6px 0; outline: none;
+}
+.rsvp-card input::placeholder { color: rgba(74,46,26,0.4); }
+.rsvp-card select option { background: #f5ede0; color: var(--deep); }
+.rsvp-btn {
+  margin-top: 16px; width: 100%;
+  background: var(--gold); border: none;
+  color: white; font-family: 'Jost'; font-size: 9px;
+  letter-spacing: 0.3em; text-transform: uppercase;
+  padding: 12px; cursor: pointer; transition: opacity 0.2s;
+}
+.rsvp-btn:hover { opacity: 0.82; }
+
+
+/* ════════════════════════════════════════════════
+   LAYER POSITIONING — EDIT EVERYTHING HERE
+   Each rule: position, size, z-index, animation
+   Reference: left/top are % of the 100vw panel width/height
+════════════════════════════════════════════════ */
+
+/* ── PANEL 1 layers ── */
+#p1 .l-bld-left  { left:-18%; bottom:8%; width:58%; z-index:6; }
+#p1 .l-bld-right { left:17%; bottom:8%; width:58%; z-index:5; }
+
+#p1 .l-bld3  { left:51%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld3a  { left:51%; bottom:24%; width:58%; z-index:4; }
+#p1 .l-bld4 { left:87%; bottom:8%; width:58%; z-index:5; }
+
+#p1 .l-bld5  { left:122%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld6 { left:186%; bottom:8%; width:58%; z-index:5; }
+
+
+#p1 .l-bld7  { left:222%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld8 { left:256%; bottom:8%; width:58%; z-index:5; }
+
+
+#p1 .l-bld9  { left:292%; bottom:8%; width:58%; z-index:5; }
+
+#p1 .l-bld10  { left:332%; bottom:8%; width:58%; z-index:5; }
+
+
+#p1 .l-bld11  { left:372%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld12  { left:412%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld12a  { left:452%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld13  { left:492%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld14  { left:532%; bottom:8%; width:58%; z-index:5; }
+#p1 .l-bld15  { left:582%; bottom:8%; width:58%; z-index:5; }
+
+#p1 .l-bld16  { left:682%; bottom:8%; width:58%; z-index:5; }
+
+
+
+
+#p1 .l-gondola   { left:30%; bottom:-5%; width:48%; z-index:6; }
+#p1 .l-clouds    { left:10%; top:5%;    width:35%; z-index:2; opacity:0.9; filter:none; animation: driftCloud 18s ease-in-out infinite; }
+
+/* ── PANEL 2 layers ── */
+#p2 .l-bld-a  { left:-5%;  bottom:22%; width:42%; z-index:5; }
+#p2 .l-bld-b  { left:50%;  bottom:24%; width:38%; z-index:4; }
+#p2 .l-clouds { left:55%;  top:8%;    width:30%; z-index:2; opacity:0.85; filter:none; animation: driftCloud 22s ease-in-out infinite 3s; }
+
+/* ── PANEL 3 layers ── */
+#p3 .l-bld-a  { left:-8%;  bottom:22%; width:45%; z-index:5; }
+#p3 .l-bld-b  { left:42%;  bottom:20%; width:50%; z-index:4; }
+
+/* ── PANEL 4 layers ── */
+#p4 .l-bld-a  { left:-5%;  bottom:22%; width:40%; z-index:5; }
+#p4 .l-bld-b  { left:55%;  bottom:20%; width:40%; z-index:4; }
+#p4 .l-gondola { left:28%; bottom:16%; width:45%; z-index:6; }
+
+/* ── PANEL 5 layers ── */
+#p5 .l-bld-a  { left:-2%;  bottom:22%; width:38%; z-index:5; }
+#p5 .l-bld-b  { left:52%;  bottom:24%; width:38%; z-index:4; }
+#p5 .l-clouds { left:20%;  top:4%;    width:28%; z-index:2; opacity:0.8; filter:none; animation: driftCloud 20s ease-in-out infinite 6s; }
+
+/* ── PANEL 6 layers ── */
+#p6 .l-bld-a  { left:-4%;  bottom:22%; width:42%; z-index:5; }
+#p6 .l-bld-b  { left:54%;  bottom:20%; width:36%; z-index:4; }
+
+/* ── PANEL 7 layers ── */
+#p7 .l-bld-a  { left:-2%;  bottom:22%; width:40%; z-index:5; }
+#p7 .l-bld-b  { left:56%;  bottom:22%; width:38%; z-index:4; }
+#p7 .l-gondola { left:32%; bottom:17%; width:38%; z-index:6; }
+#p7 .l-clouds  { left:40%; top:6%;    width:32%; z-index:2; opacity:0.85; filter:none; animation: driftCloud 16s ease-in-out infinite 1s; }
+
+/* ── ANIMATIONS ── */
+@keyframes driftCloud {
+  0%,100% { transform: translateX(0); }
+  50%      { transform: translateX(18px); }
+}
+@keyframes floatGondola {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-5px) rotate(0.5deg); }
+  66%      { transform: translateY(-2px) rotate(-0.3deg); }
+}
+
+/* gondola float applied globally */
+.l-gondola { animation: floatGondola 5s ease-in-out infinite; }
+
+/* water shimmer overlay */
+.water-shimmer {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 48%;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(255,220,160,0.08) 40%,
+    rgba(255,200,120,0.12) 100%);
+  z-index: 3;
+  pointer-events: none;
+  animation: shimmer 4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,100% { opacity:0.7; }
+  50%      { opacity:1; }
+}
+
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="hint">
+  <span class="arr l">←</span>
+  <span>scroll or drag to explore</span>
+  <span class="arr">→</span>
+</div>
+
+<div id="stage">
+<div id="panorama">
+
+  <!-- ══════════════════════════════════
+       BACKGROUND LAYERS (full 700vw)
+  ══════════════════════════════════ -->
+  <img id="bg-sky"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sky.png"
+       alt="">
+  <img id="bg-sea"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+
+  <img id="bg-sea1"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+
+
+<img id="bg-sea1"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+       
+       
+<img id="bg-sea2"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">  
+       
+       
+       
+<img id="bg-sea3"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+  <img id="bg-sea4"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+       
+<img id="bg-sea5"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+       
+       
+       
+  <img id="bg-sea6"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+  <img id="bg-sea7"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+       
+<img id="bg-sea8"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+       
+       
+       
+      <img id="bg-sea9"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sea.png"
+       alt="">
+       
+
+       
+
+
+  <!-- ══════════════════════════════════
+       PANEL 1 — Cover
+       Buildings: 1.png (left), 2.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p1" style="left:0vw;">
+    <div class="section-tag">01 — Invitation</div>
+    <div class="water-shimmer"></div>
+
+    <img class="layer l-bld-left"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/1.png" alt="">
+    <img class="layer l-bld-right"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/2.png" alt="">
+         
+         
+          <img class="layer l-bld3"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/4.png" alt="">
+         
+             <img class="layer l-bld3a"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/12.png" alt="">
+         
+    <img class="layer l-bld4"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/3.png" alt="">   
+         
+         
+        <img class="layer l-bld5"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/5.png" alt="">
+    <img class="layer l-bld6"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6.png" alt="">     
+         
+         
+         
+         
+         
+         <img class="layer l-bld7"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/7.png" alt="">
+    <img class="layer l-bld8"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/8.png" alt="">         
+         
+         
+         
+          <img class="layer l-bld9"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9.png" alt="">   
+         
+         
+         
+         <img class="layer l-bld10"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/10.png" alt="">   
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+          <img class="layer l-bld11"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/1.png" alt="">
+  
+         
+         
+          <img class="layer l-bld12"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/4.png" alt="">
+         
+             <img class="layer l-bld12a"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/12.png" alt="">
+         
+           <img class="layer l-bld13"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/2.png" alt="">
+         
+         
+         
+         
+    <img class="layer l-bld14"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/3.png" alt="">   
+         
+         
+        <img class="layer l-bld15"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/5.png" alt="">
+    <img class="layer l-bld16"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6.png" alt="">    
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+    <img class="layer l-gondola"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
+    <img class="layer l-clouds"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
+    <div class="content">
+      <div class="badge">Wedding Invitation</div>
+      <div class="script" style="font-size:clamp(52px,8vw,90px);">Thomas</div>
+      <div class="script" style="font-size:clamp(80px,12vw,140px);display:block;opacity:0.18;color:var(--gold);margin:-18px 0;">﹠</div>
+      <div class="script" style="font-size:clamp(52px,8vw,90px);margin-top:-12px;">Sarah</div>
+      <div class="orn"><span></span><em>✦</em><span></span></div>
+      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.6;margin-bottom:4px;">Together with their families</div>
+      <div class="serif" style="font-size:clamp(14px,1.8vw,19px);color:var(--deep);font-weight:300;letter-spacing:0.1em;opacity:0.85;">August 14, 2027 · Venice, Italy</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 2 — Our Story
+       Buildings: 3.png (left), 4.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p2" style="left:100vw;">
+    <div class="section-tag">02 — Our Story</div>
+    <div class="water-shimmer"></div>
+
+
+
+    <img class="layer l-clouds"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
+    <div class="content" style="align-items:flex-start;padding-left:8vw;">
+      <div class="script" style="font-size:clamp(36px,6vw,70px);color:var(--deep);">Our Story</div>
+      <div class="orn" style="justify-content:flex-start;"><span style="max-width:50px;"></span><em>✦</em></div>
+      <p class="serif" style="font-size:15px;line-height:2.1;color:var(--deep);max-width:300px;font-style:italic;opacity:0.8;text-align:left;">
+        Two souls who found each other<br>
+        by the waters of La Serenissima,<br>
+        and chose to walk this path<br>
+        together — forever.
+      </p>
+      <div class="sans" style="font-size:8px;color:var(--gold);margin-top:20px;">Est. 2021 · Paris, France</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 3 — Ceremony
+       Buildings: 9.png (church, left), 5.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p3" style="left:200vw;">
+    <div class="section-tag">03 — Ceremony</div>
+    <div class="water-shimmer"></div>
+
+
+
+    <div class="content" style="justify-content:flex-end;padding-bottom:8vh;">
+      <div class="script" style="font-size:clamp(32px,5vw,62px);color:var(--deep);">The Ceremony</div>
+      <div class="orn"><span></span><em>✦</em><span></span></div>
+      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.6;">Basilica di Santa Maria · Venice</div>
+      <div class="serif" style="font-size:clamp(42px,7vw,80px);color:var(--rust);font-weight:300;">4 : 00 PM</div>
+      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.55;">Thursday, August 14, 2027</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 4 — Reception
+       Buildings: 10.png (café, left), 11.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p4" style="left:300vw;">
+    <div class="section-tag">04 — Reception</div>
+    <div class="water-shimmer"></div>
+
+
+    <img class="layer l-gondola"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
+
+    <div class="content">
+      <div class="badge">Dinner &amp; Celebration</div>
+      <div class="script" style="font-size:clamp(30px,5vw,58px);color:var(--deep);">The Reception</div>
+      <div class="orn"><span></span><em>✦</em><span></span></div>
+      <p class="serif" style="font-size:14px;letter-spacing:0.08em;color:var(--deep);max-width:280px;line-height:2.2;font-style:italic;opacity:0.85;">
+        Palazzo Veneto<br>
+        Grand Canal Terrace<br>
+        <span class="sans" style="font-style:normal;font-size:9px;">7:00 PM — Late</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 5 — Details
+       Buildings: 13.png (left), 14.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p5" style="left:400vw;">
+    <div class="section-tag">05 — Details</div>
+    <div class="water-shimmer"></div>
+
+
+    <img class="layer l-clouds"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
+    <div class="content" style="align-items:flex-end;padding-right:8vw;">
+      <div class="script" style="font-size:clamp(30px,5vw,58px);color:var(--deep);text-align:right;">Good to Know</div>
+      <div class="orn" style="justify-content:flex-end;"><em>✦</em><span style="max-width:50px;"></span></div>
+      <div style="text-align:right;margin:9px 0;">
+        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Dress Code</div>
+        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Garden Black-Tie</div>
+      </div>
+      <div style="text-align:right;margin:9px 0;">
+        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Accommodation</div>
+        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Hotel Danieli, Venice</div>
+      </div>
+      <div style="text-align:right;margin:9px 0;">
+        <div class="sans" style="font-size:8px;color:var(--gold);margin-bottom:3px;">Getting There</div>
+        <div class="serif" style="font-size:18px;color:var(--deep);font-style:italic;">Water taxi from Marco Polo</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 6 — RSVP
+       Buildings: 16.png (left), 17.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p6" style="left:500vw;">
+    <div class="section-tag">06 — RSVP</div>
+    <div class="water-shimmer"></div>
+
+
+    <div class="content">
+      <div class="script" style="font-size:clamp(32px,5vw,56px);color:var(--deep);">RSVP</div>
+      <div class="orn" style="margin:4px 0 0;"><span></span><em>✦</em><span></span></div>
+      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.5;margin-bottom:4px;">Kindly reply before June 1, 2027</div>
+      <div class="rsvp-card">
+        <input type="text" placeholder="Your Full Name"/>
+        <select><option value="">Attending?</option><option>Joyfully Accepts</option><option>Regretfully Declines</option></select>
+        <input type="number" placeholder="Number of Guests" min="1" max="4"/>
+        <input type="text" placeholder="Dietary Requirements"/>
+        <button class="rsvp-btn">Send with Love</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 7 — Closing
+       Buildings: 18.png (left), 19.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p7" style="left:600vw;">
+    <div class="section-tag">07 — Farewell</div>
+    <div class="water-shimmer"></div>
+
+   
+
+    <img class="layer l-gondola"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
+    <img class="layer l-clouds"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
+    <div class="content">
+      <div class="sans" style="font-size:8px;color:var(--deep);opacity:0.45;margin-bottom:16px;">We cannot wait to celebrate with you</div>
+      <div class="script" style="font-size:clamp(44px,8vw,86px);color:var(--deep);">Thomas &amp; Sarah</div>
+      <div style="font-size:24px;margin:14px 0;color:var(--rust);">♥</div>
+      <div class="serif" style="font-size:clamp(14px,1.8vw,18px);color:var(--deep);letter-spacing:0.14em;font-style:italic;opacity:0.75;">August 14, 2027 · Venice, Italy</div>
+      <div class="orn" style="margin-top:18px;"><span></span><em>✦</em><span></span></div>
+      <div class="sans" style="font-size:7px;color:var(--deep);opacity:0.3;margin-top:12px;">Designed with love · Cardia Studios</div>
+    </div>
+  </div>
+
+</div><!-- /panorama -->
+</div><!-- /stage -->
+
+<script>
+  const panorama = document.getElementById('panorama');
+  const progress = document.getElementById('progress');
+  const hint     = document.getElementById('hint');
+  const stage    = document.getElementById('stage');
+  const PANELS   = 7;
+
+  let offset = 0;
+  let target = 0;
+
+  const maxOff = () => (PANELS - 1) * window.innerWidth;
+  const clamp  = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+  // smooth lerp loop
+  (function tick() {
+    const d = target - offset;
+    offset = Math.abs(d) < 0.4 ? target : offset + d * 0.1;
+    offset = clamp(offset, 0, maxOff());
+    panorama.style.transform = `translateX(${-offset}px)`;
+    progress.style.width = (offset / maxOff() * 100) + '%';
+    requestAnimationFrame(tick);
+  })();
+
+  let hintGone = false;
+  function hideHint() {
+    if (hintGone) return;
+    hintGone = true;
+    hint.classList.add('gone');
+  }
+
+  // WHEEL
+  window.addEventListener('wheel', e => {
+    e.preventDefault();
+    hideHint();
+    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    target = clamp(target + d * 1.8, 0, maxOff());
+  }, { passive: false });
+
+  // DRAG
+  let dragX = null, dragBase = 0;
+  stage.addEventListener('mousedown', e => { dragX = e.clientX; dragBase = target; stage.style.cursor = 'grabbing'; hideHint(); });
+  window.addEventListener('mousemove', e => { if (dragX === null) return; target = clamp(dragBase + (dragX - e.clientX) * 1.5, 0, maxOff()); });
+  window.addEventListener('mouseup',   () => { dragX = null; stage.style.cursor = 'ew-resize'; });
+
+  // TOUCH
+  let touchX = 0, touchBase = 0;
+  stage.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; touchBase = target; hideHint(); }, { passive: true });
+  stage.addEventListener('touchmove',  e => { target = clamp(touchBase + (touchX - e.touches[0].clientX) * 1.4, 0, maxOff()); }, { passive: true });
+
+  // KEYBOARD
+  window.addEventListener('keydown', e => {
+    const step = window.innerWidth * 0.85;
+    if (e.key === 'ArrowRight') { target = clamp(target + step, 0, maxOff()); hideHint(); }
+    if (e.key === 'ArrowLeft')  { target = clamp(target - step, 0, maxOff()); hideHint(); }
+  });
+
+  window.addEventListener('resize', () => { target = clamp(target, 0, maxOff()); });
+</script>
+</body>
+</html>
