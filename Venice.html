@@ -1766,6 +1766,44 @@ html, body{
   }
 }
 
+/* Final mobile lock for the farewell page.
+   Anchor the copy above the buildings so browser chrome height changes
+   cannot push the text into the skyline. */
+@media (max-width:600px), (pointer:coarse){
+  #p7 .closing-copy{
+    top:auto !important;
+    bottom:36.5% !important;
+    left:50% !important;
+    transform:translateX(-50%) !important;
+    width:88% !important;
+    max-height:48% !important;
+  }
+
+  #p7 .closing-copy .sans{
+    font-size:2.55cqw !important;
+    line-height:1.55 !important;
+    letter-spacing:.26em !important;
+    margin-bottom:2.8cqw !important;
+    margin-top:0 !important;
+  }
+
+  #p7 .closing-copy .script{
+    font-size:13.2cqw !important;
+    line-height:.9 !important;
+    white-space:nowrap !important;
+  }
+
+  #p7 .closing-copy .serif{
+    font-size:4.25cqw !important;
+    line-height:1.38 !important;
+  }
+
+  #p7 .closing-copy .orn{
+    width:58% !important;
+    margin:3.2cqw auto 3cqw !important;
+  }
+}
+
 </style>
 </head>
 <body>
