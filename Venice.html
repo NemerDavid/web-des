@@ -1120,7 +1120,7 @@ html, body{
 #hint{
   opacity:1 !important;
   animation:none !important;
-  bottom:2px !important;
+  bottom:0px !important;
   left:50% !important;
   transform:translateX(-50%) !important;
   padding:8px 14px !important;
@@ -1751,6 +1751,24 @@ html, body{
 @media (max-width:600px),(pointer:coarse){
   #p6 .venice-rsvp-box{padding:4.1cqw 5.2cqw !important;}
   #p6 .form-field,#p6 textarea.form-field{font-size:4.1cqw !important;}
+}
+
+
+/* ═════════ FINAL PHONE FIX — HINT LOWER + BOAT ABOVE HINT ═════════ */
+@media (max-width:600px), (pointer:coarse){
+  #hint{
+    bottom:calc(2px + env(safe-area-inset-bottom)) !important;
+    z-index:500 !important;
+  }
+
+  #travelGondola{
+    bottom:5.6% !important;
+    z-index:75 !important;
+  }
+
+  #musicBtn{
+    bottom:calc(58px + env(safe-area-inset-bottom)) !important;
+  }
 }
 
 </style>
