@@ -471,7 +471,7 @@ top: 80%; left: 90%;
   .l-Road {
   left: 185%;
   top: -3%;
-  width: 223% !important;
+  width: 203% !important;
   max-width: none !important;
   height: auto !important;
   z-index: 4;
@@ -483,7 +483,7 @@ top: 80%; left: 90%;
 
   .l-Plane {
   left: 288%;
-  top: -3%;
+  top: -1%;
   width: 118% !important;
   max-width: none !important;
   height: auto !important;
@@ -493,7 +493,16 @@ top: 80%; left: 90%;
 }
 
 
-
+  .l-clouds1 {
+  left: 68%;
+  top: 5%;
+  width: 38% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatMed 3s ease-in-out infinite .4s;
+  transform-origin: center top;
+}
 
 
 
@@ -540,7 +549,7 @@ top: 80%; left: 90%;
 #p1 .l-bld4bR  { left:518%; bottom:15%; width:58%; z-index:5; }
 #p1 .l-bld2bR  { left:537%; bottom:17%; width:58%; z-index:5; } 
 #p1 .l-bld8bR { left:550%; bottom:15%; width:61%; z-index:5; }
-#p1 .l-bld1binvR  { left:655%; bottom:15%; width:58%; z-index:5; }
+#p1 .l-bld1binvR  { left:659%; bottom:15%; width:58%; z-index:5; }
 #p1 .l-bld5aaR  { left:585%; bottom:15%; width:58%; z-index:5; }
 #p1 .l-bld8aR  { left:608%; bottom:15%; width:60%; z-index:6; }
 
@@ -549,7 +558,7 @@ top: 80%; left: 90%;
 
 #p1 .l-bridge  { left:292%; bottom:14%; width:60%; z-index:4; }
 #p1 .l-bridge2  { left:175%; bottom:13%; width:60%; z-index:4; }
-#p1 .l-bridge3  { left:392%; bottom:10%; width:140%; z-index:3; }
+#p1 .l-bridge3  { left:390%; bottom:5%; width:154%; z-index:3; }
 
 
 
@@ -613,6 +622,9 @@ top: 80%; left: 90%;
 }
 
 
+
+  @keyframes floatMed { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.3%; } }
+  @keyframes floatSlow { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.1%; } }
 
 
 @keyframes driftCloud {
@@ -1701,6 +1713,46 @@ html, body{
   }
 }
 
+
+
+/* ═════════ RSVP GOOGLE SHEET FORM — SAME WORKFLOW AS PALE_BLUE_ENV ═════════ */
+#p6 .venice-rsvp-box{
+  border-radius:22px !important;
+  padding:4.2cqw 5.4cqw !important;
+  background:rgba(255,245,230,.72) !important;
+  border:1px solid rgba(196,149,106,.36) !important;
+  box-shadow:0 16px 38px rgba(80,40,10,.16) !important;
+  backdrop-filter:blur(7px) !important;
+}
+#p6 .step-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:18px;}
+#p6 .step-dot{width:6px;height:6px;border-radius:50%;background:rgba(196,149,106,.30);transition:.25s;}
+#p6 .step-dot.on{background:#373222;}
+#p6 .form-label,#p6 .question{display:block;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:16px 0 8px;color:rgba(55,50,34,.72);text-align:left;}
+#p6 .question{text-align:center;margin-top:4px;}
+#p6 .form-field,#p6 textarea.form-field{width:100%;border-radius:0;padding:10px 0;margin-top:4px;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none;background:transparent;color:#373222;border:none;border-bottom:1.5px solid rgba(74,46,26,.24);transition:border-color .25s;letter-spacing:0;}
+#p6 textarea.form-field{min-height:78px;resize:none;}
+#p6 .form-field:focus,#p6 textarea.form-field:focus{border-bottom-color:#373222;}
+#p6 .error-msg{display:none;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#9b4a36;text-align:left;}
+#p6 .attend-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;}
+#p6 .attend-opt input{position:absolute;opacity:0;pointer-events:none;}
+#p6 .attend-box{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:14px;border:1px solid rgba(74,46,26,.18);background:rgba(255,255,255,.42);cursor:pointer;transition:.25s;padding:10px 12px;}
+#p6 .attend-opt input:checked + .attend-box{background:rgba(196,149,106,.86);border-color:rgba(196,149,106,.95);color:#fff;}
+#p6 .attend-label{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;}
+#p6 .count-row{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0 12px;}
+#p6 .count-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(74,46,26,.22);background:rgba(255,255,255,.68);color:#373222;font-size:20px;line-height:1;cursor:pointer;}
+#p6 .guest-num{min-width:24px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#373222;}
+#p6 .btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+#p6 .btn-soft,#p6 .btn-solid{width:100%;border-radius:999px;padding:12px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:.25s;}
+#p6 .btn-soft{background:rgba(255,255,255,.50);border:1px solid rgba(74,46,26,.18);color:#373222;}
+#p6 .btn-solid{background:#c4956a;border:1px solid #c4956a;color:#fff;}
+#p6 .btn-solid:disabled{opacity:.68;cursor:default;}
+#p6 .btn-soft:hover,#p6 .btn-solid:hover{transform:translateY(-1px);}
+#p6 .rsvp-main-btn{margin-top:18px;}
+@media (max-width:600px),(pointer:coarse){
+  #p6 .venice-rsvp-box{padding:4.1cqw 5.2cqw !important;}
+  #p6 .form-field,#p6 textarea.form-field{font-size:4.1cqw !important;}
+}
+
 </style>
 </head>
 <body>
@@ -1716,7 +1768,7 @@ html, body{
 <div id="progress"></div>
 <div id="hint">
   <span class="arr l">←</span>
-  <span>scroll or drag to explore</span>
+  <span>Move left or right to explore</span>
   <span class="arr">→</span>
 </div>
 
@@ -1849,7 +1901,8 @@ html, body{
 
 
 
-
+ <img class="layer l-clouds1"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
 
 
@@ -1921,7 +1974,7 @@ html, body{
          
          
                  <img class="layer l-bld2aR"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/2a.png" alt="">  
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6a.png" alt="">  
          
             
    
@@ -1952,7 +2005,7 @@ html, body{
 
          
           <img class="layer l-bld1binvR"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9a.png" alt=""> 
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6a.png" alt=""> 
          
          
          
@@ -1966,7 +2019,7 @@ html, body{
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge.png" alt=""> 
    
            <img class="layer l-bridge3"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge3.png" alt=""> 
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge3a.png" alt=""> 
          
          
          
@@ -2096,12 +2149,55 @@ html, body{
         <div class="script" style="color:#373222;font-weight:900;">RSVP</div>
         <div class="orn" style="margin:4px auto 0;"><span></span><em>✦</em><span></span></div>
         <div class="sans" style="color:#373222;opacity:0.5;margin-bottom:4px;">Kindly reply before August 1, 2027</div>
-        <div class="rsvp-card">
-          <input type="text" placeholder="Your Full Name"/>
-          <select><option value="">Attending?</option><option>Joyfully Accepts</option><option>Regretfully Declines</option></select>
-          <input type="number" placeholder="Number of Guests" min="1" max="4"/>
-          <input type="text" placeholder="Leave a wish"/>
-          <button class="rsvp-btn">Send with Love</button>
+        <div class="rsvp-card venice-rsvp-box">
+          <div class="step-dots">
+            <span class="step-dot on" id="dot-1"></span>
+            <span class="step-dot" id="dot-2"></span>
+            <span class="step-dot" id="dot-3"></span>
+          </div>
+
+          <div id="step1" class="rsvp-step">
+            <label class="form-label" for="guestName">Your name</label>
+            <input id="guestName" class="form-field" type="text" placeholder="Type your full name" autocomplete="name" />
+            <p class="error-msg" id="errName">Please enter your name.</p>
+            <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,2)">Continue →</button>
+          </div>
+
+          <div id="step2" class="rsvp-step" style="display:none;">
+            <p class="question">Will you attend?</p>
+            <div class="attend-grid">
+              <label class="attend-opt"><input type="radio" name="attend" value="yes" /><span class="attend-box"><span class="attend-label">Joyfully accept</span></span></label>
+              <label class="attend-opt"><input type="radio" name="attend" value="no" /><span class="attend-box"><span class="attend-label">Regretfully decline</span></span></label>
+            </div>
+            <div id="guestCountWrap" style="display:none; margin-bottom:10px;">
+              <label class="form-label guest-label">Number of guests</label>
+              <div class="count-row">
+                <button class="count-btn" type="button" onclick="changeCount(-1)">−</button>
+                <span class="guest-num" id="guestCount">1</span>
+                <button class="count-btn" type="button" onclick="changeCount(1)">+</button>
+              </div>
+            </div>
+            <p class="error-msg" id="errAttend">Please select an option.</p>
+            <div class="btn-grid">
+              <button class="btn-soft" type="button" onclick="goStep(2,1)">← Back</button>
+              <button class="btn-solid" type="button" onclick="goStep(2,3)">Continue →</button>
+            </div>
+          </div>
+
+          <div id="step3" class="rsvp-step" style="display:none;">
+            <label class="form-label" for="guestMsg">Leave a wish <span style="font-weight:400;">(optional)</span></label>
+            <textarea id="guestMsg" class="form-field" rows="4" placeholder="Share a wish for Thomas & Sarah…"></textarea>
+            <div class="btn-grid">
+              <button class="btn-soft" type="button" onclick="goStep(3,2)">← Back</button>
+              <button class="btn-solid" id="sendBtn" type="button" onclick="submitRSVP()">Send ✦</button>
+            </div>
+          </div>
+
+          <div id="stepOk" style="display:none; text-align:center; padding:18px 0;">
+            <div style="font-size:38px; margin-bottom:8px;">✨</div>
+            <h3 style="font-family:'Great Vibes',cursive; font-size:44px; color:#373222; margin-bottom:10px;">Thank you!</h3>
+            <p id="okMsg" style="font-family:'Cormorant Garamond',serif; font-size:16px; line-height:1.55; color:#373222;"></p>
+          </div>
         </div>
       </div>
     </div>
@@ -2329,6 +2425,116 @@ html, body{
         setMusicButton(false);
       }
     });
+  }
+
+
+  /* RSVP → GOOGLE SHEETS — copied from Pale_blue_env workflow */
+  let guestCount = 1;
+
+  document.querySelectorAll('input[name="attend"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const wrap = document.getElementById('guestCountWrap');
+      const err = document.getElementById('errAttend');
+      if (wrap) wrap.style.display = radio.value === 'yes' ? 'block' : 'none';
+      if (err) err.style.display = 'none';
+    });
+  });
+
+  function changeCount(delta) {
+    guestCount = Math.max(1, Math.min(10, guestCount + delta));
+    const count = document.getElementById('guestCount');
+    if (count) count.textContent = guestCount;
+  }
+
+  function goStep(from, to) {
+    if (from === 1) {
+      const name = document.getElementById('guestName').value.trim();
+      if (!name) { document.getElementById('errName').style.display = 'block'; return; }
+      document.getElementById('errName').style.display = 'none';
+    }
+    if (from === 2 && to === 3) {
+      const attend = document.querySelector('input[name="attend"]:checked');
+      if (!attend) { document.getElementById('errAttend').style.display = 'block'; return; }
+      document.getElementById('errAttend').style.display = 'none';
+      if (attend.value === 'no') { submitRSVP(); return; }
+    }
+    const fromStep = document.getElementById('step' + from);
+    const toStep = document.getElementById('step' + to);
+    if (fromStep) fromStep.style.display = 'none';
+    if (toStep) toStep.style.display = 'block';
+    [1,2,3].forEach(i => {
+      const dot = document.getElementById('dot-' + i);
+      if (dot) dot.classList.toggle('on', i <= to);
+    });
+  }
+
+  const COUPLE_NAME = 'Thomas & Sarah';
+  const CUSTOMER_EMAIL = 'cardiastudios@gmail.com';
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxv1f-qT9HxN6ntkScO8sV3TBoo40Ay6NKWjBdLw0Hl1RW2oaszAL1dN41NIaBgcCW9/exec';
+
+  function showRSVPThankYou(name, yes) {
+    ['step1','step2','step3'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    const dots = document.querySelector('#p6 .step-dots');
+    if (dots) dots.style.display = 'none';
+    const ok = document.getElementById('stepOk');
+    if (ok) ok.style.display = 'block';
+    const okMsg = document.getElementById('okMsg');
+    if (okMsg) {
+      okMsg.innerHTML = yes
+        ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br />See you on August 14th."
+        : "We'll miss you, <strong>" + name + "</strong>.<br />Thank you for letting us know.";
+    }
+  }
+
+  function postRSVPToGoogleSheet(payload) {
+    const iframeName = 'rsvpGoogleSheetFrame';
+    let iframe = document.getElementById(iframeName);
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = RSVP_SCRIPT_URL;
+    form.target = iframeName;
+    form.style.display = 'none';
+    Object.entries(payload).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => form.remove(), 1500);
+  }
+
+  function submitRSVP() {
+    const name = document.getElementById('guestName').value.trim() || 'Guest';
+    const attend = document.querySelector('input[name="attend"]:checked');
+    const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
+    const yes = attend && attend.value === 'yes';
+    const sendBtn = document.getElementById('sendBtn');
+    if (sendBtn) { sendBtn.textContent = 'Sending...'; sendBtn.disabled = true; }
+    const payload = {
+      event: COUPLE_NAME,
+      customer_email: CUSTOMER_EMAIL,
+      guest_name: name,
+      attending: yes ? 'Yes' : 'No',
+      guest_count: yes ? guestCount : 0,
+      message: msg || '',
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    };
+    postRSVPToGoogleSheet(payload);
+    setTimeout(() => {
+      if (sendBtn) { sendBtn.textContent = 'Sent ✓'; sendBtn.disabled = true; }
+      showRSVPThankYou(name, yes);
+    }, 650);
   }
 
   window.addEventListener('resize', () => {
