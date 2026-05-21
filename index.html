@@ -14,11 +14,26 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
+<!-- CARDIA_HIGH_RES_PRELOADS -->
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A1_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A1_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A2_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A2_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A3_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A3_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A4_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A4_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A5_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A5_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A6_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A6_2.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A7_1.png" fetchpriority="high">
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A7_2.png" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:      #f7f3ee;
-  --bg2:     #ede8e0;
+  --bg:      #F7F7F7;
+  --bg2:     #ffffff;
   --ink:     #2a2018;
   --ink-lt:  #6b5a48;
   --rose:    #9a6a58;
@@ -506,10 +521,10 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 
 /* BOOK INVITATIONS — desktop/tablet controls */
 #row2 .template-card {
-  --mock-w: 248px;
+  --mock-w: 188px;
   --mock-h: 396px;
   --mock-top: 42px;
-  --preview-zoom: 1.13;
+  --preview-zoom: 1;
   --preview-shift-x: 0px;
   --preview-shift-y: 0px;
   --book-cover-w: 399px;
@@ -850,42 +865,55 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 ═══════════════════════════════════════ */
 .category-block { position: relative; }
 .row-edge-arrows { display: none; }
+/* Show edge arrows on ALL screen sizes */
+.category-header .category-arrows { display: none; }
+.row-edge-arrows {
+  display: block;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 8;
+}
+.edge-arrow {
+  position: absolute;
+  top: 56%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 52px;
+  border: 1px solid rgba(184,144,60,.28);
+  background: rgba(247,243,238,.88);
+  backdrop-filter: blur(8px);
+  color: var(--ink-lt);
+  font-size: 1.2rem;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+  box-shadow: 0 8px 30px rgba(42,32,24,.08);
+}
+.edge-arrow:hover {
+  background: var(--ink);
+  color: var(--gold-lt);
+  border-color: var(--ink);
+}
+.edge-arrow.left { left: 0.4rem; }
+.edge-arrow.right { right: 0.4rem; }
+
 @media (min-width: 641px) {
-  .category-header .category-arrows { display: none; }
-  .row-edge-arrows {
-    display: block;
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 8;
-  }
-  .edge-arrow {
-    position: absolute;
-    top: 56%;
-    transform: translateY(-50%);
-    width: 46px;
-    height: 64px;
-    border: 1px solid rgba(184,144,60,.28);
-    background: rgba(247,243,238,.82);
-    backdrop-filter: blur(8px);
-    color: var(--ink-lt);
-    font-size: 1.45rem;
-    cursor: pointer;
-    pointer-events: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all .2s ease;
-    box-shadow: 0 8px 30px rgba(42,32,24,.08);
-  }
-  .edge-arrow:hover {
-    background: var(--ink);
-    color: var(--gold-lt);
-    border-color: var(--ink);
-  }
+  .edge-arrow { width: 46px; height: 64px; font-size: 1.45rem; }
   .edge-arrow.left { left: 1rem; }
   .edge-arrow.right { right: 1rem; }
 }
+
+@media (min-width: 1500px) {
+  .edge-arrow.left { left: 1.5rem; }
+  .edge-arrow.right { right: 1.5rem; }
+}
+
+
+
 @media (min-width: 1500px) {
   .edge-arrow.left { left: 1.5rem; }
   .edge-arrow.right { right: 1.5rem; }
@@ -1077,13 +1105,573 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 }
 
 
+
+
+/* ═══════════════════════════════════════
+   CARDIA MODERN REFRESH — requested homepage-only edits
+═══════════════════════════════════════ */
+body { background: #F7F7F7; }
+
+/* Smaller, cleaner top navigation */
+.nav {
+  min-height: 64px;
+  padding: .55rem clamp(1rem, 3vw, 2rem);
+  background: rgba(247,247,247,.86);
+  border-bottom: 1px solid rgba(42,32,24,.08);
+  box-shadow: 0 10px 30px rgba(42,32,24,.045);
+  backdrop-filter: blur(18px);
+}
+.nav-logo img { height: 58px; }
+.nav-links { gap: clamp(.75rem, 1.55vw, 1.45rem); align-items: center; }
+.nav-link {
+  color: rgba(42,32,24,.68);
+  font-size: .68rem;
+  letter-spacing: .11em;
+  font-weight: 400;
+}
+.nav-link:hover { color: var(--rose); }
+.nav-controls { gap: .4rem; margin-left: .6rem; }
+.nav-select {
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(42,32,24,.10);
+  color: rgba(42,32,24,.72);
+  font-size: .56rem;
+  letter-spacing: .08em;
+  padding: .35rem .5rem;
+  border-radius: 999px;
+}
+.nav-select option { background: #fff; color: var(--ink); }
+.nav-hamburger span { background: rgba(42,32,24,.72); }
+@media (max-width:640px) {
+  .nav { min-height: 58px; padding: .45rem 1rem; }
+  .nav-logo img { height: 48px; }
+  .nav-links { background: rgba(247,247,247,.98); border-bottom: 1px solid rgba(42,32,24,.08); }
+  .nav-controls { top: 72px; }
+}
+
+/* Hero with animated PNG previews */
+.hero {
+  min-height: 100svh;
+  padding: 7rem 0 3rem;
+  justify-content: flex-start;
+  gap: 2.1rem;
+  background: #F7F7F7;
+}
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 15% 35%, rgba(154,106,88,.08) 0%, transparent 52%),
+    radial-gradient(ellipse at 85% 28%, rgba(184,144,60,.09) 0%, transparent 50%);
+}
+.hero-content { max-width: 720px; padding: 0 1.5rem; }
+.hero-tag {
+  border: 0;
+  color: rgba(42,32,24,.58);
+  background: rgba(255,255,255,.72);
+  box-shadow: 0 8px 25px rgba(42,32,24,.045);
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+.hero h1 { color: #0f0f0f; font-size: clamp(2.8rem,7vw,5rem); }
+.hero h1 em { color: var(--rose); font-size: clamp(2.2rem,5.8vw,4.2rem); }
+.hero-sub { color: rgba(42,32,24,.55); margin: 1rem 0 1.8rem; }
+.hero-cta {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+  border-radius: 999px;
+  padding: .85rem 2.3rem;
+  letter-spacing: .02em;
+  text-transform: none;
+  font-size: .82rem;
+}
+.hero-cta:hover { background: var(--rose); border-color: var(--rose); color: #fff; }
+.hero-template-marquee {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.2rem 0 2.3rem;
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+.hero-template-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  width: max-content;
+  animation: cardiaHeroMarquee 34s linear infinite;
+}
+.hero-template-track img {
+  width: clamp(120px, 12vw, 185px);
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 24px 55px rgba(42,32,24,.14);
+  transform: rotate(var(--tilt, -3deg));
+}
+.hero-template-track img:nth-child(2n) { --tilt: 4deg; }
+.hero-template-track img:nth-child(3n) { --tilt: -1deg; }
+@keyframes cardiaHeroMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.scroll-hint { color: rgba(42,32,24,.35); }
+.scroll-arrow { background: linear-gradient(to bottom, rgba(42,32,24,.32), transparent); }
+@media (max-width:640px) {
+  .hero { padding-top: 6.2rem; gap: 1.4rem; }
+  .hero-template-track { animation-duration: 26s; }
+  .hero-template-track img { width: 112px; border-radius: 18px; }
+}
+
+/* Best Sellers: PNG cover + inner-page previews */
+.bs-card { background: #fff; border: 1px solid rgba(42,32,24,.07); box-shadow: 0 12px 36px rgba(42,32,24,.08); }
+.bs-card-visual { min-height: 360px; padding: 3.2rem 1.1rem 1.6rem; align-items: center; }
+.bs-card-visual::before { background: linear-gradient(135deg, rgba(255,255,255,.55), rgba(230,224,216,.38)), var(--bs-grad); }
+.bs-png-stack {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 330px);
+  height: 285px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.bs-phone-frame {
+  position: relative;
+  z-index: 4;
+  width: 145px;
+  height: 258px;
+  padding: 6px;
+  border-radius: 28px;
+  background: #1a1210;
+  box-shadow: 0 18px 45px rgba(0,0,0,.28), inset 0 0 0 1px rgba(255,255,255,.10);
+  transform: translateX(-70px);
+}
+.bs-phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  width: 42px;
+  height: 8px;
+  transform: translateX(-50%);
+  background: #111;
+  border-radius: 999px;
+  z-index: 6;
+}
+.bs-png-main, .bs-png-inner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(42,32,24,.16);
+}
+.bs-png-main {
+  border-radius: 22px;
+  position: relative;
+  z-index: 5;
+  box-shadow: none;
+}
+.bs-png-inner {
+  position: absolute;
+  width: 122px;
+  height: 218px;
+  z-index: 2;
+  opacity: .98;
+  border-radius: 20px;
+}
+.bs-png-inner.one { right: 50px; top: 18px; transform: rotate(1.5deg); }
+.bs-png-inner.two { right: 0; bottom: 18px; transform: rotate(-1.5deg); }
+.bs-png-stack::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  bottom: 0;
+  width: 70%;
+  height: 24px;
+  background: radial-gradient(ellipse, rgba(42,32,24,.20), transparent 70%);
+  filter: blur(4px);
+  z-index: 0;
+}
+.bs-card .phone-back, .bs-card .phone-wrap { display: none !important; }
+@media (min-width: 1050px) {
+  .bs-card-visual { min-height: 385px; }
+  .bs-png-stack { width: min(100%, 360px); height: 305px; }
+  .bs-phone-frame { width: 154px; height: 274px; transform: translateX(-78px); }
+  .bs-png-inner { width: 130px; height: 232px; }
+  .bs-png-inner.one { right: 58px; }
+}
+@media (max-width:600px) {
+  .bs-card-visual { min-height: 342px; padding-left: .9rem; padding-right: .9rem; }
+  .bs-png-stack { width: 310px; max-width: 100%; height: 270px; }
+  .bs-phone-frame { width: 136px; height: 242px; transform: translateX(-66px); }
+  .bs-png-inner { width: 112px; height: 200px; }
+  .bs-png-inner.one { right: 46px; top: 20px; }
+  .bs-png-inner.two { right: 0; bottom: 18px; }
+}
+
+
+
+/* ═══════════════════════════════════════
+   CARDIA STUDIOS — VISUAL LAYOUT UPDATE
+   Matches the cleaner reference: top moving PNG gallery + larger Best Seller previews.
+═══════════════════════════════════════ */
+:root { --bg: #F7F7F7; }
+body, #bestsellers, #templates, .section-header, .pricing-section, .share-section { background: #F7F7F7; }
+
+/* Smaller refined nav, like the reference */
+.nav {
+  height: 66px;
+  min-height: 66px;
+  padding: .45rem clamp(1.3rem, 4vw, 5.5rem);
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid rgba(42,32,24,.08);
+  box-shadow: 0 8px 28px rgba(42,32,24,.07);
+}
+.nav-logo img { height: 54px; }
+.nav-links { gap: clamp(1rem, 2vw, 2rem); }
+.nav-link {
+  color: rgba(42,32,24,.78);
+  font-size: .72rem;
+  letter-spacing: .02em;
+  text-transform: none;
+  font-weight: 400;
+}
+.nav-controls { margin-left: .5rem; }
+.nav-select { display: none; }
+
+/* Top area: no heavy text hero, just the animated visual gallery */
+.hero {
+  min-height: auto;
+  padding: 86px 0 54px;
+  background: #F7F7F7;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 22% 35%, rgba(184,144,60,.08), transparent 48%),
+    radial-gradient(ellipse at 78% 18%, rgba(154,106,88,.07), transparent 45%);
+}
+.hero-content,
+.scroll-hint { display: none !important; }
+.hero-template-marquee {
+  width: 100%;
+  padding: 26px 0 34px;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 7%, #000 93%, transparent);
+}
+.hero-template-track {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.15rem, 2.1vw, 2.1rem);
+  width: max-content;
+  animation: cardiaHeroMarquee 42s linear infinite;
+  padding: 0 2rem;
+}
+.hero-template-track img {
+  width: clamp(135px, 12vw, 205px);
+  height: clamp(240px, 21vw, 365px);
+  object-fit: contain;
+  object-position: center;
+  border-radius: 22px;
+  background: transparent;
+  box-shadow: 0 28px 58px rgba(42,32,24,.16);
+  filter: drop-shadow(0 20px 26px rgba(42,32,24,.10));
+  transform: perspective(900px) rotateY(var(--yaw, -9deg)) rotateZ(var(--tilt, -2deg));
+}
+.hero-template-track img:nth-child(2n) { --yaw: 8deg; --tilt: 2deg; }
+.hero-template-track img:nth-child(3n) { --yaw: -4deg; --tilt: -1deg; }
+.hero-template-track img:nth-child(4) {
+  width: clamp(155px, 13.5vw, 235px);
+  height: clamp(275px, 24vw, 418px);
+  --yaw: 0deg;
+  --tilt: 0deg;
+}
+
+/* Best Sellers title like the reference */
+#bestsellers { padding: 2.2rem 2rem 5.5rem; }
+.bestsellers-header { margin-bottom: 2.2rem; }
+.bestsellers-header p {
+  order: -1;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: .18em;
+  font-size: .68rem;
+  margin: 0 0 .35rem;
+}
+.bestsellers-header h2 {
+  font-size: clamp(2.45rem, 4vw, 3.9rem);
+  line-height: 1;
+}
+.gold-line { width: 62px; margin-top: 1.1rem; }
+
+/* Desktop layout: first row 3 cards, second row 4 cards */
+.bestsellers-grid {
+  max-width: 1320px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2rem;
+}
+.bestsellers-grid .bs-card:nth-child(-n+3) { grid-column: span 4; }
+.bestsellers-grid .bs-card:nth-child(n+4) { grid-column: span 3; }
+.bs-card {
+  border-radius: 18px;
+  border: 1px solid rgba(42,32,24,.09);
+  box-shadow: 0 16px 42px rgba(42,32,24,.07);
+}
+.bs-card:hover { transform: translateY(-5px); box-shadow: 0 22px 58px rgba(42,32,24,.12); }
+.bs-badge,
+.bs-template-id {
+  background: rgba(255,255,255,.92);
+  border-color: rgba(184,144,60,.45);
+  color: var(--gold);
+  box-shadow: 0 6px 16px rgba(42,32,24,.04);
+}
+.bs-card-visual {
+  min-height: 455px;
+  padding: 3.65rem 1.45rem 2.1rem;
+  background: #f2efe9;
+}
+.bs-card-visual::before {
+  background:
+    radial-gradient(ellipse at 50% 62%, rgba(184,144,60,.13), transparent 68%),
+    linear-gradient(135deg, rgba(255,255,255,.65), rgba(230,224,216,.48)),
+    var(--bs-grad);
+}
+
+/* Larger PNG previews with the phone outline kept and separated from inner pages */
+.bs-png-stack {
+  width: min(100%, 405px);
+  height: 350px;
+  align-items: center;
+  justify-content: center;
+}
+.bs-phone-frame {
+  width: 168px;
+  height: 299px;
+  padding: 7px;
+  border-radius: 30px;
+  transform: translateX(-112px);
+  box-shadow: 0 20px 48px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.bs-phone-frame::before {
+  top: 12px;
+  width: 45px;
+  height: 8px;
+}
+.bs-png-main {
+  border-radius: 24px;
+  object-fit: contain;
+  object-position: center;
+  background: #fff;
+}
+.bs-png-inner {
+  width: 150px;
+  height: 267px;
+  border-radius: 22px;
+  object-fit: contain;
+  object-position: center;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 20px 45px rgba(42,32,24,.15);
+}
+.bs-png-inner.one { right: 62px; top: 20px; transform: rotate(.8deg); }
+.bs-png-inner.two { right: 0; bottom: 20px; transform: rotate(-.8deg); }
+.bs-png-stack::after {
+  left: 13%;
+  width: 78%;
+  height: 28px;
+  opacity: .75;
+}
+.bs-card-info { padding: 1.55rem 1.65rem 1.85rem; }
+.bs-card-name { font-size: 1.65rem; }
+.bs-card-desc { font-size: .72rem; line-height: 1.75; }
+
+@media (max-width: 1100px) {
+  .bestsellers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 860px; }
+  .bestsellers-grid .bs-card:nth-child(n) { grid-column: auto; }
+}
+
+@media (max-width: 600px) {
+  .nav { height: 58px; min-height: 58px; }
+  .nav-logo img { height: 46px; }
+  .nav-links { background: rgba(255,255,255,.98); }
+  .hero { padding-top: 64px; padding-bottom: 28px; }
+  .hero-template-marquee { padding: 18px 0 26px; }
+  .hero-template-track { animation-duration: 34s; gap: 1rem; }
+  .hero-template-track img {
+    width: 120px;
+    height: 214px;
+    border-radius: 18px;
+  }
+  #bestsellers { padding: 2rem 0 4rem; }
+  .bestsellers-header { padding: 0 1rem; }
+  .bestsellers-grid {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: 0 1rem 1.2rem;
+    scroll-padding: 0 1rem;
+  }
+  .bestsellers-grid .bs-card {
+    flex: 0 0 86%;
+    max-width: 360px;
+    grid-column: auto;
+  }
+  .bs-card-visual {
+    min-height: 366px;
+    padding: 3.1rem .9rem 1.5rem;
+  }
+  .bs-png-stack { width: 335px; max-width: 100%; height: 288px; }
+  .bs-phone-frame {
+    width: 142px;
+    height: 253px;
+    border-radius: 28px;
+    transform: translateX(-90px);
+  }
+  .bs-png-main { border-radius: 22px; }
+  .bs-png-inner { width: 120px; height: 214px; border-radius: 19px; }
+  .bs-png-inner.one { right: 50px; top: 22px; }
+  .bs-png-inner.two { right: 0; bottom: 20px; }
+}
+
+
+/* Requested refinements: consistent Best Sellers rows + smaller phone outline + brand text */
+.nav-logo { gap: .72rem; }
+.nav-brand-text {
+  display: inline-block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.12rem;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+/* Make every Best Seller card the same size, so row 2 matches row 1 */
+.bestsellers-grid .bs-card:nth-child(n) { grid-column: span 4; }
+
+/* Keep the phone outline, but make it slightly smaller and separate it from the inner pages */
+.bs-png-stack {
+  width: min(100%, 410px);
+  height: 350px;
+}
+.bs-phone-frame {
+  width: 154px;
+  height: 274px;
+  padding: 7px;
+  border-radius: 29px;
+  transform: translateX(-126px);
+}
+.bs-phone-frame::before {
+  top: 11px;
+  width: 40px;
+  height: 7px;
+}
+.bs-png-main { border-radius: 22px; }
+.bs-png-inner {
+  width: 152px;
+  height: 270px;
+  border-radius: 22px;
+}
+.bs-png-inner.one { right: 62px; top: 24px; }
+.bs-png-inner.two { right: -2px; bottom: 24px; }
+
+@media (max-width: 1100px) {
+  .bestsellers-grid .bs-card:nth-child(n) { grid-column: auto; }
+}
+
+@media (max-width: 600px) {
+  .nav-logo { gap: .45rem; }
+  .nav-brand-text { font-size: .98rem; }
+  .bs-png-stack { width: 335px; height: 288px; }
+  .bs-phone-frame {
+    width: 128px;
+    height: 228px;
+    border-radius: 26px;
+    transform: translateX(-96px);
+  }
+  .bs-phone-frame::before { width: 34px; height: 6px; }
+  .bs-png-main { border-radius: 20px; }
+  .bs-png-inner { width: 124px; height: 221px; border-radius: 19px; }
+  .bs-png-inner.one { right: 50px; top: 24px; }
+  .bs-png-inner.two { right: 0; bottom: 22px; }
+}
+
+
+/* Final phone-frame fit fix: remove the white padding inside Best Seller phone outlines */
+#bestsellers .bs-phone-frame {
+  overflow: hidden !important;
+  padding: 7px !important;
+  background: #1a1210 !important;
+}
+#bestsellers .bs-phone-frame .bs-png-main {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+#bestsellers .bs-phone-frame::before {
+  z-index: 10 !important;
+  pointer-events: none !important;
+}
+@media (max-width: 600px) {
+  #bestsellers .bs-phone-frame { padding: 6px !important; }
+}
+
+
+/* ═══════════════════════════════════════
+   FINAL IMAGE QUALITY BOOST
+   Keeps the exact Best Sellers layout/phone fit, but loads and renders
+   the PNG previews at full quality.
+═══════════════════════════════════════ */
+#bestsellers .bs-png-main,
+#bestsellers .bs-png-inner,
+.hero-template-track img {
+  image-rendering: auto !important;
+  -ms-interpolation-mode: bicubic;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  object-position: center center !important;
+}
+
+/* Keep the phone image filling the outline perfectly, with no white gap. */
+#bestsellers .bs-phone-frame .bs-png-main {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Keep inner-page previews full and crisp instead of cropping important details. */
+#bestsellers .bs-png-inner {
+  object-fit: contain !important;
+  background: rgba(255,255,255,.98) !important;
+}
+
+/* Avoid extra raster blur caused by filters on the top hero cards. */
+.hero-template-track img {
+  filter: none !important;
+}
+
+/* Let the browser prioritize visible portfolio PNGs instead of treating them like lazy previews. */
+#bestsellers img,
+.hero-template-track img {
+  content-visibility: visible;
+}
+
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Nlogo3.png" alt="Cardia Studios"></a>
+  <a href="#" class="nav-logo"><img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Nlogo3a.png" alt="Cardia Studios"><span class="nav-brand-text">Cardia Studios</span></a>
   <div class="nav-links" id="navLinks">
     <a href="#bestsellers" class="nav-link" onclick="closeMenu()">Best Sellers</a>
     <a href="#templates" class="nav-link" onclick="closeMenu()">Templates</a>
@@ -1121,8 +1709,27 @@ textarea.form-input { resize: vertical; min-height: 90px; }
   <div class="hero-content">
     <div class="hero-tag">Digital Wedding Invitations</div>
     <h1>Your love story,<em>beautifully told.</em></h1>
-    <p class="hero-sub">Exclusive designs · Crafted with care · Delivered in 24h</p>
+    <p class="hero-sub">Exclusive designs · Crafted with care</p>
     <a href="#bestsellers" class="hero-cta">Explore Templates</a>
+  </div>
+
+  <div class="hero-template-marquee" aria-label="Template preview gallery">
+    <div class="hero-template-track">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A1_1.png" alt="Template A1 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A2_1.png" alt="Template A2 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A3_1.png" alt="Template A3 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A4_1.png" alt="Template A4 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A5_1.png" alt="Template A5 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A6_1.png" alt="Template A6 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A7_1.png" alt="Template A7 preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A1_2.png" alt="Template A1 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A2_2.png" alt="Template A2 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A3_2.png" alt="Template A3 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A4_2.png" alt="Template A4 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A5_2.png" alt="Template A5 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A6_2.png" alt="Template A6 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+      <img src="https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/A7_2.png" alt="Template A7 inner preview" decoding="async" loading="eager" fetchpriority="high" width="1080" height="1920">
+    </div>
   </div>
   <div class="scroll-hint"><div class="scroll-arrow"></div><span>Scroll</span></div>
 </section>
@@ -1137,89 +1744,177 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 
   <div class="bestsellers-grid">
 
-    <!-- Royal Floral -->
-    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Royal_Floral.html" target="_blank"
-       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(154,106,88,.22) 0%, rgba(232,215,190,.15) 70%, transparent 100%);">
-      <div class="bs-card-visual">
-        <div class="bs-badge">Best Seller</div>
-        <div class="bs-template-id">A1</div>
-        <div class="phone-back">
-          <div class="phone-outer">
-            <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Royal_Floral.html" loading="lazy" scrolling="no" title="Classy Floral preview back"></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="phone-wrap">
-          <div class="phone-outer">
-            <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Royal_Floral.html" loading="lazy" scrolling="no" title="Classy Floral preview"></iframe>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="bs-card-info">
-        <div class="bs-card-name">Classy Floral</div>
-        <div class="template-id-note">Template ID: A1</div>
-        <div class="bs-card-desc">Timeless romance with delicate floral illustrations and gilded details. A regal invitation fit for your most important day.</div>
-        <span class="bs-card-link">View theme</span>
-      </div>
-    </a>
 
-    <!-- Royal Gold -->
-    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Royal_Gold.html" target="_blank"
-       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(184,144,60,.22) 0%, rgba(220,200,150,.10) 70%, transparent 100%);">
+
+
+
+
+  
+<!-- Venice Theme -->
+<a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Venice.publish.html" target="_blank"
+   style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(180,210,225,.20) 0%, rgba(220,235,245,.10) 70%, transparent 100%);">
+  <div class="bs-card-visual">
+    <div class="bs-badge">Best Seller</div>
+    <div class="bs-template-id">A1</div>
+
+    <div class="phone-back">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src="https://nemerdavid.github.io/web-des/Venice.publish.html" loading="lazy" scrolling="no" title="Dolce Venezia theme preview back"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src="https://nemerdavid.github.io/web-des/Venice.publish.html" loading="lazy" scrolling="no" title="Dolce Venezia theme preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bs-card-info">
+    <div class="bs-card-name">Gondola Dream</div>
+    <div class="template-id-note">Template ID: A1</div>
+
+    <div class="bs-card-desc">
+      A romantic Venetian escape with pastel waterways, elegant architecture and dreamy gondola moments inspired by the timeless charm of the Mediterranean.
+    </div>
+
+    <span class="bs-card-link">View theme</span>
+  </div>
+</a>
+
+
+
+
+
+
+
+
+    
+    <!-- Royal Floral -->
+    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Royal_Floral_P.publish.html" target="_blank"
+       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(154,106,88,.22) 0%, rgba(232,215,190,.15) 70%, transparent 100%);">
       <div class="bs-card-visual">
         <div class="bs-badge">Best Seller</div>
         <div class="bs-template-id">A2</div>
         <div class="phone-back">
           <div class="phone-outer">
             <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Royal_Gold.html" loading="lazy" scrolling="no" title="Elegant Royal preview back"></iframe>
+              <iframe src="https://nemerdavid.github.io/web-des/Royal_Floral_P.publish.html" loading="lazy" scrolling="no" title="Classy Floral preview back"></iframe>
             </div>
           </div>
         </div>
         <div class="phone-wrap">
           <div class="phone-outer">
             <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Royal_Gold.html" loading="lazy" scrolling="no" title="Elegant Royal preview"></iframe>
+              <iframe src="https://nemerdavid.github.io/web-des/Royal_Floral_P.publish.html" loading="lazy" scrolling="no" title="Classy Floral preview"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bs-card-info">
+        <div class="bs-card-name">Classy Floral</div>
+        <div class="template-id-note">Template ID: A2</div>
+        <div class="bs-card-desc">Timeless romance with delicate floral illustrations and gilded details. A regal invitation fit for your most important day.</div>
+        <span class="bs-card-link">View theme</span>
+      </div>
+    </a>
+
+
+
+
+    <!-- Royal Gold -->
+    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Royal_Gold_P.publish.html" target="_blank"
+       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(184,144,60,.22) 0%, rgba(220,200,150,.10) 70%, transparent 100%);">
+      <div class="bs-card-visual">
+        <div class="bs-badge">Best Seller</div>
+        <div class="bs-template-id">A3</div>
+        <div class="phone-back">
+          <div class="phone-outer">
+            <div class="phone-screen">
+              <iframe src="https://nemerdavid.github.io/web-des/Royal_Gold_P.publish.html" loading="lazy" scrolling="no" title="Elegant Royal preview back"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-outer">
+            <div class="phone-screen">
+              <iframe src="https://nemerdavid.github.io/web-des/Royal_Gold_P.publish.html" loading="lazy" scrolling="no" title="Elegant Royal preview"></iframe>
             </div>
           </div>
         </div>
       </div>
       <div class="bs-card-info">
         <div class="bs-card-name">Elegant Royal</div>
-        <div class="template-id-note">Template ID: A2</div>
+        <div class="template-id-note">Template ID: A3</div>
         <div class="bs-card-desc">Opulent gold on rich dark backgrounds. Dramatic, luxurious, unforgettable — for couples who want to leave an impression.</div>
         <span class="bs-card-link">View theme</span>
       </div>
     </a>
 
+
+
+
+
     <!-- Italien Theme -->
-    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Italien-theme.html" target="_blank"
+    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Italien-theme_P.publish.html" target="_blank"
        style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(122,158,126,.22) 0%, rgba(200,220,200,.10) 70%, transparent 100%);">
       <div class="bs-card-visual">
         <div class="bs-badge">Best Seller</div>
-        <div class="bs-template-id">A3</div>
+        <div class="bs-template-id">A4</div>
         <div class="phone-back">
           <div class="phone-outer">
             <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Italien-theme.html" loading="lazy" scrolling="no" title="Italien theme preview back"></iframe>
+              <iframe src="https://nemerdavid.github.io/web-des/Italien-theme_P.publish.html" loading="lazy" scrolling="no" title="Italien theme preview back"></iframe>
             </div>
           </div>
         </div>
         <div class="phone-wrap">
           <div class="phone-outer">
             <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Italien-theme.html" loading="lazy" scrolling="no" title="Italien theme preview"></iframe>
+              <iframe src="https://nemerdavid.github.io/web-des/Italien-theme_P.publish.html" loading="lazy" scrolling="no" title="Italien theme preview"></iframe>
             </div>
           </div>
         </div>
       </div>
       <div class="bs-card-info">
         <div class="bs-card-name">Dolce Italia</div>
-        <div class="template-id-note">Template ID: A3</div>
+        <div class="template-id-note">Template ID: A4</div>
         <div class="bs-card-desc">Sun-soaked Tuscan warmth meets modern elegance. Lush gardens, warm terracotta tones and a Mediterranean soul.</div>
+        <span class="bs-card-link">View theme</span>
+      </div>
+    </a>
+    
+    
+ 
+     <!-- Navy blue -->
+    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Navy-Blue_P.publish.html" target="_blank"
+       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(122,158,126,.22) 0%, rgba(200,220,200,.10) 70%, transparent 100%);">
+      <div class="bs-card-visual">
+        <div class="bs-badge">Best Seller</div>
+        <div class="bs-template-id">A5</div>
+        <div class="phone-back">
+          <div class="phone-outer">
+            <div class="phone-screen">
+              <iframe src="   https://nemerdavid.github.io/web-des/Navy-Blue_P.publish.html" loading="lazy" scrolling="no" title="Navy blue preview back"></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="phone-wrap">
+          <div class="phone-outer">
+            <div class="phone-screen">
+              <iframe src="   https://nemerdavid.github.io/web-des/Navy-Blue_P.publish.html" loading="lazy" scrolling="no" title="Navy blue preview"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bs-card-info">
+        <div class="bs-card-name">Eternal Navy</div>
+        <div class="template-id-note">Template ID: A5</div>
+        <div class="bs-card-desc">A romantic navy blue invitation with golden touches and soft elements, crafted for an elegant and unforgettable celebration.</div>
         <span class="bs-card-link">View theme</span>
       </div>
     </a>
@@ -1227,40 +1922,72 @@ textarea.form-input { resize: vertical; min-height: 90px; }
     
     
     
-    
-    
-    
-    <!-- Navy blue Theme -->
-    <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Navy_Blue.html" target="_blank"
-       style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(122,158,126,.22) 0%, rgba(200,220,200,.10) 70%, transparent 100%);">
-      <div class="bs-card-visual">
-        <div class="bs-badge">Best Seller</div>
-        <div class="bs-template-id">A3</div>
-        <div class="phone-back">
-          <div class="phone-outer">
-            <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Navy_Blue.html" loading="lazy" scrolling="no" title="Italien theme preview back"></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="phone-wrap">
-          <div class="phone-outer">
-            <div class="phone-screen">
-              <iframe src="https://nemerdavid.github.io/web-des/Navy_Blue.html" loading="lazy" scrolling="no" title="Italien theme preview"></iframe>
-            </div>
-          </div>
+       <!-- Wine theme -->
+<a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Wine-theme_P.publish.html" target="_blank"
+   style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(122,158,126,.22) 0%, rgba(200,220,200,.10) 70%, transparent 100%);">
+  <div class="bs-card-visual">
+    <div class="bs-badge">Best Seller</div>
+    <div class="bs-template-id">A6</div>
+    <div class="phone-back">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src="https://nemerdavid.github.io/web-des/Wine-theme_P.publish.html" loading="lazy" scrolling="no" title="Navy blue preview back"></iframe>
         </div>
       </div>
-      <div class="bs-card-info">
-        <div class="bs-card-name">Dolce Italia</div>
-        <div class="template-id-note">Template ID: A3</div>
-        <div class="bs-card-desc">Sun-soaked Tuscan warmth meets modern elegance. Lush gardens, warm terracotta tones and a Mediterranean soul.</div>
-        <span class="bs-card-link">View theme</span>
+    </div>
+    <div class="phone-wrap">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src="https://nemerdavid.github.io/web-des/Wine-theme_P.publish.html" loading="lazy" scrolling="no" title="Navy blue preview"></iframe>
+        </div>
       </div>
-    </a>
+    </div>
+  </div>
+  <div class="bs-card-info">
+    <div class="bs-card-name">Tuscan Wine</div>
+    <div class="template-id-note">Template ID: A6</div>
+    <div class="bs-card-desc">A lush Tuscan-inspired invitation with deep wine tones,vineyard, and the warmth of an Italian summer evening — crafted for a celebration as rich and memorable as the finest vintage.</div>
+    <span class="bs-card-link">View theme</span>
+  </div>
+</a>
     
     
-    
+   
+      <!-- Quiet Luxury-->
+   <a class="bs-card reveal" href="https://nemerdavid.github.io/web-des/Pale_blue_env.html" target="_blank"
+   style="--bs-grad: radial-gradient(ellipse at 50% 70%, rgba(180,210,225,.20) 0%, rgba(220,235,245,.10) 70%, transparent 100%);">
+  <div class="bs-card-visual">
+    <div class="bs-badge">Best Seller</div>
+    <div class="bs-template-id">A7</div>
+
+    <div class="phone-back">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src=" https://nemerdavid.github.io/web-des/Pale_blue_env.html" loading="lazy" scrolling="no" title="Timeless Romance theme preview back"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone-wrap">
+      <div class="phone-outer">
+        <div class="phone-screen">
+          <iframe src=" https://nemerdavid.github.io/web-des/Pale_blue_env.html" loading="lazy" scrolling="no" title="Timeless Romance theme preview"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bs-card-info">
+    <div class="bs-card-name">Quiet Luxury</div>
+    <div class="template-id-note">Template ID: A7</div>
+
+    <div class="bs-card-desc">
+      Elegant florals and a modern romantic atmosphere designed to adapt beautifully to any wedding style.
+    </div>
+
+    <span class="bs-card-link">View theme</span>
+  </div>
+</a>   
     
     
     
@@ -1296,86 +2023,106 @@ textarea.form-input { resize: vertical; min-height: 90px; }
       <div class="cards-track" id="row2">
         <div class="cards-inner" id="row2-inner" style="--scroll-dur:32s">
 
+          
+          <!-- Garden_in_Bloom ══ -->
           <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/Blue_wed_book','_blank')">
-              <span class="card-header-num">B1</span><span class="card-header-name">Soft Floral Book</span>
+            <div class="card-header" onclick="window.open('templates/Garden_in_Bloom.html','_blank')">
+              <span class="card-header-num">B1</span><span class="card-header-name">Blue Rose Garden</span>
             </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/Blue_wed_book','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Blue_wed_book" loading="lazy" scrolling="no" title="Soft Floral Book"></iframe>
-              <div class="card-overlay">
-                <div class="card-name">Soft Floral Book</div>
-                <div class="card-desc">Elegant · Floral · Timeless</div>
-                <a href="https://nemerdavid.github.io/web-des/Blue_wed_book" target="_blank" class="card-btn">View Template →</a>
-              </div>
-              <div class="card-strip" style="--accent:#8a9bb5;"></div>
-            </div>
-          </div>
-          <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/Garden_in_Bloom.html','_blank')">
-              <span class="card-header-num">B2</span><span class="card-header-name">Blue Rose Garden</span>
-            </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/Garden_in_Bloom.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Garden_in_Bloom.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
+            <div class="template-card card-garden" onclick="window.open('templates/Garden_in_Bloom.html','_blank')">
+              <iframe class="card-preview" src="templates/Garden_in_Bloom.html" loading="lazy" scrolling="no" title="Blue Rose Garden"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Blue Rose Garden</div>
                 <div class="card-desc">Romantic · Watercolor · Enchanted</div>
-                <a href="https://nemerdavid.github.io/web-des/Garden_in_Bloom.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/Garden_in_Bloom.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#8a9bb5;"></div>
             </div>
           </div>
+          
+               <!-- Dark_floral_book ══ -->
+      
+
+          
           <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/Dark_floral_book.html','_blank')">
-              <span class="card-header-num">B3</span><span class="card-header-name">Dark blue Garden</span>
+            <div class="card-header" onclick="window.open('templates/Dark_floral_book.html','_blank')">
+              <span class="card-header-num">B2</span><span class="card-header-name">Dark blue Garden</span>
             </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/Dark_floral_book.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Dark_floral_book.html" loading="lazy" scrolling="no" title="Dark blue Garden"></iframe>
+            <div class="template-card card-garden" onclick="window.open('templates/Dark_floral_book.html','_blank')">
+              <iframe class="card-preview" src="templates/Dark_floral_book.html" loading="lazy" scrolling="no" title="Dark blue Garden"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Dark blue &amp; gold Rose garden</div>
                 <div class="card-desc">Romantic · gold · Enchanted</div>
-                <a href="https://nemerdavid.github.io/web-des/Dark_floral_book.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/Dark_floral_book.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#8a9bb5;"></div>
             </div>
           </div>
+          
+            <!-- French_village_book ══ -->
+          
+          
           <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/French_village_book.html','_blank')">
-              <span class="card-header-num">B4</span><span class="card-header-name">French Village</span>
+            <div class="card-header" onclick="window.open('templates/French_village_book.html','_blank')">
+              <span class="card-header-num">B3</span><span class="card-header-name">French Village</span>
             </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/French_village_book.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/French_village_book.html" loading="lazy" scrolling="no" title="French Village"></iframe>
+            <div class="template-card card-garden" onclick="window.open('templates/French_village_book.html','_blank')">
+              <iframe class="card-preview" src="templates/French_village_book.html" loading="lazy" scrolling="no" title="French Village"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Jardin de Fleurs — French Village</div>
                 <div class="card-desc">Romantic · Watercolor · Pastel bloom</div>
-                <a href="https://nemerdavid.github.io/web-des/French_village_book.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/French_village_book.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c4848a;"></div>
             </div>
           </div>
+          
+             <!-- Die_cut Book ══ -->
           <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/Die_cut Book.html','_blank')">
-              <span class="card-header-num">B5</span><span class="card-header-name">Jardin de Fleurs</span>
+            <div class="card-header" onclick="window.open('templates/Die_cut Book.html','_blank')">
+              <span class="card-header-num">B4</span><span class="card-header-name">Jardin de Fleurs</span>
             </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/Die_cut Book.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Die_cut Book.html" loading="lazy" scrolling="no" title="Jardin de Fleurs"></iframe>
+            <div class="template-card card-garden" onclick="window.open('templates/Die_cut Book.html','_blank')">
+              <iframe class="card-preview" src="templates/Die_cut Book.html" loading="lazy" scrolling="no" title="Jardin de Fleurs"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Jardin de Fleurs — Engraving Edition</div>
                 <div class="card-desc">Vintage · Sepia · Hand-engraved</div>
-                <a href="https://nemerdavid.github.io/web-des/Die_cut Book.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/Die_cut Book.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#8a5a2a;"></div>
             </div>
           </div>
+          
+           <!-- Blue book ══ -->
+             <div class="card-wrap card-garden">
+            <div class="card-header" onclick="window.open('https://www.cardiastudios.com/templates/Blue_wed_book','_blank')">
+              <span class="card-header-num">B5</span><span class="card-header-name">Soft Floral Book</span>
+            </div>
+            
+            <div class="template-card card-garden" onclick="window.open('https://www.cardiastudios.com/templates/Blue_wed_book','_blank')">
+              <iframe class="card-preview" src="https://www.cardiastudios.com/templates/Blue_wed_book" loading="lazy" scrolling="no" title="Soft Floral Book"></iframe>
+              <div class="card-overlay">
+                <div class="card-name">Soft Floral Book</div>
+                <div class="card-desc">Elegant · Floral · Timeless</div>
+                <a href="https://www.cardiastudios.com/templates/Blue_wed_book" target="_blank" class="card-btn">View Template →</a>
+              </div>
+              <div class="card-strip" style="--accent:#8a9bb5;"></div>
+            </div>
+          </div>
+          
+          
+          
+           <!-- Blue skye ══ -->
           <div class="card-wrap">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/skyblue_book.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/skyblue_book.html','_blank')">
               <span class="card-header-num">B6</span><span class="card-header-name">Ciel Divin</span>
             </div>
-            <div class="template-card" onclick="window.open('https://nemerdavid.github.io/web-des//skyblue_book.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/skyblue_book.html" loading="lazy" scrolling="no" title="Ciel Divin"></iframe>
+            <div class="template-card" onclick="window.open('templates/skyblue_book.html','_blank')">
+              <iframe class="card-preview" src="templates/skyblue_book.html" loading="lazy" scrolling="no" title="Ciel Divin"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Ciel Divin — Heavenly Sky</div>
                 <div class="card-desc">Divine · Sky blue · Gold banner</div>
-                <a href="https://nemerdavid.github.io/web-des/skyblue_book.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/skyblue_book.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#4a7ab5;"></div>
             </div>
@@ -1384,27 +2131,27 @@ textarea.form-input { resize: vertical; min-height: 90px; }
           <!-- Duplicates for seamless loop -->
           <div class="card-wrap card-garden" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B1</span><span class="card-header-name">Soft Floral Book</span></div>
-            <div class="template-card card-garden"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Blue_wed_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
+            <div class="template-card card-garden"><iframe class="card-preview" src="templates/Blue_wed_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
           </div>
           <div class="card-wrap card-garden" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B2</span><span class="card-header-name">Blue Rose Garden</span></div>
-            <div class="template-card card-garden"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Garden_in_Bloom.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
+            <div class="template-card card-garden"><iframe class="card-preview" src="templates/Garden_in_Bloom.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
           </div>
           <div class="card-wrap card-garden" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B3</span><span class="card-header-name">Dark blue Garden</span></div>
-            <div class="template-card card-garden"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Dark_floral_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
+            <div class="template-card card-garden"><iframe class="card-preview" src="templates/Dark_floral_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a9bb5;"></div></div>
           </div>
           <div class="card-wrap card-garden" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B4</span><span class="card-header-name">French Village</span></div>
-            <div class="template-card card-garden"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/French_village_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#c4848a;"></div></div>
+            <div class="template-card card-garden"><iframe class="card-preview" src="templates/French_village_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#c4848a;"></div></div>
           </div>
           <div class="card-wrap card-garden" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B5</span><span class="card-header-name">Jardin de Fleurs</span></div>
-            <div class="template-card card-garden"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/Die_cut Book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a5a2a;"></div></div>
+            <div class="template-card card-garden"><iframe class="card-preview" src="templates/Die_cut Book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#8a5a2a;"></div></div>
           </div>
           <div class="card-wrap" aria-hidden="true">
             <div class="card-header"><span class="card-header-num">B6</span><span class="card-header-name">Ciel Divin</span></div>
-            <div class="template-card"><iframe class="card-preview" src="https://nemerdavid.github.io/web-des/skyblue_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#4a7ab5;"></div></div>
+            <div class="template-card"><iframe class="card-preview" src="templates/skyblue_book.html" loading="lazy" scrolling="no"></iframe><div class="card-strip" style="--accent:#4a7ab5;"></div></div>
           </div>
 
         </div><!-- end cards-inner -->
@@ -1430,114 +2177,114 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <div class="cards-inner" id="row1-inner" style="--scroll-dur:42s">
 
           <div class="card-wrap card-terracotta">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_terracotta','_blank')">
+            <div class="card-header" onclick="window.open('https://www.cardiastudios.com/templates/wedding-invitation_terracotta','_blank')">
               <span class="card-header-num">C1</span><span class="card-header-name">Dark Gold Luxury</span>
             </div>
-            <div class="template-card card-terracotta" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_terracotta','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_terracotta" loading="lazy" scrolling="no" title="Dark Gold Luxury"></iframe>
+            <div class="template-card card-terracotta" onclick="window.open('https://www.cardiastudios.com/templates/wedding-invitation_terracotta','_blank')">
+              <iframe class="card-preview" src="https://www.cardiastudios.com/templates/wedding-invitation_terracotta" loading="lazy" scrolling="no" title="Dark Gold Luxury"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Dark Gold Luxury</div>
                 <div class="card-desc">Dark · Gold · Floral · Luxurious</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_terracotta" target="_blank" class="card-btn">View Template →</a>
+                <a href="https://www.cardiastudios.com/templates/wedding-invitation_terracotta" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c4674a;"></div>
             </div>
           </div>
           <div class="card-wrap card-vintage">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_vintage.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_vintage.html','_blank')">
               <span class="card-header-num">C2</span><span class="card-header-name">Vintage</span>
             </div>
-            <div class="template-card card-vintage" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_vintage.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
+            <div class="template-card card-vintage" onclick="window.open('templates/wedding-invitation_vintage.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_vintage.html" loading="lazy" scrolling="no" title="Vintage"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Vintage &amp; Romantic</div>
                 <div class="card-desc">Aged parchment · Sepia · Ornate frames</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_vintage.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_vintage.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c4a456;"></div>
             </div>
           </div>
           <div class="card-wrap card-garden">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_garden.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_garden.html','_blank')">
               <span class="card-header-num">C3</span><span class="card-header-name">Garden &amp; Floral</span>
             </div>
-            <div class="template-card card-garden" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_garden.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
+            <div class="template-card card-garden" onclick="window.open('templates/wedding-invitation_garden.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_garden.html" loading="lazy" scrolling="no" title="Garden"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Garden &amp; Floral</div>
                 <div class="card-desc">Sage green · Botanical · Fresh</div>
-                <a href="https://nemerdavid.github.io/web-des//wedding-invitation_garden.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_garden.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#7a9e7e;"></div>
             </div>
           </div>
 
           <div class="card-wrap card-soft">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_soft.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_soft.html','_blank')">
               <span class="card-header-num">C4</span><span class="card-header-name">Soft &amp; Minimal</span>
             </div>
-            <div class="template-card card-soft" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_soft.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
+            <div class="template-card card-soft" onclick="window.open('templates/wedding-invitation_soft.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_soft.html" loading="lazy" scrolling="no" title="Soft"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Soft &amp; Minimal</div>
                 <div class="card-desc">Blush · Minimal · Pure elegance</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_soft.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_soft.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c9958a;"></div>
             </div>
           </div>
           <div class="card-wrap card-dark">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_dark.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_dark.html','_blank')">
               <span class="card-header-num">C5</span><span class="card-header-name">Dark &amp; Moody</span>
             </div>
-            <div class="template-card card-dark" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_dark.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
+            <div class="template-card card-dark" onclick="window.open('templates/wedding-invitation_dark.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_dark.html" loading="lazy" scrolling="no" title="Dark"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Dark &amp; Moody</div>
                 <div class="card-desc">Deep charcoal · Gold · Dramatic</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_dark.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_dark.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c9a84c;"></div>
             </div>
           </div>
           <div class="card-wrap card-midnight">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_night.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_night.html','_blank')">
               <span class="card-header-num">C6</span><span class="card-header-name">Midnight Blue</span>
             </div>
-            <div class="template-card card-midnight" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_night.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
+            <div class="template-card card-midnight" onclick="window.open('templates/wedding-invitation_night.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_night.html" loading="lazy" scrolling="no" title="Midnight"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Midnight Blue</div>
                 <div class="card-desc">Navy · Silver · Twinkling stars</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_night.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_night.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#8aaa98;"></div>
             </div>
           </div>
           <div class="card-wrap card-classic">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_classic.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_classic.html','_blank')">
               <span class="card-header-num">C7</span><span class="card-header-name">Classic</span>
             </div>
-            <div class="template-card card-classic" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_classic.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
+            <div class="template-card card-classic" onclick="window.open('templates/wedding-invitation_classic.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_classic.html" loading="lazy" scrolling="no" title="Classic"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Classic</div>
                 <div class="card-desc">Warm paper · Torn edges · Gold accents</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_classic.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_classic.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#c9a96e;"></div>
             </div>
           </div>
           <div class="card-wrap card-elvish">
-            <div class="card-header" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_lotr.html','_blank')">
+            <div class="card-header" onclick="window.open('templates/wedding-invitation_lotr.html','_blank')">
               <span class="card-header-num">C8</span><span class="card-header-name">Elvish Fantasy</span>
             </div>
-            <div class="template-card card-elvish" onclick="window.open('https://nemerdavid.github.io/web-des/wedding-invitation_lotr.html','_blank')">
-              <iframe class="card-preview" src="https://nemerdavid.github.io/web-des/wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
+            <div class="template-card card-elvish" onclick="window.open('templates/wedding-invitation_lotr.html','_blank')">
+              <iframe class="card-preview" src="templates/wedding-invitation_lotr.html" loading="lazy" scrolling="no" title="Elvish"></iframe>
               <div class="card-overlay">
                 <div class="card-name">Elvish Fantasy</div>
                 <div class="card-desc">Forest green · Gold · Fireflies · LOTR</div>
-                <a href="https://nemerdavid.github.io/web-des/wedding-invitation_lotr.html" target="_blank" class="card-btn">View Template →</a>
+                <a href="templates/wedding-invitation_lotr.html" target="_blank" class="card-btn">View Template →</a>
               </div>
               <div class="card-strip" style="--accent:#2d6e3a;"></div>
             </div>
@@ -1629,7 +2376,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <li class="price-feature"><span>Fully personalized <span class="info-btn">i<span class="info-tooltip">We customize your chosen template with your names, date, venue and schedule. You can add or remove any steps (ceremony, cocktails, dinner, dancing, etc.).</span></span></span></li>
         <li class="price-feature"><span>RSVP form &mdash; replies go to your inbox</span></li>
         <li class="price-feature"><span>Up to 3 photos included</span></li>
-        <li class="price-feature"><span>Delivered in 48h</span></li>
+        <li class="price-feature"><span>Ready in up to 7 days</span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
     </div>
@@ -1643,9 +2390,9 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <li class="price-feature"><span>1 template of your choice</span></li>
         <li class="price-feature"><span>Fully personalized <span class="info-btn">i<span class="info-tooltip">We customize your chosen template with your names, date, venue and schedule. You can add or remove any steps (ceremony, cocktails, dinner, dancing, etc.).</span></span></span></li>
         <li class="price-feature"><span>RSVP form &mdash; replies go to your inbox</span></li>
-        <li class="price-feature"><span>Up to 5 photos of your choice included (e.g., from your wedding photo shoot) </span></li>
+        <li class="price-feature"><span>Up to 6 photos of your choice included (e.g., from your wedding photo shoot) </span></li>
         <li class="price-feature"><span>Background music</span></li>
-        <li class="price-feature"><span>Delivered in 24h</span></li>
+        <li class="price-feature"><span>Ready in up to 4 days</span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
     </div>
@@ -1656,8 +2403,8 @@ textarea.form-input { resize: vertical; min-height: 90px; }
       <div class="price-desc">For the perfect wedding</div>
       <ul class="price-features">
         <li class="price-feature"><span>Everything in Premium</span></li>
-        <li class="price-feature"><span>Up to 15 photos of your choice included (e.g., from your wedding photo shoot) </span></li>
-        <li class="price-feature"><span>Priority delivery in 12h</span></li>
+        <li class="price-feature"><span>Up to 12 photos of your choice included (e.g., from your wedding photo shoot) </span></li>
+        <li class="price-feature"><span>Priority service — ready in up to 2 days</span></li>
 
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
@@ -1678,7 +2425,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
           <li class="price-feature"><span>Fully personalized</span></li>
           <li class="price-feature"><span>RSVP form &mdash; replies go to your inbox</span></li>
           <li class="price-feature"><span>Up to 3 photos included</span></li>
-          <li class="price-feature"><span>Delivered in 48h</span></li>
+          <li class="price-feature"><span>Ready in up to 7 days</span></li>
           <li class="price-feature"><span>Hosted forever on our servers</span></li>
         </ul>
       </div>
@@ -1692,9 +2439,9 @@ textarea.form-input { resize: vertical; min-height: 90px; }
           <li class="price-feature"><span>1 template of your choice</span></li>
           <li class="price-feature"><span>Fully personalized</span></li>
           <li class="price-feature"><span>RSVP form &mdash; replies go to your inbox</span></li>
-          <li class="price-feature"><span>Up to 5 photos included</span></li>
+          <li class="price-feature"><span>Up to 6 photos included</span></li>
           <li class="price-feature"><span>Background music</span></li>
-          <li class="price-feature"><span>Delivered in 24h</span></li>
+          <li class="price-feature"><span>Ready in up to 4 days</span></li>
           <li class="price-feature"><span>Hosted forever on our servers</span></li>
         </ul>
       </div>
@@ -1705,12 +2452,12 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <div class="price-desc">For the perfect wedding</div>
         <ul class="price-features">
           <li class="price-feature"><span>Everything in Premium</span></li>
-          <li class="price-feature"><span>Up to 10 photos included</span></li>
-          <li class="price-feature"><span>Priority delivery in 12h</span></li>
+          <li class="price-feature"><span>Up to 12 photos included</span></li>
+          <li class="price-feature"><span>Priority service — ready in up to 2 days</span></li>
           <li class="price-feature"><span>Invitation generator</span></li>
           <li class="price-feature"><span>Hosted forever on our servers</span></li>
         </ul>
-        <a href="https://nemerdavid.github.io/web-des/Invitation%20generator.html" target="_blank" class="price-cta">See Invitation Generator &#8599;</a>
+     
       </div>
     </div>
     <div class="swiper-dots" id="pricingDots"></div>
@@ -1923,7 +2670,7 @@ setupWebsiteShareLinks();
 const CARDIA_TRANSLATIONS = {
   en: {
     nav:['Best Sellers','Templates','How it works','Pricing','Reviews','Share','Contact'],
-    heroTag:'Digital Wedding Invitations', heroTitle:'Your love story,', heroEm:'beautifully told.', heroSub:'Exclusive designs · Crafted with care · Delivered in 24h', heroCta:'Explore Templates',
+    heroTag:'Digital Wedding Invitations', heroTitle:'Your love story,', heroEm:'beautifully told.', heroSub:'Exclusive designs · Crafted with care ·', heroCta:'Explore Templates',
     bestTitle:'Best Sellers', bestSub:'Our most loved designs — chosen by couples around the world', bestBadge:'Best Seller', viewTheme:'View theme',
     collectionTitle:'Our Collection', collectionSub:'Exclusive designs, one for every love story',
     bookTitle:'Book Invitations', classicTitle:'Classic Invitations', swipe:'Swipe to view ›', templateId:'Template ID: ',
@@ -1938,10 +2685,10 @@ const CARDIA_TRANSLATIONS = {
     plans:['Standard','Premium','Luxury'], popular:'Most Popular', oneTime:'one-time · hosted forever',
     planDesc:['The complete digital invitation','The full experience','For the perfect wedding'],
     features:{
-      standard:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 3 photos included','Delivered in 48h','Hosted forever on our servers'],
-      premium:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 5 photos of your choice included','Background music','Delivered in 24h','Hosted forever on our servers'],
-      luxury:['Everything in Premium','Up to 15 photos of your choice included','Priority delivery in 12h','Hosted forever on our servers'],
-      luxuryMobile:['Everything in Premium','Up to 10 photos included','Priority delivery in 12h','Invitation generator','Hosted forever on our servers']
+      standard:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 3 photos included','Ready in up to 7 days','Hosted forever on our servers'],
+      premium:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 6 photos of your choice included','Background music','Ready in up to 4 days','Hosted forever on our servers'],
+      luxury:['Everything in Premium','Up to 12 photos of your choice included','Priority service - ready in up to 2 days','Hosted forever on our servers'],
+      luxuryMobile:['Everything in Premium','Up to 12 photos included','Priority service - ready in up to 2 days','Invitation generator','Hosted forever on our servers']
     },
     tooltip:'We customize your chosen template with your names, date, venue and schedule. You can add or remove any steps (ceremony, cocktails, dinner, dancing, etc.).',
     generator:'See Invitation Generator ↗',
@@ -1954,7 +2701,7 @@ const CARDIA_TRANSLATIONS = {
   },
   fr: {
     nav:['Meilleures ventes','Modèles','Fonctionnement','Tarifs','Avis','Partager','Contact'],
-    heroTag:'Invitations de mariage digitales', heroTitle:'Votre histoire d’amour,', heroEm:'magnifiquement racontée.', heroSub:'Designs exclusifs · Créés avec soin · Livrés en 24h', heroCta:'Voir les modèles',
+    heroTag:'Invitations de mariage digitales', heroTitle:'Votre histoire d’amour,', heroEm:'magnifiquement racontée.', heroSub:'Designs exclusifs · Créés avec soin ·', heroCta:'Voir les modèles',
     bestTitle:'Meilleures ventes', bestSub:'Nos designs les plus aimés — choisis par des couples du monde entier', bestBadge:'Meilleure vente', viewTheme:'Voir le modèle',
     collectionTitle:'Notre collection', collectionSub:'Des designs exclusifs pour chaque histoire d’amour',
     bookTitle:'Invitations livre', classicTitle:'Invitations classiques', swipe:'Faites glisser ›', templateId:'ID du modèle : ',
@@ -1969,10 +2716,10 @@ const CARDIA_TRANSLATIONS = {
     plans:['Standard','Premium','Luxury'], popular:'Le plus populaire', oneTime:'paiement unique · hébergement inclus',
     planDesc:['L’invitation digitale complète','L’expérience complète','Pour un mariage parfait'],
     features:{
-      standard:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 3 photos incluses','Livré en 48h','Hébergé pour toujours sur nos serveurs'],
-      premium:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 5 photos au choix incluses','Musique de fond','Livré en 24h','Hébergé pour toujours sur nos serveurs'],
-      luxury:['Tout ce qui est inclus dans Premium','Jusqu’à 15 photos au choix incluses','Livraison prioritaire en 12h','Hébergé pour toujours sur nos serveurs'],
-      luxuryMobile:['Tout ce qui est inclus dans Premium','Jusqu’à 10 photos incluses','Livraison prioritaire en 12h','Générateur d’invitations','Hébergé pour toujours sur nos serveurs']
+      standard:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 3 photos incluses','Prêt sous 7 jours maximum','Hébergé pour toujours sur nos serveurs'],
+      premium:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 6 photos au choix incluses','Musique de fond','Prêt sous 4 jours maximum','Hébergé pour toujours sur nos serveurs'],
+      luxury:['Tout ce qui est inclus dans Premium','Jusqu’à 12 photos au choix incluses','Service prioritaire - prêt sous 2 jours maximum','Hébergé pour toujours sur nos serveurs'],
+      luxuryMobile:['Tout ce qui est inclus dans Premium','Jusqu’à 12 photos incluses','Service prioritaire - prêt sous 2 jours maximum','Générateur d’invitations','Hébergé pour toujours sur nos serveurs']
     },
     tooltip:'Nous personnalisons le modèle choisi avec vos noms, la date, le lieu et le programme. Vous pouvez ajouter ou supprimer des étapes (cérémonie, cocktail, dîner, soirée, etc.).',
     generator:'Voir le générateur d’invitations ↗',
@@ -1985,7 +2732,7 @@ const CARDIA_TRANSLATIONS = {
   },
   es: {
     nav:['Más vendidos','Plantillas','Cómo funciona','Precios','Reseñas','Compartir','Contacto'],
-    heroTag:'Invitaciones digitales de boda', heroTitle:'Tu historia de amor,', heroEm:'bellamente contada.', heroSub:'Diseños exclusivos · Hechos con cuidado · Entrega en 24h', heroCta:'Ver plantillas',
+    heroTag:'Invitaciones digitales de boda', heroTitle:'Tu historia de amor,', heroEm:'bellamente contada.', heroSub:'Diseños exclusivos · Hechos con cuidado ·', heroCta:'Ver plantillas',
     bestTitle:'Más vendidos', bestSub:'Nuestros diseños más queridos — elegidos por parejas de todo el mundo', bestBadge:'Más vendido', viewTheme:'Ver plantilla',
     collectionTitle:'Nuestra colección', collectionSub:'Diseños exclusivos para cada historia de amor',
     bookTitle:'Invitaciones libro', classicTitle:'Invitaciones clásicas', swipe:'Desliza para ver ›', templateId:'ID de plantilla: ',
@@ -2000,10 +2747,10 @@ const CARDIA_TRANSLATIONS = {
     plans:['Standard','Premium','Luxury'], popular:'Más popular', oneTime:'pago único · alojamiento incluido',
     planDesc:['La invitación digital completa','La experiencia completa','Para una boda perfecta'],
     features:{
-      standard:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 3 fotos incluidas','Entrega en 48h','Alojada para siempre en nuestros servidores'],
-      premium:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 5 fotos a elección incluidas','Música de fondo','Entrega en 24h','Alojada para siempre en nuestros servidores'],
-      luxury:['Todo lo incluido en Premium','Hasta 15 fotos a elección incluidas','Entrega prioritaria en 12h','Alojada para siempre en nuestros servidores'],
-      luxuryMobile:['Todo lo incluido en Premium','Hasta 10 fotos incluidas','Entrega prioritaria en 12h','Generador de invitaciones','Alojada para siempre en nuestros servidores']
+      standard:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 3 fotos incluidas','Listo en hasta 7 días','Alojada para siempre en nuestros servidores'],
+      premium:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 6 fotos a elección incluidas','Música de fondo','Listo en hasta 4 días','Alojada para siempre en nuestros servidores'],
+      luxury:['Todo lo incluido en Premium','Hasta 12 fotos a elección incluidas','Servicio prioritario - listo en hasta 2 días','Alojada para siempre en nuestros servidores'],
+      luxuryMobile:['Todo lo incluido en Premium','Hasta 12 fotos incluidas','Servicio prioritario - listo en hasta 2 días','Generador de invitaciones','Alojada para siempre en nuestros servidores']
     },
     tooltip:'Personalizamos la plantilla elegida con vuestros nombres, fecha, lugar y programa. Puedes añadir o quitar etapas (ceremonia, cóctel, cena, baile, etc.).',
     generator:'Ver generador de invitaciones ↗',
@@ -2016,7 +2763,7 @@ const CARDIA_TRANSLATIONS = {
   },
   it: {
     nav:['Più venduti','Modelli','Come funziona','Prezzi','Recensioni','Condividi','Contatto'],
-    heroTag:'Inviti digitali per matrimonio', heroTitle:'La vostra storia d’amore,', heroEm:'raccontata con eleganza.', heroSub:'Design esclusivi · Creati con cura · Consegna in 24h', heroCta:'Esplora i modelli',
+    heroTag:'Inviti digitali per matrimonio', heroTitle:'La vostra storia d’amore,', heroEm:'raccontata con eleganza.', heroSub:'Design esclusivi · Creati con cura · ', heroCta:'Esplora i modelli',
     bestTitle:'Più venduti', bestSub:'I nostri design più amati — scelti da coppie in tutto il mondo', bestBadge:'Più venduto', viewTheme:'Vedi modello',
     collectionTitle:'La nostra collezione', collectionSub:'Design esclusivi per ogni storia d’amore',
     bookTitle:'Inviti libro', classicTitle:'Inviti classici', swipe:'Scorri per vedere ›', templateId:'ID modello: ',
@@ -2031,10 +2778,10 @@ const CARDIA_TRANSLATIONS = {
     plans:['Standard','Premium','Luxury'], popular:'Più popolare', oneTime:'pagamento unico · hosting incluso',
     planDesc:['L’invito digitale completo','L’esperienza completa','Per un matrimonio perfetto'],
     features:{
-      standard:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 3 foto incluse','Consegna in 48h','Ospitato per sempre sui nostri server'],
-      premium:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 5 foto a scelta incluse','Musica di sottofondo','Consegna in 24h','Ospitato per sempre sui nostri server'],
-      luxury:['Tutto ciò che è incluso in Premium','Fino a 15 foto a scelta incluse','Consegna prioritaria in 12h','Ospitato per sempre sui nostri server'],
-      luxuryMobile:['Tutto ciò che è incluso in Premium','Fino a 10 foto incluse','Consegna prioritaria in 12h','Generatore di inviti','Ospitato per sempre sui nostri server']
+      standard:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 3 foto incluse','Pronto entro 7 giorni','Ospitato per sempre sui nostri server'],
+      premium:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 6 foto a scelta incluse','Musica di sottofondo','Pronto entro 4 giorni','Ospitato per sempre sui nostri server'],
+      luxury:['Tutto ciò che è incluso in Premium','Fino a 12 foto a scelta incluse','Servizio prioritario - pronto entro 2 giorni','Ospitato per sempre sui nostri server'],
+      luxuryMobile:['Tutto ciò che è incluso in Premium','Fino a 12 foto incluse','Servizio prioritario - pronto entro 2 giorni','Generatore di inviti','Ospitato per sempre sui nostri server']
     },
     tooltip:'Personalizziamo il modello scelto con i vostri nomi, la data, il luogo e il programma. Puoi aggiungere o rimuovere le tappe (cerimonia, cocktail, cena, ballo, ecc.).',
     generator:'Vedi il generatore di inviti ↗',
@@ -2047,7 +2794,7 @@ const CARDIA_TRANSLATIONS = {
   },
   pt: {
     nav:['Mais vendidos','Modelos','Como funciona','Preços','Avaliações','Partilhar','Contacto'],
-    heroTag:'Convites digitais de casamento', heroTitle:'A vossa história de amor,', heroEm:'contada com elegância.', heroSub:'Designs exclusivos · Criados com cuidado · Entrega em 24h', heroCta:'Explorar modelos',
+    heroTag:'Convites digitais de casamento', heroTitle:'A vossa história de amor,', heroEm:'contada com elegância.', heroSub:'Designs exclusivos · Criados com cuidado · ', heroCta:'Explorar modelos',
     bestTitle:'Mais vendidos', bestSub:'Os nossos designs mais adorados — escolhidos por casais em todo o mundo', bestBadge:'Mais vendido', viewTheme:'Ver modelo',
     collectionTitle:'A nossa coleção', collectionSub:'Designs exclusivos para cada história de amor',
     bookTitle:'Convites livro', classicTitle:'Convites clássicos', swipe:'Deslize para ver ›', templateId:'ID do modelo: ',
@@ -2062,10 +2809,10 @@ const CARDIA_TRANSLATIONS = {
     plans:['Standard','Premium','Luxury'], popular:'Mais popular', oneTime:'pagamento único · alojamento incluído',
     planDesc:['O convite digital completo','A experiência completa','Para o casamento perfeito'],
     features:{
-      standard:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 3 fotos incluídas','Entrega em 48h','Alojado para sempre nos nossos servidores'],
-      premium:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 5 fotos à sua escolha incluídas','Música de fundo','Entrega em 24h','Alojado para sempre nos nossos servidores'],
-      luxury:['Tudo incluído no Premium','Até 15 fotos à sua escolha incluídas','Entrega prioritária em 12h','Alojado para sempre nos nossos servidores'],
-      luxuryMobile:['Tudo incluído no Premium','Até 10 fotos incluídas','Entrega prioritária em 12h','Gerador de convites','Alojado para sempre nos nossos servidores']
+      standard:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 3 fotos incluídas','Pronto em até 7 dias','Alojado para sempre nos nossos servidores'],
+      premium:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 6 fotos à sua escolha incluídas','Música de fundo','Pronto em até 4 dias','Alojado para sempre nos nossos servidores'],
+      luxury:['Tudo incluído no Premium','Até 12 fotos à sua escolha incluídas','Serviço prioritário - pronto em até 2 dias','Alojado para sempre nos nossos servidores'],
+      luxuryMobile:['Tudo incluído no Premium','Até 12 fotos incluídas','Serviço prioritário - pronto em até 2 dias','Gerador de convites','Alojado para sempre nos nossos servidores']
     },
     tooltip:'Personalizamos o modelo escolhido com os vossos nomes, data, local e programa. Pode adicionar ou remover etapas (cerimónia, cocktail, jantar, dança, etc.).',
     generator:'Ver gerador de convites ↗',
@@ -2475,7 +3222,8 @@ function setupBestSellersMobileAutoScroll() {
     if (isMobile()) centerCard(index, 'auto');
   }, { passive: true });
 
-  scheduleAuto();
+  // No automatic mobile swiping: users can swipe Best Sellers manually only.
+  clearTimeout(autoTimer);
 }
 
 setupBestSellersMobileAutoScroll();
@@ -2562,6 +3310,50 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if(t){ e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
+</script>
+
+<script>
+/* Requested homepage preview mapping: A1-A7 PNG files from /AA/ */
+(function(){
+  const base = 'https://raw.githubusercontent.com/NemerDavid/web-des/main/AA/';
+  const countByTemplate = { A1: 5, A2: 3, A3: 3, A4: 5, A5: 5, A6: 4, A7: 5 };
+
+  function img(template, index, className, alt){
+    const el = document.createElement('img');
+    el.src = `${base}${template}_${index}.png`;
+    el.alt = alt;
+    el.loading = 'lazy';
+    el.className = className;
+    return el;
+  }
+
+  function modernizeBestSellerPreviews(){
+    document.querySelectorAll('#bestsellers .bs-card').forEach(card => {
+      const id = (card.querySelector('.bs-template-id')?.textContent || '').trim();
+      const visual = card.querySelector('.bs-card-visual');
+      if(!id || !visual || visual.querySelector('.bs-png-stack')) return;
+
+      visual.querySelectorAll('.phone-back, .phone-wrap').forEach(el => el.remove());
+
+      const max = countByTemplate[id] || 3;
+      const stack = document.createElement('div');
+      stack.className = 'bs-png-stack';
+      const phoneFrame = document.createElement('div');
+      phoneFrame.className = 'bs-phone-frame';
+      phoneFrame.appendChild(img(id, 1, 'bs-png-main', `${id} cover preview`));
+      stack.appendChild(phoneFrame);
+      stack.appendChild(img(id, Math.min(2, max), 'bs-png-inner one', `${id} inner page preview`));
+      stack.appendChild(img(id, Math.min(3, max), 'bs-png-inner two', `${id} second inner page preview`));
+      visual.appendChild(stack);
+    });
+  }
+
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', modernizeBestSellerPreviews);
+  } else {
+    modernizeBestSellerPreviews();
+  }
+})();
 </script>
 </body>
 </html>
