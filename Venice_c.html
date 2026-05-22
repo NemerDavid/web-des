@@ -63,42 +63,55 @@ body {
 #bg-sky {
   position: absolute;
   inset: 0;
+  width: 100%; height: 70%;
+  object-fit: cover;
+  top: 15%;        /* ← pushes image down */
+  z-index: 4;
+}
+
+
+#bg-sky2 {
+  position: absolute;
+  inset: 0;
   width: 100%; height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 0;
+  z-index: 2;
 }
+
+
+
 
 /* Sea sits at bottom ~45% height */
 #bg-sea {
   position: absolute;
-  top: 80%; left: 0;
+  top: 70%; left: 0;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
 }
 
 
 /* Sea sits at bottom ~45% height */
 #bg-sea1 {
   position: absolute;
-  top: 80%; left: 10%;
+  top: 70%; left: 10%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
     transform: scaleX(-1); /* mirror horizontally */
 }
 
 /* Sea sits at bottom ~45% height */
 #bg-sea2 {
   position: absolute;
-top: 80%; left: 20%;
+top: 70%; left: 20%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
 
 }
 
@@ -107,11 +120,11 @@ top: 80%; left: 20%;
 /* Sea sits at bottom ~45% height */
 #bg-sea3 {
   position: absolute;
- top: 80%; left: 30%;
+ top: 70%; left: 30%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
     transform: scaleX(-1); /* mirror horizontally */
 }
 
@@ -121,11 +134,11 @@ top: 80%; left: 20%;
 /* Sea sits at bottom ~45% height */
 #bg-sea4 {
   position: absolute;
-top: 80%; left: 40%;
+top: 70%; left: 40%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
 
 }
 
@@ -138,11 +151,11 @@ top: 80%; left: 40%;
 /* Sea sits at bottom ~45% height */
 #bg-sea5 {
   position: absolute;
-top: 80%;; left: 50%;
+top: 70%;; left: 50%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
     transform: scaleX(-1); /* mirror horizontally */
 }
 
@@ -153,11 +166,11 @@ top: 80%;; left: 50%;
 /* Sea sits at bottom ~45% height */
 #bg-sea6 {
   position: absolute;
-top: 80%; left: 60%;
+top: 70%; left: 60%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
 
 }
 
@@ -170,11 +183,11 @@ top: 80%; left: 60%;
 /* Sea sits at bottom ~45% height */
 #bg-sea7 {
   position: absolute;
- top: 80%;; left: 70%;
+ top: 70%;; left: 70%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
     transform: scaleX(-1); /* mirror horizontally */
 }
 
@@ -182,11 +195,11 @@ top: 80%; left: 60%;
 /* Sea sits at bottom ~45% height */
 #bg-sea8 {
   position: absolute;
-  top: 80%; left: 80%;
+  top: 70%; left: 80%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
 
 }
 
@@ -196,11 +209,11 @@ top: 80%; left: 60%;
 /* Sea sits at bottom ~45% height */
 #bg-sea9 {
   position: absolute;
-top: 80%; left: 90%;
+top: 70%; left: 90%;
   width: 10%; height: 48%;
   object-fit: cover;
   object-position: top center;
-  z-index: 1;
+  z-index: 3;
     transform: scaleX(-1); /* mirror horizontally */
 }
 
@@ -264,13 +277,13 @@ top: 80%; left: 90%;
 }
 .content * { pointer-events: auto; }
 
-.script { font-family: 'Great Vibes', cursive; color: #373222; line-height: 1; text-shadow: 0 2px 12px rgba(255,255,255,0.6); }
+.script { font-family: 'Great Vibes', cursive; color: #fff; line-height: 1; text-shadow: 0 2px 12px rgba(255,255,255,0.6); }
 .serif  { font-family: 'Cormorant Garamond', serif; }
 .sans   { font-family: 'Jost', sans-serif; letter-spacing: 0.22em; text-transform: uppercase; }
 
 .orn { display:flex; align-items:center; gap:14px; width:100%; justify-content:center; margin:10px 0; }
-.orn span { flex:1; max-width:70px; height:1px; background:#373222; opacity:0.6; }
-.orn em   { font-style:normal; color:#373222; font-size:13px; }
+.orn span { flex:1; max-width:70px; height:1px; background:#fff; opacity:0.6; }
+.orn em   { font-style:normal; color:#fff; font-size:13px; }
 
 .badge {
   background: rgba(255,245,230,0.55);
@@ -278,7 +291,7 @@ top: 80%; left: 90%;
   border-radius: 40px;
   padding: 6px 22px;
   font-size: 9px; letter-spacing: 0.28em;
-  text-transform: uppercase; color: #373222);
+  text-transform: uppercase; color: #fff);
   margin-bottom: 16px;
   backdrop-filter: blur(4px);
 }
@@ -311,7 +324,7 @@ top: 80%; left: 90%;
 @keyframes hintIn { to { opacity:1; } }
 #hint.gone { opacity:0 !important; transition: opacity 0.3s; }
 #hint .arr {
-  font-size:16px; color:rgba(74,46,26,0.5);
+  font-size:16px; color:rgba(254,255,255,0.5);
   animation: nudge 1.5s ease-in-out infinite;
 }
 #hint .arr.l { animation-name: nudgeL; }
@@ -468,7 +481,7 @@ top: 80%; left: 90%;
 
 
 
-  .l-Road {
+.l-Road {
   left: 185%;
   top: -3%;
   width: 203% !important;
@@ -477,9 +490,9 @@ top: 80%; left: 90%;
   z-index: 4;
 
   transform-origin: center top;
+
+  filter: brightness(0) invert(1);
 }
-
-
 
   .l-Plane {
   left: 288%;
@@ -1129,12 +1142,12 @@ html, body{
   opacity:1 !important;
 }
 #hint span{
-  color:rgba(74,46,26,.62) !important;
+  color:rgba(255,255,255,.32) !important;
   font-size:8px !important;
   white-space:nowrap !important;
 }
 #hint .arr{
-  color:rgba(74,46,26,.66) !important;
+  color:rgba(255,255,255) !important;
 }
 
 /* Music play / stop button */
@@ -1146,7 +1159,7 @@ html, body{
   width:48px;
   height:48px;
   border-radius:50%;
-  border:1px solid rgba(196,149,106,.45);
+  border:1px solid rgba(255,255,255,.45);
   background:rgba(255,245,230,.72);
   color:var(--deep);
   display:flex;
@@ -1160,7 +1173,7 @@ html, body{
   backdrop-filter:blur(6px);
 }
 #musicBtn.music-on{
-  background:rgba(196,149,106,.88);
+  background:rgba(255,255,255,.72);
   color:#fff;
 }
 
@@ -1217,8 +1230,8 @@ html, body{
   margin:20px auto 0;
   padding:13px 28px;
   border-radius:999px;
-  border:1px solid rgba(196,149,106,.55);
-  background:rgba(255,245,230,.62);
+  border:1px solid rgba(255,255,255,.55);
+  background:rgba(255,255,250,.62);
   color:var(--deep);
   font-family:'Jost', sans-serif;
   font-size:9px;
@@ -1231,12 +1244,12 @@ html, body{
 }
 .open-invitation-btn:hover{
   transform:translateY(-1px);
-  background:rgba(196,149,106,.88);
+  background:rgba(255,255,255,.48);
   color:#fff;
 }
 .open-invitation-btn.opened{
   opacity:.72;
-  background:rgba(196,149,106,.88);
+  background:rgba(0,0,0,.88);
   color:#fff;
 }
 @media (max-width:600px), (pointer:coarse){
@@ -1257,7 +1270,7 @@ html, body{
 #p4 .programme-copy .subtitle{
   margin-top:2px !important;
   margin-bottom:10px !important;
-  color:var(--deep) !important;
+  color:#fff !important;
   opacity:.58 !important;
   font-size:9px !important;
   letter-spacing:.24em !important;
@@ -1347,12 +1360,12 @@ html, body{
 }
 #p3 .programme-copy .script{
   font-size:54px !important;
-  color:var(--deep) !important;
+  color:#fff !important;
 }
 #p3 .programme-copy .subtitle{
   margin-top:2px !important;
   margin-bottom:10px !important;
-  color:var(--deep) !important;
+  color:#fff !important;
   opacity:.58 !important;
   font-size:9px !important;
   letter-spacing:.24em !important;
@@ -1652,7 +1665,7 @@ html, body{
 #p1 .cover-copy .name{
   font-size:16.4cqw !important;
   line-height:.86 !important;
-  color:#373222 !important;
+  color:#fff !important;
   text-shadow:0 2px 10px rgba(255,255,255,.78), 0 1px 0 rgba(74,46,26,.08) !important;
 }
 #p1 .cover-copy .ampersand{
@@ -1671,14 +1684,14 @@ html, body{
   letter-spacing:.24em !important;
   margin-top:2.7cqw !important;
   margin-bottom:2.4cqw !important;
-  color:#373222 !important;
+  color:#fff !important;
   opacity:.72 !important;
   white-space:nowrap !important;
 }
 #p1 .cover-copy .date{
   font-size:3.05cqw !important;
   line-height:1.25 !important;
-  color:#373222 !important;
+  color:#fff !important;
   opacity:.88 !important;
 }
 #p1 .open-invitation-btn{
@@ -1721,25 +1734,25 @@ html, body{
 }
 #p6 .step-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:18px;}
 #p6 .step-dot{width:6px;height:6px;border-radius:50%;background:rgba(196,149,106,.30);transition:.25s;}
-#p6 .step-dot.on{background:#373222;}
+#p6 .step-dot.on{background:#fff;}
 #p6 .form-label,#p6 .question{display:block;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:16px 0 8px;color:rgba(55,50,34,.72);text-align:left;}
 #p6 .question{text-align:center;margin-top:4px;}
-#p6 .form-field,#p6 textarea.form-field{width:100%;border-radius:0;padding:10px 0;margin-top:4px;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none;background:transparent;color:#373222;border:none;border-bottom:1.5px solid rgba(74,46,26,.24);transition:border-color .25s;letter-spacing:0;}
+#p6 .form-field,#p6 textarea.form-field{width:100%;border-radius:0;padding:10px 0;margin-top:4px;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none;background:transparent;color:#fff;border:none;border-bottom:1.5px solid rgba(74,46,26,.24);transition:border-color .25s;letter-spacing:0;}
 #p6 textarea.form-field{min-height:78px;resize:none;}
-#p6 .form-field:focus,#p6 textarea.form-field:focus{border-bottom-color:#373222;}
-#p6 .error-msg{display:none;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#9b4a36;text-align:left;}
+#p6 .form-field:focus,#p6 textarea.form-field:focus{border-bottom-color:#fff;}
+#p6 .error-msg{display:none;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#fff;text-align:left;}
 #p6 .attend-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;}
 #p6 .attend-opt input{position:absolute;opacity:0;pointer-events:none;}
 #p6 .attend-box{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:14px;border:1px solid rgba(74,46,26,.18);background:rgba(255,255,255,.42);cursor:pointer;transition:.25s;padding:10px 12px;}
-#p6 .attend-opt input:checked + .attend-box{background:rgba(196,149,106,.86);border-color:rgba(196,149,106,.95);color:#fff;}
+#p6 .attend-opt input:checked + .attend-box{background:#fff;border-color:#fff;color:#fff;}
 #p6 .attend-label{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;}
 #p6 .count-row{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0 12px;}
 #p6 .count-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(74,46,26,.22);background:rgba(255,255,255,.68);color:#373222;font-size:20px;line-height:1;cursor:pointer;}
 #p6 .guest-num{min-width:24px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#373222;}
 #p6 .btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
 #p6 .btn-soft,#p6 .btn-solid{width:100%;border-radius:999px;padding:12px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:.25s;}
-#p6 .btn-soft{background:rgba(255,255,255,.50);border:1px solid rgba(74,46,26,.18);color:#373222;}
-#p6 .btn-solid{background:#c4956a;border:1px solid #c4956a;color:#fff;}
+#p6 .btn-soft{background:rgba(255,255,255,.50);border:1px solid rgba(74,46,26,.18);color:#fff;}
+#p6 .btn-solid{background:rgba(74,46,26,.18);border:1px solid #fff;color:#fff;}
 #p6 .btn-solid:disabled{opacity:.68;cursor:default;}
 #p6 .btn-soft:hover,#p6 .btn-solid:hover{transform:translateY(-1px);}
 #p6 .rsvp-main-btn{margin-top:18px;}
@@ -1829,6 +1842,37 @@ html, body{
   }
 }
 
+
+
+/* ═════════ USER FIX — VISIBLE STRASBOURG FERRIS WHEEL / GRANDE ROUE ═════════
+   This canvas is inside the moving panorama, so it travels with the city.
+   Move it with --wheel-left if you want it earlier/later in the skyline. */
+:root{
+  --wheel-left: 65cqw;   /* position across the 7-screen panorama */
+  --wheel-bottom: 18.2%;
+  --wheel-width: 132cqw;
+  --wheel-height: 103cqw;
+}
+#strasbourgFerrisWheel{
+  position:absolute;
+  left:var(--wheel-left);
+  bottom:var(--wheel-bottom);
+  width:var(--wheel-width);
+  height:var(--wheel-height);
+  z-index:3;
+  pointer-events:none;
+  opacity:.98;
+  filter:drop-shadow(0 0 14px rgba(255,178,74,.62)) drop-shadow(0 12px 24px rgba(0,0,0,.62));
+}
+@media (max-width:600px), (pointer:coarse){
+  :root{
+    --wheel-left: 542cqw;
+    --wheel-bottom: 28.4%;
+    --wheel-width: 76cqw;
+    --wheel-height: 46cqw;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1839,7 +1883,7 @@ html, body{
 </audio>
 <button id="musicBtn" type="button" aria-label="Play or stop music">♪</button>
 <img id="travelGondola"
-     src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png"
+     src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Gondola.png"
      alt="">
 <div id="progress"></div>
 <div id="hint">
@@ -1854,9 +1898,114 @@ html, body{
        BACKGROUND LAYERS (full 700cqw)
   ══════════════════════════════════ -->
   <img id="bg-sky"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Venice4.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Strasbourg3.png"
        alt="">
 
+  <!-- Animated Grande Roue / Ferris wheel added as part of the moving Strasbourg cityscape -->
+  <canvas id="strasbourgFerrisWheel" aria-hidden="true"></canvas>
+
+
+       
+       
+         <img id="bg-sky2"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Stras_sky.png"
+       alt="">
+       
+       
+       <img id="bg-sky2"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Stras_sky.png"
+       alt="">  
+       
+       
+       
+       
+       
+       
+       
+  <img id="bg-sea"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+
+  <img id="bg-sea1"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+
+
+<img id="bg-sea1"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+       
+       
+<img id="bg-sea2"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">  
+       
+       
+       
+<img id="bg-sea3"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+  <img id="bg-sea4"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+       
+<img id="bg-sea5"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+       
+       
+       
+  <img id="bg-sea6"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+  <img id="bg-sea7"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+       
+<img id="bg-sea8"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+       
+       
+       
+      <img id="bg-sea9"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       alt="">
+       
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
        
 
 
@@ -1871,41 +2020,41 @@ html, body{
 
 
  <img class="layer l-balloon"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide1a.png" alt="">
 
 
 
  
 
  <img class="layer l-balloon4"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide2.png" alt="">
 
 
 
 
 
  <img class="layer l-balloon5"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+         src="hhttps://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide3.png" alt="">
 
 
     
     
-    <img class="layer l-balloon6" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+    <img class="layer l-balloon6" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide2.png" alt="" />
  
 
 
 
  <img class="layer l-balloon7"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide1a.png" alt="">
 
 
     
     
-    <img class="layer l-balloon8" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" />
+    <img class="layer l-balloon8" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide2.png" alt="" />
  
 
  <img class="layer l-balloon9"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air6.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Slide3.png" alt="">
 
 
 
@@ -1916,12 +2065,11 @@ html, body{
 
 
  <img class="layer l-Plane"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Plane2.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Plane.png" alt="">
 
 
 
- <img class="layer l-clouds1"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
 
 
 
@@ -1939,19 +2087,18 @@ html, body{
          
          
     <img class="layer l-gondola"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Gondola.png" alt="">
-    <img class="layer l-clouds"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Gondola.png" alt="">
+
 
     <div class="content">
       <div class="fixed-copy cover-copy">
 
         <div class="script name">Thomas</div>
-        <div class="script ampersand" style="display:block;opacity:0.18;color:var(--gold);">﹠</div>
+        <div class="script ampersand" style="display:block;opacity:0.18;color:#fff;">﹠</div>
         <div class="script name">Sarah</div>
         <div class="orn" ><span></span><em>✦</em><span></span></div>
         <div class="sans families" style="color:var(--deep);opacity:0.6;">Together with their families</div>
-       <div class="serif date" style="color:#373222;font-weight:800;letter-spacing:0.1em;opacity:0.85;font-size:150px;"> August 14, 2027 · Ehden, Lebanon</div>
+       <div class="serif date" style="color:#fff;font-weight:800;letter-spacing:0.1em;opacity:0.85;font-size:150px;"> August 14, 2027 · Ehden, Lebanon</div>
         <button id="openInvitationBtn" class="open-invitation-btn" type="button">Open Invitation</button>
       </div>
     </div>
@@ -1967,14 +2114,12 @@ html, body{
 
 
 
-    <img class="layer l-clouds"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
       <div class="fixed-copy story-copy">
-        <div class="script" style="color:#373222;">Our Story</div>
+        <div class="script" style="color:#fff;">Our Story</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <p class="serif" style="color:#373222;font-style:italic;opacity:0.86;font-weight:800;">
+        <p class="serif" style="color:#fff;font-style:italic;opacity:0.86;font-weight:800;">
           Two souls who found each other<br>
           by the waters of La Serenissima,<br>
           and chose to walk this path<br>
@@ -1993,7 +2138,7 @@ html, body{
 
     <div class="content">
       <div class="fixed-copy programme-copy">
-        <div class="script" style="color:var(--deep);">Programme</div>
+        <div class="script" style="color:#fff;">Programme</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
       
 
@@ -2015,12 +2160,11 @@ html, body{
 
     <div class="water-shimmer"></div>
 
-    <img class="layer l-clouds"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
 
     <div class="content">
       <div class="fixed-copy album-copy">
-        <div class="script" style="color:var(--deep);">Photo Album</div>
+        <div class="script" style="color:#fff;">Photo Album</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
         
 
@@ -2048,9 +2192,9 @@ html, body{
 
     <div class="content">
       <div class="fixed-copy rsvp-copy">
-        <div class="script" style="color:#373222;font-weight:900;">RSVP</div>
+        <div class="script" style="color:#fff;font-weight:900;">RSVP</div>
         <div class="orn" style="margin:4px auto 0;"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#373222;opacity:0.5;margin-bottom:4px;">Kindly reply before August 1, 2027</div>
+        <div class="sans" style="color:#fff;opacity:0.5;margin-bottom:4px;">Kindly reply before August 1, 2027</div>
         <div class="rsvp-card venice-rsvp-box">
           <div class="step-dots">
             <span class="step-dot on" id="dot-1"></span>
@@ -2113,20 +2257,16 @@ html, body{
 
     <div class="water-shimmer"></div>
 
-   
 
-
-    <img class="layer l-clouds"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
 
     <div class="content">
       <div class="fixed-copy closing-copy">
-        <div class="sans" style="color:#373222;opacity:0.52;margin-bottom:14px;font-weight:800;">We cannot wait to celebrate with you</div>
-        <div class="script" style="color:#373222;">Thomas &amp; Sarah</div>
-        <div style="font-size:30px;margin:14px 0;color:var(--rust);">♥</div>
-        <div class="serif" style="color:#373222;letter-spacing:0.12em;font-style:italic;opacity:0.78;">August 14, 2027 · Ehden, Lebanon</div>
+        <div class="sans" style="color:#fff;opacity:0.52;margin-bottom:14px;font-weight:800;">We cannot wait to celebrate with you</div>
+        <div class="script" style="color:#fff;">Thomas &amp; Sarah</div>
+        <div style="font-size:30px;margin:14px 0;color:#fff;">♥</div>
+        <div class="serif" style="color:#fff;letter-spacing:0.12em;font-style:italic;opacity:0.78;">August 14, 2027 · Ehden, Lebanon</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#373222;opacity:0.42;margin-top:12px;font-weight:800;">Designed with love · Cardia Studios</div>
+        <div class="sans" style="color:#fff;opacity:0.42;margin-top:12px;font-weight:800;">Designed with love · Cardia Studios</div>
       </div>
     </div>
   </div>
@@ -2447,6 +2587,146 @@ html, body{
     target = clamp(target, 0, maxOff());
     offset = clamp(offset, 0, maxOff());
   });
+
+
+/* ═════════ USER FIX — DRAW VISIBLE ANIMATED STRASBOURG FERRIS WHEEL ═════════ */
+(function(){
+  const wheelCanvas = document.getElementById('strasbourgFerrisWheel');
+  if (!wheelCanvas) return;
+
+  const ctx = wheelCanvas.getContext('2d');
+  let wheelAngle = 0;
+  const gondolas = 20;
+  const spokes = 40;
+
+  function resizeFerrisWheel(){
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const box = wheelCanvas.getBoundingClientRect();
+    wheelCanvas.width = Math.max(1, Math.round(box.width * dpr));
+    wheelCanvas.height = Math.max(1, Math.round(box.height * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function line(x1, y1, x2, y2, color, width){
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = width;
+    ctx.lineCap = 'round';
+    ctx.stroke();
+  }
+
+  function drawCabin(x, y, size){
+    const hang = size * .54;
+    const w = size * 1.18;
+    const h = size * .74;
+    line(x, y, x, y + hang, 'rgba(255,206,125,.78)', 1);
+    const top = y + hang;
+
+    ctx.save();
+    ctx.translate(x, top);
+    ctx.fillStyle = 'rgba(28,15,8,.96)';
+    ctx.strokeStyle = 'rgba(255,185,79,.96)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    if (ctx.roundRect) ctx.roundRect(-w/2, 0, w, h, Math.max(2, size*.11));
+    else ctx.rect(-w/2, 0, w, h);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(255,218,132,.82)';
+    ctx.fillRect(-w*.33, h*.24, w*.24, h*.34);
+    ctx.fillRect(w*.09, h*.24, w*.24, h*.34);
+
+    ctx.beginPath();
+    ctx.moveTo(-w*.58, 0);
+    ctx.lineTo(0, -size*.23);
+    ctx.lineTo(w*.58, 0);
+    ctx.strokeStyle = 'rgba(255,196,90,.95)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawFerrisWheel(){
+    const box = wheelCanvas.getBoundingClientRect();
+    const W = box.width;
+    const H = box.height;
+    if (W < 2 || H < 2) {
+      requestAnimationFrame(drawFerrisWheel);
+      return;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    const cx = W * .5;
+    const cy = H * .42;
+    const R = Math.min(W * .42, H * .36);
+    const hub = R * .09;
+    const baseY = cy + R * 1.26;
+
+    const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.28);
+    glow.addColorStop(0, 'rgba(255,199,96,.26)');
+    glow.addColorStop(.56, 'rgba(255,165,56,.10)');
+    glow.addColorStop(1, 'rgba(255,165,56,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(wheelAngle);
+
+    for (let i = 0; i < spokes; i++) {
+      const a = i / spokes * Math.PI * 2;
+      line(Math.cos(a)*hub, Math.sin(a)*hub, Math.cos(a)*R*.98, Math.sin(a)*R*.98, 'rgba(255,210,125,.55)', 1.05);
+    }
+
+    [1, .72, .48].forEach((f, index) => {
+      ctx.beginPath();
+      ctx.arc(0, 0, R * f, 0, Math.PI * 2);
+      ctx.strokeStyle = index === 0 ? 'rgba(255,188,70,.98)' : 'rgba(255,188,70,.42)';
+      ctx.lineWidth = index === 0 ? 2.3 : 1.15;
+      ctx.stroke();
+    });
+
+    for (let i = 0; i < 132; i++) {
+      const a = i / 132 * Math.PI * 2;
+      ctx.beginPath();
+      ctx.arc(Math.cos(a)*R, Math.sin(a)*R, Math.max(1.15, R*.012), 0, Math.PI*2);
+      ctx.fillStyle = i % 4 === 0 ? 'rgba(255,241,180,.98)' : 'rgba(255,171,55,.88)';
+      ctx.fill();
+    }
+
+    ctx.restore();
+
+    for (let i = 0; i < gondolas; i++) {
+      const a = wheelAngle + i / gondolas * Math.PI * 2;
+      drawCabin(cx + Math.cos(a) * R, cy + Math.sin(a) * R, R * .115);
+    }
+
+    ctx.beginPath();
+    ctx.arc(cx, cy, hub * 1.7, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(26,13,7,.98)';
+    ctx.strokeStyle = 'rgba(255,213,124,.98)';
+    ctx.lineWidth = 1.8;
+    ctx.fill();
+    ctx.stroke();
+
+    line(cx, cy + R*.92, cx - R*.48, baseY, 'rgba(255,178,74,.78)', Math.max(2.2, R*.026));
+    line(cx, cy + R*.92, cx + R*.48, baseY, 'rgba(255,178,74,.78)', Math.max(2.2, R*.026));
+    line(cx - R*.58, baseY, cx + R*.58, baseY, 'rgba(255,201,103,.74)', Math.max(2.2, R*.026));
+    line(cx - R*.28, baseY - R*.15, cx + R*.28, baseY - R*.15, 'rgba(255,178,74,.52)', Math.max(1.3, R*.016));
+
+    wheelAngle += 0.0024;
+    requestAnimationFrame(drawFerrisWheel);
+  }
+
+  resizeFerrisWheel();
+  window.addEventListener('resize', resizeFerrisWheel);
+  requestAnimationFrame(drawFerrisWheel);
+})();
+
 </script>
 </body>
 </html>
