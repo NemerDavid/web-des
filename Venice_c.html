@@ -1844,32 +1844,43 @@ html, body{
 
 
 
-/* ═════════ USER FIX — VISIBLE STRASBOURG FERRIS WHEEL / GRANDE ROUE ═════════
-   This canvas is inside the moving panorama, so it travels with the city.
-   Move it with --wheel-left if you want it earlier/later in the skyline. */
+/* ═════════ USER FIX — STABLE STRASBOURG FERRIS WHEEL / GRANDE ROUE ═════════
+   The wheel now uses ONE coordinate system for desktop and mobile.
+   Tweak only these 4 variables:
+   --wheel-left   = move right/left across the long panorama
+   --wheel-bottom = move up/down
+   --wheel-width  = make bigger/smaller
+   --wheel-height = keep proportional to width for the drawing canvas */
 :root{
-  --wheel-left: 65cqw;   /* position across the 7-screen panorama */
+  --wheel-left: 85cqw;
   --wheel-bottom: 18.2%;
   --wheel-width: 90cqw;
   --wheel-height: 103cqw;
 }
 #strasbourgFerrisWheel{
-  position:absolute;
-  left:var(--wheel-left);
-  bottom:var(--wheel-bottom);
-  width:var(--wheel-width);
-  height:var(--wheel-height);
-  z-index:3;
-  pointer-events:none;
-  opacity:.98;
-  filter:drop-shadow(0 0 14px rgba(255,178,74,.62)) drop-shadow(0 12px 24px rgba(0,0,0,.62));
+  position:absolute !important;
+  left:var(--wheel-left) !important;
+  bottom:var(--wheel-bottom) !important;
+  width:var(--wheel-width) !important;
+  height:var(--wheel-height) !important;
+  z-index:3 !important;
+  pointer-events:none !important;
+  opacity:.98 !important;
+  max-width:none !important;
+  max-height:none !important;
+  transform:none !important;
+  transform-origin:center bottom !important;
+  filter:drop-shadow(0 0 14px rgba(255,178,74,.62)) drop-shadow(0 12px 24px rgba(0,0,0,.62)) !important;
 }
+
+/* Important: no mobile override here.
+   This prevents the wheel from changing size/shape between PC preview and phone. */
 @media (max-width:600px), (pointer:coarse){
-  :root{
-    --wheel-left: 542cqw;
-    --wheel-bottom: 28.4%;
-    --wheel-width: 76cqw;
-    --wheel-height: 46cqw;
+  #strasbourgFerrisWheel{
+    left:var(--wheel-left) !important;
+    bottom:var(--wheel-bottom) !important;
+    width:var(--wheel-width) !important;
+    height:var(--wheel-height) !important;
   }
 }
 
@@ -1879,7 +1890,7 @@ html, body{
 
 <div id="stage" class="invitation-locked">
 <audio id="bgMusic" preload="auto" loop>
-  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp3" type="audio/mpeg">
 </audio>
 <button id="musicBtn" type="button" aria-label="Play or stop music">♪</button>
 <img id="travelGondola"
