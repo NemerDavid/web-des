@@ -70,13 +70,35 @@ body {
 }
 
 
+
+
+
+
+/* Sea sits at bottom ~45% height */
 #bg-sky2 {
   position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
+  top: 0%; left: 0%;
+  width: 50%; height: 65%;
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
   z-index: 2;
+
+}
+
+
+
+
+
+
+/* Sea sits at bottom ~45% height */
+#bg-sky3 {
+  position: absolute;
+  top: 0%; left: 50%;
+  width: 50%; height: 65%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 2;
+    transform: scaleX(-1); /* mirror horizontally */
 }
 
 
@@ -1870,7 +1892,22 @@ html, body{
   max-height:none !important;
   transform:none !important;
   transform-origin:center bottom !important;
-  filter:drop-shadow(0 0 14px rgba(255,178,74,.62)) drop-shadow(0 12px 24px rgba(0,0,0,.62)) !important;
+  /* Blue winter glow */
+  filter:
+    drop-shadow(0 0 10px rgba(113,216,255,.82))
+    drop-shadow(0 0 26px rgba(54,159,255,.66))
+    drop-shadow(0 12px 24px rgba(0,0,0,.62)) !important;
+}
+
+/* Falling snow layer over the whole 9:16 invitation */
+#snowCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:290;
+  pointer-events:none;
+  opacity:.92;
 }
 
 /* Important: no mobile override here.
@@ -1882,6 +1919,73 @@ html, body{
     width:var(--wheel-width) !important;
     height:var(--wheel-height) !important;
   }
+}
+
+
+/* ═════════ USER UPDATE — NO BEIGE SURROUND + SOFTER LIVING CITY FLICKER ═════════ */
+:root{
+  --outside-bg:#020815;
+}
+html, body{
+  background:var(--outside-bg) !important;
+}
+body::before{
+  content:none !important;
+  display:none !important;
+}
+#stage{
+  background:transparent !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.16),
+    0 18px 55px rgba(0,0,0,.38) !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #stage{ box-shadow:none !important; }
+}
+
+/* Tiny warm window lights placed over the city line.
+   They sit between the building PNGs and text, so the glow looks like it is
+   coming from the buildings without blocking the design. */
+#cityLights{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  z-index:8;
+  pointer-events:none;
+  overflow:hidden;
+}
+.city-light{
+  position:absolute;
+  width:clamp(1px, .38cqw, 3px);
+  height:clamp(2px, .56cqw, 5px);
+  border-radius:999px;
+  background:rgba(255,191,83,.92);
+  opacity:.72;
+  box-shadow:
+    0 0 3px rgba(255,192,82,.78),
+    0 0 7px rgba(255,145,42,.34);
+  animation:cityWindowFlicker var(--flicker-speed, 5.8s) ease-in-out infinite;
+  animation-delay:var(--flicker-delay, 0s);
+}
+.city-light.big{
+  width:clamp(2px, .52cqw, 4px);
+  height:clamp(3px, .72cqw, 6px);
+  opacity:.76;
+}
+.city-light.cool{
+  background:rgba(255,232,164,.94);
+  box-shadow:
+    0 0 3px rgba(255,235,176,.78),
+    0 0 8px rgba(255,190,75,.34);
+}
+@keyframes cityWindowFlicker{
+  0%,100%{ opacity:.38; transform:scale(.94); filter:brightness(.86); }
+  18%{ opacity:.78; transform:scale(1.01); filter:brightness(1.08); }
+  38%{ opacity:.52; transform:scale(.97); filter:brightness(.92); }
+  62%{ opacity:.72; transform:scale(1); filter:brightness(1.04); }
+  84%{ opacity:.44; transform:scale(.95); filter:brightness(.88); }
 }
 
 </style>
@@ -1903,7 +2007,10 @@ html, body{
   <span class="arr">→</span>
 </div>
 
+<canvas id="snowCanvas" aria-hidden="true"></canvas>
+
 <div id="panorama">
+  <div id="cityLights" aria-hidden="true"></div>
 
   <!-- ══════════════════════════════════
        BACKGROUND LAYERS (full 700cqw)
@@ -1919,75 +2026,77 @@ html, body{
        
        
          <img id="bg-sky2"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/file_000000004a14720aa983eb4730534788.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky4.png"
        alt="">
        
        
        <img id="bg-sky2"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Stras_sky.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png"
        alt="">  
        
-       
+           <img id="bg-sky3"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png"
+       alt="">  
        
        
        
        
        
   <img id="bg-sea"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
 
   <img id="bg-sea1"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
 
 
 <img id="bg-sea1"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
        
        
 <img id="bg-sea2"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">  
        
        
        
 <img id="bg-sea3"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
   <img id="bg-sea4"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
        
 <img id="bg-sea5"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
        
        
        
   <img id="bg-sea6"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
   <img id="bg-sea7"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
        
 <img id="bg-sea8"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
        
        
        
       <img id="bg-sea9"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/stras_river.png"
+       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
 
@@ -2632,13 +2741,13 @@ html, body{
     const hang = size * .54;
     const w = size * 1.18;
     const h = size * .74;
-    line(x, y, x, y + hang, 'rgba(255,206,125,.78)', 1);
+    line(x, y, x, y + hang, 'rgba(153,226,255,.80)', 1);
     const top = y + hang;
 
     ctx.save();
     ctx.translate(x, top);
-    ctx.fillStyle = 'rgba(28,15,8,.96)';
-    ctx.strokeStyle = 'rgba(255,185,79,.96)';
+    ctx.fillStyle = 'rgba(7,13,24,.96)';
+    ctx.strokeStyle = 'rgba(130,219,255,.96)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     if (ctx.roundRect) ctx.roundRect(-w/2, 0, w, h, Math.max(2, size*.11));
@@ -2646,7 +2755,7 @@ html, body{
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = 'rgba(255,218,132,.82)';
+    ctx.fillStyle = 'rgba(202,244,255,.86)';
     ctx.fillRect(-w*.33, h*.24, w*.24, h*.34);
     ctx.fillRect(w*.09, h*.24, w*.24, h*.34);
 
@@ -2654,7 +2763,7 @@ html, body{
     ctx.moveTo(-w*.58, 0);
     ctx.lineTo(0, -size*.23);
     ctx.lineTo(w*.58, 0);
-    ctx.strokeStyle = 'rgba(255,196,90,.95)';
+    ctx.strokeStyle = 'rgba(146,229,255,.95)';
     ctx.lineWidth = 1;
     ctx.stroke();
     ctx.restore();
@@ -2678,9 +2787,9 @@ html, body{
     const baseY = cy + R * 1.26;
 
     const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, R * 1.28);
-    glow.addColorStop(0, 'rgba(255,199,96,.26)');
-    glow.addColorStop(.56, 'rgba(255,165,56,.10)');
-    glow.addColorStop(1, 'rgba(255,165,56,0)');
+    glow.addColorStop(0, 'rgba(112,218,255,.34)');
+    glow.addColorStop(.56, 'rgba(52,160,255,.18)');
+    glow.addColorStop(1, 'rgba(43,143,255,0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, H);
 
@@ -2690,13 +2799,13 @@ html, body{
 
     for (let i = 0; i < spokes; i++) {
       const a = i / spokes * Math.PI * 2;
-      line(Math.cos(a)*hub, Math.sin(a)*hub, Math.cos(a)*R*.98, Math.sin(a)*R*.98, 'rgba(255,210,125,.55)', 1.05);
+      line(Math.cos(a)*hub, Math.sin(a)*hub, Math.cos(a)*R*.98, Math.sin(a)*R*.98, 'rgba(155,226,255,.62)', 1.05);
     }
 
     [1, .72, .48].forEach((f, index) => {
       ctx.beginPath();
       ctx.arc(0, 0, R * f, 0, Math.PI * 2);
-      ctx.strokeStyle = index === 0 ? 'rgba(255,188,70,.98)' : 'rgba(255,188,70,.42)';
+      ctx.strokeStyle = index === 0 ? 'rgba(126,219,255,.98)' : 'rgba(126,219,255,.46)';
       ctx.lineWidth = index === 0 ? 2.3 : 1.15;
       ctx.stroke();
     });
@@ -2705,7 +2814,7 @@ html, body{
       const a = i / 132 * Math.PI * 2;
       ctx.beginPath();
       ctx.arc(Math.cos(a)*R, Math.sin(a)*R, Math.max(1.15, R*.012), 0, Math.PI*2);
-      ctx.fillStyle = i % 4 === 0 ? 'rgba(255,241,180,.98)' : 'rgba(255,171,55,.88)';
+      ctx.fillStyle = i % 4 === 0 ? 'rgba(236,252,255,.98)' : 'rgba(82,191,255,.90)';
       ctx.fill();
     }
 
@@ -2718,16 +2827,16 @@ html, body{
 
     ctx.beginPath();
     ctx.arc(cx, cy, hub * 1.7, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(26,13,7,.98)';
-    ctx.strokeStyle = 'rgba(255,213,124,.98)';
+    ctx.fillStyle = 'rgba(5,10,22,.98)';
+    ctx.strokeStyle = 'rgba(178,237,255,.98)';
     ctx.lineWidth = 1.8;
     ctx.fill();
     ctx.stroke();
 
-    line(cx, cy + R*.92, cx - R*.48, baseY, 'rgba(255,178,74,.78)', Math.max(2.2, R*.026));
-    line(cx, cy + R*.92, cx + R*.48, baseY, 'rgba(255,178,74,.78)', Math.max(2.2, R*.026));
-    line(cx - R*.58, baseY, cx + R*.58, baseY, 'rgba(255,201,103,.74)', Math.max(2.2, R*.026));
-    line(cx - R*.28, baseY - R*.15, cx + R*.28, baseY - R*.15, 'rgba(255,178,74,.52)', Math.max(1.3, R*.016));
+    line(cx, cy + R*.92, cx - R*.48, baseY, 'rgba(113,214,255,.82)', Math.max(2.2, R*.026));
+    line(cx, cy + R*.92, cx + R*.48, baseY, 'rgba(113,214,255,.82)', Math.max(2.2, R*.026));
+    line(cx - R*.58, baseY, cx + R*.58, baseY, 'rgba(178,237,255,.78)', Math.max(2.2, R*.026));
+    line(cx - R*.28, baseY - R*.15, cx + R*.28, baseY - R*.15, 'rgba(113,214,255,.58)', Math.max(1.3, R*.016));
 
     wheelAngle += 0.0024;
     requestAnimationFrame(drawFerrisWheel);
@@ -2736,6 +2845,122 @@ html, body{
   resizeFerrisWheel();
   window.addEventListener('resize', resizeFerrisWheel);
   requestAnimationFrame(drawFerrisWheel);
+})();
+
+/* ═════════ USER UPDATE — FALLING SNOW OVER STRASBOURG CITY ═════════ */
+(function(){
+  const snowCanvas = document.getElementById('snowCanvas');
+  const stage = document.getElementById('stage');
+  if (!snowCanvas || !stage) return;
+
+  const ctx = snowCanvas.getContext('2d');
+  let W = 0;
+  let H = 0;
+  let flakes = [];
+  let last = performance.now();
+
+  function resizeSnow(){
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    const box = stage.getBoundingClientRect();
+    W = Math.max(1, box.width);
+    H = Math.max(1, box.height);
+    snowCanvas.width = Math.round(W * dpr);
+    snowCanvas.height = Math.round(H * dpr);
+    snowCanvas.style.width = W + 'px';
+    snowCanvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.round(Math.min(180, Math.max(95, W * H / 3600)));
+    flakes = Array.from({length: count}, () => makeFlake(true));
+  }
+
+  function makeFlake(randomY){
+    const r = Math.random();
+    return {
+      x: Math.random() * W,
+      y: randomY ? Math.random() * H : -14 - Math.random() * H * .18,
+      radius: 0.8 + r * 2.4,
+      speed: 18 + Math.random() * 54,
+      drift: -12 + Math.random() * 24,
+      wobble: Math.random() * Math.PI * 2,
+      opacity: .36 + Math.random() * .58,
+      blur: Math.random() < .28
+    };
+  }
+
+  function drawSnow(now){
+    const dt = Math.min(.035, (now - last) / 1000);
+    last = now;
+
+    ctx.clearRect(0, 0, W, H);
+
+    for (const f of flakes){
+      f.y += f.speed * dt;
+      f.x += (f.drift + Math.sin(f.wobble) * 18) * dt;
+      f.wobble += dt * (1.2 + f.radius * .35);
+
+      if (f.y > H + 18 || f.x < -24 || f.x > W + 24){
+        Object.assign(f, makeFlake(false));
+        if (f.x < -20) f.x = W + 12;
+        if (f.x > W + 20) f.x = -12;
+      }
+
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${f.opacity})`;
+      ctx.shadowColor = 'rgba(190,232,255,.72)';
+      ctx.shadowBlur = f.blur ? 7 : 3;
+      ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.shadowBlur = 0;
+    requestAnimationFrame(drawSnow);
+  }
+
+  resizeSnow();
+  window.addEventListener('resize', resizeSnow);
+  requestAnimationFrame(drawSnow);
+})();
+
+
+
+/* ═════════ USER UPDATE — RANDOM FLICKERING BUILDING LIGHTS ═════════ */
+(function(){
+  const lightsLayer = document.getElementById('cityLights');
+  if (!lightsLayer) return;
+
+  const presets = [];
+  // Spread lights across the 700% panorama, mainly at building level.
+  // x is panorama %, y is vertical % of the invitation.
+  for (let i = 0; i < 210; i++){
+    const x = 1.2 + Math.random() * 97.6;
+    const row = Math.random();
+    const y = row < .45
+      ? 58 + Math.random() * 10
+      : row < .82
+        ? 63 + Math.random() * 8
+        : 69 + Math.random() * 4.2;
+    presets.push({ x, y });
+  }
+
+  // A few stronger lights around the visible first city facade.
+  [
+    [2.2,61.5],[3.6,66.8],[5.2,63.4],[7.0,67.2],[8.7,60.8],
+    [10.4,65.6],[12.1,61.9],[13.4,68.4],[14.8,62.8],[16.2,66.6],
+    [18.2,60.9],[20.3,65.1],[22.1,68.6],[24.4,62.4],[26.2,66.2]
+  ].forEach(([x,y]) => presets.push({x,y,strong:true}));
+
+  const frag = document.createDocumentFragment();
+  presets.forEach((p, i) => {
+    const light = document.createElement('i');
+    light.className = 'city-light' + (p.strong || Math.random() > .78 ? ' big' : '') + (Math.random() > .62 ? ' cool' : '');
+    light.style.left = p.x + '%';
+    light.style.top = p.y + '%';
+    light.style.setProperty('--flicker-speed', (1.8 + Math.random() * 1.2).toFixed(2) + 's');
+    light.style.setProperty('--flicker-delay', (-Math.random() * 3.5).toFixed(2) + 's');
+    frag.appendChild(light);
+  });
+  lightsLayer.appendChild(frag);
 })();
 
 </script>
