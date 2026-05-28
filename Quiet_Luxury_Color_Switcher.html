@@ -1209,6 +1209,125 @@
     text-shadow: none !important;
   }
 
+
+
+  /* ═════════ PAGE 7 GIFT REGISTRY — FIXED 9:16 LAYOUT ═════════
+     This keeps 15.png and the text in fixed percentage positions on all screens.
+     The icon is no longer negative/top-cropped, and the whole content is pushed down. */
+  #page7Gift {
+    position: relative !important;
+    width: 100% !important;
+    aspect-ratio: 9 / 16 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: var(--asset-page3c) center center / cover no-repeat !important;
+  }
+
+  #page7Gift .page-card {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 12% !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  #page7Gift .page7-torn-top {
+    position: absolute !important;
+    left: 50% !important;
+    top: 7.2% !important;
+    width: 38% !important;
+    height: auto !important;
+    transform: translateX(-50%) !important;
+    z-index: 1 !important;
+    max-width: none !important;
+  }
+
+  #page7Gift .kicker,
+  #page7Gift .section-title,
+  #page7Gift .body-text,
+  #page7Gift .info-card {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 2 !important;
+    width: 76% !important;
+    margin: 0 !important;
+    text-align: center !important;
+  }
+
+  #page7Gift .kicker {
+    top: 21.2% !important;
+    font-size: clamp(9px, 2.4vw, 12px) !important;
+    letter-spacing: .42em !important;
+    color: #fff !important;
+  }
+
+  #page7Gift .section-title {
+    top: 24.3% !important;
+    font-size: clamp(48px, 11.4vw, 66px) !important;
+    line-height: .95 !important;
+    color: #fff !important;
+    white-space: nowrap !important;
+  }
+
+  #page7Gift .body-text {
+    top: 35.4% !important;
+    max-width: none !important;
+    font-size: clamp(19px, 4.35vw, 24px) !important;
+    line-height: 1.55 !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+  }
+
+  #page7Gift .info-card {
+    top: 58.2% !important;
+    width: 73% !important;
+    padding: 24px 20px 25px !important;
+    background: rgba(var(--theme-accent-rgb), .42) !important;
+    border: 1px solid rgba(255,255,255,.42) !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+  }
+
+  #page7Gift .bank-name {
+    font-size: clamp(38px, 8vw, 48px) !important;
+    line-height: 1 !important;
+    margin: 0 0 18px !important;
+    color: #fff !important;
+  }
+
+  #page7Gift .thin-line {
+    width: 74px !important;
+    margin: 20px auto !important;
+    background: rgba(255,255,255,.45) !important;
+  }
+
+  #page7Gift .bank-line {
+    font-size: clamp(17px, 3.7vw, 20px) !important;
+    line-height: 1.4 !important;
+    color: #fff !important;
+  }
+
+  @media (max-width: 560px) {
+    #page7Gift { padding: 0 !important; }
+    #page7Gift .page-card { max-width: none !important; padding: 0 9.5% !important; }
+    #page7Gift .page7-torn-top { top: 8.4% !important; width: 40% !important; }
+    #page7Gift .kicker { top: 22.8% !important; }
+    #page7Gift .section-title { top: 26.0% !important; }
+    #page7Gift .body-text { top: 37.7% !important; width: 77% !important; }
+    #page7Gift .info-card { top: 62.8% !important; width: 73% !important; padding: 24px 16px 25px !important; }
+  }
+
 </style>
 </head>
 <body>
@@ -1305,7 +1424,7 @@
 <!-- PAGE 7 — GIFT REGISTRY -->
 <section class="section rose-controlled-page page7-gift" id="page7Gift" style="--page-bg:var(--asset-page3c);">
 <div class="page-card reveal gift-dark-card">
-<img alt="Gift icon" class="rose-control-png page7-torn-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/15.png" style="--x:23%;--y:-19%;--w:57%;--z:1;"/>
+<img alt="Gift icon" class="rose-control-png page7-torn-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/15.png" style="--x:50%;--y:7.2%;--w:38%;--z:1;"/>
 <p class="kicker">With love</p>
 <h2 class="section-title">Gift Registry</h2>
 <p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
