@@ -658,7 +658,7 @@
     height: 46px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,.78);
-    background: #D4A0B0;
+    background: var(--theme-accent);
     color: #fff;
     display: none;
     align-items: center;
@@ -1173,7 +1173,41 @@
   }
   .color-switcher button[data-color-id="1"] { background: #97C4D4; }
   .color-switcher button[data-color-id="2"] { background: #6EAA94; }
+  .color-switcher button[data-color-id="3"] { background: #003F6B; }
   .color-switcher button[data-color-id="4"] { background: #D4A0B0; }
+
+
+  /* HARD FIX — remove every blur/frosted effect from the calendar page for all color themes */
+  #page3Calendar,
+  #page3Calendar *,
+  #page3Calendar::before,
+  #page3Calendar::after {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+  }
+
+  #page3Calendar .page-card,
+  #page3Calendar .calendar-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+
+  #page3Calendar .cal-month,
+  #page3Calendar .cal-grid,
+  #page3Calendar .countdown,
+  #page3Calendar .count-item,
+  #page3Calendar .cal-cell,
+  #page3Calendar .count-num,
+  #page3Calendar .count-label {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    text-shadow: none !important;
+  }
 
 </style>
 </head>
@@ -1197,7 +1231,7 @@
 <audio id="bgMusic" loop="" preload="auto">
 <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp3" type="audio/mpeg"/>
 </audio>
-<button aria-label="Pause music" class="music-toggle-btn" id="musicToggleBtn" type="button">♫</button><div aria-label="Invitation color switcher" class="color-switcher"><button aria-label="Pale blue theme" class="is-active" data-color-id="1" title="Pale blue theme" type="button"></button><button aria-label="Sage green theme" data-color-id="2" title="Sage green theme" type="button"></button><button aria-label="Dusty rose theme" data-color-id="4" title="Dusty rose theme" type="button"></button></div>
+<button aria-label="Pause music" class="music-toggle-btn" id="musicToggleBtn" type="button">♫</button><div aria-label="Invitation color switcher" class="color-switcher"><button aria-label="Pale blue theme" class="is-active" data-color-id="1" title="Pale blue theme" type="button"></button><button aria-label="Sage green theme" data-color-id="2" title="Sage green theme" type="button"></button><button aria-label="Navy blue theme" data-color-id="3" title="Navy blue theme" type="button"></button><button aria-label="Dusty rose theme" data-color-id="4" title="Dusty rose theme" type="button"></button></div>
 <!-- ═══ PAGE 1 ═══ -->
 <section class="section-hero page1-invitation" id="heroCover">
 <div class="hero-bg"></div>
@@ -1229,10 +1263,6 @@
 <img alt="" class="layer l-Torn2" data-color-asset="Image1a.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/ColorID_1/Image1a.png"/>
 <img alt="" class="layer l-TornTop" data-color-asset="Image1.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/ColorID_1/Image1.png"/>
 <img alt="" class="layer l-Photo2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P1.png"/>
-
-
-
-
 </section>
 <!-- PAGE 3 — CALENDAR + COUNTDOWN -->
 <section class="section rose-controlled-page page3-calendar" id="page3Calendar" style="--page-bg:var(--asset-page3c);">
@@ -1368,6 +1398,7 @@
   const COLOR_THEMES = {
     1: { accent: '#97C4D4', rgb: '151, 196, 212' },
     2: { accent: '#6EAA94', rgb: '110, 170, 148' },
+    3: { accent: '#003F6B', rgb: '0, 63, 107' },
     4: { accent: '#D4A0B0', rgb: '212, 160, 176' }
   };
 
@@ -1385,7 +1416,15 @@
   const COLOR_BASE_URL = 'https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/';
 
   function colorAssetUrl(colorId, fileName) {
-    return COLOR_BASE_URL + 'ColorID_' + colorId + '/' + fileName;
+    const id = String(colorId);
+    let actualFile = fileName;
+
+    /* ColorID_3 uses the same structure, but its background file is Page3d.png */
+    if (id === '3' && fileName === 'Page3c.png') {
+      actualFile = 'Page3c.png';
+    }
+
+    return COLOR_BASE_URL + 'ColorID_' + id + '/' + actualFile;
   }
 
   function applyInvitationColor(colorId) {
