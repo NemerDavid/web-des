@@ -950,17 +950,35 @@
   #page3Calendar .count-num { color: #fff !important; font-size: 42px !important; text-shadow: none !important; }
   #page3Calendar .count-label { color: #fff !important; font-size: 9px !important; letter-spacing: .18em !important; margin-top: 10px !important; }
 
+  /* ═════════ PAGE 7 — GIFT REGISTRY (fixed illustration positioning) ═════════
+     FIX: illustration (15.png) was at --y:-19% which bled above the section.
+     Now anchored at --y:0% (top of section) and card has 220px top-padding
+     so text content always clears the illustration on every screen size.
+  ══════════════════════════════════════════════════════════════════════════ */
   #page7Gift {
     --card-bg: transparent !important;
     --card-border: none !important;
     --card-shadow: none !important;
     --card-blur: 0px !important;
     min-height: auto !important;
-    padding-top: 44px !important;
+    /* removed padding-top so illustration sits flush at section top */
+    padding-top: 0 !important;
     padding-bottom: 34px !important;
   }
 
-  #page7Gift .page-card { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; aspect-ratio: auto !important; max-width: 440px !important; padding: 46px 30px 42px !important; justify-content: flex-start; }
+  /* Content card: top padding creates fixed clearance below the illustration */
+  #page7Gift .page-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    aspect-ratio: auto !important;
+    max-width: 440px !important;
+    /* 220px top-padding = reliable clearance for the illustration on all screens */
+    padding: 220px 30px 42px !important;
+    justify-content: flex-start;
+  }
+
   #page7Gift .section-icon { margin-top: 0; margin-bottom: 18px !important; max-height: 145px; }
   #page7Gift .kicker, #page7Gift .section-title, #page7Gift .body-text, #page7Gift .bank-name, #page7Gift .bank-line { color: #fff !important; text-shadow: none !important; }
   #page7Gift .kicker { letter-spacing: .42em; }
@@ -1044,8 +1062,11 @@
     #page3Calendar .section-title { font-size: 54px !important; }
     #page3Calendar .count-item { min-width: 72px !important; padding: 0 8px !important; }
     #page3Calendar .count-num { font-size: 38px !important; }
-    #page7Gift .page-card { max-width: 100% !important; padding: 38px 18px 36px !important; }
+
+    /* Gift Registry: narrower screens have a smaller illustration, reduce clearance */
+    #page7Gift .page-card { max-width: 100% !important; padding: 180px 18px 36px !important; }
     #page7Gift .section-title { font-size: 52px; }
+
     #page9Rsvp { padding: 56px 22px 74px !important; }
     #page9Rsvp .page-card { padding: 42px 18px 58px !important; }
     #page9Rsvp .section-title { font-size: 58px !important; }
@@ -1209,125 +1230,6 @@
     text-shadow: none !important;
   }
 
-
-
-  /* ═════════ PAGE 7 GIFT REGISTRY — FIXED 9:16 LAYOUT ═════════
-     This keeps 15.png and the text in fixed percentage positions on all screens.
-     The icon is no longer negative/top-cropped, and the whole content is pushed down. */
-  #page7Gift {
-    position: relative !important;
-    width: 100% !important;
-    aspect-ratio: 9 / 16 !important;
-    min-height: 0 !important;
-    height: auto !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    background: var(--asset-page3c) center center / cover no-repeat !important;
-  }
-
-  #page7Gift .page-card {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    max-width: none !important;
-    height: 100% !important;
-    margin: 0 !important;
-    padding: 0 12% !important;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    backdrop-filter: none !important;
-    overflow: visible !important;
-    display: block !important;
-  }
-
-  #page7Gift .page7-torn-top {
-    position: absolute !important;
-    left: 50% !important;
-    top: 7.2% !important;
-    width: 38% !important;
-    height: auto !important;
-    transform: translateX(-50%) !important;
-    z-index: 1 !important;
-    max-width: none !important;
-  }
-
-  #page7Gift .kicker,
-  #page7Gift .section-title,
-  #page7Gift .body-text,
-  #page7Gift .info-card {
-    position: absolute !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    z-index: 2 !important;
-    width: 76% !important;
-    margin: 0 !important;
-    text-align: center !important;
-  }
-
-  #page7Gift .kicker {
-    top: 21.2% !important;
-    font-size: clamp(9px, 2.4vw, 12px) !important;
-    letter-spacing: .42em !important;
-    color: #fff !important;
-  }
-
-  #page7Gift .section-title {
-    top: 24.3% !important;
-    font-size: clamp(48px, 11.4vw, 66px) !important;
-    line-height: .95 !important;
-    color: #fff !important;
-    white-space: nowrap !important;
-  }
-
-  #page7Gift .body-text {
-    top: 35.4% !important;
-    max-width: none !important;
-    font-size: clamp(19px, 4.35vw, 24px) !important;
-    line-height: 1.55 !important;
-    font-weight: 500 !important;
-    color: #fff !important;
-  }
-
-  #page7Gift .info-card {
-    top: 58.2% !important;
-    width: 73% !important;
-    padding: 24px 20px 25px !important;
-    background: rgba(var(--theme-accent-rgb), .42) !important;
-    border: 1px solid rgba(255,255,255,.42) !important;
-    border-radius: 20px !important;
-    box-shadow: none !important;
-  }
-
-  #page7Gift .bank-name {
-    font-size: clamp(38px, 8vw, 48px) !important;
-    line-height: 1 !important;
-    margin: 0 0 18px !important;
-    color: #fff !important;
-  }
-
-  #page7Gift .thin-line {
-    width: 74px !important;
-    margin: 20px auto !important;
-    background: rgba(255,255,255,.45) !important;
-  }
-
-  #page7Gift .bank-line {
-    font-size: clamp(17px, 3.7vw, 20px) !important;
-    line-height: 1.4 !important;
-    color: #fff !important;
-  }
-
-  @media (max-width: 560px) {
-    #page7Gift { padding: 0 !important; }
-    #page7Gift .page-card { max-width: none !important; padding: 0 9.5% !important; }
-    #page7Gift .page7-torn-top { top: 8.4% !important; width: 40% !important; }
-    #page7Gift .kicker { top: 22.8% !important; }
-    #page7Gift .section-title { top: 26.0% !important; }
-    #page7Gift .body-text { top: 37.7% !important; width: 77% !important; }
-    #page7Gift .info-card { top: 62.8% !important; width: 73% !important; padding: 24px 16px 25px !important; }
-  }
-
 </style>
 </head>
 <body>
@@ -1423,8 +1325,10 @@
 </section>
 <!-- PAGE 7 — GIFT REGISTRY -->
 <section class="section rose-controlled-page page7-gift" id="page7Gift" style="--page-bg:var(--asset-page3c);">
+<!-- FIX: --y changed from -19% to 0% so the illustration stays inside the section
+     and never bleeds up into / overlaps the section above. -->
+<img alt="Gift icon" class="rose-control-png page7-torn-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/15.png" style="--x:23%;--y:0%;--w:57%;--z:1;"/>
 <div class="page-card reveal gift-dark-card">
-<img alt="Gift icon" class="rose-control-png page7-torn-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/15.png" style="--x:50%;--y:7.2%;--w:38%;--z:1;"/>
 <p class="kicker">With love</p>
 <h2 class="section-title">Gift Registry</h2>
 <p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
