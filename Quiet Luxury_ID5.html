@@ -586,6 +586,27 @@
   .btn-solid { background: var(--garden-dark); border: 1px solid var(--garden-dark); color: #fff9ec; box-shadow: 0 4px 16px rgba(36,75,41,.28); }
   .btn-solid:hover, .btn-soft:hover { transform: translateY(-1px); }
   .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: #9b3f35; }
+  .guest-welcome-step { text-align: left; }
+  .guest-welcome-title {
+    margin: 10px 0 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(46px, 11vw, 66px);
+    line-height: 1.05;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,.10);
+  }
+  .guest-welcome-note {
+    margin: 0 0 34px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: rgba(255,255,255,.92);
+    text-shadow: 0 2px 10px rgba(0,0,0,.10);
+  }
+  #page9Rsvp .guest-welcome-title,
+  #page9Rsvp .guest-welcome-note { color: #fff !important; }
+
 
   /* ── Footer ── */
   .footer {
@@ -1313,10 +1334,10 @@
           <span class="step-dot" id="dot-3"></span>
         </div>
 
-        <div id="step1" class="rsvp-step">
-          <label class="form-label" for="guestName">Your name</label>
-          <input id="guestName" class="form-field" type="text" placeholder="Type your full name" autocomplete="name" />
-          <p id="personalGuestNote" style="display:none; font-family:'Cormorant Garamond',serif; font-size:16px; line-height:1.5; margin-top:12px; color:rgba(255,255,255,.92); text-align:left;"></p>
+        <div id="step1" class="rsvp-step guest-welcome-step">
+          <input id="guestName" type="hidden" value="Guest" />
+          <h3 class="guest-welcome-title">Dear <span id="guestWelcomeName">Guest</span>,</h3>
+          <p id="personalGuestNote" class="guest-welcome-note">This invitation is reserved for you.</p>
           <p class="error-msg" id="errName">Please enter your name.</p>
           <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,2)">Continue →</button>
         </div>
@@ -1497,18 +1518,21 @@
 
   (function applyPersonalizedGuestLink() {
     const guestNameInput = document.getElementById('guestName');
+    const guestWelcomeName = document.getElementById('guestWelcomeName');
     const personalGuestNote = document.getElementById('personalGuestNote');
     const guestLimitNote = document.getElementById('guestLimitNote');
+    const displayGuestName = invitedGuestFromLink || 'Guest';
 
-    if (guestNameInput && invitedGuestFromLink) {
-      guestNameInput.value = invitedGuestFromLink;
-      guestNameInput.readOnly = true;
-      guestNameInput.style.opacity = '0.95';
+    if (guestNameInput) {
+      guestNameInput.value = displayGuestName;
     }
 
-    if (personalGuestNote && invitedGuestFromLink) {
-      personalGuestNote.style.display = 'block';
-      personalGuestNote.textContent = 'This invitation is reserved for ' + invitedGuestFromLink + '.';
+    if (guestWelcomeName) {
+      guestWelcomeName.textContent = displayGuestName;
+    }
+
+    if (personalGuestNote) {
+      personalGuestNote.textContent = 'This invitation is reserved for you.';
     }
 
     if (guestLimitNote) {
