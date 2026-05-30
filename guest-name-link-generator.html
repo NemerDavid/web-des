@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guest Name Link Generator</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f3ed;color:#2c2824;padding:28px}.wrap{max-width:900px;margin:auto;background:#fff;padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.08)}h1{margin:0 0 8px;font-family:Georgia,serif;font-weight:400}.hint{color:#6d6258;line-height:1.5}label{display:block;margin-top:18px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em}input,textarea{width:100%;margin-top:8px;padding:12px;border:1px solid #d9cdbd;border-radius:10px;font-size:15px}textarea{min-height:190px;font-family:monospace}button{margin-top:18px;border:0;background:#516164;color:white;padding:13px 20px;border-radius:999px;font-weight:700;cursor:pointer}.row{display:grid;grid-template-columns:1fr 180px;gap:12px}.output{margin-top:24px;overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{border-bottom:1px solid #eee;padding:10px;text-align:left;vertical-align:top}a{color:#516164;word-break:break-all}.copy{padding:8px 12px;margin:0;border-radius:8px;font-size:12px}.small{font-size:13px;color:#7a7168} @media(max-width:650px){.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Guest Name Link Generator</h1>
+  <p class="hint">Paste the invitation URL, then add one guest per line. Format: <b>Name, limit</b>. Example: <code>Robert Martin, 2</code>.</p>
+
+  <label>Invitation URL</label>
+  <input id="baseUrl" placeholder="https://www.cardiastudios.com/client-invitation.html" />
+
+  <label>Guests</label>
+  <textarea id="guestList" placeholder="Robert Martin, 2&#10;Tina Haddad, 1&#10;Michael Clarke, 4"></textarea>
+
+  <button onclick="generateLinks()">Generate Links</button>
+  <button onclick="downloadCSV()" type="button">Download CSV</button>
+
+  <p class="small">Each generated link contains <code>?guest=Guest%20Name&limit=2</code>. Send one private link to each guest.</p>
+
+  <div class="output" id="output"></div>
+</div>
+<script>
+let rows = [];
+function makeSlug(name){return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+function generateLinks(){
+  const base = document.getElementById('baseUrl').value.trim();
+  const list = document.getElementById('guestList').value.trim();
+  const out = document.getElementById('output');
+  if(!base || !list){out.innerHTML='<p>Please add the invitation URL and guest list.</p>';return;}
+  rows = list.split(/\n+/).map(line=>{
+    const parts = line.split(',');
+    const name = (parts[0] || '').trim();
+    const limit = Math.max(1, parseInt((parts[1] || '1').trim(),10) || 1);
+    const url = new URL(base);
+    url.searchParams.set('guest', name);
+    url.searchParams.set('limit', limit);
+    url.searchParams.set('id', makeSlug(name));
+    return {name, limit, url: url.toString()};
+  }).filter(r=>r.name);
+  out.innerHTML = '<table><thead><tr><th>Guest</th><th>Limit</th><th>Link</th><th></th></tr></thead><tbody>' + rows.map((r,i)=>
+    `<tr><td>${escapeHtml(r.name)}</td><td>${r.limit}</td><td><a href="${r.url}" target="_blank">${r.url}</a></td><td><button class="copy" onclick="copyLink(${i})">Copy</button></td></tr>`
+  ).join('') + '</tbody></table>';
+}
+function copyLink(i){navigator.clipboard.writeText(rows[i].url);}
+function downloadCSV(){
+  if(!rows.length) generateLinks();
+  if(!rows.length) return;
+  const csv = 'Guest,Limit,Link\n' + rows.map(r => `"${r.name.replace(/"/g,'""')}",${r.limit},"${r.url.replace(/"/g,'""')}"`).join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'guest-invitation-links.csv';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function escapeHtml(s){return s.replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+</script>
+</body>
+</html>
