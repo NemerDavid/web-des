@@ -31,10 +31,7 @@
 <body>
 <div class="wrap">
   <h1>Personal Guest Link Generator</h1>
-  <p class="hint">Paste the invitation URL, then enter one invitation group per line. Each generated link contains the invited names and the maximum guest limit. In the invitation, each person gets their own Yes/No RSVP choice.</p>
-
-  <label for="baseUrl">Invitation URL</label>
-  <input id="baseUrl" placeholder="https://www.cardiastudios.com/raymond-invitation.html" />
+  <p class="hint">Enter one invitation group per line. Each generated link contains the invited names and the maximum guest limit. In the invitation, each person gets their own Yes/No RSVP choice.</p>
 
   <label for="coupleNames">Couple Names</label>
   <input id="coupleNames" value="Thomas & Sarah" placeholder="Thomas & Sarah" />
@@ -55,7 +52,7 @@
   <button type="button" id="generateBtn">Generate Personal Links</button>
   <button type="button" id="downloadBtn">Download CSV</button>
 
-  <p class="small">If the base URL already has parameters, they are preserved. Existing <code>guest</code>, <code>guests</code>, <code>id</code>, and <code>limit</code> parameters are replaced.</p>
+  <p class="small">The invitation URL is set inside the script. Existing <code>guest</code>, <code>guests</code>, <code>id</code>, and <code>limit</code> parameters are replaced automatically.</p>
 
   <div class="output" id="output"></div>
 </div>
@@ -98,14 +95,9 @@ function makeSafeUrl(base){
 }
 
 function generateLinks(){
-  const base = document.getElementById('baseUrl').value.trim();
+  const base = 'https://nemerdavid.github.io/web-des/Quiet%20Luxury_ID5_Raymond.html';
   const groupsRaw = document.getElementById('guestGroups').value.trim();
   const out = document.getElementById('output');
-
-  if(!base){
-    out.innerHTML = '<p>Please add the invitation URL.</p>';
-    return;
-  }
 
   const groups = parseGuestGroups(groupsRaw);
   if(!groups.length){
@@ -141,7 +133,7 @@ function generateLinks(){
           '<td>' + r.limit + '</td>' +
           '<td><a href="' + escapeHtml(r.url) + '" target="_blank">' + escapeHtml(r.url) + '</a></td>' +
           '<td class="actions">' +
-            '<button type="button" class="copy" data-index="' + i + '">Copy</button>' +
+            '<button type="button" class="copy" data-index="' + i + '">Copy Message</button>' +
             '<button type="button" class="whatsapp" data-index="' + i + '">WhatsApp</button>' +
           '</td>' +
         '</tr>'
@@ -165,28 +157,12 @@ function generateLinks(){
   }
 }
 
-function copyLink(i){
-  const link = rows[i].url;
-
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(link);
-  } else {
-    const temp = document.createElement('textarea');
-    temp.value = link;
-    document.body.appendChild(temp);
-    temp.select();
-    document.execCommand('copy');
-    document.body.removeChild(temp);
-  }
-}
-
-function shareWhatsApp(i){
+function buildShareMessage(i){
   const group = rows[i].group;
   const coupleNames = document.getElementById('coupleNames').value.trim() || 'The Couple';
   const weddingDate = document.getElementById('weddingDate').value.trim();
 
-  const message =
-`✨ You're Invited! ✨
+  return `✨ You're Invited! ✨
 
 Dear ${group},
 
@@ -200,7 +176,25 @@ We can't wait to celebrate together! 🥂
 
 With love,
 ${coupleNames}`;
+}
 
+function copyLink(i){
+  const message = buildShareMessage(i);
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(message);
+  } else {
+    const temp = document.createElement('textarea');
+    temp.value = message;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+  }
+}
+
+function shareWhatsApp(i){
+  const message = buildShareMessage(i);
   window.open('https://wa.me/?text=' + encodeURIComponent(message), '_blank');
 }
 
