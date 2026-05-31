@@ -3,17 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Guest Limit Link Generator</title>
+<title>Personal Guest Link Generator</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;font-family:Arial,sans-serif;background:#f7f3ed;color:#2c2824;padding:28px}
-  .wrap{max-width:900px;margin:auto;background:#fff;padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+  .wrap{max-width:980px;margin:auto;background:#fff;padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
   h1{margin:0 0 8px;font-family:Georgia,serif;font-weight:400}
   .hint{color:#6d6258;line-height:1.5}
   label{display:block;margin-top:18px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
   input,textarea{width:100%;margin-top:8px;padding:12px;border:1px solid #d9cdbd;border-radius:10px;font-size:15px}
-  textarea{min-height:120px;font-family:monospace}
+  textarea{min-height:160px;font-family:monospace;line-height:1.45}
   button{margin-top:18px;border:0;background:#516164;color:white;padding:13px 20px;border-radius:999px;font-weight:700;cursor:pointer}
+  button:hover{filter:brightness(.95)}
   .row{display:grid;grid-template-columns:1fr 180px;gap:12px}
   .output{margin-top:24px;overflow:auto}
   table{width:100%;border-collapse:collapse;font-size:14px}
@@ -22,49 +23,64 @@
   .copy{padding:8px 12px;margin:0;border-radius:8px;font-size:12px}
   .small{font-size:13px;color:#7a7168;line-height:1.5}
   .example{background:#f7f3ed;border:1px solid #eadfce;border-radius:14px;padding:14px;margin-top:18px;color:#5d554d;line-height:1.55}
-  @media(max-width:650px){.row{grid-template-columns:1fr}}
+  code{background:#f1ebe2;padding:2px 5px;border-radius:6px}
+  @media(max-width:650px){.row{grid-template-columns:1fr} body{padding:14px}.wrap{padding:20px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Guest Limit Link Generator</h1>
-  <p class="hint">Paste the invitation URL, then choose the limits you want. This creates shared links such as <b>?limit=2</b>, <b>?limit=3</b>, etc. The invitation will always display <b>Dear Guest</b>, and guests will type their own name in the RSVP form.</p>
+  <h1>Personal Guest Link Generator</h1>
+  <p class="hint">Paste the invitation URL, then enter one invitation group per line. Each generated link contains the invited names and the maximum guest limit. In the invitation, each person gets their own Yes/No RSVP choice.</p>
 
   <label>Invitation URL</label>
-  <input id="baseUrl" placeholder="https://www.cardiastudios.com/client-invitation.html" />
+  <input id="baseUrl" placeholder="https://www.cardiastudios.com/raymond-invitation.html" />
 
-  <label>Invite limits</label>
-  <input id="limits" value="1, 2, 3, 4" placeholder="1, 2, 3, 4" />
+  <label>Guest groups</label>
+  <textarea id="guestGroups" placeholder="Celia, Raymond
+Robert Martin
+Maya, Jad, Lea"></textarea>
 
   <div class="example">
     <b>How to use:</b><br />
-    Send the <b>limit 2</b> link to all guests/families allowed 2 seats.<br />
-    Send the <b>limit 3</b> link to all guests/families allowed 3 seats.<br />
-    No guest name is included in the link.
+    Write one invite group per line.<br />
+    <code>Celia, Raymond</code> creates one link with <code>Generate Personal Links</code>.<br />
+    On the invitation, Celia and Raymond each choose <b>Yes</b> or <b>No</b> separately.
   </div>
 
-  <button onclick="generateLinks()">Generate Shared Links</button>
+  <button onclick="generateLinks()">Generate Personal Links</button>
   <button onclick="downloadCSV()" type="button">Download CSV</button>
 
-  <p class="small">Each generated link contains only <code>?limit=2</code>. If the base URL already has parameters, they are preserved and only <code>limit</code> is updated.</p>
+  <p class="small">If the base URL already has parameters, they are preserved. Existing <code>guest</code>, <code>guests</code>, <code>id</code>, and <code>limit</code> parameters are replaced.</p>
 
   <div class="output" id="output"></div>
 </div>
 <script>
 let rows = [];
 
-function parseLimits(value){
-  return [...new Set(
-    value
-      .split(/[\n,;\s]+/)
-      .map(v => parseInt(v.trim(), 10))
-      .filter(v => Number.isFinite(v) && v > 0)
-  )].sort((a,b) => a - b);
+function parseGuestGroups(value){
+  return value
+    .split(/\n+/)
+    .map(line => line.trim())
+    .filter(Boolean)
+    .map(line => {
+      const names = line
+        .split(/[,;|]+/)
+        .map(name => name.trim())
+        .filter(Boolean);
+      return [...new Set(names)];
+    })
+    .filter(names => names.length);
+}
+
+function formatGuestNames(names){
+  if(names.length === 1) return names[0];
+  if(names.length === 2) return names[0] + ' & ' + names[1];
+  return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
 }
 
 function generateLinks(){
   const base = document.getElementById('baseUrl').value.trim();
-  const limitsRaw = document.getElementById('limits').value.trim();
+  const groupsRaw = document.getElementById('guestGroups').value.trim();
   const out = document.getElementById('output');
 
   if(!base){
@@ -72,43 +88,83 @@ function generateLinks(){
     return;
   }
 
-  const limits = parseLimits(limitsRaw || '1,2,3,4');
-  if(!limits.length){
-    out.innerHTML = '<p>Please add at least one valid invite limit.</p>';
+  const groups = parseGuestGroups(groupsRaw);
+  if(!groups.length){
+    out.innerHTML = '<p>Please add at least one guest group.</p>';
     return;
   }
 
-  rows = limits.map(limit => {
+  rows = groups.map((names, index) => {
     const url = new URL(base);
     url.searchParams.delete('guest');
+    url.searchParams.delete('guests');
     url.searchParams.delete('id');
-    url.searchParams.set('limit', limit);
+    url.searchParams.delete('limit');
+    url.searchParams.set('guests', names.join('|'));
+    url.searchParams.set('limit', names.length);
     return {
-      label: limit === 1 ? '1 guest' : limit + ' guests',
-      limit,
-      url: url.toString()
+      group: formatGuestNames(names),
+      names: names.join(' | '),
+      limit: names.length,
+      url: url.toString(),
+      number: index + 1
     };
   });
 
-  out.innerHTML = '<table><thead><tr><th>Group</th><th>Limit</th><th>Shared Link</th><th></th></tr></thead><tbody>' + rows.map((r,i)=>
-    `<tr><td>${escapeHtml(r.label)}</td><td>${r.limit}</td><td><a href="${r.url}" target="_blank">${r.url}</a></td><td><button class="copy" onclick="copyLink(${i})">Copy</button></td></tr>`
+  out.innerHTML = '<table><thead><tr><th>#</th><th>Invite Group</th><th>Limit</th><th>Personal Link</th><th></th></tr></thead><tbody>' + rows.map((r,i)=>
+    `<tr><td>${r.number}</td><td>${escapeHtml(r.group)}</td><td>${r.limit}</td><td><a href="${r.url}" target="_blank">${r.url}</a></td><td><button class="copy" onclick="copyLink(${i})">Copy</button> <button class="copy" onclick="shareWhatsApp(${i})">WhatsApp</button></td></tr>`
   ).join('') + '</tbody></table>';
 }
 
 function copyLink(i){navigator.clipboard.writeText(rows[i].url);}
 
+function shareWhatsApp(i){
+
+  const group = rows[i].group;
+  const coupleNames = document.getElementById('coupleNames').value.trim() || 'The Couple';
+  const weddingDate = document.getElementById('weddingDate').value.trim();
+
+  const message =
+`✨ You're Invited! ✨
+
+Dear ${group},
+
+We would be honored to celebrate our special day with you ❤️
+
+${weddingDate ? 'Wedding Date: ' + weddingDate + '\n\n' : ''}Please open your personal invitation and kindly confirm your attendance:
+
+${rows[i].url}
+
+We can't wait to celebrate together! 🥂
+
+With love,
+${coupleNames}`;
+
+  window.open(
+    'https://wa.me/?text=' + encodeURIComponent(message),
+    '_blank'
+  );
+}
+
 function downloadCSV(){
   if(!rows.length) generateLinks();
   if(!rows.length) return;
-  const csv = 'Group,Limit,Shared Link\n' + rows.map(r => `"${r.label.replace(/"/g,'""')}",${r.limit},"${r.url.replace(/"/g,'""')}"`).join('\n');
+  const csv = 'Invite Number,Invite Group,Guest Names,Limit,Personal Link\n' + rows.map(r => [
+    r.number,
+    r.group,
+    r.names,
+    r.limit,
+    r.url
+  ].map(csvCell).join(',')).join('\n');
   const blob = new Blob([csv], {type:'text/csv'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'guest-limit-shared-links.csv';
+  a.download = 'personal-guest-rsvp-links.csv';
   a.click();
   URL.revokeObjectURL(a.href);
 }
 
+function csvCell(value){return '"' + String(value).replace(/"/g,'""') + '"';}
 function escapeHtml(s){return String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
 </script>
 </body>
