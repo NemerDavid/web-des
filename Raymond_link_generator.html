@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Personal Guest Link Generator</title>
+<title>Common Guest Slot Link Generator</title>
 <style>
   *{box-sizing:border-box}
   body{margin:0;font-family:Arial,sans-serif;background:#f7f3ed;color:#2c2824;padding:28px}
@@ -30,8 +30,8 @@
 </head>
 <body>
 <div class="wrap">
-  <h1>Personal Guest Link Generator</h1>
-  <p class="hint">Enter one invitation group per line. Each generated link contains the invited names and the maximum guest limit. In the invitation, each person gets their own Yes/No RSVP choice.</p>
+  <h1>Common Guest Slot Link Generator</h1>
+  <p class="hint">Create one reusable invitation link for each guest count. The invitation will only show boxes like Guest 1, Guest 2, Guest 3, and each guest writes their own name.</p>
 
   <label for="coupleNames">Couple Names</label>
   <input id="coupleNames" value="Thomas & Sarah" placeholder="Thomas & Sarah" />
@@ -39,20 +39,20 @@
   <label for="weddingDate">Wedding Date</label>
   <input id="weddingDate" value="14 August 2027" placeholder="14 August 2027" />
 
-  <label for="guestGroups">Guest groups</label>
-  <textarea id="guestGroups" placeholder="Celia, Raymond&#10;Robert Martin&#10;Maya, Jad, Lea"></textarea>
+  <label for="maxGuestSlots">Create common links up to</label>
+  <input id="maxGuestSlots" type="number" min="1" max="20" step="1" value="4" />
 
   <div class="example">
     <b>How to use:</b><br />
-    Write one invite group per line.<br />
-    <code>Celia, Raymond</code> creates one link with <code>Generate Personal Links</code>.<br />
-    On the invitation, Celia and Raymond each choose <b>Yes</b> or <b>No</b> separately.
+    Choose the largest invitation size you need, then generate the reusable links.<br />
+    Use the <b>1 guest</b> link for solo invites, the <b>2 guests</b> link for couples, the <b>3 guests</b> link for groups of three, and so on.<br />
+    On the invitation, guests will see only <b>Guest 1</b>, <b>Guest 2</b>, etc. and write their own names.
   </div>
 
-  <button type="button" id="generateBtn">Generate Personal Links</button>
+  <button type="button" id="generateBtn">Generate Common Links</button>
   <button type="button" id="downloadBtn">Download CSV</button>
 
-  <p class="small">The invitation URL is set inside the script. Existing <code>guest</code>, <code>guests</code>, <code>id</code>, and <code>limit</code> parameters are replaced automatically.</p>
+  <p class="small">The invitation URL is set inside the script. Existing <code>guest</code>, <code>guests</code>, <code>invite</code>, <code>group</code>, <code>id</code>, and <code>limit</code> parameters are replaced automatically. The final link only contains the guest slot count.</p>
 
   <div class="output" id="output"></div>
 </div>
@@ -65,27 +65,6 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('downloadBtn').addEventListener('click', downloadCSV);
 });
 
-function parseGuestGroups(value){
-  return value
-    .split(/\n+/)
-    .map(line => line.trim())
-    .filter(Boolean)
-    .map(line => {
-      const names = line
-        .split(/[,;|]+/)
-        .map(name => name.trim())
-        .filter(Boolean);
-      return [...new Set(names)];
-    })
-    .filter(names => names.length);
-}
-
-function formatGuestNames(names){
-  if(names.length === 1) return names[0];
-  if(names.length === 2) return names[0] + ' & ' + names[1];
-  return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
-}
-
 function makeSafeUrl(base){
   try {
     return new URL(base);
@@ -95,42 +74,40 @@ function makeSafeUrl(base){
 }
 
 function generateLinks(){
-  const base = 'https://www.cardiastudios.com/templates/Raymond&Celia';
-  const groupsRaw = document.getElementById('guestGroups').value.trim();
+  const base = 'file:///C:/Users/nemer/Project/Wed/wed/Def%20Envelopes/Quiet%20Luxury_ID5_Raymond.html';
+  const maxGuestSlots = parseInt(document.getElementById('maxGuestSlots').value, 10);
   const out = document.getElementById('output');
 
-  const groups = parseGuestGroups(groupsRaw);
-  if(!groups.length){
-    out.innerHTML = '<p>Please add at least one guest group.</p>';
+  if(!Number.isFinite(maxGuestSlots) || maxGuestSlots < 1){
+    out.innerHTML = '<p>Please enter a guest slot count of 1 or more.</p>';
     return;
   }
 
   try {
-    rows = groups.map((names, index) => {
+    rows = Array.from({ length: maxGuestSlots }, (_, index) => {
+      const limit = index + 1;
       const url = makeSafeUrl(base);
       url.searchParams.delete('guest');
       url.searchParams.delete('guests');
+      url.searchParams.delete('invite');
+      url.searchParams.delete('group');
       url.searchParams.delete('id');
       url.searchParams.delete('limit');
-      url.searchParams.set('guests', names.join('|'));
-      url.searchParams.set('limit', names.length);
+      url.searchParams.set('limit', limit);
 
       return {
-        group: formatGuestNames(names),
-        names: names.join(' | '),
-        limit: names.length,
+        label: limit + ' guest' + (limit === 1 ? '' : 's'),
+        limit: limit,
         url: url.toString(),
-        number: index + 1
+        number: limit
       };
     });
 
     out.innerHTML =
-      '<table><thead><tr><th>#</th><th>Invite Group</th><th>Limit</th><th>Personal Link</th><th>Actions</th></tr></thead><tbody>' +
+      '<table><thead><tr><th>Guest Slots</th><th>Common Link</th><th>Actions</th></tr></thead><tbody>' +
       rows.map((r,i) =>
         '<tr>' +
-          '<td>' + r.number + '</td>' +
-          '<td>' + escapeHtml(r.group) + '</td>' +
-          '<td>' + r.limit + '</td>' +
+          '<td>' + escapeHtml(r.label) + '</td>' +
           '<td><a href="' + escapeHtml(r.url) + '" target="_blank">' + escapeHtml(r.url) + '</a></td>' +
           '<td class="actions">' +
             '<button type="button" class="copy" data-index="' + i + '">Copy Message</button>' +
@@ -158,17 +135,16 @@ function generateLinks(){
 }
 
 function buildShareMessage(i){
-  const group = rows[i].group;
   const coupleNames = document.getElementById('coupleNames').value.trim() || 'The Couple';
   const weddingDate = document.getElementById('weddingDate').value.trim();
 
   return `✨ You're Invited! ✨
 
-Dear ${group},
+Dear Guest,
 
 We would be honored to celebrate our special day with you ❤️
 
-${weddingDate ? 'Wedding Date: ' + weddingDate + '\n\n' : ''}Please open your personal invitation and kindly confirm your attendance:
+${weddingDate ? 'Wedding Date: ' + weddingDate + '\n\n' : ''}Please open your invitation and kindly confirm attendance:
 
 ${rows[i].url}
 
@@ -202,10 +178,8 @@ function downloadCSV(){
   if(!rows.length) generateLinks();
   if(!rows.length) return;
 
-  const csv = 'Invite Number,Invite Group,Guest Names,Limit,Personal Link\n' + rows.map(r => [
-    r.number,
-    r.group,
-    r.names,
+  const csv = 'Guest Slots,Limit,Common Link\n' + rows.map(r => [
+    r.label,
     r.limit,
     r.url
   ].map(csvCell).join(',')).join('\n');
@@ -213,7 +187,7 @@ function downloadCSV(){
   const blob = new Blob([csv], {type:'text/csv'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'personal-guest-rsvp-links.csv';
+  a.download = 'common-guest-slot-rsvp-links.csv';
   a.click();
   URL.revokeObjectURL(a.href);
 }
