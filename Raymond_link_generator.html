@@ -8,23 +8,24 @@
   *{box-sizing:border-box}
   body{margin:0;font-family:Arial,sans-serif;background:#f7f3ed;color:#2c2824;padding:28px}
   .wrap{max-width:980px;margin:auto;background:#fff;padding:28px;border-radius:22px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
-  h1{margin:0 0 8px;font-family:Georgia,serif;font-weight:400}
+  h1{margin:0 0 8px;font-family:Georgia,serif;font-weight:400;font-size:34px}
   .hint{color:#6d6258;line-height:1.5}
   label{display:block;margin-top:18px;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
-  input,textarea{width:100%;margin-top:8px;padding:12px;border:1px solid #d9cdbd;border-radius:10px;font-size:15px}
+  input,textarea{width:100%;margin-top:8px;padding:12px;border:1px solid #d9cdbd;border-radius:10px;font-size:15px;background:#fff}
   textarea{min-height:160px;font-family:monospace;line-height:1.45}
   button{margin-top:18px;border:0;background:#516164;color:white;padding:13px 20px;border-radius:999px;font-weight:700;cursor:pointer}
   button:hover{filter:brightness(.95)}
-  .row{display:grid;grid-template-columns:1fr 180px;gap:12px}
   .output{margin-top:24px;overflow:auto}
   table{width:100%;border-collapse:collapse;font-size:14px}
   th,td{border-bottom:1px solid #eee;padding:10px;text-align:left;vertical-align:top}
   a{color:#516164;word-break:break-all}
-  .copy{padding:8px 12px;margin:0;border-radius:8px;font-size:12px}
+  .copy,.whatsapp{padding:8px 12px;margin:0 4px 6px 0;border-radius:8px;font-size:12px;white-space:nowrap}
+  .whatsapp{background:#25D366;color:#fff}
   .small{font-size:13px;color:#7a7168;line-height:1.5}
   .example{background:#f7f3ed;border:1px solid #eadfce;border-radius:14px;padding:14px;margin-top:18px;color:#5d554d;line-height:1.55}
   code{background:#f1ebe2;padding:2px 5px;border-radius:6px}
-  @media(max-width:650px){.row{grid-template-columns:1fr} body{padding:14px}.wrap{padding:20px}}
+  .actions{white-space:nowrap}
+  @media(max-width:650px){body{padding:14px}.wrap{padding:20px} h1{font-size:28px} table{font-size:13px}}
 </style>
 </head>
 <body>
@@ -32,13 +33,17 @@
   <h1>Personal Guest Link Generator</h1>
   <p class="hint">Paste the invitation URL, then enter one invitation group per line. Each generated link contains the invited names and the maximum guest limit. In the invitation, each person gets their own Yes/No RSVP choice.</p>
 
-  <label>Invitation URL</label>
+  <label for="baseUrl">Invitation URL</label>
   <input id="baseUrl" placeholder="https://www.cardiastudios.com/raymond-invitation.html" />
 
-  <label>Guest groups</label>
-  <textarea id="guestGroups" placeholder="Celia, Raymond
-Robert Martin
-Maya, Jad, Lea"></textarea>
+  <label for="coupleNames">Couple Names</label>
+  <input id="coupleNames" value="Thomas & Sarah" placeholder="Thomas & Sarah" />
+
+  <label for="weddingDate">Wedding Date</label>
+  <input id="weddingDate" value="14 August 2027" placeholder="14 August 2027" />
+
+  <label for="guestGroups">Guest groups</label>
+  <textarea id="guestGroups" placeholder="Celia, Raymond&#10;Robert Martin&#10;Maya, Jad, Lea"></textarea>
 
   <div class="example">
     <b>How to use:</b><br />
@@ -47,15 +52,21 @@ Maya, Jad, Lea"></textarea>
     On the invitation, Celia and Raymond each choose <b>Yes</b> or <b>No</b> separately.
   </div>
 
-  <button onclick="generateLinks()">Generate Personal Links</button>
-  <button onclick="downloadCSV()" type="button">Download CSV</button>
+  <button type="button" id="generateBtn">Generate Personal Links</button>
+  <button type="button" id="downloadBtn">Download CSV</button>
 
   <p class="small">If the base URL already has parameters, they are preserved. Existing <code>guest</code>, <code>guests</code>, <code>id</code>, and <code>limit</code> parameters are replaced.</p>
 
   <div class="output" id="output"></div>
 </div>
+
 <script>
 let rows = [];
+
+document.addEventListener('DOMContentLoaded', function(){
+  document.getElementById('generateBtn').addEventListener('click', generateLinks);
+  document.getElementById('downloadBtn').addEventListener('click', downloadCSV);
+});
 
 function parseGuestGroups(value){
   return value
@@ -78,6 +89,14 @@ function formatGuestNames(names){
   return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
 }
 
+function makeSafeUrl(base){
+  try {
+    return new URL(base);
+  } catch(err) {
+    return new URL(base, window.location.href);
+  }
+}
+
 function generateLinks(){
   const base = document.getElementById('baseUrl').value.trim();
   const groupsRaw = document.getElementById('guestGroups').value.trim();
@@ -94,32 +113,74 @@ function generateLinks(){
     return;
   }
 
-  rows = groups.map((names, index) => {
-    const url = new URL(base);
-    url.searchParams.delete('guest');
-    url.searchParams.delete('guests');
-    url.searchParams.delete('id');
-    url.searchParams.delete('limit');
-    url.searchParams.set('guests', names.join('|'));
-    url.searchParams.set('limit', names.length);
-    return {
-      group: formatGuestNames(names),
-      names: names.join(' | '),
-      limit: names.length,
-      url: url.toString(),
-      number: index + 1
-    };
-  });
+  try {
+    rows = groups.map((names, index) => {
+      const url = makeSafeUrl(base);
+      url.searchParams.delete('guest');
+      url.searchParams.delete('guests');
+      url.searchParams.delete('id');
+      url.searchParams.delete('limit');
+      url.searchParams.set('guests', names.join('|'));
+      url.searchParams.set('limit', names.length);
 
-  out.innerHTML = '<table><thead><tr><th>#</th><th>Invite Group</th><th>Limit</th><th>Personal Link</th><th></th></tr></thead><tbody>' + rows.map((r,i)=>
-    `<tr><td>${r.number}</td><td>${escapeHtml(r.group)}</td><td>${r.limit}</td><td><a href="${r.url}" target="_blank">${r.url}</a></td><td><button class="copy" onclick="copyLink(${i})">Copy</button> <button class="copy" onclick="shareWhatsApp(${i})">WhatsApp</button></td></tr>`
-  ).join('') + '</tbody></table>';
+      return {
+        group: formatGuestNames(names),
+        names: names.join(' | '),
+        limit: names.length,
+        url: url.toString(),
+        number: index + 1
+      };
+    });
+
+    out.innerHTML =
+      '<table><thead><tr><th>#</th><th>Invite Group</th><th>Limit</th><th>Personal Link</th><th>Actions</th></tr></thead><tbody>' +
+      rows.map((r,i) =>
+        '<tr>' +
+          '<td>' + r.number + '</td>' +
+          '<td>' + escapeHtml(r.group) + '</td>' +
+          '<td>' + r.limit + '</td>' +
+          '<td><a href="' + escapeHtml(r.url) + '" target="_blank">' + escapeHtml(r.url) + '</a></td>' +
+          '<td class="actions">' +
+            '<button type="button" class="copy" data-index="' + i + '">Copy</button>' +
+            '<button type="button" class="whatsapp" data-index="' + i + '">WhatsApp</button>' +
+          '</td>' +
+        '</tr>'
+      ).join('') +
+      '</tbody></table>';
+
+    document.querySelectorAll('.copy').forEach(btn => {
+      btn.addEventListener('click', function(){
+        copyLink(Number(this.dataset.index));
+      });
+    });
+
+    document.querySelectorAll('.whatsapp').forEach(btn => {
+      btn.addEventListener('click', function(){
+        shareWhatsApp(Number(this.dataset.index));
+      });
+    });
+
+  } catch(err) {
+    out.innerHTML = '<p>There is a problem with the invitation URL. Please check it and try again.</p>';
+  }
 }
 
-function copyLink(i){navigator.clipboard.writeText(rows[i].url);}
+function copyLink(i){
+  const link = rows[i].url;
+
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(link);
+  } else {
+    const temp = document.createElement('textarea');
+    temp.value = link;
+    document.body.appendChild(temp);
+    temp.select();
+    document.execCommand('copy');
+    document.body.removeChild(temp);
+  }
+}
 
 function shareWhatsApp(i){
-
   const group = rows[i].group;
   const coupleNames = document.getElementById('coupleNames').value.trim() || 'The Couple';
   const weddingDate = document.getElementById('weddingDate').value.trim();
@@ -140,15 +201,13 @@ We can't wait to celebrate together! 🥂
 With love,
 ${coupleNames}`;
 
-  window.open(
-    'https://wa.me/?text=' + encodeURIComponent(message),
-    '_blank'
-  );
+  window.open('https://wa.me/?text=' + encodeURIComponent(message), '_blank');
 }
 
 function downloadCSV(){
   if(!rows.length) generateLinks();
   if(!rows.length) return;
+
   const csv = 'Invite Number,Invite Group,Guest Names,Limit,Personal Link\n' + rows.map(r => [
     r.number,
     r.group,
@@ -156,6 +215,7 @@ function downloadCSV(){
     r.limit,
     r.url
   ].map(csvCell).join(',')).join('\n');
+
   const blob = new Blob([csv], {type:'text/csv'});
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -164,8 +224,18 @@ function downloadCSV(){
   URL.revokeObjectURL(a.href);
 }
 
-function csvCell(value){return '"' + String(value).replace(/"/g,'""') + '"';}
-function escapeHtml(s){return String(s).replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));}
+function csvCell(value){
+  return '"' + String(value).replace(/"/g,'""') + '"';
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"]/g, m => ({
+    '&':'&amp;',
+    '<':'&lt;',
+    '>':'&gt;',
+    '"':'&quot;'
+  }[m]));
+}
 </script>
 </body>
 </html>
