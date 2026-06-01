@@ -612,15 +612,66 @@
       display: flex;
     }
 
-    .photo-album-modal img {
-      max-width: 94vw;
-      max-height: 84svh;
+    .photo-album-viewer {
+      position: relative;
+      width: 94vw;
+      height: 84svh;
+      max-width: calc(var(--screen-h) * .62);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .photo-album-modal-track {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      transition: transform .42s ease;
+      will-change: transform;
+    }
+
+    .photo-album-modal-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--screen-h) * .010);
+    }
+
+    .photo-album-modal-slide img {
+      max-width: 100%;
+      max-height: 100%;
       width: auto;
       height: auto;
       object-fit: contain;
       border-radius: calc(var(--screen-h) * .018);
       box-shadow: 0 calc(var(--screen-h) * .020) calc(var(--screen-h) * .060) rgba(0,0,0,.55);
       background: rgba(255, 248, 230, .08);
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .photo-album-modal-counter {
+      position: absolute;
+      left: 50%;
+      bottom: calc(var(--screen-h) * .022);
+      transform: translateX(-50%);
+      z-index: 1001;
+      padding: calc(var(--screen-h) * .007) calc(var(--screen-h) * .015);
+      border-radius: 999px;
+      border: 1px solid rgba(248, 216, 138, .34);
+      background: rgba(42, 18, 6, .58);
+      color: rgba(255, 243, 218, .9);
+      font: 700 calc(var(--screen-h) * .0095)/1 "Montserrat", sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+      pointer-events: none;
     }
 
     .photo-album-close {
@@ -639,6 +690,60 @@
       line-height: 1;
       cursor: pointer;
       backdrop-filter: blur(6px);
+    }
+
+
+    .photo-album-modal-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1002;
+      width: calc(var(--screen-h) * .054);
+      height: calc(var(--screen-h) * .054);
+      border-radius: 50%;
+      border: 1px solid rgba(248, 216, 138, .62);
+      background: rgba(42, 18, 6, .62);
+      color: #fff7df;
+      font-family: "Montserrat", sans-serif;
+      font-size: calc(var(--screen-h) * .030);
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .030) rgba(0,0,0,.35);
+      transition: transform .22s ease, background .22s ease, filter .22s ease;
+    }
+
+    .photo-album-modal-arrow:hover {
+      transform: translateY(-50%) scale(1.04);
+      background: rgba(42, 18, 6, .82);
+      filter: brightness(1.08);
+    }
+
+    .photo-album-modal-arrow.prev {
+      left: calc(var(--screen-h) * .030);
+    }
+
+    .photo-album-modal-arrow.next {
+      right: calc(var(--screen-h) * .030);
+    }
+
+    @media (max-width: 720px) {
+      .photo-album-modal-arrow {
+        width: calc(var(--screen-h) * .046);
+        height: calc(var(--screen-h) * .046);
+        font-size: calc(var(--screen-h) * .026);
+      }
+
+      .photo-album-modal-arrow.prev {
+        left: calc(var(--screen-h) * .012);
+      }
+
+      .photo-album-modal-arrow.next {
+        right: calc(var(--screen-h) * .012);
+      }
     }
 
     .projector-album-counter {
@@ -682,6 +787,25 @@
 
 .gift-card2 p {
   font-size: calc(var(--screen-h) * .0395);
+}
+
+.gift-card2 .powered-by {
+  display: inline-block;
+  margin-top: calc(var(--screen-h) * .020);
+  color: rgba(255, 243, 218, .92);
+  font-family: "Montserrat", sans-serif;
+  font-size: calc(var(--screen-h) * .0145);
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: underline;
+  text-underline-offset: calc(var(--screen-h) * .004);
+  text-decoration-thickness: 1px;
+  letter-spacing: .04em;
+  pointer-events: auto;
+}
+
+.gift-card2 .powered-by:hover {
+  color: var(--gold);
 }
 
 
@@ -801,6 +925,9 @@
 
     .invitation-locked .pano-wrap {
       cursor: default;
+      overflow: hidden;
+      touch-action: none;
+      overscroll-behavior: none;
     }
 
     .invitation-locked .nav,
@@ -972,7 +1099,8 @@
           <section class="hotspot gift-card2" data-point="4">
           <h2>We cannot wait to celebrate with you</h2>
           <p>Thomas & Sarah</p>
-          <p style="margin-top:10px;"><strong>August 14, 2027 · Ehden, Lebanon</p>
+          <p style="margin-top:10px;"><strong>August 14, 2027 · Ehden, Lebanon</strong></p>
+          <a class="powered-by" href="https://www.instagram.com/cardiastudios?igsh=MXByaGpxdHNjMTJnbQ==" target="_blank" rel="noopener">Powered by Cardia Studios</a>
         </section>
         
         
@@ -989,7 +1117,12 @@
 
     <div class="photo-album-modal" id="photoAlbumModal" aria-hidden="true">
       <button class="photo-album-close" id="photoAlbumClose" type="button" aria-label="Close photo album">×</button>
-      <img id="photoAlbumModalImg" src="" alt="Full-size photo">
+      <button class="photo-album-modal-arrow prev" id="photoAlbumPrev" type="button" aria-label="Previous photo">‹</button>
+      <div class="photo-album-viewer" id="photoAlbumViewer">
+        <div class="photo-album-modal-track" id="photoAlbumModalTrack"></div>
+      </div>
+      <button class="photo-album-modal-arrow next" id="photoAlbumNext" type="button" aria-label="Next photo">›</button>
+      <div class="photo-album-modal-counter" id="photoAlbumModalCounter">1 / 3</div>
     </div>
 
     <nav class="nav" id="nav">
@@ -1011,6 +1144,17 @@
 
 const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     let currentPointIndex = 0;
+    let lockScrollRaf = null;
+
+    function keepInvitationLockedAtStart() {
+      if (!document.body.classList.contains("invitation-locked")) return;
+      if (lockScrollRaf) return;
+      lockScrollRaf = requestAnimationFrame(() => {
+        lockScrollRaf = null;
+        const maxScroll = wrap.scrollWidth - wrap.clientWidth;
+        wrap.scrollLeft = maxScroll * points[0];
+      });
+    }
 
     function scrollToPoint(index, behavior = "smooth") {
       currentPointIndex = index;
@@ -1064,7 +1208,11 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     const openPhotoAlbumBtn = document.getElementById("openPhotoAlbumBtn");
     const photoAlbumModal = document.getElementById("photoAlbumModal");
     const photoAlbumClose = document.getElementById("photoAlbumClose");
-    const photoAlbumModalImg = document.getElementById("photoAlbumModalImg");
+    const photoAlbumPrev = document.getElementById("photoAlbumPrev");
+    const photoAlbumNext = document.getElementById("photoAlbumNext");
+    const photoAlbumViewer = document.getElementById("photoAlbumViewer");
+    const photoAlbumModalTrack = document.getElementById("photoAlbumModalTrack");
+    const photoAlbumModalCounter = document.getElementById("photoAlbumModalCounter");
     const albumSlides = [...document.querySelectorAll(".projector-album-slide")];
     const album = document.getElementById("projectorAlbum");
     let albumIndex = 0;
@@ -1083,11 +1231,25 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
       updateProjectorAlbum(true);
     }
 
+    function buildFullPhotoAlbum() {
+      photoAlbumModalTrack.innerHTML = albumSlides.map((slide) => {
+        const img = slide.querySelector("img");
+        const src = img?.currentSrc || img?.src || "";
+        const alt = img?.alt || "Full-size photo";
+        return `<div class="photo-album-modal-slide"><img src="${src}" alt="${alt}"></div>`;
+      }).join("");
+    }
+
+    function updateFullPhotoAlbum(withTransition = true) {
+      photoAlbumModalTrack.style.transition = withTransition ? "transform .42s ease" : "none";
+      photoAlbumModalTrack.style.transform = `translateX(${-albumIndex * 100}%)`;
+      photoAlbumModalCounter.textContent = `${albumIndex + 1} / ${albumSlides.length}`;
+      updateProjectorAlbum(withTransition);
+    }
+
     function openFullPhotoAlbum() {
-      const currentImg = albumSlides[albumIndex]?.querySelector("img");
-      if (!currentImg) return;
-      photoAlbumModalImg.src = currentImg.currentSrc || currentImg.src;
-      photoAlbumModalImg.alt = currentImg.alt || "Full-size photo";
+      buildFullPhotoAlbum();
+      updateFullPhotoAlbum(false);
       photoAlbumModal.classList.add("open");
       photoAlbumModal.setAttribute("aria-hidden", "false");
     }
@@ -1095,7 +1257,12 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     function closeFullPhotoAlbum() {
       photoAlbumModal.classList.remove("open");
       photoAlbumModal.setAttribute("aria-hidden", "true");
-      photoAlbumModalImg.src = "";
+      photoAlbumModalTrack.innerHTML = "";
+    }
+
+    function moveFullPhotoAlbum(step) {
+      albumIndex = (albumIndex + step + albumSlides.length) % albumSlides.length;
+      updateFullPhotoAlbum(true);
     }
 
     openPhotoAlbumBtn.addEventListener("pointerdown", (e) => e.stopPropagation());
@@ -1107,12 +1274,83 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     });
 
     photoAlbumClose.addEventListener("click", closeFullPhotoAlbum);
+
+    [photoAlbumPrev, photoAlbumNext].forEach((arrow) => {
+      arrow.addEventListener("pointerdown", (e) => e.stopPropagation());
+      arrow.addEventListener("pointerup", (e) => e.stopPropagation());
+    });
+
+    photoAlbumPrev.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveFullPhotoAlbum(-1);
+    });
+
+    photoAlbumNext.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveFullPhotoAlbum(1);
+    });
+
     photoAlbumModal.addEventListener("click", (e) => {
       if (e.target === photoAlbumModal) closeFullPhotoAlbum();
     });
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && photoAlbumModal.classList.contains("open")) closeFullPhotoAlbum();
+    });
+
+    let modalDragging = false;
+    let modalStartX = 0;
+    let modalCurrentX = 0;
+
+    photoAlbumViewer.addEventListener("pointerdown", (e) => {
+      if (!photoAlbumModal.classList.contains("open")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      modalDragging = true;
+      modalStartX = e.clientX;
+      modalCurrentX = e.clientX;
+      photoAlbumViewer.setPointerCapture(e.pointerId);
+      photoAlbumModalTrack.style.transition = "none";
+    });
+
+    photoAlbumViewer.addEventListener("pointermove", (e) => {
+      if (!modalDragging) return;
+      e.preventDefault();
+      e.stopPropagation();
+      modalCurrentX = e.clientX;
+      const dx = modalCurrentX - modalStartX;
+      const percent = (dx / photoAlbumViewer.clientWidth) * 100;
+      photoAlbumModalTrack.style.transform = `translateX(${(-albumIndex * 100) + percent}%)`;
+    });
+
+    function endModalSwipe(e) {
+      if (!modalDragging) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const dx = modalCurrentX - modalStartX;
+      modalDragging = false;
+      if (Math.abs(dx) > photoAlbumViewer.clientWidth * 0.14) {
+        moveFullPhotoAlbum(dx < 0 ? 1 : -1);
+      } else {
+        updateFullPhotoAlbum(true);
+      }
+    }
+
+    photoAlbumViewer.addEventListener("pointerup", endModalSwipe);
+    photoAlbumViewer.addEventListener("pointercancel", endModalSwipe);
+    photoAlbumViewer.addEventListener("lostpointercapture", () => {
+      if (modalDragging) {
+        modalDragging = false;
+        updateFullPhotoAlbum(true);
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (!photoAlbumModal.classList.contains("open")) return;
+      if (e.key === "ArrowLeft") moveFullPhotoAlbum(-1);
+      if (e.key === "ArrowRight") moveFullPhotoAlbum(1);
     });
 
     album.addEventListener("pointerdown", (e) => {
@@ -1159,6 +1397,11 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     });
 
     wrap.addEventListener("scroll", () => {
+      if (document.body.classList.contains("invitation-locked")) {
+        keepInvitationLockedAtStart();
+        return;
+      }
+
       const maxScroll = wrap.scrollWidth - wrap.clientWidth;
       const ratio = maxScroll ? wrap.scrollLeft / maxScroll : 0;
       let closest = 0;
@@ -1181,7 +1424,14 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     let startLeft = 0;
 
     wrap.addEventListener("pointerdown", (e) => {
-      if (document.body.classList.contains("invitation-locked")) return;
+      if (document.body.classList.contains("invitation-locked")) {
+        if (!e.target.closest("#openInvitationBtn")) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        keepInvitationLockedAtStart();
+        return;
+      }
       if (e.target.closest(".projector-album, .open-photo-album-btn, .photo-album-modal, input, select, textarea, button")) return;
       isDown = true;
       startX = e.clientX;
