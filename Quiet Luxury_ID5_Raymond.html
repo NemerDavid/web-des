@@ -11,8 +11,8 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png');
-    --paper-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png');
+    --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png');
+    --paper-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png');
     --garden-bg: #f4efe3;
     --garden-dark: #244b29;
     --garden-deep: #17371d;
@@ -398,11 +398,11 @@
   .section.bg-page7,
   .section.bg-page8,
   .section.bg-page9,
-  #page3Calendar,
+  #Page3balendar,
   #page5Programme,
   #page7Gift,
   #page9Rsvp{
-    background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png') center center / cover no-repeat !important;
+    background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png') center center / cover no-repeat !important;
   }
 
   .page-card {
@@ -635,6 +635,24 @@
     color: #C8522A;
     word-break: break-word;
   }
+
+  .guest-response-input {
+    width: 100% !important;
+    margin-top: 8px !important;
+    padding: 8px 0 !important;
+    border: none !important;
+    border-bottom: 1.5px solid var(--border) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #C8522A !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 18px !important;
+    outline: none !important;
+  }
+  .guest-response-input::placeholder {
+    color: rgba(200,82,42,.62);
+  }
+
   .guest-response-options {
     display: flex;
     gap: 8px;
@@ -677,13 +695,78 @@
     color: #C8522A;
   }
   .manual-guest-list-wrap {
-    display: none;
+    display: block;
+  }
+
+  .guest-slot-name-list {
+    display: grid;
+    gap: 14px;
+    width: 100%;
+    margin: 18px 0 8px;
+  }
+  .guest-slot-name-box {
+    width: 100%;
+    border: 1.5px solid rgba(200,82,42,.62);
+    border-radius: 14px;
+    padding: 14px 14px 12px;
+    background: rgba(255,248,235,.24);
+  }
+  .guest-slot-name-label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #C8522A;
+  }
+  .guest-slot-name-box > input {
+    width: 100%;
+    border: none !important;
+    border-bottom: 1.5px solid rgba(200,82,42,.52) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #C8522A !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 22px !important;
+    outline: none;
+  }
+  .guest-slot-name-box > input::placeholder {
+    color: rgba(200,82,42,.58) !important;
+  }
+  .guest-slot-attendance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .guest-slot-attendance > span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #C8522A;
+  }
+  .guest-slot-name-box .guest-response-options {
+    margin-left: auto;
+  }
+  .guest-slot-name-box .guest-response-options input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
   }
   @media (max-width:420px) {
     .guest-response-card { grid-template-columns: 1fr; }
     .guest-response-options { justify-content: stretch; }
     .guest-response-options label { flex: 1; }
     .guest-response-pill { width: 100%; min-width: 0; }
+    .guest-slot-attendance { align-items: stretch; flex-direction: column; }
+    .guest-slot-name-box .guest-response-options { width: 100%; margin-left: 0; }
   }
 
   /* ── Footer ── */
@@ -1015,7 +1098,7 @@
 
   .page7-gift .page-card, .page9-rsvp .page-card { background: rgba(255,255,255,.84) !important; border: 1px solid rgba(255,255,255,.74) !important; box-shadow: 0 24px 58px rgba(69,111,122,.20) !important; }
 
-  #page3Calendar {
+  #Page3balendar {
     --card-bg: transparent !important;
     --card-border: none !important;
     --card-shadow: none !important;
@@ -1024,24 +1107,24 @@
     padding: 58px 26px 54px !important;
   }
 
-  #page3Calendar .page-card { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; max-width: 100% !important; width: 100% !important; overflow: visible !important; }
-  #page3Calendar .kicker { color: #C8522A !important; font-size: 11px !important; letter-spacing: .42em !important; margin-bottom: 10px !important; }
-  #page3Calendar .section-title { color: #C8522A !important; font-size: 72px !important; margin-bottom: 26px !important; text-shadow: none !important; }
-  #page3Calendar .subtitle { color: #C8522A !important; font-size: 15px !important; letter-spacing: .38em !important; margin: 0 0 42px !important; }
-  #page3Calendar .calendar-card { width: 100% !important; margin: 0 auto !important; padding: 0 !important; background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
-  #page3Calendar .cal-month { color: #C8522A !important; font-size: 36px !important; letter-spacing: .18em !important; margin: 0 0 30px !important; padding: 0 0 20px !important; border-bottom: 1px dashed #C8522A !important; }
-  #page3Calendar .cal-grid { width: 100% !important; grid-template-columns: repeat(7, 1fr) !important; gap: 0 !important; padding: 0 0 28px !important; border-bottom: 1px dashed #C8522A !important; }
-  #page3Calendar .cal-cell { color: #C8522A !important; min-height: 47px !important; font-size: 24px !important; line-height: 1 !important; font-family: 'Cormorant Garamond', serif !important; }
-  #page3Calendar .cal-cell.hdr { color: #C8522A !important; min-height: 44px !important; font-family: 'Cormorant Garamond', serif !important; font-size: 23px !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 500 !important; }
-  #page3Calendar .cal-cell.highlight { color: #C8522A !important; }
-  #page3Calendar .cal-cell.highlight::after { width: 64px !important; height: 64px !important; opacity: .95 !important; }
-  #page3Calendar .countdown { margin-top: 26px !important; width: 100% !important; justify-content: space-evenly !important; }
-  #page3Calendar .count-item { min-width: 60px !important; padding: 0 2px !important; border-right: 1px solid #C8522A !important; }
-  #page3Calendar .count-num { color: #C8522A !important; font-size: 42px !important; text-shadow: none !important; }
-  #page3Calendar .count-label { color: #C8522A !important; font-size: 9px !important; letter-spacing: .18em !important; margin-top: 10px !important; }
+  #Page3balendar .page-card { background: transparent !important; border: none !important; box-shadow: none !important; backdrop-filter: none !important; padding: 0 !important; max-width: 100% !important; width: 100% !important; overflow: visible !important; }
+  #Page3balendar .kicker { color: #C8522A !important; font-size: 11px !important; letter-spacing: .42em !important; margin-bottom: 10px !important; }
+  #Page3balendar .section-title { color: #C8522A !important; font-size: 72px !important; margin-bottom: 26px !important; text-shadow: none !important; }
+  #Page3balendar .subtitle { color: #C8522A !important; font-size: 15px !important; letter-spacing: .38em !important; margin: 0 0 42px !important; }
+  #Page3balendar .calendar-card { width: 100% !important; margin: 0 auto !important; padding: 0 !important; background: transparent !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; }
+  #Page3balendar .cal-month { color: #C8522A !important; font-size: 36px !important; letter-spacing: .18em !important; margin: 0 0 30px !important; padding: 0 0 20px !important; border-bottom: 1px dashed #C8522A !important; }
+  #Page3balendar .cal-grid { width: 100% !important; grid-template-columns: repeat(7, 1fr) !important; gap: 0 !important; padding: 0 0 28px !important; border-bottom: 1px dashed #C8522A !important; }
+  #Page3balendar .cal-cell { color: #C8522A !important; min-height: 47px !important; font-size: 24px !important; line-height: 1 !important; font-family: 'Cormorant Garamond', serif !important; }
+  #Page3balendar .cal-cell.hdr { color: #C8522A !important; min-height: 44px !important; font-family: 'Cormorant Garamond', serif !important; font-size: 23px !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 500 !important; }
+  #Page3balendar .cal-cell.highlight { color: #C8522A !important; }
+  #Page3balendar .cal-cell.highlight::after { width: 64px !important; height: 64px !important; opacity: .95 !important; }
+  #Page3balendar .countdown { margin-top: 26px !important; width: 100% !important; justify-content: space-evenly !important; }
+  #Page3balendar .count-item { min-width: 60px !important; padding: 0 2px !important; border-right: 1px solid #C8522A !important; }
+  #Page3balendar .count-num { color: #C8522A !important; font-size: 42px !important; text-shadow: none !important; }
+  #Page3balendar .count-label { color: #C8522A !important; font-size: 9px !important; letter-spacing: .18em !important; margin-top: 10px !important; }
 
   /* Flower countdown under the calendar */
-  #page3Calendar .flower-countdown {
+  #Page3balendar .flower-countdown {
     position: relative !important;
     display: block !important;
     width: min(126%, 620px) !important;
@@ -1052,7 +1135,7 @@
     overflow: visible !important;
   }
 
-  #page3Calendar .countdown-flowers {
+  #Page3balendar .countdown-flowers {
     width: 70%;
     height: auto;
     display: block;
@@ -1062,7 +1145,7 @@
     filter: drop-shadow(0 8px 14px rgba(200,82,42,.14));
   }
 
-  #page3Calendar .flower-count-grid {
+  #Page3balendar .flower-count-grid {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -1074,11 +1157,11 @@
     pointer-events: none;
   }
 
-  #page3Calendar .flower-count-numbers {
+  #Page3balendar .flower-count-numbers {
     top: 0;
   }
 
-  #page3Calendar .flower-countdown .count-num {
+  #Page3balendar .flower-countdown .count-num {
     color: #C8522A !important;
     font-family: 'Great Vibes', cursive !important;
     font-size: clamp(40px, 10vw, 62px) !important;
@@ -1086,7 +1169,7 @@
     text-shadow: 0 2px 10px rgba(255,248,235,.86) !important;
   }
 
-  #page3Calendar .flower-countdown .count-item {
+  #Page3balendar .flower-countdown .count-item {
     min-width: 0 !important;
     padding: 0 !important;
     border-right: none !important;
@@ -1143,7 +1226,7 @@
   #page9Rsvp .count-row { margin: 14px 0 18px !important; gap: 28px !important; }
 
   .footer { position: relative; overflow: hidden; }
-  .footer::before { content: ''; position: absolute; left: 0; top: 0; width: 117%; height: 135px; background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1.png') left top / 100% auto no-repeat; z-index: 1; pointer-events: none; }
+  .footer::before { content: ''; position: absolute; left: 0; top: 0; width: 117%; height: 135px; background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image7.png') left top / 100% auto no-repeat; z-index: 1; pointer-events: none; }
   .footer > * { position: relative; z-index: 2; }
 
   /* ═════════ MOBILE CENTERING ═════════ */
@@ -1155,7 +1238,7 @@
   }
 
   .page-card, .loc-card, .glass-card, .photo-card, .gift-dark-card, .calendar-card, .info-card,
-  #page3Calendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card {
+  #Page3balendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card {
     margin-left: auto !important; margin-right: auto !important;
   }
 
@@ -1163,9 +1246,9 @@
     body { display: block !important; background: #eef0f5 !important; }
     .page { width: 100vw !important; max-width: 100vw !important; margin: 0 auto !important; }
     .section, .loc-section, .photo-section, .rsvp-section, .rose-controlled-page { padding-left: 18px !important; padding-right: 18px !important; }
-    #page3Calendar, #page7Gift, #page9Rsvp { padding-left: 28px !important; padding-right: 28px !important; }
+    #Page3balendar, #page7Gift, #page9Rsvp { padding-left: 28px !important; padding-right: 28px !important; }
 
-    .page-card, .loc-card, .glass-card, .photo-card, .gift-dark-card, #page3Calendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card {
+    .page-card, .loc-card, .glass-card, .photo-card, .gift-dark-card, #Page3balendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card {
       width: 100% !important; max-width: calc(100vw - 36px) !important; margin-left: auto !important; margin-right: auto !important; transform: none;
     }
 
@@ -1181,14 +1264,14 @@
 
   @media (max-width: 420px) {
     .section, .loc-section, .photo-section, .rsvp-section, .rose-controlled-page { padding-left: 16px !important; padding-right: 16px !important; }
-    .page-card, .loc-card, .glass-card, .photo-card, .gift-dark-card, #page3Calendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card { max-width: calc(100vw - 32px) !important; }
+    .page-card, .loc-card, .glass-card, .photo-card, .gift-dark-card, #Page3balendar .page-card, #page7Gift .page-card, #page9Rsvp .page-card { max-width: calc(100vw - 32px) !important; }
     .loc-card.invitation-frame-card, .loc-card.invitation-frame-card2 { max-width: calc(100vw - 32px) !important; }
-    #page3Calendar { padding: 44px 16px 42px !important; }
-    #page3Calendar .section-title { font-size: 62px !important; }
-    #page3Calendar .count-item { min-width: 0 !important; padding: 0 !important; }
-    #page3Calendar .count-num { font-size: clamp(34px, 11vw, 52px) !important; }
-    #page3Calendar .flower-countdown { width: 132% !important; padding-top: 50px !important; margin-top: 36px !important; }
-    #page3Calendar .flower-count-grid { width: 70% !important; left: 50% !important; transform: translateX(-50%) !important; }
+    #Page3balendar { padding: 44px 16px 42px !important; }
+    #Page3balendar .section-title { font-size: 62px !important; }
+    #Page3balendar .count-item { min-width: 0 !important; padding: 0 !important; }
+    #Page3balendar .count-num { font-size: clamp(34px, 11vw, 52px) !important; }
+    #Page3balendar .flower-countdown { width: 132% !important; padding-top: 50px !important; margin-top: 36px !important; }
+    #Page3balendar .flower-count-grid { width: 70% !important; left: 50% !important; transform: translateX(-50%) !important; }
     #page7Gift { min-height: 720px !important; padding-top: 88px !important; padding-bottom: 78px !important; }
     #page7Gift .page-card { max-width: 100% !important; padding: 76px 18px 50px !important; margin-top: 22px !important; }
     #page7Gift .section-title { font-size: 52px; }
@@ -1363,9 +1446,9 @@
     text-shadow:0 3px 18px rgba(255,255,255,.7);
   }
 
-  /* Border frame removed: keeps Page3c + Image4 transitions clean and continuous */
+  /* Border frame removed: keeps Page3b + Image4 transitions clean and continuous */
   .page1-invitation::after,
-  #page3Calendar::after,
+  #Page3balendar::after,
   #page5Programme::after,
   #page7Gift::after,
   #page9Rsvp::after{
@@ -1380,7 +1463,7 @@
   .page1-invitation .request-line,
   .page1-invitation .parents-line{ color:#7b5e30 !important; }
 
-  #page3Calendar .calendar-card,
+  #Page3balendar .calendar-card,
   #page7Gift .info-card,
   #page9Rsvp input:not([type='radio']),
   #page9Rsvp textarea,
@@ -1412,8 +1495,8 @@
   /* Final Raymond cleanup: no decorative page border lines */
   .page1-invitation::before,
   .page1-invitation::after,
-  #page3Calendar::before,
-  #page3Calendar::after,
+  #Page3balendar::before,
+  #Page3balendar::after,
   #page5Programme::before,
   #page5Programme::after,
   #page7Gift::before,
@@ -1521,39 +1604,39 @@
 }
 .fairy-bulb.red,
 .intro-fairy-lights .b-red{
-  color:rgba(239,154,154,.98);
-  background:#EF9A9A;
-  fill:#ef9a9a;
-  stroke:#e53935;
+ color:rgba(255,224,130,.98);
+  background:#FFE9A8;
+  fill:#ffe082;
+  stroke:#f9a825;
   stroke-width:1;
-  box-shadow:0 0 12px rgba(239,154,154,1),0 0 28px rgba(229,57,53,.88),0 0 52px rgba(229,57,53,.74),0 0 76px rgba(229,57,53,.38);
+  box-shadow:0 0 12px rgba(255,230,140,1),0 0 28px rgba(255,220,120,.95),0 0 52px rgba(255,210,100,.85),0 0 76px rgba(255,210,100,.42);
 }
 .fairy-bulb.green,
 .intro-fairy-lights .b-green{
-  color:rgba(165,214,167,.98);
-  background:#A5D6A7;
-  fill:#a5d6a7;
-  stroke:#43a047;
+ color:rgba(255,224,130,.98);
+  background:#FFE9A8;
+  fill:#ffe082;
+  stroke:#f9a825;
   stroke-width:1;
-  box-shadow:0 0 12px rgba(165,214,167,1),0 0 28px rgba(67,160,71,.88),0 0 52px rgba(67,160,71,.72),0 0 76px rgba(67,160,71,.38);
+  box-shadow:0 0 12px rgba(255,230,140,1),0 0 28px rgba(255,220,120,.95),0 0 52px rgba(255,210,100,.85),0 0 76px rgba(255,210,100,.42);
 }
 .fairy-bulb.blue,
 .intro-fairy-lights .b-blue{
-  color:rgba(144,202,249,.98);
-  background:#90CAF9;
-  fill:#90caf9;
-  stroke:#1e88e5;
+ color:rgba(255,224,130,.98);
+  background:#FFE9A8;
+  fill:#ffe082;
+  stroke:#f9a825;
   stroke-width:1;
-  box-shadow:0 0 12px rgba(144,202,249,1),0 0 28px rgba(30,136,229,.88),0 0 52px rgba(30,136,229,.72),0 0 76px rgba(30,136,229,.38);
+  box-shadow:0 0 12px rgba(255,230,140,1),0 0 28px rgba(255,220,120,.95),0 0 52px rgba(255,210,100,.85),0 0 76px rgba(255,210,100,.42);
 }
 .fairy-bulb.pink,
 .intro-fairy-lights .b-pink{
-  color:rgba(248,187,208,.98);
-  background:#F8BBD0;
-  fill:#f8bbd0;
-  stroke:#ec407a;
+ color:rgba(255,224,130,.98);
+  background:#FFE9A8;
+  fill:#ffe082;
+  stroke:#f9a825;
   stroke-width:1;
-  box-shadow:0 0 12px rgba(248,187,208,1),0 0 28px rgba(236,64,122,.88),0 0 52px rgba(236,64,122,.72),0 0 76px rgba(236,64,122,.38);
+  box-shadow:0 0 12px rgba(255,230,140,1),0 0 28px rgba(255,220,120,.95),0 0 52px rgba(255,210,100,.85),0 0 76px rgba(255,210,100,.42);
 }
 .fairy-bulb.purple,
 .intro-fairy-lights .b-purple{
@@ -1566,12 +1649,12 @@
 }
 .fairy-bulb.teal,
 .intro-fairy-lights .b-teal{
-  color:rgba(128,203,196,.98);
-  background:#80CBC4;
-  fill:#80cbc4;
-  stroke:#00897b;
+ color:rgba(255,224,130,.98);
+  background:#FFE9A8;
+  fill:#ffe082;
+  stroke:#f9a825;
   stroke-width:1;
-  box-shadow:0 0 12px rgba(128,203,196,1),0 0 28px rgba(0,137,123,.86),0 0 52px rgba(0,137,123,.70),0 0 76px rgba(0,137,123,.36);
+  box-shadow:0 0 12px rgba(255,230,140,1),0 0 28px rgba(255,220,120,.95),0 0 52px rgba(255,210,100,.85),0 0 76px rgba(255,210,100,.42);
 }
 
 /* FINAL SCALE LOCK — keeps the 9:16 pages proportional on every screen */
@@ -1611,9 +1694,9 @@
 
 
   /* ═════════ FINAL FIX — remove calendar blur + RSVP terracotta styling ═════════ */
-  #page3Calendar,
-  #page3Calendar .page-card,
-  #page3Calendar .calendar-card {
+  #Page3balendar,
+  #Page3balendar .page-card,
+  #Page3balendar .calendar-card {
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -1621,12 +1704,12 @@
     filter: none !important;
   }
 
-  #page3Calendar .calendar-card {
+  #Page3balendar .calendar-card {
     border: none !important;
   }
 
-  #page3Calendar .cal-month,
-  #page3Calendar .cal-grid {
+  #Page3balendar .cal-month,
+  #Page3balendar .cal-grid {
     background: transparent !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -1706,7 +1789,7 @@
 
 
 
-  /* ═════════ FINAL Page3c BACKGROUND FIX — force Page3c on every invitation section ═════════ */
+  /* ═════════ FINAL Page3b BACKGROUND FIX — force Page3b on every invitation section ═════════ */
   .page > section:not(.footer),
   .section,
   .section.green,
@@ -1718,11 +1801,11 @@
   .rsvp-section,
   #heroCover,
   #heroCover2,
-  #page3Calendar,
+  #Page3balendar,
   #page5Programme,
   #page7Gift,
   #page9Rsvp {
-    background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png') !important;
+    background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png') !important;
     background-position: center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -1740,22 +1823,22 @@
   .hero-bg,
   .page1-invitation .hero-bg,
   #heroCover2 .hero-bg {
-    background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png') !important;
+    background-image: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png') !important;
     background-position: center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-color: transparent !important;
   }
 
-  #page3Calendar,
+  #Page3balendar,
   #page7Gift,
   #page9Rsvp {
-    --page-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png') !important;
+    --page-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png') !important;
   }
 
   /* Keep cards transparent without making the section background disappear */
-  #page3Calendar .page-card,
-  #page3Calendar .calendar-card,
+  #Page3balendar .page-card,
+  #Page3balendar .calendar-card,
   #page7Gift .page-card,
   #page9Rsvp .page-card,
   #page9Rsvp .rsvp-box {
@@ -1860,7 +1943,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
     <!-- Dense Raymond garden flowers — intro page only -->
     <img class="raymond-flower wind-slow" style="--x:-5%;--y:-6%;--w:105%;--z:5;--rot:-3deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Girland1.png" alt="" />
     
-    
+        <img class="raymond-flower " style="--x:0%;--y:1%;--w:100%;--z:1;--rot:-0deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Intro3.png" alt="" />
 
     
     
@@ -1897,23 +1980,6 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
 
 
 
-    <div class="invitation-direct reveal">
-      <p class="verse-ref">MATTHEW 19:6</p>
-      <p class="verse-text">"What therefore God has joined together,<br>let no man put asunder."</p>
-      <div class="invite-heart-line"><span>♥</span></div>
-      <p class="family-kicker">TOGETHER WITH THEIR FAMILIES</p>
-      <div class="parents-line">
-        <div class="parent-script"><span><strong>Robert &amp; Tina</strong></span><strong>Martin</strong></div>
-        <div class="parent-amp">&amp;</div>
-        <div class="parent-script"><span><strong>Michael &amp; Anne</strong></span><strong>Clarke</strong></div>
-      </div>
-      <p class="request-line">Request the honor of your presence at the wedding of their son and daughter</p>
-      <div class="couple-script">
-        <span>Thomas</span>
-        <div class="intro-cover-amp">&amp;</div>
-        <span>Sarah</span>
-      </div>
-    </div>
   </section>
 
 
@@ -1926,7 +1992,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   <section class="section-hero" id="heroCover2">
     <div class="hero-bg"></div>
 
-    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1a.png" alt="" />
+    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/image7a.png" alt="" />
 
     <img class="layer l-Photo2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P1.png" alt="" />
   </section>
@@ -1940,7 +2006,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
 
 
   <!-- PAGE 3 — CALENDAR + COUNTDOWN -->
-  <section class="section rose-controlled-page page3-calendar" id="page3Calendar" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png');">
+  <section class="section rose-controlled-page page3-calendar" id="Page3balendar" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png');">
    
    
        <img class="raymond-flower wind-slow" style="--x:-5%;--y:-6%;--w:75%;--z:5;--rot:-3deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Girland5.png" alt="" />
@@ -1966,9 +2032,9 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   <!-- ═══ PAGE 4 — PHOTO ═══ -->
   <section class="section-hero page4-photo" id="page4Photo">
     <img class="layer l-Photo2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P2.png" alt="" />
-    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1.png" alt="" />
-    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png" alt="" />
-    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1a.png" alt="" />
+    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image7.png" alt="" />
+    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png" alt="" />
+    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/image7a.png" alt="" />
   </section>
 
 
@@ -2024,13 +2090,13 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   <!-- ═══ PAGE 6 — PHOTO ═══ -->
   <section class="section-hero page6-photo" id="page6Photo">
     <img class="layer l-Photo2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P4.png" alt="" />
-    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1.png" alt="" />
-    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png" alt="" />
-    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1a.png" alt="" />
+    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image7.png" alt="" />
+    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png" alt="" />
+    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/image7a.png" alt="" />
   </section>
 
   <!-- PAGE 7 — GIFT REGISTRY -->
-  <section class="section rose-controlled-page page7-gift" id="page7Gift" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png');">
+  <section class="section rose-controlled-page page7-gift" id="page7Gift" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png');">
  
  
  
@@ -2038,7 +2104,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
         <img class="raymond-flower wind-slow" style="--r:-9%;--y:98%;--w:75%;--z:5;--rot:-180deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Girland5.png" alt="" />
  
  
-        <img class="raymond-flower wind-slow" style="--l:-9%;--y:2%;--w:75%;--z:5;--rot:0deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Girland5.png" alt="" />
+        <img class="raymond-flower wind-slow" style="--l:-9%;--y:-3%;--w:75%;--z:5;--rot:0deg;--dur:9.5s;--origin:38% 0%;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Girland5.png" alt="" />
  
     <div class="page-card reveal gift-dark-card">
       <img class="rose-control-png page7-torn-top" style="--x:23%;--y:-19%;--w:57%;--z:1;" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/15.png" alt="Gift icon" />
@@ -2052,13 +2118,13 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   <!-- ═══ PAGE 8 — PHOTO ═══ -->
   <section class="section-hero page8-photo" id="page8Photo">
     <img class="layer l-Photo2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Classy%20rose%20envelope/P3.png" alt="" />
-    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1.png" alt="" />
-    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png" alt="" />
-    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image1a.png" alt="" />
+    <img class="layer l-TornTop" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Image7.png" alt="" />
+    <img class="layer l-Pages2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png" alt="" />
+    <img class="layer l-Torn2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/image7a.png" alt="" />
   </section>
 
   <!-- PAGE 9 — RSVP -->
-  <section class="section rose-controlled-page rsvp-section page9-rsvp" id="page9Rsvp" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3c.png');">
+  <section class="section rose-controlled-page rsvp-section page9-rsvp" id="page9Rsvp" style="--page-bg:url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Page3b.png');">
 
 
     <div class="page-card reveal">
@@ -2072,7 +2138,6 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
         <div class="step-dots">
           <span class="step-dot on" id="dot-1"></span>
           <span class="step-dot" id="dot-2"></span>
-          <span class="step-dot" id="dot-3"></span>
         </div>
 
         <div id="step1" class="rsvp-step guest-welcome-step">
@@ -2080,31 +2145,19 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
           <p id="personalGuestNote" class="guest-welcome-note">Please confirm who can attend from this invitation.</p>
 
           <div id="manualGuestListWrap" class="manual-guest-list-wrap">
-            <label class="form-label" for="guestNamesManual">Guest name(s)</label>
-            <textarea id="guestNamesManual" class="form-field" rows="3" placeholder="Example: Celia, Chbin"></textarea>
-            <p id="guestLimitNote" style="display:none; font-family:'Cormorant Garamond',serif; font-size:16px; line-height:1.45; margin-top:8px; color:#C8522A; text-align:center;"></p>
+            <div id="guestSlotNameList" class="guest-slot-name-list"></div>
           </div>
 
-          <p class="error-msg" id="errName">Please enter at least one guest name.</p>
-          <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,2)">Continue →</button>
-        </div>
-
-        <div id="step2" class="rsvp-step" style="display:none;">
-          <p class="question">Who will attend?</p>
-          <div id="guestResponseList" class="guest-response-list"></div>
           <p class="guest-total-line">Total guests attending: <strong id="guestCount">0</strong></p>
-          <p class="error-msg" id="errAttend">Please choose Yes or No for each guest.</p>
-          <div class="btn-grid">
-            <button class="btn-soft" type="button" onclick="goStep(2,1)">← Back</button>
-            <button class="btn-solid" type="button" onclick="goStep(2,3)">Continue →</button>
-          </div>
+          <p class="error-msg" id="errName">Please enter at least one guest name.</p>
+          <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,3)">Continue →</button>
         </div>
 
         <div id="step3" class="rsvp-step" style="display:none;">
           <label class="form-label" for="guestMsg">Leave a wish <span style="font-weight:400;">(optional)</span></label>
           <textarea id="guestMsg" class="form-field" rows="4" placeholder="Share a wish for Thomas & Sarah…"></textarea>
           <div class="btn-grid">
-            <button class="btn-soft" type="button" onclick="goStep(3,2)">← Back</button>
+            <button class="btn-soft" type="button" onclick="goStep(3,1)">← Back</button>
             <button class="btn-solid" id="sendBtn" type="button" onclick="submitRSVP()">Send ✦</button>
           </div>
         </div>
@@ -2239,12 +2292,12 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
-  /* Personalized invitation links by guest names + guest limit
-     Examples:
-     invitation.html?guests=Celia%7CChbin&limit=2
-     invitation.html?guest=Celia&limit=1
-
-     The RSVP creates one Yes/No choice per invited person.
+  /* Anonymous per-seat RSVP links
+     The client still writes real names in the generator, but the invitation shows:
+     Guest 1, Guest 2, Guest 3...
+     Each guest enters their own name and chooses Yes/No.
+     Example:
+     invitation.html?invite=Celia%7CChbin&limit=2
   */
   const inviteParams = new URLSearchParams(window.location.search);
 
@@ -2256,77 +2309,108 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
       .filter(Boolean);
   }
 
-  const urlGuests = [
-    ...decodeGuestList(inviteParams.get('guests') || ''),
-    ...decodeGuestList(inviteParams.get('guest') || '')
-  ];
-  const uniqueUrlGuests = [...new Set(urlGuests)];
-  const parsedGuestLimit = parseInt(inviteParams.get('limit') || String(uniqueUrlGuests.length || 1), 10);
-  const guestLimit = Number.isFinite(parsedGuestLimit) && parsedGuestLimit > 0 ? parsedGuestLimit : Math.max(uniqueUrlGuests.length, 1);
-
-  let invitedGuests = uniqueUrlGuests.slice(0, guestLimit);
-  let guestResponses = invitedGuests.map(name => ({ name, attending: '' }));
-
-  function formatGuestNames(names) {
-    if (!names.length) return 'Guest';
-    if (names.length === 1) return names[0];
-    if (names.length === 2) return names[0] + ' & ' + names[1];
-    return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
-  }
-
   function escapeHTML(value) {
     return String(value).replace(/[&<>"']/g, char => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
     }[char]));
   }
 
+  function formatGuestNames(names) {
+    const clean = names.map(name => String(name || '').trim()).filter(Boolean);
+    if (!clean.length) return 'Guest';
+    if (clean.length === 1) return clean[0];
+    if (clean.length === 2) return clean[0] + ' & ' + clean[1];
+    return clean.slice(0, -1).join(', ') + ' & ' + clean[clean.length - 1];
+  }
+
+  const hiddenInvitedGroup = [
+    ...decodeGuestList(inviteParams.get('invite') || ''),
+    ...decodeGuestList(inviteParams.get('group') || ''),
+    ...decodeGuestList(inviteParams.get('guests') || ''),
+    ...decodeGuestList(inviteParams.get('guest') || '')
+  ];
+
+  const uniqueHiddenInvitedGroup = [...new Set(hiddenInvitedGroup)];
+  const parsedGuestLimit = parseInt(inviteParams.get('limit') || String(uniqueHiddenInvitedGroup.length || 1), 10);
+  const guestLimit = Number.isFinite(parsedGuestLimit) && parsedGuestLimit > 0 ? parsedGuestLimit : Math.max(uniqueHiddenInvitedGroup.length, 1);
+
+  const invitedGroupForClient = formatGuestNames(uniqueHiddenInvitedGroup.slice(0, guestLimit));
+  let guestResponses = Array.from({ length: guestLimit }, (_, index) => ({
+    slot: 'Guest ' + (index + 1),
+    name: '',
+    attending: 'Yes',
+    manualAttendance: false
+  }));
+
   function applyPersonalGuestLink() {
     const guestWelcomeName = document.getElementById('guestWelcomeName');
     const personalGuestNote = document.getElementById('personalGuestNote');
     const manualWrap = document.getElementById('manualGuestListWrap');
-    const manualInput = document.getElementById('guestNamesManual');
-    const guestLimitNote = document.getElementById('guestLimitNote');
 
-    if (guestWelcomeName) guestWelcomeName.textContent = formatGuestNames(invitedGuests);
+    if (guestWelcomeName) guestWelcomeName.textContent = 'Guest';
 
-    if (invitedGuests.length) {
-      if (personalGuestNote) {
-        personalGuestNote.textContent = invitedGuests.length === 1
-          ? 'Please confirm if this guest will attend.'
-          : 'Please confirm who can attend from this invitation.';
-      }
-      if (manualWrap) manualWrap.style.display = 'none';
-    } else {
-      if (personalGuestNote) personalGuestNote.textContent = 'Please enter the invited guest names to confirm the RSVP.';
-      if (manualWrap) manualWrap.style.display = 'block';
-      if (manualInput) manualInput.placeholder = guestLimit === 1 ? 'Example: Celia' : 'Example: Celia, Chbin';
-      if (guestLimitNote) {
-        guestLimitNote.style.display = 'block';
-        guestLimitNote.textContent = guestLimit === 1
-          ? 'This invitation allows 1 guest.'
-          : 'This invitation allows up to ' + guestLimit + ' guests.';
-      }
+    if (personalGuestNote) {
+      personalGuestNote.textContent = guestLimit === 1
+        ? 'Please enter your name to confirm the RSVP.'
+        : 'Please enter the guest names to confirm the RSVP.';
     }
 
-    renderGuestResponseList();
+    if (manualWrap) manualWrap.style.display = 'block';
+
+    renderGuestNameBoxes();
+    updateGuestTotal();
   }
 
-  function getManualGuestNames() {
-    const manualInput = document.getElementById('guestNamesManual');
-    return decodeGuestList(manualInput ? manualInput.value : '').slice(0, guestLimit);
+  function renderGuestNameBoxes() {
+    const boxList = document.getElementById('guestSlotNameList');
+    if (!boxList) return;
+
+    boxList.innerHTML = guestResponses.map((guest, index) => {
+      const safeName = escapeHTML(guest.name || '');
+      const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
+      const noChecked = guest.attending === 'No' ? ' checked' : '';
+      return `
+        <div class="guest-slot-name-box">
+          <label class="guest-slot-name-label" for="guestSlotInput${index}">Guest ${index + 1}</label>
+          <input
+            id="guestSlotInput${index}"
+            type="text"
+            value="${safeName}"
+            placeholder="Write name"
+            oninput="setGuestName(${index}, this.value)"
+          />
+          <div class="guest-slot-attendance" aria-label="Guest ${index + 1} attendance">
+            <span>Attending?</span>
+            <div class="guest-response-options">
+              <label>
+                <input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" />
+                <span class="guest-response-pill">Yes</span>
+              </label>
+              <label>
+                <input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')" />
+                <span class="guest-response-pill">No</span>
+              </label>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
   }
 
   function renderGuestResponseList() {
     const list = document.getElementById('guestResponseList');
     if (!list) return;
 
-    list.innerHTML = guestResponses.map((guest, index) => {
-      const safeName = escapeHTML(guest.name);
+    const namedGuests = getNamedGuestResponses();
+
+    list.innerHTML = namedGuests.map(({ guest, index }) => {
+      const safeName = escapeHTML(guest.name || guest.slot);
       const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
       const noChecked = guest.attending === 'No' ? ' checked' : '';
       return `
         <div class="guest-response-card">
-          <div class="guest-response-name">${safeName}</div>
+          <div class="guest-response-name">
+            <div>${safeName}</div>
+          </div>
           <div class="guest-response-options">
             <label>
               <input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" />
@@ -2343,16 +2427,41 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
     updateGuestTotal();
   }
 
+  function getNamedGuestResponses() {
+    return guestResponses
+      .map((guest, index) => ({ guest, index }))
+      .filter(item => item.guest.name && item.guest.name.trim());
+  }
+
+  function setGuestName(index, value) {
+    if (!guestResponses[index]) return;
+    const hadName = !!(guestResponses[index].name && guestResponses[index].name.trim());
+    guestResponses[index].name = value.trim();
+    if (!hadName && guestResponses[index].name && !guestResponses[index].manualAttendance) {
+      guestResponses[index].attending = 'Yes';
+      renderGuestNameBoxes();
+      const restoredInput = document.getElementById('guestSlotInput' + index);
+      if (restoredInput) {
+        restoredInput.focus();
+        restoredInput.setSelectionRange(restoredInput.value.length, restoredInput.value.length);
+      }
+    }
+    const errName = document.getElementById('errName');
+    if (errName) errName.style.display = 'none';
+    updateGuestTotal();
+  }
+
   function setGuestResponse(index, value) {
     if (!guestResponses[index]) return;
     guestResponses[index].attending = value;
+    guestResponses[index].manualAttendance = true;
     const err = document.getElementById('errAttend');
     if (err) err.style.display = 'none';
     updateGuestTotal();
   }
 
   function updateGuestTotal() {
-    const total = guestResponses.filter(guest => guest.attending === 'Yes').length;
+    const total = guestResponses.filter(guest => guest.name && guest.name.trim() && guest.attending === 'Yes').length;
     const totalEl = document.getElementById('guestCount');
     if (totalEl) totalEl.textContent = total;
   }
@@ -2360,27 +2469,33 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
   applyPersonalGuestLink();
 
   function goStep(from, to) {
-    if (from === 1) {
-      if (!invitedGuests.length) {
-        invitedGuests = getManualGuestNames();
-        if (!invitedGuests.length) { document.getElementById('errName').style.display = 'block'; return; }
-        guestResponses = invitedGuests.map(name => ({ name, attending: '' }));
-        const guestWelcomeName = document.getElementById('guestWelcomeName');
-        if (guestWelcomeName) guestWelcomeName.textContent = formatGuestNames(invitedGuests);
+    if (from === 1 && to === 3) {
+      const namedGuests = getNamedGuestResponses();
+      if (!namedGuests.length) {
+        const errName = document.getElementById('errName');
+        if (errName) {
+          errName.textContent = 'Please enter at least one guest name.';
+          errName.style.display = 'block';
+        }
+        return;
       }
-      document.getElementById('errName').style.display = 'none';
-      renderGuestResponseList();
-    }
 
-    if (from === 2 && to === 3) {
-      const allAnswered = guestResponses.length && guestResponses.every(guest => guest.attending === 'Yes' || guest.attending === 'No');
-      if (!allAnswered) { document.getElementById('errAttend').style.display = 'block'; return; }
-      document.getElementById('errAttend').style.display = 'none';
+      guestResponses.forEach(guest => {
+        if (guest.name && guest.name.trim()) {
+          if (!guest.attending) guest.attending = 'Yes';
+        } else {
+          guest.attending = 'No';
+        }
+      });
+
+      const errName = document.getElementById('errName');
+      if (errName) errName.style.display = 'none';
     }
 
     document.getElementById('step' + from).style.display = 'none';
     document.getElementById('step' + to).style.display = 'block';
-    [1,2,3].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= to));
+    const activeDot = to === 3 ? 2 : 1;
+    [1,2].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= activeDot));
   }
 
   const COUPLE_NAME = 'Thomas & Sarah';
@@ -2437,15 +2552,23 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
       return;
     }
 
-    const attendingCount = guestResponses.filter(guest => guest.attending === 'Yes').length;
-    const groupName = formatGuestNames(guestResponses.map(guest => guest.name));
-    const responseLines = guestResponses.map(guest => guest.name + ': ' + guest.attending).join('\n');
+    guestResponses.forEach(guest => {
+      if (!guest.name || !guest.name.trim()) guest.attending = 'No';
+    });
+
+    const attendingCount = guestResponses.filter(guest => guest.name && guest.name.trim() && guest.attending === 'Yes').length;
+    const submittedGuestNames = guestResponses.map(guest => guest.name.trim()).filter(Boolean);
+    const groupName = formatGuestNames(submittedGuestNames);
+    const responseLines = guestResponses
+      .filter(guest => guest.name && guest.name.trim())
+      .map(guest => guest.slot + ' - ' + guest.name + ': ' + guest.attending)
+      .join('\n');
 
     const payload = {
       event: COUPLE_NAME,
       customer_email: CUSTOMER_EMAIL,
       guest_name: groupName,
-      invited_guest_from_link: groupName,
+      invited_guest_from_link: invitedGroupForClient,
       attending: attendingCount > 0 ? 'Yes' : 'No',
       attending_summary: responseLines,
       guest_count: attendingCount,
@@ -2462,6 +2585,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
       showRSVPThankYou(groupName, attendingCount);
     }, 650);
   }
+
 </script>
 </body>
 </html>
