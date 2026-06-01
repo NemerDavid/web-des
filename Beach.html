@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Thomas & Saraha — Beach Wedding</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -13,9 +13,12 @@
       --warm-gold: #d99d45;
       --cream: #fff3da;
       --dark: #100807;
-      --panel-w: 2048px;
-      --panel-h: 265px;
-      --viewport-h: 100svh;
+
+      /* 9:16 preview frame.
+         On desktop it shows a true mobile-shaped screen.
+         On mobile it keeps the same ratio instead of stretching/reflowing. */
+      --screen-w: min(100vw, calc(100svh * 9 / 16));
+      --screen-h: min(100svh, calc(100vw * 16 / 9));
     }
 
     * {
@@ -27,93 +30,43 @@
     body {
       margin: 0;
       width: 100%;
-      min-height: 100%;
+      height: 100%;
       background: #080403;
       color: var(--cream);
       font-family: "Cormorant Garamond", serif;
       overflow: hidden;
     }
 
-    body.opened {
-      overflow: auto;
-    }
-
-    .intro {
-      position: fixed;
-      inset: 0;
-      z-index: 20;
+    body {
       display: grid;
       place-items: center;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(255, 190, 92, .18), transparent 38%),
-        linear-gradient(180deg, #170905, #050202);
-      transition: opacity 900ms ease, visibility 900ms ease;
     }
 
-    body.opened .intro {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .intro-card {
-      width: min(88vw, 420px);
-      padding: 42px 28px 34px;
-      text-align: center;
-      border: 1px solid rgba(248, 216, 138, .42);
-      border-radius: 28px;
-      background: rgba(22, 10, 7, .62);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .55);
-      backdrop-filter: blur(8px);
-    }
-
-    .intro-names {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(3.1rem, 13vw, 5rem);
-      line-height: .92;
-      color: var(--gold);
-      text-shadow: 0 0 22px rgba(255, 203, 105, .55);
-      margin-bottom: 18px;
-    }
-
-    .intro-date {
-      font-family: "Montserrat", sans-serif;
-      font-size: .78rem;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      color: rgba(255, 243, 218, .86);
-    }
-
-    .open-btn {
-      border: 1px solid rgba(248, 216, 138, .72);
-      background: linear-gradient(135deg, rgba(255, 219, 143, .98), rgba(176, 107, 40, .96));
-      color: #2a1206;
-      border-radius: 999px;
-      padding: 13px 30px;
-      font: 600 .78rem/1 "Montserrat", sans-serif;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      cursor: pointer;
-      box-shadow: 0 12px 30px rgba(213, 133, 51, .26);
+    body.opened {
+      overflow: hidden;
     }
 
     .stage {
       position: relative;
-      min-height: var(--viewport-h);
+      width: var(--screen-w);
+      height: var(--screen-h);
       overflow: hidden;
       background: #060302;
+      box-shadow: 0 0 0 1px rgba(248,216,138,.16), 0 28px 70px rgba(0,0,0,.55);
+      isolation: isolate;
     }
 
     .pano-wrap {
-      position: fixed;
+      position: absolute;
       inset: 0;
-      height: var(--viewport-h);
+      width: 100%;
+      height: 100%;
       overflow-x: auto;
       overflow-y: hidden;
       scroll-behavior: smooth;
       cursor: grab;
       scrollbar-width: none;
+      touch-action: pan-x;
     }
 
     .pano-wrap:active {
@@ -126,140 +79,226 @@
 
     .pano {
       position: relative;
-      height: var(--viewport-h);
-      width: max(100vw, calc(var(--viewport-h) * (2048 / 265)));
-      min-width: 2400px;
-      background-image: url("https://github.com/NemerDavid/web-des/blob/main/Beach/Beach.png?raw=true");
+      height: 100%;
+      width: calc(var(--screen-h) * (2048 / 265));
+      background-image: url("https://github.com/NemerDavid/web-des/blob/main/Beach/Beach4.png?raw=true");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
     }
 
+    /* All decorative/content elements below are positioned on the panoramic image with percentages.
+       Their sizes are tied to --screen-h, so they keep the same visual ratio when the preview size changes. */
+
     .hotspot {
       position: absolute;
       transform: translate(-50%, -50%);
-      width: clamp(210px, 18vw, 360px);
-      padding: clamp(14px, 1.5vw, 24px);
+      width: calc(var(--screen-h) * .27);
+      padding: calc(var(--screen-h) * .018);
       text-align: center;
       border: 1px solid rgba(248, 216, 138, .38);
-      border-radius: 24px;
+      border-radius: calc(var(--screen-h) * .026);
       background: rgba(12, 5, 4, .42);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, .38);
+      box-shadow: 0 calc(var(--screen-h) * .020) calc(var(--screen-h) * .055) rgba(0, 0, 0, .38);
       backdrop-filter: blur(5px);
     }
 
     .hotspot h2 {
-      margin: 0 0 8px;
+      margin: 0 0 calc(var(--screen-h) * .008);
       font-family: "Great Vibes", cursive;
-      font-size: clamp(2rem, 3.4vw, 4rem);
+      font-size: calc(var(--screen-h) * .040);
+      line-height: 1;
       font-weight: 400;
       color: var(--gold);
-      text-shadow: 0 0 18px rgba(255, 198, 88, .55);
+      text-shadow: 0 0 calc(var(--screen-h) * .018) rgba(255, 198, 88, .55);
     }
 
     .hotspot p {
       margin: 0;
-      font-size: clamp(.92rem, 1.08vw, 1.2rem);
+      font-size: calc(var(--screen-h) * .014);
       line-height: 1.35;
       color: rgba(255, 243, 218, .93);
     }
 
-    .names-card {
-      left: 13.3%;
-      top: 48%;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      backdrop-filter: none;
-      width: clamp(170px, 16vw, 300px);
+    .first-scene-gif {
+      position: absolute;
+      left: 6.1%;
+      top: 74.5%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .155);
+      height: auto;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
     }
 
-    .names-card .names {
-      font-family: "Great Vibes", cursive;
-      font-size: clamp(2.6rem, 4.8vw, 6.5rem);
-      line-height: .82;
-      color: #ffe7a7;
-      text-shadow: 0 0 14px rgba(255, 210, 109, .9), 0 4px 18px rgba(0,0,0,.45);
-    }
-
-    .names-card .small-date {
-      margin-top: 8px;
+    .open-invitation-btn {
+      position: absolute;
+      left: 8.55%;
+      top: 79.6%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      padding: calc(var(--screen-h) * .011) calc(var(--screen-h) * .033);
+      border-radius: 999px;
+      border: 1px solid rgba(248, 216, 138, .72);
+      background: linear-gradient(135deg, rgba(255, 224, 151, .96), rgba(185, 111, 42, .92));
+      color: #2a1206;
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(.44rem, .65vw, .82rem);
-      letter-spacing: .08em;
+      font-size: calc(var(--screen-h) * .0105);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 calc(var(--screen-h) * .014) calc(var(--screen-h) * .032) rgba(213, 133, 51, .28);
+      backdrop-filter: blur(8px);
+      transition: transform .22s ease, opacity .22s ease, filter .22s ease;
+    }
+
+    .open-invitation-btn:hover {
+      transform: translate(-50%, -52%);
+      filter: brightness(1.05);
     }
 
     .program-card {
-      left: 31.1%;
+      left: 31%;
       top: 54%;
     }
 
     .program-list {
       display: grid;
-      gap: 8px;
-      margin-top: 10px;
+      gap: calc(var(--screen-h) * .0075);
+      margin-top: calc(var(--screen-h) * .010);
       font-family: "Montserrat", sans-serif;
-      font-size: clamp(.68rem, .82vw, .9rem);
+      font-size: calc(var(--screen-h) * .0115);
       letter-spacing: .04em;
     }
 
     .program-list div {
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: calc(var(--screen-h) * .020);
       border-bottom: 1px solid rgba(255, 232, 181, .22);
-      padding-bottom: 5px;
+      padding-bottom: calc(var(--screen-h) * .0055);
     }
 
     .screen-card {
-      left: 52.6%;
-      top: 54%;
-      width: clamp(280px, 24vw, 470px);
-      background: rgba(255, 227, 180, .13);
+      left: 55.2%;
+      top: 42.2%;
+      width: calc(var(--screen-h) * .66);
+      padding: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      pointer-events: none;
     }
 
     .screen-card h2 {
-      font-size: clamp(1.9rem, 2.8vw, 3.8rem);
+      margin: 0 0 calc(var(--screen-h) * .012);
+      font-size: calc(var(--screen-h) * .040);
+      color: rgba(255, 225, 151, .82);
+      text-shadow: 0 0 calc(var(--screen-h) * .016) rgba(255, 205, 103, .42), 0 2px 8px rgba(0,0,0,.18);
+      pointer-events: none;
     }
 
-    .gallery-btn {
-      margin-top: 14px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 150px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 216, 138, .56);
+    .projector-album {
+      width: 66%;
+      margin: 0 auto;
+      border-radius: calc(var(--screen-h) * .018);
+      overflow: hidden;
+      position: relative;
+      background: rgba(255, 238, 196, .12);
+      border: 1px solid rgba(248, 216, 138, .24);
+      box-shadow: 0 calc(var(--screen-h) * .014) calc(var(--screen-h) * .028) rgba(0, 0, 0, .18);
+      touch-action: none;
+      pointer-events: auto;
+      user-select: none;
+    }
+
+    .projector-album-track {
+      display: flex;
+      transition: transform .42s ease;
+      will-change: transform;
+    }
+
+    .projector-album-slide {
+      min-width: 100%;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 239, 205, .10);
+    }
+
+    .projector-album-slide img {
+      width: 100%;
+      height: calc(var(--screen-h) * .205);
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: rgba(255, 238, 196, .06);
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+
+    .projector-album-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 3;
+      width: calc(var(--screen-h) * .033);
+      height: calc(var(--screen-h) * .033);
+      border-radius: 50%;
+      border: 1px solid rgba(248, 216, 138, .44);
+      background: rgba(42, 18, 6, .52);
       color: #fff7df;
-      text-decoration: none;
+      font-size: calc(var(--screen-h) * .027);
+      line-height: 1;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+
+    .projector-album-arrow.prev { left: calc(var(--screen-h) * .008); }
+    .projector-album-arrow.next { right: calc(var(--screen-h) * .008); }
+
+    .projector-album-counter {
+      margin-top: calc(var(--screen-h) * .009);
       font-family: "Montserrat", sans-serif;
-      font-size: .68rem;
-      letter-spacing: .14em;
+      font-size: calc(var(--screen-h) * .0085);
+      letter-spacing: .16em;
       text-transform: uppercase;
-      background: rgba(0, 0, 0, .28);
+      color: rgba(255, 243, 218, .78);
+      text-shadow: 0 1px 5px rgba(0,0,0,.24);
+      pointer-events: none;
     }
 
     .gift-card {
       left: 73.5%;
       top: 52%;
-      width: clamp(230px, 19vw, 380px);
+      width: calc(var(--screen-h) * .30);
     }
 
     .gift-card p {
-      font-size: clamp(.84rem, .95vw, 1.05rem);
+      font-size: calc(var(--screen-h) * .0135);
     }
 
     .rsvp-card {
       left: 91%;
       top: 54%;
-      width: clamp(230px, 18vw, 360px);
+      width: calc(var(--screen-h) * .29);
     }
 
     .rsvp-form {
-      margin-top: 12px;
+      margin-top: calc(var(--screen-h) * .012);
       display: grid;
-      gap: 8px;
+      gap: calc(var(--screen-h) * .008);
     }
 
     input,
@@ -267,40 +306,40 @@
     textarea {
       width: 100%;
       border: 1px solid rgba(248, 216, 138, .36);
-      border-radius: 14px;
-      padding: 11px 12px;
+      border-radius: calc(var(--screen-h) * .014);
+      padding: calc(var(--screen-h) * .010) calc(var(--screen-h) * .012);
       background: rgba(255, 248, 230, .88);
       color: #2a1206;
-      font: 500 .78rem/1.2 "Montserrat", sans-serif;
+      font: 500 calc(var(--screen-h) * .0115)/1.2 "Montserrat", sans-serif;
       outline: none;
     }
 
     textarea {
-      min-height: 72px;
+      min-height: calc(var(--screen-h) * .070);
       resize: none;
     }
 
     .submit-btn {
       border: 0;
       border-radius: 999px;
-      padding: 12px 18px;
+      padding: calc(var(--screen-h) * .012) calc(var(--screen-h) * .018);
       background: linear-gradient(135deg, #ffe29d, #c47a2c);
       color: #241006;
-      font: 700 .72rem/1 "Montserrat", sans-serif;
+      font: 700 calc(var(--screen-h) * .0105)/1 "Montserrat", sans-serif;
       letter-spacing: .15em;
       text-transform: uppercase;
       cursor: pointer;
     }
 
     .nav {
-      position: fixed;
+      position: absolute;
       left: 50%;
-      bottom: 20px;
+      bottom: calc(var(--screen-h) * .018);
       z-index: 10;
       transform: translateX(-50%);
       display: flex;
-      gap: 8px;
-      padding: 8px;
+      gap: calc(var(--screen-h) * .0075);
+      padding: calc(var(--screen-h) * .008);
       border-radius: 999px;
       background: rgba(5, 2, 1, .58);
       border: 1px solid rgba(248, 216, 138, .28);
@@ -308,93 +347,79 @@
     }
 
     .nav button {
-      width: 9px;
-      height: 9px;
+      width: calc(var(--screen-h) * .009);
+      height: calc(var(--screen-h) * .009);
       border-radius: 999px;
       border: 0;
       background: rgba(255, 239, 200, .45);
       cursor: pointer;
+      padding: 0;
     }
 
     .nav button.active {
-      width: 28px;
+      width: calc(var(--screen-h) * .030);
       background: var(--gold);
     }
 
     .drag-hint {
-      position: fixed;
+      position: absolute;
       left: 50%;
-      top: 18px;
+      top: calc(var(--screen-h) * .018);
       z-index: 10;
       transform: translateX(-50%);
-      padding: 8px 16px;
+      padding: calc(var(--screen-h) * .008) calc(var(--screen-h) * .017);
       border-radius: 999px;
       background: rgba(5, 2, 1, .48);
       color: rgba(255, 243, 218, .88);
-      font: 500 .68rem/1 "Montserrat", sans-serif;
+      font: 600 calc(var(--screen-h) * .0095)/1 "Montserrat", sans-serif;
       letter-spacing: .14em;
       text-transform: uppercase;
       border: 1px solid rgba(248, 216, 138, .22);
       backdrop-filter: blur(8px);
       pointer-events: none;
+      white-space: nowrap;
     }
 
     .music {
-      position: fixed;
-      right: 16px;
-      bottom: 18px;
+      position: absolute;
+      right: calc(var(--screen-h) * .016);
+      bottom: calc(var(--screen-h) * .018);
       z-index: 12;
-      width: 42px;
-      height: 42px;
+      width: calc(var(--screen-h) * .043);
+      height: calc(var(--screen-h) * .043);
       border-radius: 50%;
       border: 1px solid rgba(248, 216, 138, .52);
       background: rgba(8, 3, 2, .62);
       color: var(--gold);
-      font-size: 18px;
+      font-size: calc(var(--screen-h) * .018);
       cursor: pointer;
       backdrop-filter: blur(8px);
     }
 
+    .invitation-locked .pano-wrap {
+      cursor: default;
+    }
+
+    .invitation-locked .nav,
+    .invitation-locked .drag-hint,
+    .invitation-locked .music {
+      opacity: .45;
+    }
+
+    .invitation-locked .nav button,
+    .invitation-locked .music {
+      pointer-events: none;
+    }
+
     @media (max-width: 720px) {
-      .pano {
-        width: calc(var(--viewport-h) * (2048 / 265));
-        min-width: 2100px;
-      }
-
-      .hotspot {
-        width: 230px;
-      }
-
-      .names-card {
-        width: 180px;
-      }
-
-      .drag-hint {
-        top: 12px;
-        font-size: .56rem;
-      }
-
-      .nav {
-        bottom: 12px;
-      }
-
-      .music {
-        right: 12px;
-        bottom: 58px;
+      .stage {
+        box-shadow: none;
       }
     }
   </style>
 </head>
 
-<body>
-  <section class="intro" id="intro">
-    <div class="intro-card">
-      <div class="intro-names">Thomas<br>&amp;<br>Saraha</div>
-      <div class="intro-date">14 August 2027</div>
-      <button class="open-btn" id="openBtn">Open Invitation</button>
-    </div>
-  </section>
-
+<body class="opened invitation-locked">
   <main class="stage">
     <div class="drag-hint">Drag left / right to explore</div>
 
@@ -405,10 +430,12 @@
 
     <div class="pano-wrap" id="panoWrap">
       <div class="pano" id="pano">
-        <section class="hotspot names-card" data-point="0">
-          <div class="names">Thomas<br>&amp;<br>Saraha</div>
-          <p class="small-date">14 August 2027</p>
-        </section>
+        <img
+          class="first-scene-gif"
+          src="https://github.com/NemerDavid/web-des/blob/main/Beach/giphy.gif?raw=true"
+          alt=""
+        >
+        <button class="open-invitation-btn" id="openInvitationBtn" type="button">Open Invitation</button>
 
         <section class="hotspot program-card" data-point="1">
           <h2>Day Program</h2>
@@ -422,9 +449,17 @@
         </section>
 
         <section class="hotspot screen-card" data-point="2">
-          <h2>Our Story</h2>
-          <p>A warm slideshow moment beside the ocean, surrounded by lanterns, flowers, and candlelight.</p>
-          <a class="gallery-btn" href="#gallery">View Memories</a>
+          <h2>Photo Album</h2>
+          <div class="projector-album" id="projectorAlbum">
+            <div class="projector-album-track" id="projectorAlbumTrack">
+              <div class="projector-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 1"></div>
+              <div class="projector-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 2"></div>
+              <div class="projector-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Couple photo 3"></div>
+            </div>
+            <button class="projector-album-arrow prev" type="button" aria-label="Previous photo">‹</button>
+            <button class="projector-album-arrow next" type="button" aria-label="Next photo">›</button>
+          </div>
+          <div class="projector-album-counter" id="projectorAlbumCounter">1 / 3</div>
         </section>
 
         <section class="hotspot gift-card" data-point="3">
@@ -460,23 +495,37 @@
   </main>
 
   <script>
-    const openBtn = document.getElementById("openBtn");
     const musicBtn = document.getElementById("musicBtn");
     const music = document.getElementById("music");
     const wrap = document.getElementById("panoWrap");
-    const pano = document.getElementById("pano");
     const navBtns = [...document.querySelectorAll("#nav button")];
+    const openInvitationBtn = document.getElementById("openInvitationBtn");
 
     const points = [0.04, 0.245, 0.47, 0.695, 0.9];
+    let currentPointIndex = 0;
 
-    function scrollToPoint(index) {
+    function scrollToPoint(index, behavior = "smooth") {
+      currentPointIndex = index;
       const maxScroll = wrap.scrollWidth - wrap.clientWidth;
-      wrap.scrollTo({ left: maxScroll * points[index], behavior: "smooth" });
+      wrap.scrollTo({ left: maxScroll * points[index], behavior });
     }
 
-    openBtn.addEventListener("click", async () => {
-      document.body.classList.add("opened");
-      scrollToPoint(0);
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => scrollToPoint(0, "auto"));
+    });
+
+    window.addEventListener("resize", () => {
+      requestAnimationFrame(() => scrollToPoint(currentPointIndex, "auto"));
+    });
+
+    openInvitationBtn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      document.body.classList.remove("invitation-locked");
+      openInvitationBtn.style.opacity = "0";
+      openInvitationBtn.style.pointerEvents = "none";
+
       try {
         await music.play();
         musicBtn.textContent = "❚❚";
@@ -496,7 +545,92 @@
     });
 
     navBtns.forEach((btn, i) => {
-      btn.addEventListener("click", () => scrollToPoint(i));
+      btn.addEventListener("click", () => {
+        if (document.body.classList.contains("invitation-locked")) return;
+        scrollToPoint(i);
+      });
+    });
+
+    const albumTrack = document.getElementById("projectorAlbumTrack");
+    const albumCounter = document.getElementById("projectorAlbumCounter");
+    const albumPrev = document.querySelector(".projector-album-arrow.prev");
+    const albumNext = document.querySelector(".projector-album-arrow.next");
+    const albumSlides = [...document.querySelectorAll(".projector-album-slide")];
+    const album = document.getElementById("projectorAlbum");
+    let albumIndex = 0;
+    let albumDragging = false;
+    let albumStartX = 0;
+    let albumCurrentX = 0;
+
+    function updateProjectorAlbum(withTransition = true) {
+      albumTrack.style.transition = withTransition ? "transform .42s ease" : "none";
+      albumTrack.style.transform = `translateX(${-albumIndex * 100}%)`;
+      albumCounter.textContent = `${albumIndex + 1} / ${albumSlides.length}`;
+    }
+
+    function moveProjectorAlbum(step) {
+      albumIndex = (albumIndex + step + albumSlides.length) % albumSlides.length;
+      updateProjectorAlbum(true);
+    }
+
+    [albumPrev, albumNext].forEach((arrow) => {
+      arrow.addEventListener("pointerdown", (e) => e.stopPropagation());
+      arrow.addEventListener("pointerup", (e) => e.stopPropagation());
+    });
+
+    albumPrev.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveProjectorAlbum(-1);
+    });
+
+    albumNext.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveProjectorAlbum(1);
+    });
+
+    album.addEventListener("pointerdown", (e) => {
+      if (e.target.closest(".projector-album-arrow")) return;
+      e.preventDefault();
+      e.stopPropagation();
+      albumDragging = true;
+      albumStartX = e.clientX;
+      albumCurrentX = e.clientX;
+      album.setPointerCapture(e.pointerId);
+      albumTrack.style.transition = "none";
+    });
+
+    album.addEventListener("pointermove", (e) => {
+      if (!albumDragging) return;
+      e.preventDefault();
+      e.stopPropagation();
+      albumCurrentX = e.clientX;
+      const dx = albumCurrentX - albumStartX;
+      const percent = (dx / album.clientWidth) * 100;
+      albumTrack.style.transform = `translateX(${(-albumIndex * 100) + percent}%)`;
+    });
+
+    function endAlbumSwipe(e) {
+      if (!albumDragging) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const dx = albumCurrentX - albumStartX;
+      albumDragging = false;
+      if (Math.abs(dx) > album.clientWidth * 0.16) {
+        moveProjectorAlbum(dx < 0 ? 1 : -1);
+      } else {
+        updateProjectorAlbum(true);
+      }
+    }
+
+    album.addEventListener("pointerup", endAlbumSwipe);
+    album.addEventListener("pointercancel", endAlbumSwipe);
+    album.addEventListener("lostpointercapture", () => {
+      if (albumDragging) {
+        albumDragging = false;
+        updateProjectorAlbum(true);
+      }
     });
 
     wrap.addEventListener("scroll", () => {
@@ -513,6 +647,7 @@
         }
       });
 
+      currentPointIndex = closest;
       navBtns.forEach((b, i) => b.classList.toggle("active", i === closest));
     });
 
@@ -521,6 +656,8 @@
     let startLeft = 0;
 
     wrap.addEventListener("pointerdown", (e) => {
+      if (document.body.classList.contains("invitation-locked")) return;
+      if (e.target.closest(".projector-album, .projector-album-arrow, input, select, textarea, button")) return;
       isDown = true;
       startX = e.clientX;
       startLeft = wrap.scrollLeft;
