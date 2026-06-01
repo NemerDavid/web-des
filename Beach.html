@@ -1144,17 +1144,6 @@
 
 const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     let currentPointIndex = 0;
-    let lockScrollRaf = null;
-
-    function keepInvitationLockedAtStart() {
-      if (!document.body.classList.contains("invitation-locked")) return;
-      if (lockScrollRaf) return;
-      lockScrollRaf = requestAnimationFrame(() => {
-        lockScrollRaf = null;
-        const maxScroll = wrap.scrollWidth - wrap.clientWidth;
-        wrap.scrollLeft = maxScroll * points[0];
-      });
-    }
 
     function scrollToPoint(index, behavior = "smooth") {
       currentPointIndex = index;
@@ -1163,10 +1152,14 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     }
 
     window.addEventListener("load", () => {
-      requestAnimationFrame(() => scrollToPoint(0, "auto"));
+      requestAnimationFrame(() => {
+        const maxScroll = wrap.scrollWidth - wrap.clientWidth;
+        wrap.scrollLeft = maxScroll * points[0];
+      });
     });
 
     window.addEventListener("resize", () => {
+      if (document.body.classList.contains("invitation-locked")) return;
       requestAnimationFrame(() => scrollToPoint(currentPointIndex, "auto"));
     });
 
@@ -1397,10 +1390,7 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     });
 
     wrap.addEventListener("scroll", () => {
-      if (document.body.classList.contains("invitation-locked")) {
-        keepInvitationLockedAtStart();
-        return;
-      }
+      if (document.body.classList.contains("invitation-locked")) return;
 
       const maxScroll = wrap.scrollWidth - wrap.clientWidth;
       const ratio = maxScroll ? wrap.scrollLeft / maxScroll : 0;
@@ -1429,7 +1419,6 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
           e.preventDefault();
           e.stopPropagation();
         }
-        keepInvitationLockedAtStart();
         return;
       }
       if (e.target.closest(".projector-album, .open-photo-album-btn, .photo-album-modal, input, select, textarea, button")) return;
