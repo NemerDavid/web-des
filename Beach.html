@@ -122,8 +122,8 @@
 
     .first-scene-gif {
       position: absolute;
-      left: 6.8%;
-      top: 60.5%;
+      left: 8.8%;
+      top: 70.5%;
       transform: translate(-50%, -50%);
       width: calc(var(--screen-h) * .215);
       height: auto;
@@ -134,8 +134,8 @@
     
       .first-balloon {
       position: absolute;
-      left: 7.8%;
-      top: 30.5%;
+      left: 14.8%;
+      top: 25.5%;
       transform: translate(-50%, -50%);
       width: calc(var(--screen-h) * .08);
       height: auto;
@@ -143,6 +143,39 @@
       pointer-events: none;
       filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
     }
+    
+    
+    
+          .first-cloud {
+      position: absolute;
+      left: 6.8%;
+      top: 30.5%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .12);
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
+    }
+    
+    
+    
+        .first-cloud2 {
+      position: absolute;
+      left: 9.8%;
+      top: 15%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .18);
+      height: auto;
+      z-index: 2;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
+    }
+    
+    
+    
+    
+    
     
     
     .first-balloon2 {
@@ -170,9 +203,111 @@
     }
     
 
+
+    /* Gentle motion for Hot_air.png and Cloud.png */
+    @keyframes balloonFloatSoft {
+      0% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(-1deg);
+      }
+      25% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * .010), calc(var(--screen-h) * -.010), 0) rotate(1deg);
+      }
+      50% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * .018), calc(var(--screen-h) * -.024), 0) rotate(2deg);
+      }
+      75% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * .006), calc(var(--screen-h) * -.012), 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(-1deg);
+      }
+    }
+
+    @keyframes balloonFloatSoftReverse {
+      0% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(1deg);
+      }
+      30% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * -.010), calc(var(--screen-h) * -.014), 0) rotate(-1deg);
+      }
+      60% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * -.018), calc(var(--screen-h) * -.026), 0) rotate(-2deg);
+      }
+      100% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(1deg);
+      }
+    }
+
+    @keyframes cloudDriftSoft {
+      0% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * .070), calc(var(--screen-h) * -.004), 0);
+      }
+      100% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes cloudDriftSoftReverse {
+      0% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate(-50%, -50%) translate3d(calc(var(--screen-h) * -.055), calc(var(--screen-h) * .004), 0);
+      }
+      100% {
+        transform: translate(-50%, -50%) translate3d(0, 0, 0);
+      }
+    }
+
+    .first-balloon,
+    .first-balloon2,
+    .first-balloon3,
+    .first-cloud,
+    .first-cloud2 {
+      will-change: transform;
+      transform-origin: center center;
+    }
+
+    .first-balloon {
+      animation: balloonFloatSoft 15s ease-in-out infinite;
+    }
+
+    .first-balloon2 {
+      animation: balloonFloatSoftReverse 18s ease-in-out infinite;
+      animation-delay: -4s;
+    }
+
+    .first-balloon3 {
+      animation: balloonFloatSoft 21s ease-in-out infinite;
+      animation-delay: -8s;
+    }
+
+    .first-cloud {
+      animation: cloudDriftSoft 38s ease-in-out infinite;
+      animation-delay: -6s;
+    }
+
+    .first-cloud2 {
+      animation: cloudDriftSoftReverse 46s ease-in-out infinite;
+      animation-delay: -12s;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .first-balloon,
+      .first-balloon2,
+      .first-balloon3,
+      .first-cloud,
+      .first-cloud2 {
+        animation: none;
+      }
+    }
+
     .open-invitation-btn {
       position: absolute;
-      left: 7.55%;
+      left: 12%;
       top: 79.6%;
       transform: translate(-50%, -50%);
       z-index: 4;
@@ -544,6 +679,21 @@
           alt=""
         >
         
+        
+              <img
+          class="first-cloud"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cloud.png"
+          alt=""
+        >
+               <img
+          class="first-cloud2"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cloud2.png"
+          alt=""
+        >
+        
+        
+        
+        
            <img
           class="first-balloon2"
           src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Hot_air.png"
@@ -642,7 +792,7 @@
     const navBtns = [...document.querySelectorAll("#nav button")];
     const openInvitationBtn = document.getElementById("openInvitationBtn");
 
-    const points = [0.04, 0.165, 0.245, 0.47, 0.695, 0.9];
+const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     let currentPointIndex = 0;
 
     function scrollToPoint(index, behavior = "smooth") {
