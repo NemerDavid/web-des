@@ -122,19 +122,57 @@
 
     .first-scene-gif {
       position: absolute;
-      left: 6.1%;
-      top: 74.5%;
+      left: 6.8%;
+      top: 60.5%;
       transform: translate(-50%, -50%);
-      width: calc(var(--screen-h) * .155);
+      width: calc(var(--screen-h) * .215);
       height: auto;
       z-index: 3;
       pointer-events: none;
       filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
     }
+    
+      .first-balloon {
+      position: absolute;
+      left: 7.8%;
+      top: 30.5%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .08);
+      height: auto;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
+    }
+    
+    
+    .first-balloon2 {
+      position: absolute;
+      left: 64.8%;
+      top: 30.5%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .08);
+      height: auto;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
+    }
+    
+       .first-balloon3 {
+      position: absolute;
+      left: 60.8%;
+      top: 32.5%;
+      transform: translate(-50%, -50%);
+      width: calc(var(--screen-h) * .08);
+      height: auto;
+      z-index: 3;
+      pointer-events: none;
+      filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
+    }
+    
 
     .open-invitation-btn {
       position: absolute;
-      left: 8.55%;
+      left: 7.55%;
       top: 79.6%;
       transform: translate(-50%, -50%);
       z-index: 4;
@@ -164,9 +202,70 @@
       filter: brightness(1.05);
     }
 
+    .invitation-card {
+      left: 22.2%;
+      top: 50.5%;
+      width: calc(var(--screen-h) * .76);
+      padding: calc(var(--screen-h) * .017);
+      background: rgba(12, 5, 4, .50);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .invitation-card h2 {
+      margin-bottom: calc(var(--screen-h) * .013);
+      font-size: calc(var(--screen-h) * .037);
+    }
+
+    .families-intro {
+      margin: 0;
+      color: rgba(255, 243, 218, .94);
+      text-shadow: 0 2px 8px rgba(0,0,0,.45);
+    }
+
+    .families-intro .overline {
+      display: block;
+      margin-bottom: calc(var(--screen-h) * .010);
+      font-family: "Montserrat", sans-serif;
+      font-size: calc(var(--screen-h) * .009);
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .families-intro .parents {
+      display: block;
+      font-size: calc(var(--screen-h) * .022);
+      font-weight: 600;
+      line-height: 1.05;
+      color: #ffe7a7;
+    }
+
+    .families-intro .amp {
+      display: block;
+      margin: calc(var(--screen-h) * .006) 0;
+      font-family: "Great Vibes", cursive;
+      font-size: calc(var(--screen-h) * .030);
+      line-height: .9;
+      color: var(--gold);
+    }
+
+    .families-intro .request {
+      display: block;
+      margin-top: calc(var(--screen-h) * .015);
+      margin-bottom: calc(var(--screen-h) * .015);
+      font-size: calc(var(--screen-h) * .02);
+      line-height: 1.24;
+    }
+
     .program-card {
-      left: 31%;
+      left: 30.8%;
       top: 54%;
+      width: calc(var(--screen-h) * .205);
+      padding: calc(var(--screen-h) * .015);
+      background: rgba(12, 5, 4, .42);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
     }
 
     .program-list {
@@ -187,9 +286,9 @@
     }
 
     .screen-card {
-      left: 55.2%;
-      top: 42.2%;
-      width: calc(var(--screen-h) * .66);
+      left: 55%;
+      top: 43.8%;
+      width: calc(var(--screen-h) * .56);
       padding: 0;
       background: transparent;
       border: 0;
@@ -207,7 +306,7 @@
     }
 
     .projector-album {
-      width: 66%;
+      width: 88%;
       margin: 0 auto;
       border-radius: calc(var(--screen-h) * .018);
       overflow: hidden;
@@ -235,7 +334,7 @@
 
     .projector-album-slide img {
       width: 100%;
-      height: calc(var(--screen-h) * .205);
+      height: calc(var(--screen-h) * .255);
       object-fit: contain;
       object-position: center;
       display: block;
@@ -279,20 +378,22 @@
       pointer-events: none;
     }
 
-    .gift-card {
-      left: 73.5%;
-      top: 52%;
-      width: calc(var(--screen-h) * .30);
-    }
 
-    .gift-card p {
-      font-size: calc(var(--screen-h) * .0135);
-    }
+
+.gift-card {
+  left: 69.25%;
+  top: 37%;
+  width: calc(var(--screen-h) * .23);      /* reduced from .30 */
+  min-height: calc(var(--screen-h) * .28); /* add this to force more height */
+}
+.gift-card p {
+  font-size: calc(var(--screen-h) * .0195);
+}
 
     .rsvp-card {
-      left: 91%;
-      top: 54%;
-      width: calc(var(--screen-h) * .29);
+      left: 80%;
+      top: 40%;
+      width: calc(var(--screen-h) * .59);
     }
 
     .rsvp-form {
@@ -391,7 +492,7 @@
       border: 1px solid rgba(248, 216, 138, .52);
       background: rgba(8, 3, 2, .62);
       color: var(--gold);
-      font-size: calc(var(--screen-h) * .018);
+      font-size: calc(var(--screen-h) * .022);
       cursor: pointer;
       backdrop-filter: blur(8px);
     }
@@ -435,9 +536,48 @@
           src="https://github.com/NemerDavid/web-des/blob/main/Beach/giphy.gif?raw=true"
           alt=""
         >
+        
+        
+        <img
+          class="first-balloon"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Hot_air.png"
+          alt=""
+        >
+        
+           <img
+          class="first-balloon2"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Hot_air.png"
+          alt=""
+        >
+        
+          <img
+          class="first-balloon3"
+          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Hot_air.png"
+          alt=""
+        >
+        
+        
         <button class="open-invitation-btn" id="openInvitationBtn" type="button">Open Invitation</button>
 
-        <section class="hotspot program-card" data-point="1">
+        <section class="hotspot invitation-card" data-point="1">
+        
+          
+      
+          
+          
+          
+          <div class="families-intro">
+             <h1 class="verse-ref">MATTHEW 19:6</h1>
+      <h2 class="verse-text">"What therefore God has joined together,<br>let no man put asunder."</h2>
+            <span class="request">Together with their families</span>
+            <span class="parents">Robert &amp; Tina<br>Martin</span>
+            <span class="amp">&amp;</span>
+            <span class="parents">Michael &amp; Anne<br>Clarke</span>
+            <span class="request">Request the honor of your presence at the wedding of their son and daughter</span>
+          </div>
+        </section>
+
+        <section class="hotspot program-card" data-point="2">
           <h2>Day Program</h2>
           <p>A beachside celebration under the sunset glow.</p>
           <div class="program-list">
@@ -448,7 +588,7 @@
           </div>
         </section>
 
-        <section class="hotspot screen-card" data-point="2">
+        <section class="hotspot screen-card" data-point="3">
           <h2>Photo Album</h2>
           <div class="projector-album" id="projectorAlbum">
             <div class="projector-album-track" id="projectorAlbumTrack">
@@ -462,13 +602,13 @@
           <div class="projector-album-counter" id="projectorAlbumCounter">1 / 3</div>
         </section>
 
-        <section class="hotspot gift-card" data-point="3">
+        <section class="hotspot gift-card" data-point="4">
           <h2>Gift Registry</h2>
           <p>Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
           <p style="margin-top:10px;"><strong>Whish Money</strong><br>ACC# xxxxxx</p>
         </section>
 
-        <section class="hotspot rsvp-card" data-point="4">
+        <section class="hotspot rsvp-card" data-point="5">
           <h2>RSVP</h2>
           <p>Kindly reply before 20 July 2027.</p>
           <form class="rsvp-form" id="rsvpForm">
@@ -487,6 +627,7 @@
 
     <nav class="nav" id="nav">
       <button aria-label="Go to welcome" class="active"></button>
+      <button aria-label="Go to invitation text"></button>
       <button aria-label="Go to program"></button>
       <button aria-label="Go to story"></button>
       <button aria-label="Go to gift registry"></button>
@@ -501,7 +642,7 @@
     const navBtns = [...document.querySelectorAll("#nav button")];
     const openInvitationBtn = document.getElementById("openInvitationBtn");
 
-    const points = [0.04, 0.245, 0.47, 0.695, 0.9];
+    const points = [0.04, 0.165, 0.245, 0.47, 0.695, 0.9];
     let currentPointIndex = 0;
 
     function scrollToPoint(index, behavior = "smooth") {
