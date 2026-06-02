@@ -81,7 +81,7 @@
       position: relative;
       height: 100%;
       width: calc(var(--screen-h) * (2048 / 265));
-      background-image: url("https://github.com/NemerDavid/web-des/blob/main/Beach/Beach4.png?raw=true");
+      background-image: url("https://github.com/NemerDavid/web-des/blob/main/Beach/Beach5.png?raw=true");
       background-size: 100% 100%;
       background-position: center;
       background-repeat: no-repeat;
@@ -131,6 +131,41 @@
       pointer-events: none;
       filter: drop-shadow(0 calc(var(--screen-h) * .012) calc(var(--screen-h) * .024) rgba(0,0,0,.35));
     }
+    
+    
+.first-rings { display: none; }
+
+.first-glass { display: none; }
+
+
+
+.first-Cake { display: none; }
+
+
+
+.first-Dance { display: none; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
     
       .first-balloon {
       position: absolute;
@@ -202,7 +237,7 @@
        
      .first-balloon5 {
       position: absolute;
-      left: 33.9%;
+      left: 35.9%;
       top: 29.5%;
       transform: translate(-50%, -50%);
       width: calc(var(--screen-h) * .08);
@@ -391,6 +426,83 @@
       }
     }
 
+
+
+    /* Main couple text added on the first scene — matched to reference: glowing script, warm gold */
+    .hero-couple-text {
+      position: absolute;
+      left: 12.2%;
+      top: 50.2%;
+      transform: translate(-50%, -50%);
+      z-index: 4;
+      width: calc(var(--screen-h) * .33);
+      text-align: center;
+      pointer-events: none;
+      color: #ffd978;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .006) rgba(255, 238, 174, .98),
+        0 0 calc(var(--screen-h) * .018) rgba(255, 177, 70, .86),
+        0 0 calc(var(--screen-h) * .038) rgba(255, 117, 33, .58),
+        0 calc(var(--screen-h) * .003) calc(var(--screen-h) * .009) rgba(60, 18, 4, .52);
+    }
+
+    .hero-couple-names {
+      margin: 0;
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: calc(var(--screen-h) * .066);
+      line-height: .86;
+      letter-spacing: .01em;
+    }
+
+    .hero-couple-amp {
+      display: block;
+      font-size: calc(var(--screen-h) * .048);
+      line-height: .72;
+      margin: calc(var(--screen-h) * .005) 0 calc(var(--screen-h) * .003);
+    }
+
+    .hero-date-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(var(--screen-h) * .009);
+      margin-top: calc(var(--screen-h) * .016);
+    }
+
+    .hero-date-line {
+      width: calc(var(--screen-h) * .057);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 217, 120, .92));
+      box-shadow: 0 0 calc(var(--screen-h) * .007) rgba(255, 177, 70, .74);
+    }
+
+    .hero-date-line.right {
+      background: linear-gradient(90deg, rgba(255, 217, 120, .92), transparent);
+    }
+
+    .hero-heart {
+      font-family: "Cormorant Garamond", serif;
+      font-size: calc(var(--screen-h) * .029);
+      line-height: 1;
+      color: #ffe59c;
+    }
+
+    .hero-wedding-date {
+      margin: calc(var(--screen-h) * .006) 0 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: calc(var(--screen-h) * .0255);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: .018em;
+      color: #ffe6a3;
+      text-transform: lowercase;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .007) rgba(255, 238, 174, .88),
+        0 0 calc(var(--screen-h) * .020) rgba(255, 155, 55, .66),
+        0 calc(var(--screen-h) * .002) calc(var(--screen-h) * .006) rgba(55, 17, 4, .52);
+    }
+
     .open-invitation-btn {
       position: absolute;
       left: 12%;
@@ -425,13 +537,36 @@
 
     .invitation-card {
       left: 22.2%;
-      top: 50.5%;
-      width: calc(var(--screen-h) * .76);
-      padding: calc(var(--screen-h) * .017);
-      background: rgba(12, 5, 4, .50);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
+      top: 44.5%;
+      width: calc(var(--screen-h) * .46);
+      padding: calc(var(--screen-h) * .024) calc(var(--screen-h) * .026);
+      border-radius: calc(var(--screen-h) * .030);
+      border: 1px solid rgba(255, 220, 139, .30);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 203, 104, .14), transparent 42%),
+        linear-gradient(180deg, rgba(31, 10, 4, .58), rgba(12, 5, 4, .42));
+      box-shadow:
+        0 calc(var(--screen-h) * .018) calc(var(--screen-h) * .052) rgba(0,0,0,.38),
+        inset 0 0 0 1px rgba(255, 245, 214, .06);
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      overflow: hidden;
     }
+
+    .invitation-card::before,
+    .invitation-card::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 72%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 221, 146, .62), transparent);
+      pointer-events: none;
+    }
+
+    .invitation-card::before { top: calc(var(--screen-h) * .014); }
+    .invitation-card::after { bottom: calc(var(--screen-h) * .014); }
 
     .invitation-card h2 {
       margin-bottom: calc(var(--screen-h) * .013);
@@ -439,77 +574,130 @@
     }
 
     .families-intro {
-      margin: 0;
-      color: rgba(255, 243, 218, .94);
-      text-shadow: 0 2px 8px rgba(0,0,0,.45);
+      margin: 0 auto;
+      max-width: calc(var(--screen-h) * .35);
+      color: rgba(255, 243, 218, .96);
+      text-align: center;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .012) rgba(255, 184, 75, .20),
+        0 2px 9px rgba(0,0,0,.55);
     }
 
-    .families-intro .overline {
-      display: block;
-      margin-bottom: calc(var(--screen-h) * .010);
-      font-family: "Montserrat", sans-serif;
-      font-size: calc(var(--screen-h) * .009);
+    .families-intro .verse-ref {
+      margin: 0 0 calc(var(--screen-h) * .020);
+      font-family: "Cormorant Garamond", serif;
+      font-size: calc(var(--screen-h) * .0188);
       font-weight: 700;
-      letter-spacing: .15em;
+      letter-spacing: .050em;
+      color: #fff0c8;
       text-transform: uppercase;
+    }
+
+    .families-intro .verse-text {
+      margin: 0 auto calc(var(--screen-h) * .032);
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-size: calc(var(--screen-h) * .0365);
+      line-height: 1.22;
+      color: #ffd978;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .006) rgba(255, 238, 174, .92),
+        0 0 calc(var(--screen-h) * .019) rgba(255, 177, 70, .76),
+        0 calc(var(--screen-h) * .003) calc(var(--screen-h) * .009) rgba(60, 18, 4, .52);
     }
 
     .families-intro .parents {
       display: block;
-      font-size: calc(var(--screen-h) * .022);
-      font-weight: 600;
-      line-height: 1.05;
-      color: #ffe7a7;
+      font-size: calc(var(--screen-h) * .0215);
+      font-weight: 700;
+      line-height: 1.30;
+      color: #fff0c8;
+      letter-spacing: .012em;
     }
 
     .families-intro .amp {
       display: block;
-      margin: calc(var(--screen-h) * .006) 0;
+      margin: calc(var(--screen-h) * .018) 0 calc(var(--screen-h) * .020);
       font-family: "Great Vibes", cursive;
-      font-size: calc(var(--screen-h) * .030);
-      line-height: .9;
-      color: var(--gold);
+      font-size: calc(var(--screen-h) * .041);
+      line-height: 1;
+      color: #ffd978;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .008) rgba(255, 238, 174, .85),
+        0 0 calc(var(--screen-h) * .020) rgba(255, 177, 70, .62);
     }
 
     .families-intro .request {
       display: block;
-      margin-top: calc(var(--screen-h) * .015);
-      margin-bottom: calc(var(--screen-h) * .015);
-      font-size: calc(var(--screen-h) * .02);
-      line-height: 1.24;
+      margin: calc(var(--screen-h) * .026) auto;
+      font-size: calc(var(--screen-h) * .017);
+      line-height: 1.48;
+      font-weight: 600;
+      color: rgba(255, 242, 210, .95);
+    }
+
+    .families-intro .closing-request {
+      max-width: calc(var(--screen-h) * .31);
+      margin-top: calc(var(--screen-h) * .032);
+      margin-bottom: 0;
+      font-size: calc(var(--screen-h) * .0165);
+      line-height: 1.58;
     }
 
     .program-card {
-      left: 30.8%;
-      top: 54%;
-      width: calc(var(--screen-h) * .205);
-      padding: calc(var(--screen-h) * .015);
-      background: rgba(12, 5, 4, .42);
+      left: 31.05%;
+      top: 50%;
+      width: calc(var(--screen-h) * .385);
+      min-height: calc(var(--screen-h) * .245);
+      padding: calc(var(--screen-h) * .019) calc(var(--screen-h) * .021);
+      border-radius: calc(var(--screen-h) * .029);
+      background: rgba(12, 5, 4, .34);
+      border-color: rgba(248, 216, 138, .50);
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
 
+    .program-card h2 {
+      font-size: calc(var(--screen-h) * .046);
+      margin-bottom: calc(var(--screen-h) * .018);
+    }
+
     .program-list {
       display: grid;
-      gap: calc(var(--screen-h) * .0075);
-      margin-top: calc(var(--screen-h) * .010);
+      gap: calc(var(--screen-h) * .010);
+      margin-top: calc(var(--screen-h) * .060);
       font-family: "Montserrat", sans-serif;
-      font-size: calc(var(--screen-h) * .0115);
+      font-size: calc(var(--screen-h) * .0132);
       letter-spacing: .04em;
     }
 
     .program-list div {
-      display: flex;
-      justify-content: space-between;
-      gap: calc(var(--screen-h) * .020);
-      border-bottom: 1px solid rgba(255, 232, 181, .22);
-      padding-bottom: calc(var(--screen-h) * .0055);
+      display: grid;
+      grid-template-columns: 1fr calc(var(--screen-h) * .060) 1fr;
+      align-items: center;
+      gap: calc(var(--screen-h) * .016);
+      border-bottom: 1px solid rgba(255, 232, 181, .26);
+      padding-bottom: calc(var(--screen-h) * .0068);
+    }
+
+    .program-list div span:last-child {
+      text-align: right;
+    }
+
+    .program-icon {
+      width: calc(var(--screen-h) * .026);
+      height: calc(var(--screen-h) * .026);
+      object-fit: contain;
+      justify-self: center;
+      opacity: .95;
+      filter: drop-shadow(0 0 calc(var(--screen-h) * .006) rgba(248, 216, 138, .22));
+      pointer-events: none;
     }
 
     .screen-card {
-      left: 55%;
-      top: 43.8%;
-      width: calc(var(--screen-h) * .56);
+      left: 55.23%;
+      top: 45.3%;
+      width: calc(var(--screen-h) * .33);
       padding: 0;
       background: transparent;
       border: 0;
@@ -760,9 +948,9 @@
 
 
 .gift-card {
-  left: 69.25%;
-  top: 37%;
-  width: calc(var(--screen-h) * .23);      /* reduced from .30 */
+  left: 69.1%;
+  top: 39%;
+  width: calc(var(--screen-h) * .37);      /* reduced from .30 */
   min-height: calc(var(--screen-h) * .28); /* add this to force more height */
 }
 
@@ -786,7 +974,7 @@
 
 
 .gift-card2 p {
-  font-size: calc(var(--screen-h) * .0395);
+  font-size: calc(var(--screen-h) * .0195);
 }
 
 .gift-card2 .powered-by {
@@ -794,7 +982,7 @@
   margin-top: calc(var(--screen-h) * .020);
   color: rgba(255, 243, 218, .92);
   font-family: "Montserrat", sans-serif;
-  font-size: calc(var(--screen-h) * .0145);
+  font-size: calc(var(--screen-h) * .0105);
   font-weight: 600;
   line-height: 1.2;
   text-decoration: underline;
@@ -1038,6 +1226,34 @@
         >
         
         
+        
+     
+<img
+class="first-rings"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings.png"
+alt=""
+>
+  
+       <img
+class="first-glass"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass.png"
+alt=""
+> 
+        
+            <img
+class="first-Cake"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake.png"
+alt=""
+>    
+ 
+             <img
+class="first-Dance"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance.png"
+alt=""
+>    
+ 
+        
+        
         <img
           class="first-balloon"
           src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Hot_air.png"
@@ -1100,6 +1316,17 @@
         
         
         
+
+        <div class="hero-couple-text" aria-label="Thomas and Saraha wedding date">
+          <h1 class="hero-couple-names">Thomas<span class="hero-couple-amp">&amp;</span>Saraha</h1>
+          <div class="hero-date-wrap" aria-hidden="true">
+            <span class="hero-date-line"></span>
+            <span class="hero-heart">♡</span>
+            <span class="hero-date-line right"></span>
+          </div>
+          <p class="hero-wedding-date">14 august 2027</p>
+        </div>
+
         <button class="open-invitation-btn" id="openInvitationBtn" type="button">Open Invitation</button>
 
         <section class="hotspot invitation-card" data-point="1">
@@ -1110,24 +1337,24 @@
           
           
           <div class="families-intro">
-             <h1 class="verse-ref">MATTHEW 19:6</h1>
-      <h2 class="verse-text">"What therefore God has joined together,<br>let no man put asunder."</h2>
+            <h1 class="verse-ref">MATTHEW 19:6</h1>
+            <h2 class="verse-text">“What therefore God<br>has joined together,<br>let no man put asunder.”</h2>
             <span class="request">Together with their families</span>
             <span class="parents">Robert &amp; Tina<br>Martin</span>
             <span class="amp">&amp;</span>
             <span class="parents">Michael &amp; Anne<br>Clarke</span>
-            <span class="request">Request the honor of your presence at the wedding of their son and daughter</span>
+            <span class="request closing-request">Request the honor of your presence<br>at the wedding of their son and daughter</span>
           </div>
         </section>
 
         <section class="hotspot program-card" data-point="2">
           <h2>Day Program</h2>
-          <p>A beachside celebration under the sunset glow.</p>
+          <p></p>
           <div class="program-list">
-            <div><span>17:30</span><span>Ceremony</span></div>
-            <div><span>18:30</span><span>Cocktail</span></div>
-            <div><span>20:00</span><span>Dinner</span></div>
-            <div><span>22:00</span><span>Dancing</span></div>
+            <div><span>17:30</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings.png" alt=""><span>Ceremony</span></div>
+            <div><span>18:30</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass.png" alt=""><span>Cocktail</span></div>
+            <div><span>20:00</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake.png" alt=""><span>Dinner</span></div>
+            <div><span>22:00</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance.png" alt=""><span>Dancing</span></div>
           </div>
         </section>
 
@@ -1419,14 +1646,12 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     });
 
     album.addEventListener("pointerdown", (e) => {
-      if (e.target.closest(".open-photo-album-btn")) return;
-      e.preventDefault();
-      e.stopPropagation();
-      albumDragging = true;
-      albumStartX = e.clientX;
-      albumCurrentX = e.clientX;
-      album.setPointerCapture(e.pointerId);
-      albumTrack.style.transition = "none";
+      /* Keep the small preview locked: guests can only swipe photos
+         after pressing “Open photo album” and entering the full album. */
+      if (!e.target.closest(".open-photo-album-btn")) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
     });
 
     album.addEventListener("pointermove", (e) => {
