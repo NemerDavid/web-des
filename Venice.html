@@ -49,17 +49,17 @@ body {
   box-shadow: 0 0 0 1px rgba(255,255,255,.25), 0 18px 55px rgba(60,35,15,.22);
 }
 
-/* ── PANORAMA STRIP  700cqw wide ── */
+/* ── PANORAMA STRIP  800cqw wide ── */
 #panorama {
   position: absolute;
   top: 0; left: 0;
-  width: 700%;
+  width: 800%;
   height: 100%;
   will-change: transform;
 }
 
 /* ── CONTINUOUS BACKGROUND LAYERS ── */
-/* Sky stretches full 700cqw */
+/* Sky stretches full 800cqw */
 #bg-sky {
   position: absolute;
   inset: 0;
@@ -219,20 +219,21 @@ top: 80%; left: 90%;
 .panel {
   position: absolute;
   top: 0;
-  width: calc(100% / 7);
+  width: calc(100% / 8);
   height: 100%;
   /* panels don't clip children — layers can bleed between panels */
   overflow: visible;
 }
 
 /* Each panel is exactly one 9:16 screen wide */
-#p1 { left: calc((100% / 7) * 0) !important; }
-#p2 { left: calc((100% / 7) * 1) !important; }
-#p3 { left: calc((100% / 7) * 2) !important; }
-#p4 { left: calc((100% / 7) * 3) !important; }
-#p5 { left: calc((100% / 7) * 4) !important; }
-#p6 { left: calc((100% / 7) * 5) !important; }
-#p7 { left: calc((100% / 7) * 6) !important; }
+#p1 { left: calc((100% / 8) * 0) !important; }
+#p2 { left: calc((100% / 8) * 1) !important; }
+#p3 { left: calc((100% / 8) * 2) !important; }
+#p4 { left: calc((100% / 8) * 3) !important; }
+#p5 { left: calc((100% / 8) * 4) !important; }
+#p6 { left: calc((100% / 8) * 5) !important; }
+#p7 { left: calc((100% / 8) * 6) !important; }
+#p8 { left: calc((100% / 8) * 7) !important; }
 
 /* ── LAYER SYSTEM ──
    Every PNG asset gets class="layer" plus a unique id.
@@ -551,10 +552,29 @@ top: 80%; left: 90%;
 #p1 .l-bld10aR  { left:628%; bottom:11%; width:60%; z-index:4; }
 
 
+#p1 .l-bld2aEnd  { left:680%; bottom:11%; width:58%; z-index:5; }
+#p1 .l-bld5End  { left:730%; bottom:11%; width:58%; z-index:5; }
+#p1 .l-bld8End  { left:760%; bottom:11%; width:60%; z-index:6; }
+
+#p1 .l-bld10End  { left:790%; bottom:11%; width:60%; z-index:4; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #p1 .l-bridge  { left:292%; bottom:11.5%; width:60%; z-index:4; }
 #p1 .l-bridge2  { left:175%; bottom:11.5%; width:60%; z-index:4; }
 #p1 .l-bridge3  { left:390%; bottom:2%; width:154%; z-index:3; }
-
+#p1 .l-bridge4  { left:705%; bottom:9.5%; width:60%; z-index:4; }
 
 
 
@@ -589,6 +609,10 @@ top: 80%; left: 90%;
 #p7 .l-bld-b  { left:56%;  bottom:22%; width:38%; z-index:4; }
 #p7 .l-gondola { left:32%; bottom:17%; width:38%; z-index:6; }
 #p7 .l-clouds  { left:40%; top:6%;    width:32%; z-index:2; opacity:0.85; filter:none; animation: driftCloud 16s ease-in-out infinite 1s; }
+#p8 .l-bld-a  { left:-2%;  bottom:22%; width:40%; z-index:5; }
+#p8 .l-bld-b  { left:56%;  bottom:22%; width:38%; z-index:4; }
+#p8 .l-gondola { left:32%; bottom:17%; width:38%; z-index:6; }
+#p8 .l-clouds  { left:40%; top:6%;    width:32%; z-index:2; opacity:0.85; filter:none; animation: driftCloud 16s ease-in-out infinite 1s; }
 
 /* ── ANIMATIONS ── */
 
@@ -975,15 +999,15 @@ top: 80%; left: 90%;
   padding:10px 0 !important;
 }
 
-#p7 .closing-copy{
+#p8 .closing-copy{
   left:50% !important;
   top:16% !important;
   transform:translateX(-50%) !important;
   width:84% !important;
 }
-#p7 .closing-copy .script{font-size:58px !important;}
-#p7 .closing-copy .serif{font-size:20px !important;}
-#p7 .closing-copy .sans{font-size:10px !important;}
+#p8 .closing-copy .script{font-size:58px !important;}
+#p8 .closing-copy .serif{font-size:20px !important;}
+#p8 .closing-copy .sans{font-size:10px !important;}
 
 /* prevent old inline flow/padding from pushing text off-screen */
 #p2 .content,
@@ -991,7 +1015,8 @@ top: 80%; left: 90%;
 #p4 .content,
 #p5 .content,
 #p6 .content,
-#p7 .content{
+#p7 .content,
+#p8 .content{
   align-items:initial !important;
   justify-content:initial !important;
   padding:0 !important;
@@ -1795,7 +1820,7 @@ html, body{
     margin:0 !important;
   }
 
-  #p7 .closing-copy{
+  #p8 .closing-copy{
     top:auto !important;
     bottom:41% !important;
     left:50% !important;
@@ -1804,7 +1829,7 @@ html, body{
     max-height:48% !important;
   }
 
-  #p7 .closing-copy .sans{
+  #p8 .closing-copy .sans{
     font-size:2.55cqw !important;
     line-height:1.55 !important;
     letter-spacing:.26em !important;
@@ -1812,21 +1837,393 @@ html, body{
     margin-top:0 !important;
   }
 
-  #p7 .closing-copy .script{
+  #p8 .closing-copy .script{
     font-size:13.2cqw !important;
     line-height:.9 !important;
     white-space:nowrap !important;
   }
 
-  #p7 .closing-copy .serif{
+  #p8 .closing-copy .serif{
     font-size:4.25cqw !important;
     line-height:1.38 !important;
   }
 
-  #p7 .closing-copy .orn{
+  #p8 .closing-copy .orn{
     width:58% !important;
     margin:3.2cqw auto 3cqw !important;
   }
+}
+
+
+/* ═════════ USER UPDATE — GIFT REGISTRY ADDED BEFORE RSVP + EXTENDED PANORAMA ═════════ */
+#p6 .gift-copy{
+  left:50% !important;
+  top:8.2% !important;
+  transform:translateX(-50%) !important;
+  width:86% !important;
+  text-align:center !important;
+  z-index:80 !important;
+}
+#p6 .gift-copy .script{
+  font-size:12.6cqw !important;
+  line-height:.9 !important;
+  color:#373222 !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.84) !important;
+}
+#p6 .gift-copy .orn{
+  width:64% !important;
+  margin:3cqw auto 3.4cqw !important;
+}
+#p6 .gift-card{
+  width:100% !important;
+  max-width:72cqw !important;
+  margin:0 auto !important;
+  padding:7cqw 6.2cqw !important;
+  border-radius:6cqw !important;
+  background:rgba(255,245,230,.82) !important;
+  border:1px solid rgba(196,149,106,.44) !important;
+  box-shadow:0 18px 48px rgba(80,40,10,.20) !important;
+  backdrop-filter:blur(8px) !important;
+}
+#p6 .gift-intro{
+  font-size:4.9cqw !important;
+  line-height:1.45 !important;
+  color:#373222 !important;
+  opacity:.94 !important;
+  font-weight:700 !important;
+  letter-spacing:.01em !important;
+}
+#p6 .gift-seal{
+  margin:4.8cqw auto 3.2cqw !important;
+  color:var(--gold) !important;
+  font-size:5.4cqw !important;
+}
+#p6 .gift-bank{
+  font-size:3.2cqw !important;
+  letter-spacing:.26em !important;
+  color:#373222 !important;
+  opacity:.72 !important;
+  font-weight:800 !important;
+  margin-bottom:2cqw !important;
+}
+#p6 .gift-account{
+  font-size:5.4cqw !important;
+  line-height:1.2 !important;
+  color:#373222 !important;
+  font-weight:800 !important;
+  letter-spacing:.08em !important;
+}
+
+/* RSVP was pushed one full screen to the right */
+#p7 .rsvp-copy{
+  left:50% !important;
+  top:7.2% !important;
+  transform:translateX(-50%) !important;
+  width:82% !important;
+  text-align:center !important;
+}
+#p7 .rsvp-copy .script{font-size:10.5cqw !important;color:#373222 !important;}
+#p7 .rsvp-copy .sans{font-size:2.25cqw !important;}
+#p7 .rsvp-copy .orn{text-align:center !important;margin-left:auto !important;margin-right:auto !important;}
+#p7 .rsvp-card{display:block !important;width:100% !important;max-width:60cqw !important;margin:3cqw auto 0 !important;text-align:left !important;padding:4.5cqw 6cqw !important;}
+#p7 .venice-rsvp-box{border-radius:22px !important;background:rgba(255,245,230,.72) !important;border:1px solid rgba(196,149,106,.36) !important;box-shadow:0 16px 38px rgba(80,40,10,.16) !important;backdrop-filter:blur(7px) !important;}
+#p7 .step-dots{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:18px;}
+#p7 .step-dot{width:6px;height:6px;border-radius:50%;background:rgba(196,149,106,.30);transition:.25s;}
+#p7 .step-dot.on{background:#373222;}
+#p7 .form-label,#p7 .question{display:block;font-family:'Jost',sans-serif;font-size:49px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;margin:16px 0 8px;color:rgba(55,50,34,.72);text-align:left;}
+#p7 .question{text-align:center;margin-top:4px;}
+#p7 .form-field,#p7 textarea.form-field{width:100%;border-radius:0;padding:10px 0;margin-top:4px;font-family:'Cormorant Garamond',serif;font-size:18px;outline:none;background:transparent;color:#373222;border:none;border-bottom:1.5px solid rgba(74,46,26,.24);transition:border-color .25s;letter-spacing:0;}
+#p7 textarea.form-field{min-height:78px;resize:none;}
+#p7 .form-field:focus,#p7 textarea.form-field:focus{border-bottom-color:#373222;}
+#p7 .error-msg{display:none;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:#9b4a36;text-align:left;}
+#p7 .attend-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:14px 0;}
+#p7 .attend-opt input{position:absolute;opacity:0;pointer-events:none;}
+#p7 .attend-box{display:flex;align-items:center;justify-content:center;min-height:42px;border-radius:14px;border:1px solid rgba(74,46,26,.18);background:rgba(255,255,255,.42);cursor:pointer;transition:.25s;padding:10px 12px;}
+#p7 .attend-opt input:checked + .attend-box{background:rgba(196,149,106,.86);border-color:rgba(196,149,106,.95);color:#fff;}
+#p7 .attend-label{font-family:'Jost',sans-serif;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;}
+#p7 .count-row{display:flex;align-items:center;justify-content:center;gap:18px;margin:10px 0 12px;}
+#p7 .count-btn{width:34px;height:34px;border-radius:50%;border:1px solid rgba(74,46,26,.22);background:rgba(255,255,255,.68);color:#373222;font-size:20px;line-height:1;cursor:pointer;}
+#p7 .guest-num{min-width:24px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:#373222;}
+#p7 .btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+#p7 .btn-soft,#p7 .btn-solid{width:100%;border-radius:999px;padding:12px 12px;cursor:pointer;font-family:'Jost',sans-serif;font-size:8px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;transition:.25s;}
+#p7 .btn-soft{background:rgba(255,255,255,.50);border:1px solid rgba(74,46,26,.18);color:#373222;}
+#p7 .btn-solid{background:#c4956a;border:1px solid #c4956a;color:#fff;}
+#p7 .btn-solid:disabled{opacity:.68;cursor:default;}
+#p7 .btn-soft:hover,#p7 .btn-solid:hover{transform:translateY(-1px);}
+#p7 .rsvp-main-btn{margin-top:18px;}
+#p7 .rsvp-btn{display:block !important;margin-left:auto !important;margin-right:auto !important;font-size:2.15cqw !important;padding:2.2cqw !important;margin-top:3cqw !important;}
+#p7 .rsvp-card input,#p7 .rsvp-card select{font-size:2.25cqw !important;padding:1.8cqw 0 !important;}
+@media (max-width:600px),(pointer:coarse){
+  #p6 .gift-copy{top:7.4% !important;width:88% !important;}
+  #p6 .gift-card{max-width:76cqw !important;padding:7.2cqw 6.4cqw !important;}
+  #p6 .gift-intro{font-size:5.15cqw !important;line-height:1.42 !important;}
+  #p7 .venice-rsvp-box{padding:4.1cqw 5.2cqw !important;}
+  #p7 .form-field,#p7 textarea.form-field{font-size:4.1cqw !important;}
+}
+
+
+/* ═════════ USER UPDATE — SMALLER GIFT + BIGGER RSVP + END BUILDINGS ═════════ */
+#p6 .gift-copy{
+  top:7.4% !important;
+  width:82% !important;
+}
+#p6 .gift-copy .script{
+  font-size:11.2cqw !important;
+}
+#p6 .gift-copy .orn{
+  width:58% !important;
+  margin:2.4cqw auto 2.8cqw !important;
+}
+#p6 .gift-card{
+  max-width:68cqw !important;
+  padding:5.8cqw 5.4cqw !important;
+  border-radius:5.4cqw !important;
+}
+#p6 .gift-intro{
+  font-size:4.25cqw !important;
+  line-height:1.42 !important;
+  font-weight:650 !important;
+}
+#p6 .gift-seal{
+  margin:3.8cqw auto 2.6cqw !important;
+  font-size:4.7cqw !important;
+}
+#p6 .gift-bank{
+  font-size:2.7cqw !important;
+  letter-spacing:.24em !important;
+}
+#p6 .gift-account{
+  font-size:4.7cqw !important;
+}
+
+#p7 .rsvp-copy{
+  top:4.6% !important;
+  width:90% !important;
+}
+#p7 .rsvp-copy .script{
+  font-size:13.6cqw !important;
+  line-height:.84 !important;
+}
+#p7 .rsvp-copy .orn{
+  width:60% !important;
+  margin:2.2cqw auto 2.8cqw !important;
+}
+#p7 .rsvp-copy .sans{
+  font-size:2.8cqw !important;
+  line-height:1.6 !important;
+  letter-spacing:.24em !important;
+  margin-bottom:2.8cqw !important;
+}
+#p7 .rsvp-card{
+  max-width:72cqw !important;
+  padding:5.2cqw 6.4cqw !important;
+  margin-top:2.6cqw !important;
+}
+#p7 .venice-rsvp-box{
+  border-radius:5.2cqw !important;
+}
+#p7 .step-dots{
+  margin-bottom:3.4cqw !important;
+}
+#p7 .step-dot{
+  width:1.25cqw !important;
+  height:1.25cqw !important;
+}
+#p7 .form-label,
+#p7 .question{
+  font-size:2.05cqw !important;
+  margin:2.8cqw 0 1.5cqw !important;
+}
+#p7 .form-field,
+#p7 textarea.form-field{
+  font-size:4.25cqw !important;
+  padding:2.1cqw 0 !important;
+}
+#p7 textarea.form-field{
+  min-height:18cqw !important;
+}
+#p7 .rsvp-main-btn,
+#p7 .btn-soft,
+#p7 .btn-solid{
+  font-size:2.05cqw !important;
+  padding:2.8cqw 2.2cqw !important;
+}
+#p7 .attend-label{
+  font-size:2cqw !important;
+}
+#p7 .attend-box{
+  min-height:9.8cqw !important;
+  border-radius:3.2cqw !important;
+}
+#p7 .guest-num{
+  font-size:5cqw !important;
+}
+#p7 .count-btn{
+  width:7.4cqw !important;
+  height:7.4cqw !important;
+  font-size:4.4cqw !important;
+}
+#p7 .error-msg{
+  font-size:1.75cqw !important;
+}
+
+/* Decorative buildings added to the extended pages */
+#p7 .end-bld-left,
+#p8 .end-bld-left{
+  left:-5% !important;
+  bottom:10.8% !important;
+  width:58% !important;
+  z-index:6 !important;
+}
+#p7 .end-bld-right,
+#p8 .end-bld-right{
+  left:52% !important;
+  bottom:10.8% !important;
+  width:62% !important;
+  z-index:6 !important;
+}
+#p7 .end-bld-mid,
+#p8 .end-bld-mid{
+  left:27% !important;
+  bottom:10.4% !important;
+  width:54% !important;
+  z-index:5 !important;
+}
+
+@media (max-width:600px),(pointer:coarse){
+  #p6 .gift-copy{top:6.8% !important;width:82% !important;}
+  #p6 .gift-card{max-width:68cqw !important;padding:5.4cqw 5.2cqw !important;}
+  #p6 .gift-intro{font-size:4.05cqw !important;line-height:1.42 !important;}
+  #p6 .gift-copy .script{font-size:10.9cqw !important;}
+  #p7 .rsvp-copy{top:4.2% !important;width:90% !important;}
+  #p7 .rsvp-card{max-width:73cqw !important;padding:5.1cqw 6.2cqw !important;}
+  #p7 .form-field,#p7 textarea.form-field{font-size:4.25cqw !important;}
+}
+
+
+/* ═════════ FINAL USER FIX — MATCH SECTION TITLES + BIGGER RSVP NAME TEXT ═════════ */
+/* Make Photo Album, Gift Registry, and RSVP titles the same smaller size */
+#p5 .album-copy .script,
+#p6 .gift-copy .script,
+#p7 .rsvp-copy .script{
+  font-size:10.2cqw !important;
+  line-height:.9 !important;
+}
+
+/* Keep Gift Registry and RSVP dividers balanced under the smaller titles */
+#p5 .album-copy .orn,
+#p6 .gift-copy .orn,
+#p7 .rsvp-copy .orn{
+  width:58% !important;
+  margin:2.1cqw auto 2.7cqw !important;
+}
+
+/* RSVP name label and typed text: larger and easier to read */
+#p7 .form-label,
+#p7 .question{
+  font-size:2.45cqw !important;
+  letter-spacing:.20em !important;
+  margin:3.1cqw 0 1.7cqw !important;
+}
+#p7 .form-field,
+#p7 textarea.form-field{
+  font-size:5.35cqw !important;
+  line-height:1.15 !important;
+  padding:2.3cqw 0 !important;
+}
+#p7 .form-field::placeholder,
+#p7 textarea.form-field::placeholder{
+  font-size:4.65cqw !important;
+  opacity:.55 !important;
+}
+
+@media (max-width:600px),(pointer:coarse){
+  #p5 .album-copy .script,
+  #p6 .gift-copy .script,
+  #p7 .rsvp-copy .script{
+    font-size:10.2cqw !important;
+    line-height:.9 !important;
+  }
+  #p7 .form-label,
+  #p7 .question{
+    font-size:2.55cqw !important;
+  }
+  #p7 .form-field,
+  #p7 textarea.form-field{
+    font-size:5.6cqw !important;
+    line-height:1.15 !important;
+  }
+  #p7 .form-field::placeholder,
+  #p7 textarea.form-field::placeholder{
+    font-size:4.85cqw !important;
+  }
+}
+
+
+/* ═════════ FINAL OVERRIDE — SMALLER SECTION TITLES + CLEAR RSVP TYPED NAME ═════════ */
+/* Smaller matching titles for Photo Album, Gift Registry, and RSVP */
+#p5 .album-copy .script,
+#p6 .gift-copy .script,
+#p7 .rsvp-copy .script{
+  font-size:8.6cqw !important;
+  line-height:.92 !important;
+  white-space:nowrap !important;
+}
+
+/* Force the typed RSVP name to be large, overriding all wizard/mobile rules */
+#p7 #guestName,
+#p7 input#guestName.form-field,
+#p7 .venice-rsvp-box input#guestName{
+  font-family:'Cormorant Garamond', serif !important;
+  font-size:31px !important;
+  line-height:1.25 !important;
+  height:auto !important;
+  min-height:46px !important;
+  padding:8px 0 9px !important;
+  color:#373222 !important;
+  letter-spacing:0 !important;
+  transform:none !important;
+}
+
+#p7 #guestName::placeholder{
+  font-size:26px !important;
+  line-height:1.25 !important;
+  color:rgba(55,50,34,.48) !important;
+}
+
+#p7 .form-label[for="guestName"]{
+  font-size:12px !important;
+  letter-spacing:.18em !important;
+  margin-bottom:8px !important;
+}
+
+@media (max-width:600px),(pointer:coarse){
+  #p5 .album-copy .script,
+  #p6 .gift-copy .script,
+  #p7 .rsvp-copy .script{
+    font-size:8.6cqw !important;
+    line-height:.92 !important;
+  }
+
+  #p7 #guestName,
+  #p7 input#guestName.form-field,
+  #p7 .venice-rsvp-box input#guestName{
+    font-size:31px !important;
+    line-height:1.25 !important;
+    min-height:46px !important;
+    padding:8px 0 9px !important;
+  }
+
+  #p7 #guestName::placeholder{
+    font-size:26px !important;
+  }
+}
+
+
+/* FINAL CLEANUP — remove the extra buildings added on the extended RSVP/closing pages */
+#p7 .end-bld-left, #p7 .end-bld-mid, #p7 .end-bld-right,
+#p8 .end-bld-left, #p8 .end-bld-mid, #p8 .end-bld-right{
+  display:none !important;
 }
 
 </style>
@@ -1851,7 +2248,7 @@ html, body{
 <div id="panorama">
 
   <!-- ══════════════════════════════════
-       BACKGROUND LAYERS (full 700cqw)
+       BACKGROUND LAYERS (full 800cqw)
   ══════════════════════════════════ -->
   <img id="bg-sky"
        src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Sky.png"
@@ -2090,6 +2487,37 @@ html, body{
          
          
          
+         
+         
+         
+         
+         
+        
+         
+                <img class="layer l-bld2aEnd"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/6a.png" alt="">  
+         
+            
+   
+         
+
+         
+             <img class="layer l-bld5End"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/5a.png" alt="">  
+         
+           <img class="layer l-bld8End"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/9a.png" alt="">  
+         
+ <img class="layer l-bld10End"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/10a.png" alt=""> 
+         
+         
+         
+         
+         
+         
+         
+         
              
           <img class="layer l-bridge"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge.png" alt=""> 
@@ -2101,7 +2529,8 @@ html, body{
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge3a.png" alt=""> 
          
          
-         
+                <img class="layer l-bridge4"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Bridge.png" alt=""> 
          
          
          
@@ -2216,10 +2645,38 @@ html, body{
   </div>
 
   <!-- ══════════════════════════════════
-       PANEL 6 — RSVP
-       Buildings: 16.png (left), 17.png (right)
+       PANEL 6 — Gift Registry
+       Placed before the RSVP section
   ══════════════════════════════════ -->
   <div class="panel" id="p6" style="left:500cqw;">
+
+    <div class="water-shimmer"></div>
+
+    <img class="layer l-clouds"
+         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
+
+    <div class="content">
+      <div class="fixed-copy gift-copy">
+        <div class="script" style="color:#373222;font-weight:900;">Gift Registry</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+        <div class="gift-card">
+          <p class="serif gift-intro">
+            Your love, laughter, and presence are all we could wish for.
+            For those who wish, a wedding list is available at all Whish Money branches.
+          </p>
+          <div class="gift-seal">✦</div>
+          <div class="sans gift-bank">Whish Money</div>
+          <div class="serif gift-account">ACC# xxxxxx</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 7 — RSVP
+       Buildings: 16.png (left), 17.png (right)
+  ══════════════════════════════════ -->
+  <div class="panel" id="p7" style="left:600cqw;">
 
     <div class="water-shimmer"></div>
 
@@ -2283,15 +2740,12 @@ html, body{
   </div>
 
   <!-- ══════════════════════════════════
-       PANEL 7 — Closing
+       PANEL 8 — Closing
        Buildings: 18.png (left), 19.png (right)
   ══════════════════════════════════ -->
-  <div class="panel" id="p7" style="left:600cqw;">
+  <div class="panel" id="p8" style="left:700cqw;">
 
     <div class="water-shimmer"></div>
-
-   
-
 
     <img class="layer l-clouds"
          src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Clouds.png" alt="">
@@ -2317,7 +2771,7 @@ html, body{
   const hint     = document.getElementById('hint');
   const stage    = document.getElementById('stage');
   const travelGondola = document.getElementById('travelGondola');
-  const PANELS   = 7;
+  const PANELS   = 8;
 
   let offset = 0;
   let target = 0;
