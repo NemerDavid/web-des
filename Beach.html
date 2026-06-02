@@ -147,22 +147,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
     
     
     
@@ -645,52 +629,70 @@
     }
 
     .program-card {
-      left: 31.05%;
-      top: 50%;
-      width: calc(var(--screen-h) * .385);
-      min-height: calc(var(--screen-h) * .245);
-      padding: calc(var(--screen-h) * .019) calc(var(--screen-h) * .021);
-      border-radius: calc(var(--screen-h) * .029);
-      background: rgba(12, 5, 4, .34);
-      border-color: rgba(248, 216, 138, .50);
+      left: 31.15%;
+      top: 53%;
+      width: calc(var(--screen-h) * .395);
+      min-height: calc(var(--screen-h) * .310);
+      padding: calc(var(--screen-h) * .020) calc(var(--screen-h) * .035);
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       backdrop-filter: none;
       -webkit-backdrop-filter: none;
     }
 
     .program-card h2 {
-      font-size: calc(var(--screen-h) * .046);
-      margin-bottom: calc(var(--screen-h) * .018);
+      font-size: calc(var(--screen-h) * .055);
+      margin: 0 0 calc(var(--screen-h) * .030);
+      color: #ffe29a;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .007) rgba(255, 238, 174, .92),
+        0 0 calc(var(--screen-h) * .020) rgba(255, 177, 70, .62),
+        0 calc(var(--screen-h) * .003) calc(var(--screen-h) * .009) rgba(60, 18, 4, .58);
     }
 
     .program-list {
       display: grid;
-      gap: calc(var(--screen-h) * .010);
-      margin-top: calc(var(--screen-h) * .060);
-      font-family: "Montserrat", sans-serif;
-      font-size: calc(var(--screen-h) * .0132);
-      letter-spacing: .04em;
+      gap: calc(var(--screen-h) * .022);
+      margin-bottom: 35px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: calc(var(--screen-h) * .025);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: .015em;
+      color: #fff0c8;
+      text-shadow:
+        0 0 calc(var(--screen-h) * .006) rgba(255, 238, 174, .60),
+        0 calc(var(--screen-h) * .002) calc(var(--screen-h) * .008) rgba(0,0,0,.58);
     }
 
     .program-list div {
       display: grid;
-      grid-template-columns: 1fr calc(var(--screen-h) * .060) 1fr;
+      grid-template-columns: calc(var(--screen-h) * .085) 1fr calc(var(--screen-h) * .052);
       align-items: center;
-      gap: calc(var(--screen-h) * .016);
-      border-bottom: 1px solid rgba(255, 232, 181, .26);
-      padding-bottom: calc(var(--screen-h) * .0068);
+      column-gap: calc(var(--screen-h) * .016);
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .program-list div span:first-child {
+      text-align: left;
     }
 
     .program-list div span:last-child {
-      text-align: right;
+      text-align: left;
     }
 
     .program-icon {
-      width: calc(var(--screen-h) * .026);
-      height: calc(var(--screen-h) * .026);
+      width: calc(var(--screen-h) * .043);
+      height: calc(var(--screen-h) * .043);
       object-fit: contain;
-      justify-self: center;
-      opacity: .95;
-      filter: drop-shadow(0 0 calc(var(--screen-h) * .006) rgba(248, 216, 138, .22));
+      justify-self: end;
+      opacity: .98;
+      filter:
+        drop-shadow(0 0 calc(var(--screen-h) * .006) rgba(248, 216, 138, .50))
+        drop-shadow(0 calc(var(--screen-h) * .002) calc(var(--screen-h) * .004) rgba(0,0,0,.45));
       pointer-events: none;
     }
 
@@ -979,7 +981,7 @@
 
 .gift-card2 .powered-by {
   display: inline-block;
-  margin-top: calc(var(--screen-h) * .020);
+  margin-top: calc(var(--screen-h) * .060);
   color: rgba(255, 243, 218, .92);
   font-family: "Montserrat", sans-serif;
   font-size: calc(var(--screen-h) * .0105);
@@ -1230,25 +1232,25 @@
      
 <img
 class="first-rings"
-src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings.png"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings2.png"
 alt=""
 >
   
        <img
 class="first-glass"
-src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass.png"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass2.png"
 alt=""
 > 
         
             <img
 class="first-Cake"
-src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake.png"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake2.png"
 alt=""
 >    
  
              <img
 class="first-Dance"
-src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance.png"
+src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance2.png"
 alt=""
 >    
  
@@ -1349,12 +1351,12 @@ alt=""
 
         <section class="hotspot program-card" data-point="2">
           <h2>Day Program</h2>
-          <p></p>
+         
           <div class="program-list">
-            <div><span>17:30</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings.png" alt=""><span>Ceremony</span></div>
-            <div><span>18:30</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass.png" alt=""><span>Cocktail</span></div>
-            <div><span>20:00</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake.png" alt=""><span>Dinner</span></div>
-            <div><span>22:00</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance.png" alt=""><span>Dancing</span></div>
+            <div><span>17:30 Ceremony</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Rings.png" alt=""></div>
+            <div><span>18:30 Cocktail</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Glass.png" alt=""></div>
+            <div><span>20:00 Dinner</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Cake.png" alt=""></div>
+            <div><span>22:00 Dancing</span><img class="program-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Beach/Dance.png" alt=""></div>
           </div>
         </section>
 
@@ -1402,7 +1404,7 @@ alt=""
         
         
           <section class="hotspot gift-card2" data-point="4">
-          <h2>We cannot wait to celebrate with you</h2>
+          <h2 style="margin-top:50px;"> We cannot wait to celebrate with you</h2>
           <p>Thomas & Sarah</p>
           <p style="margin-top:10px;"><strong>August 14, 2027 · Ehden, Lebanon</strong></p>
           <a class="powered-by" href="https://www.instagram.com/cardiastudios?igsh=MXByaGpxdHNjMTJnbQ==" target="_blank" rel="noopener">Powered by Cardia Studios</a>
