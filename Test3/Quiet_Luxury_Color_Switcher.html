@@ -596,6 +596,105 @@
   .btn-solid:hover, .btn-soft:hover { transform: translateY(-1px); }
   .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: #9b3f35; }
 
+
+
+  /* LINK GENERATOR RSVP — compact multi-guest rows */
+  #page9Rsvp .guest-link-greeting {
+    margin: 0 0 10px !important;
+    font-family: 'Great Vibes', cursive !important;
+    font-size: 52px !important;
+    line-height: 1 !important;
+    color: #fff !important;
+    text-align: center !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.10) !important;
+  }
+  #page9Rsvp .guest-link-note {
+    margin: 0 0 18px !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 11px !important;
+    line-height: 1.55 !important;
+    color: rgba(255,255,255,.88) !important;
+    text-align: center !important;
+  }
+  #page9Rsvp .guest-slot-name-list {
+    display: grid !important;
+    gap: 10px !important;
+    width: 100% !important;
+    /* Show only about 3 guests, then scroll. This keeps 4–8 guests compact. */
+    max-height: 158px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding: 2px 12px 2px 0 !important;
+    margin-bottom: 8px !important;
+    overscroll-behavior: contain !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: rgba(255,255,255,.94) rgba(255,255,255,.20) !important;
+  }
+  #page9Rsvp .guest-slot-name-list::-webkit-scrollbar { width: 9px; }
+  #page9Rsvp .guest-slot-name-list::-webkit-scrollbar-track { background: rgba(255,255,255,.20); border-radius: 999px; }
+  #page9Rsvp .guest-slot-name-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,.94); border-radius: 999px; border: 2px solid rgba(151,196,212,.50); }
+  #page9Rsvp .guest-rsvp-row {
+    display: grid !important;
+    grid-template-columns: 1fr auto auto !important;
+    gap: 8px !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  #page9Rsvp .guest-rsvp-row .guest-name-input {
+    min-height: 46px !important;
+    padding: 10px 12px !important;
+    border: 1.5px solid rgba(255,255,255,.56) !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.12) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 18px !important;
+    color: #fff !important;
+  }
+  #page9Rsvp .guest-rsvp-row .guest-name-input[readonly] { opacity: .92; cursor: default; }
+  #page9Rsvp .guest-attend-choice { position: relative !important; display: block !important; }
+  #page9Rsvp .guest-attend-choice input {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  #page9Rsvp .guest-attend-pill {
+    min-width: 48px !important;
+    min-height: 46px !important;
+    border-radius: 12px !important;
+    border: 1.5px solid rgba(255,255,255,.56) !important;
+    background: rgba(255,255,255,.12) !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    user-select: none !important;
+  }
+  #page9Rsvp .guest-attend-choice input:checked + .guest-attend-pill {
+    background: rgba(255,255,255,.34) !important;
+    border-color: #fff !important;
+  }
+  #page9Rsvp .guest-attend-total {
+    margin: 14px 0 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: rgba(255,255,255,.90) !important;
+    text-align: center !important;
+  }
+  @media (max-width: 420px) {
+    #page9Rsvp .guest-link-greeting { font-size: 44px !important; }
+    #page9Rsvp .guest-slot-name-list { max-height: 148px !important; padding-right: 10px !important; }
+    #page9Rsvp .guest-rsvp-row { grid-template-columns: 1fr 44px 44px !important; gap: 6px !important; }
+    #page9Rsvp .guest-attend-pill { min-width: 44px !important; font-size: 9px !important; }
+    #page9Rsvp .guest-rsvp-row .guest-name-input { font-size: 16px !important; }
+  }
+
   /* ── Footer ── */
   .footer {
     padding: 470px 28px 90px;
@@ -1360,31 +1459,14 @@
 <span class="step-dot" id="dot-3"></span>
 </div>
 <div class="rsvp-step" id="step1">
-<label class="form-label" for="guestName">Your name</label>
-<input autocomplete="name" class="form-field" id="guestName" placeholder="Type your full name" type="text"/>
-<p class="error-msg" id="errName">Please enter your name.</p>
-<button class="btn-solid rsvp-main-btn" onclick="goStep(1,2)" type="button">Continue →</button>
+<p class="guest-link-greeting" id="guestWelcomeName">Dear Guest,</p>
+<p class="guest-link-note">Please confirm attendance for each guest.</p>
+<div class="guest-slot-name-list" id="guestSlotNameList"></div>
+<p class="guest-attend-total" id="guestAttendTotal">Total guests attending: 0</p>
+<p class="error-msg" id="errName">Please select yes or no for at least one guest.</p>
+<button class="btn-solid rsvp-main-btn" onclick="goStep(1,3)" type="button">Continue →</button>
 </div>
-<div class="rsvp-step" id="step2" style="display:none;">
-<p class="question">Will you attend?</p>
-<div class="attend-grid">
-<label class="attend-opt"><input name="attend" type="radio" value="yes"/><span class="attend-box"><span class="attend-label">Joyfully accept</span></span></label>
-<label class="attend-opt"><input name="attend" type="radio" value="no"/><span class="attend-box"><span class="attend-label">Regretfully decline</span></span></label>
-</div>
-<div id="guestCountWrap" style="display:none; margin-bottom:10px;">
-<label class="form-label guest-label">Number of guests</label>
-<div class="count-row">
-<button class="count-btn" onclick="changeCount(-1)" type="button">−</button>
-<span class="guest-num" id="guestCount">1</span>
-<button class="count-btn" onclick="changeCount(1)" type="button">+</button>
-</div>
-</div>
-<p class="error-msg" id="errAttend">Please select an option.</p>
-<div class="btn-grid">
-<button class="btn-soft" onclick="goStep(2,1)" type="button">← Back</button>
-<button class="btn-solid" onclick="goStep(2,3)" type="button">Continue →</button>
-</div>
-</div>
+<div class="rsvp-step" id="step2" style="display:none;" aria-hidden="true"></div>
 <div class="rsvp-step" id="step3" style="display:none;">
 <label class="form-label" for="guestMsg">Leave a wish <span style="font-weight:400;">(optional)</span></label>
 <textarea class="form-field" id="guestMsg" placeholder="Share a wish for Thomas &amp; Sarah…" rows="4"></textarea>
@@ -1696,6 +1778,181 @@
       showRSVPThankYou(name, yes);
     }, 650);
   }
+
+
+  /* LINK GENERATOR RSVP — Raymond & Celia compatible behavior */
+  (function setupLinkGeneratorRSVP() {
+    const DEFAULT_GUEST_LIMIT = 2;
+    const MAX_GUEST_LIMIT = 12;
+
+    function decodeGuestList(rawValue) {
+      if (!rawValue) return [];
+      return rawValue
+        .split(/\||,|\n|;/)
+        .map(name => decodeURIComponent(String(name).replace(/\+/g, ' ')).trim())
+        .filter(Boolean);
+    }
+
+    function uniqueNames(names) {
+      const seen = new Set();
+      return names.filter(name => {
+        const key = name.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function formatGuestNames(names) {
+      const clean = names.map(name => String(name || '').trim()).filter(Boolean);
+      if (!clean.length) return 'Guest';
+      if (clean.length === 1) return clean[0];
+      if (clean.length === 2) return clean[0] + ' & ' + clean[1];
+      return clean.slice(0, -1).join(', ') + ' & ' + clean[clean.length - 1];
+    }
+
+    function readGuestLinkSettings() {
+      const params = new URLSearchParams(window.location.search);
+      const namedGuests = uniqueNames([
+        ...decodeGuestList(params.get('guests') || ''),
+        ...decodeGuestList(params.get('guest') || ''),
+        ...decodeGuestList(params.get('invite') || ''),
+        ...decodeGuestList(params.get('group') || '')
+      ]);
+      const rawLimit = parseInt(params.get('limit') || '', 10);
+      const fallbackLimit = namedGuests.length || DEFAULT_GUEST_LIMIT;
+      const limit = Number.isFinite(rawLimit) && rawLimit > 0 ? rawLimit : fallbackLimit;
+      return {
+        guests: namedGuests,
+        limit: Math.max(1, Math.min(MAX_GUEST_LIMIT, limit)),
+        hasNamedGuests: namedGuests.length > 0
+      };
+    }
+
+    function buildGuestRows() {
+      const settings = readGuestLinkSettings();
+      const container = document.getElementById('guestSlotNameList');
+      const greeting = document.getElementById('guestWelcomeName');
+      if (!container) return;
+
+      if (greeting) {
+        greeting.textContent = 'Dear ' + (settings.hasNamedGuests ? formatGuestNames(settings.guests.slice(0, settings.limit)) : 'Guest') + ',';
+      }
+
+      container.innerHTML = '';
+      for (let i = 0; i < settings.limit; i++) {
+        const name = settings.guests[i] || '';
+        const row = document.createElement('div');
+        row.className = 'guest-rsvp-row';
+        row.dataset.guestSlot = String(i + 1);
+        row.innerHTML = `
+          <input class="guest-name-input" id="guestSlotInput${i}" name="guestName[]" type="text" autocomplete="name" placeholder="Guest ${i + 1} name">
+          <label class="guest-attend-choice">
+            <input type="radio" name="guestAttend${i}" value="yes">
+            <span class="guest-attend-pill">Yes</span>
+          </label>
+          <label class="guest-attend-choice">
+            <input type="radio" name="guestAttend${i}" value="no">
+            <span class="guest-attend-pill">No</span>
+          </label>`;
+        const input = row.querySelector('.guest-name-input');
+        if (input && name) {
+          input.value = name;
+          input.readOnly = true;
+          input.setAttribute('aria-readonly', 'true');
+        }
+        container.appendChild(row);
+      }
+
+      container.addEventListener('change', updateGuestAttendTotal);
+      updateGuestAttendTotal();
+    }
+
+    function getGuestResponses() {
+      return Array.from(document.querySelectorAll('#guestSlotNameList .guest-rsvp-row')).map((row, index) => {
+        const input = row.querySelector('.guest-name-input');
+        const selected = row.querySelector('input[type="radio"]:checked');
+        return {
+          slot: index + 1,
+          name: (input && input.value.trim()) || '',
+          attending: selected ? selected.value : ''
+        };
+      });
+    }
+
+    function updateGuestAttendTotal() {
+      const total = getGuestResponses().filter(g => g.attending === 'yes').length;
+      const totalEl = document.getElementById('guestAttendTotal');
+      if (totalEl) totalEl.textContent = 'Total guests attending: ' + total;
+      const err = document.getElementById('errName');
+      if (err) err.style.display = 'none';
+    }
+
+    window.goStep = function(from, to) {
+      if (from === 1) {
+        const responses = getGuestResponses();
+        const hasAnyAnswer = responses.some(g => g.attending === 'yes' || g.attending === 'no');
+        if (!hasAnyAnswer) {
+          const err = document.getElementById('errName');
+          if (err) err.style.display = 'block';
+          return;
+        }
+        const err = document.getElementById('errName');
+        if (err) err.style.display = 'none';
+      }
+      ['step1','step2','step3','stepOk'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      const next = document.getElementById('step' + to);
+      if (next) next.style.display = 'block';
+      [1,2,3].forEach(i => {
+        const dot = document.getElementById('dot-' + i);
+        if (dot) dot.classList.toggle('on', i <= to);
+      });
+    };
+
+    window.submitRSVP = function() {
+      const responses = getGuestResponses();
+      const answered = responses.filter(g => g.attending === 'yes' || g.attending === 'no');
+      if (!answered.length) {
+        const err = document.getElementById('errName');
+        if (err) err.style.display = 'block';
+        window.goStep(3, 1);
+        return;
+      }
+
+      const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
+      const sendBtn = document.getElementById('sendBtn');
+      if (sendBtn) { sendBtn.textContent = 'Sending...'; sendBtn.disabled = true; }
+
+      const yesGuests = answered.filter(g => g.attending === 'yes');
+      const noGuests = answered.filter(g => g.attending === 'no');
+      const guestNames = answered.map(g => g.name || ('Guest ' + g.slot));
+      const payload = {
+        event: COUPLE_NAME,
+        customer_email: CUSTOMER_EMAIL,
+        guest_name: guestNames.join(', ') || 'Guest',
+        attending: yesGuests.length ? 'Yes' : 'No',
+        guest_count: yesGuests.length,
+        message: msg || '',
+        guest_responses: JSON.stringify(answered),
+        attending_guests: yesGuests.map(g => g.name || ('Guest ' + g.slot)).join(', '),
+        declined_guests: noGuests.map(g => g.name || ('Guest ' + g.slot)).join(', '),
+        page_url: window.location.href,
+        submitted_at: new Date().toISOString()
+      };
+
+      postRSVPToGoogleSheet(payload);
+      setTimeout(() => {
+        if (sendBtn) { sendBtn.textContent = 'Sent ✓'; sendBtn.disabled = true; }
+        showRSVPThankYou(payload.guest_name, yesGuests.length > 0);
+      }, 650);
+    };
+
+    buildGuestRows();
+  })();
+
 </script>
 </body>
 </html>
