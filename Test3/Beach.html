@@ -1319,6 +1319,85 @@
         box-shadow: none;
       }
     }
+  
+/* CARDIA FIX — Beach RSVP: above 3 guests becomes scrollable */
+.rsvp-card .guest-slot-list {
+  max-height: calc((var(--screen-h) * .044 + var(--screen-h) * .007) * 3) !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  padding-right: calc(var(--screen-h) * .012) !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(248,216,138,.95) rgba(255,255,255,.14) !important;
+  overscroll-behavior: contain !important;
+}
+
+.rsvp-card .guest-slot-list::-webkit-scrollbar {
+  width: calc(var(--screen-h) * .010) !important;
+}
+
+.rsvp-card .guest-slot-list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,.16) !important;
+  border-radius: 999px !important;
+}
+
+.rsvp-card .guest-slot-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ffe29d, #c47a2c) !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(42,18,6,.22) !important;
+}
+
+.rsvp-card .guest-slot-list-wrap {
+  position: relative !important;
+}
+
+.rsvp-card .guest-slot-list-wrap::before,
+.rsvp-card .guest-slot-list-wrap::after {
+  position: absolute !important;
+  right: calc(var(--screen-h) * -.004) !important;
+  z-index: 8 !important;
+  width: calc(var(--screen-h) * .020) !important;
+  height: calc(var(--screen-h) * .020) !important;
+  border-radius: 50% !important;
+  display: none;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, rgba(255,226,157,.96), rgba(196,122,44,.96)) !important;
+  color: #2a1206 !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: calc(var(--screen-h) * .010) !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  box-shadow: 0 calc(var(--screen-h) * .005) calc(var(--screen-h) * .014) rgba(0,0,0,.22) !important;
+  pointer-events: none !important;
+}
+
+.rsvp-card .guest-slot-list-wrap::before {
+  content: "▲" !important;
+  top: calc(var(--screen-h) * -.002) !important;
+}
+
+.rsvp-card .guest-slot-list-wrap::after {
+  content: "▼" !important;
+  bottom: calc(var(--screen-h) * -.002) !important;
+}
+
+.rsvp-card .guest-slot-list-wrap.has-scroll::before,
+.rsvp-card .guest-slot-list-wrap.has-scroll::after {
+  display: flex !important;
+}
+
+@media (max-width: 720px) {
+  .rsvp-card .guest-slot-list {
+    max-height: calc((var(--screen-h) * .044 + var(--screen-h) * .007) * 3) !important;
+    overflow-y: scroll !important;
+    padding-right: calc(var(--screen-h) * .014) !important;
+  }
+
+  .rsvp-card .guest-slot-list::-webkit-scrollbar {
+    width: calc(var(--screen-h) * .012) !important;
+  }
+}
+
   </style>
 </head>
 
@@ -1501,11 +1580,13 @@ alt=""
           <p>Kindly reply before 20 July 2027.</p>
           <form class="rsvp-form" id="rsvpForm" novalidate>
             <p class="guest-link-greeting" id="guestLinkGreeting">Dear Guest,</p>
-            <div class="guest-slot-list" id="guestSlotList">
+            <div class="guest-slot-list-wrap" id="guestSlotListWrap">
+              <div class="guest-slot-list" id="guestSlotList">
               <div class="guest-slot" data-guest-slot="1"><input name="guestName[]" placeholder="Guest 1 name" autocomplete="name" required></div>
               <div class="guest-slot" data-guest-slot="2"><input name="guestName[]" placeholder="Guest 2 name" autocomplete="name"></div>
               <div class="guest-slot" data-guest-slot="3"><input name="guestName[]" placeholder="Guest 3 name" autocomplete="name"></div>
               <div class="guest-slot" data-guest-slot="4"><input name="guestName[]" placeholder="Guest 4 name" autocomplete="name"></div>
+              </div>
             </div>
             <select class="legacy-attendance-field" name="attendance" aria-hidden="true" tabindex="-1">
               <option value="">Will you attend?</option>
@@ -2000,6 +2081,20 @@ const points = [0.09, 0.165, 0.245, 0.47, 0.695, 0.9];
     }
 
     applyGuestLinkPersonalization();
+
+    function updateBeachGuestScroller() {
+      const list = document.getElementById('guestSlotList');
+      const wrapEl = document.getElementById('guestSlotListWrap');
+      if (!list || !wrapEl) return;
+      const visibleSlots = Array.from(list.querySelectorAll('.guest-slot')).filter(slot => !slot.hidden);
+      wrapEl.classList.toggle('has-scroll', visibleSlots.length > 3);
+      list.style.overflowY = visibleSlots.length > 3 ? 'scroll' : 'visible';
+    }
+
+    window.addEventListener('load', updateBeachGuestScroller);
+    window.addEventListener('resize', updateBeachGuestScroller);
+
+    updateBeachGuestScroller();
 
     document.getElementById('rsvpForm').addEventListener('submit', (e) => {
       e.preventDefault();
