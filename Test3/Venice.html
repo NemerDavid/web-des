@@ -2366,6 +2366,78 @@ html, body{
   }
 }
 
+
+/* ═════════ CARDIA FIX — RSVP SCROLLBAR SPACED + UP/DOWN ARROWS ═════════ */
+#p7 #manualGuestListWrap{
+  position:relative !important;
+  width:100% !important;
+  padding-right:18px !important;
+  margin:12px 0 6px !important;
+}
+#p7 #manualGuestListWrap::before,
+#p7 #manualGuestListWrap::after{
+  position:absolute !important;
+  right:1px !important;
+  z-index:6 !important;
+  width:14px !important;
+  height:14px !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:rgba(196,149,106,.92) !important;
+  color:#fff !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:9px !important;
+  font-weight:700 !important;
+  line-height:1 !important;
+  box-shadow:0 4px 10px rgba(80,40,10,.18) !important;
+  pointer-events:none !important;
+}
+#p7 #manualGuestListWrap::before{
+  content:'▲' !important;
+  top:0 !important;
+  transform:translateY(-55%) !important;
+}
+#p7 #manualGuestListWrap::after{
+  content:'▼' !important;
+  bottom:0 !important;
+  transform:translateY(55%) !important;
+}
+#p7 .guest-slot-name-list{
+  margin:0 !important;
+  padding-right:8px !important;
+  scrollbar-width:thin !important;
+  scrollbar-color:rgba(196,149,106,.92) rgba(196,149,106,.18) !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar{
+  width:7px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-track{
+  background:rgba(196,149,106,.16) !important;
+  border-radius:999px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-thumb{
+  background:rgba(196,149,106,.95) !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,245,230,.75) !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p7 #manualGuestListWrap{
+    padding-right:20px !important;
+    margin-top:13px !important;
+  }
+  #p7 #manualGuestListWrap::before,
+  #p7 #manualGuestListWrap::after{
+    width:15px !important;
+    height:15px !important;
+    font-size:9px !important;
+  }
+  #p7 .guest-slot-name-list{
+    padding-right:9px !important;
+  }
+}
+
 </style>
 </head>
 <body>
