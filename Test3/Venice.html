@@ -2215,7 +2215,7 @@ html, body{
   }
 
   #p7 #guestName::placeholder{
-    font-size:26px !important;
+    font-size:6px !important;
   }
 }
 
@@ -2475,6 +2475,158 @@ html, body{
   }
   #p7 .guest-slot-name-list::-webkit-scrollbar{
     width:12px !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA FINAL RSVP POLISH — WIDER CARD, SMALLER PLACEHOLDER, CENTERED SCROLLBAR ═════════ */
+#p7 .rsvp-copy{
+  width:94% !important;
+  top:3.8% !important;
+}
+#p7 .rsvp-card{
+  width:100% !important;
+  max-width:82cqw !important;
+  padding:5.2cqw 6.4cqw !important;
+}
+#p7 .venice-rsvp-box{
+  width:100% !important;
+  padding-left:5.8cqw !important;
+  padding-right:5.8cqw !important;
+}
+#p7 .guest-slot-name-list{
+  max-height:250px !important;
+  overflow-y:scroll !important;
+  overflow-x:hidden !important;
+  padding-right:26px !important;
+  margin:13px 0 !important;
+  scrollbar-width:thin !important;
+  scrollbar-color:rgba(196,149,106,.96) transparent !important;
+  scrollbar-gutter:stable !important;
+}
+#p7 #manualGuestListWrap{
+  position:relative !important;
+  width:100% !important;
+  padding-right:0 !important;
+  margin:10px 0 6px !important;
+}
+#p7 #manualGuestListWrap::before,
+#p7 #manualGuestListWrap::after{
+  right:0 !important;
+  left:auto !important;
+  width:22px !important;
+  height:22px !important;
+  font-size:12px !important;
+  z-index:12 !important;
+}
+#p7 #manualGuestListWrap::before{
+  top:0 !important;
+  transform:translateY(-22%) !important;
+}
+#p7 #manualGuestListWrap::after{
+  bottom:0 !important;
+  transform:translateY(22%) !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar{
+  width:9px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-track{
+  background:rgba(196,149,106,.16) !important;
+  border-radius:999px !important;
+  margin-top:18px !important;
+  margin-bottom:18px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-thumb{
+  background:rgba(196,149,106,.96) !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,245,230,.82) !important;
+}
+#p7 .guest-slot-name-box{
+  grid-template-columns:minmax(0,1fr) auto !important;
+  column-gap:7px !important;
+  padding:7px 8px !important;
+}
+#p7 .guest-slot-name-box > input{
+  font-size:4.05cqw !important;
+  letter-spacing:.08em !important;
+  min-width:0 !important;
+}
+#p7 .guest-slot-name-box > input::placeholder{
+  font-size:3.15cqw !important;
+  letter-spacing:.14em !important;
+  color:rgba(196,149,106,.64) !important;
+}
+
+@media (max-width:600px),(pointer:coarse){
+  #p7 .rsvp-copy{
+    width:94% !important;
+    top:3.7% !important;
+  }
+  #p7 .rsvp-card{
+    max-width:82cqw !important;
+    padding:5.0cqw 6.1cqw !important;
+  }
+  #p7 .venice-rsvp-box{
+    padding-left:5.4cqw !important;
+    padding-right:5.4cqw !important;
+  }
+  #p7 .guest-slot-name-list{
+    max-height:248px !important;
+    padding-right:26px !important;
+    margin:13px 0 !important;
+  }
+  #p7 #manualGuestListWrap::before,
+  #p7 #manualGuestListWrap::after{
+    width:22px !important;
+    height:22px !important;
+    font-size:12px !important;
+    right:0 !important;
+  }
+  #p7 .guest-slot-name-box > input{
+    font-size:3.85cqw !important;
+  }
+  #p7 .guest-slot-name-box > input::placeholder{
+    font-size:3.0cqw !important;
+    letter-spacing:.13em !important;
+  }
+  #p7 .guest-response-pill{
+    min-width:38px !important;
+    height:31px !important;
+    padding:0 8px !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA UPDATE — RSVP SCROLLBAR LEFT + VISIBLE BORDER ═════════ */
+#p7 .guest-slot-name-list{
+  width:calc(100% - 14px) !important;
+  margin-right:14px !important;
+  padding-right:24px !important;
+  scrollbar-color:rgba(196,149,106,.96) rgba(255,245,230,.72) !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar{
+  width:10px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-track{
+  background:rgba(255,245,230,.70) !important;
+  border:1.5px solid rgba(196,149,106,.72) !important;
+  border-radius:999px !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.42) !important;
+  margin-top:20px !important;
+  margin-bottom:20px !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar-thumb{
+  background:rgba(196,149,106,.96) !important;
+  border:2px solid rgba(255,245,230,.88) !important;
+  border-radius:999px !important;
+}
+@media (max-width:600px),(pointer:coarse){
+  #p7 .guest-slot-name-list{
+    width:calc(100% - 14px) !important;
+    margin-right:14px !important;
+    padding-right:24px !important;
   }
 }
 
@@ -3328,6 +3480,19 @@ html, body{
     target = clamp(target, 0, maxOff());
     offset = clamp(offset, 0, maxOff());
   });
+
+function updateGuestScrollUI(){
+  const rows=document.querySelectorAll('.guest-row');
+  const up=document.querySelector('.guest-scroll-up');
+  const down=document.querySelector('.guest-scroll-down');
+  const bar=document.querySelector('.guest-scrollbar-wrap');
+  const needsScroll=rows.length>3;
+  if(up) up.style.display=needsScroll?'flex':'none';
+  if(down) down.style.display=needsScroll?'flex':'none';
+  if(bar) bar.style.display=needsScroll?'block':'none';
+}
+document.addEventListener('DOMContentLoaded',()=>setTimeout(updateGuestScrollUI,100));
+
 </script>
 </body>
 </html>
