@@ -2438,6 +2438,46 @@ html, body{
   }
 }
 
+
+/* CARDIA RSVP MOBILE SCROLL IMPROVEMENT */
+#p7 .guest-slot-name-list{
+  max-height:260px !important; /* about 3 guest rows visible */
+  overflow-y:scroll !important;
+  scrollbar-gutter:stable !important;
+}
+#p7 #manualGuestListWrap{
+  padding-right:28px !important;
+}
+#p7 #manualGuestListWrap::before,
+#p7 #manualGuestListWrap::after{
+  right:4px !important;
+  width:22px !important;
+  height:22px !important;
+  font-size:12px !important;
+  opacity:1 !important;
+}
+#p7 .guest-slot-name-list::-webkit-scrollbar{
+  width:10px !important;
+}
+@media (max-width:600px),(pointer:coarse){
+  #p7 .guest-slot-name-list{
+    max-height:250px !important; /* forces scrolling after ~3 guests */
+    overflow-y:scroll !important;
+  }
+  #p7 #manualGuestListWrap{
+    padding-right:30px !important;
+  }
+  #p7 #manualGuestListWrap::before,
+  #p7 #manualGuestListWrap::after{
+    width:24px !important;
+    height:24px !important;
+    font-size:13px !important;
+  }
+  #p7 .guest-slot-name-list::-webkit-scrollbar{
+    width:12px !important;
+  }
+}
+
 </style>
 </head>
 <body>
